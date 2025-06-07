@@ -12,7 +12,7 @@ export default function Hero() {
         <div className="container max-w-xl">
           <div className="section-inner panel">
             <div className="row child-cols-12 justify-center lg:justify-between items-center g-6 lg:g-0">
-               <div className="sm:col-auto">
+               <div className="sm:col-auto lg:order-2">
                 <div
                   className="hero-scroll-scene panel sm:w-550px sm:h-600px lg:w-450px lg:h-500px xl:w-600px xl:h-650px"
                   data-anime="translateX: [48, 0]; opacity: [0, 1]; easing: easeOutCubic; duration: 500; delay: anime.stagger(100, {start: 200});"
