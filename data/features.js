@@ -238,17 +238,17 @@ export const featureItems2 = [
     order: "order-1 lg:order-0",
     iconSrc: "/assets/images/common/icons/zap.svg",
     alt: "feature-icon",
-    title: "Fast and Reliable",
+    title: "Web Development",
     description:
-      "Whether you have a team of 2 or 200, our shared team inboxes keep everyone on the same page and in the loop.",
+      "We create personalized, responsive websites tailored to your needs using the latest technologies. Our expert team ensures a seamless user experience through collaboration and a deep understanding of client goals.",
   },
   {
     order: "order-0",
     iconSrc: "/assets/images/common/icons/database.svg",
     alt: "feature-icon",
-    title: "Discover Data Everywhere",
+    title: "E-commerce Solutions",
     description:
-      "Whether you have a team of 2 or 200, our shared team inboxes keep everyone on the same page and in the loop.",
+      "Our E-commerce Solutions transform Shopify stores into powerful sales engines. We offer expert setup, custom app development, theme customization, optimization for performance, and ongoing support.",
     bgClass:
       "bg-gradient-45 from-secondary to-transparent dark:from-gray-700 sm:rounded-bottom-end-0 lg:rounded-bottom-0",
   },
@@ -256,17 +256,17 @@ export const featureItems2 = [
     order: "order-2 sm:order-1 lg:order-0",
     iconSrc: "/assets/images/common/icons/puzzle.svg",
     alt: "feature-icon",
-    title: "Enrich Data with Context",
+    title: "Shopify Theme Development",
     description:
-      "Whether you have a team of 2 or 200, our shared team inboxes keep everyone on the same page and in the loop.",
+      "Our Shopify Theme Development service specializes in crafting unique and captivating themes for Shopify stores, ensuring a distinctive online presence that stands out from the competition.",
   },
   {
     order: "order-1 lg:order-0",
     iconSrc: "/assets/images/common/icons/target.svg",
     alt: "feature-icon",
-    title: "Risk Management",
+    title: "Shopify App Development",
     description:
-      "Whether you have a team of 2 or 200, our shared team inboxes keep everyone on the same page and in the loop.",
+      "Our Shopify App Development service focuses on crafting customized solutions to elevate functionality and cater to specific business needs within the Shopify ecosystem.",
     bgClass:
       "bg-gradient-45 from-secondary to-transparent dark:from-gray-700 sm:rounded-start-0 lg:rounded-top-end-0 lg:rounded-start-1-5",
   },
@@ -274,17 +274,17 @@ export const featureItems2 = [
     order: "order-3 lg:order-0",
     iconSrc: "/assets/images/common/icons/line-chart.svg",
     alt: "feature-icon",
-    title: "Privacy Compliance",
+    title: "Full Stack Development",
     description:
-      "Whether you have a team of 2 or 200, our shared team inboxes keep everyone on the same page and in the loop.",
+      "We deliver end-to-end development, building seamless mobile apps, intuitive frontend interfaces, and high-performance backend systems — ensuring great user experiences.",
   },
   {
     order: "order-2 lg:order-0",
     iconSrc: "/assets/images/common/icons/settings.svg",
     alt: "feature-icon",
-    title: "Third-Party Management",
+    title: "Consultation and Support",
     description:
-      "Whether you have a team of 2 or 200, our shared team inboxes keep everyone on the same page and in the loop.",
+      "Our Consultation and Support service provides expert advice, maintenance, and ongoing support to guarantee optimal performance and sustained success.",
     bgClass:
       "bg-gradient-45 from-secondary to-transparent dark:from-gray-700 sm:rounded-top-end-0 lg:rounded-top-start-0 lg:rounded-top-end-1-5",
   },

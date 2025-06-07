@@ -1,14 +1,12 @@
 "use client";
 import { useEffect, useState } from "react";
+import Nav3 from "./component/Nav3";
 import Link from "next/link";
-import Nav from "./component/Nav";
 import Image from "next/image";
 import { openMobileMenu } from "@/utlis/toggleMobileMenu";
-import { openContactModal } from "@/utlis/toggleContactModal";
 import LanguageSelect2 from "../common/LanguageSelect2";
-// uc-header header-default uc-navbar-sticky-wrap z-999 uc-sticky uc-sticky-below uc-sticky-fixed
-// --uc-nav-height: 80px; position: fixed !important; width: 1205px !important; margin-top: 0px !important; top: 0px;
-export default function Header2() {
+
+export default function Header4() {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [scrollingUp, setScrollingUp] = useState(false);
 
@@ -28,27 +26,68 @@ export default function Header2() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [prevScrollPos]);
-
   return (
-    <>
-      <header
-        style={{ "--uc-nav-height": "80px !important" }}
-        className={`uc-header header-default uc-navbar-sticky-wrap z-999 uc-sticky ${
-          scrollingUp ? " uc-sticky-below uc-sticky-fixed headerFixed" : ""
-        }`}
-        data-uc-sticky="start: 100vh; show-on-up: true; animation: uc-animation-slide-top; sel-target: .uc-navbar-container; cls-active: uc-navbar-sticky; cls-inactive: uc-navbar-transparent; end: !*;"
+    <header
+      className={`uc-header header-default uc-navbar-sticky-wrap z-999 uc-sticky ${
+        scrollingUp ? " uc-sticky-below uc-sticky-fixed headerFixed" : ""
+      }`}
+      data-uc-sticky="start: 100vh; show-on-up: true; animation: uc-animation-slide-top; sel-target: .uc-navbar-container; cls-active: uc-navbar-sticky; cls-inactive: uc-navbar-transparent; end: !*;"
+    >
+      <nav
+        className={`uc-navbar-container uc-navbar-float ft-tertiary z-1 ${
+          scrollingUp ? "uc-navbar-sticky" : "uc-navbar-transparent"
+        } `}
+        data-anime="translateY: [-40, 0]; opacity: [0, 1]; easing: easeOutExpo; duration: 750; delay: 0;"
       >
-        <nav
-          className={`uc-navbar-container uc-navbar-float ft-tertiary z-1 ${
-            scrollingUp ? "uc-navbar-sticky" : "uc-navbar-transparent"
-          } `}
-          data-anime="translateY: [-40, 0]; opacity: [0, 1]; easing: easeOutExpo; duration: 750; delay: 0;"
-          style={{ transform: "translateY(0px)", opacity: 1 }}
+        <div
+          style={{ "--uc-nav-height": "32px" }}
+          className="uc-navbar-top bg-primary-700 text-white uc-dark d-none lg:d-block"
         >
-          <div className="container max-w-xl">
+          <div className="hide-on-sticky">
+            <div className="container container-expand max-w-1440px">
+              <div className="uc-navbar min-h-32px fs-8">
+                <div className="uc-navbar-left">
+                  <ul className="uc-navbar-nav gap-2 fw-medium">
+                    <li>
+                      <a href="#">Customer stories</a>
+                    </li>
+                    <li>
+                      <Link href={`/page-terms`}>Terms and conditions</Link>
+                    </li>
+                    <li>
+                      <Link href={`/page-contact`}>
+                        <span>Hire an Expert</span>
+                        <i className="fs-8 unicon-arrow-up-right fw-bold ms-narrow rtl:-rotate-90" />
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+                <div className="uc-navbar-right">
+                  <div className="uc-navbar-item">
+                    <a
+                      className="btn btn-xs p-0 fs-8 text-white"
+                      href="tel:01032701349"
+                    >
+                      <i className="icon-narrow unicon-phone" />
+                      <span>Tel: +1 327 1349</span>
+                    </a>
+                  </div>
+                  <div className="uc-navbar-item">
+                    <a className="btn btn-xs p-0 fs-8 text-white" href="#chat">
+                      <i className="icon-narrow unicon-chat-bot" />
+                      <span>Live Chat</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style={{ "--uc-nav-height": "80px" }} className="uc-navbar-main">
+          <div className="container container-expand max-w-1440px">
             <div
               className="uc-navbar min-h-64px lg:min-h-80px text-gray-900 dark:text-white"
-              data-uc-navbar="mode: click; animation: uc-animation-slide-top-small; duration: 150;"
+              style={{ position: "static" }}
             >
               <div className="uc-navbar-left">
                 <div className="uc-logo text-dark dark:text-white">
@@ -60,46 +99,33 @@ export default function Header2() {
                     <Image
                       className="dark:d-none"
                       alt="Lexend"
-                      src="/assets/images/common/logo-light.svg"
+                      src="/assets/images/common/logo-1.webp"
                       width="117"
                       height="40"
                     />
                     <Image
                       className="d-none dark:d-block"
                       alt="Lexend"
-                      src="/assets/images/common/logo-dark.svg"
+                      src="/assets/images/common/logo-1.webp"
                       width="117"
                       height="40"
                     />
                   </Link>
                 </div>
-                <ul className="uc-navbar-nav gap-3 xl:gap-4 d-none lg:d-flex fw-medium ms-2">
-                  <Nav />
+                <ul className="uc-navbar-nav gap-3 xl:gap-4 d-none lg:d-flex fw-medium ltr:ms-2 ltr:xl:ms-4 rtl:me-2 rtl:xl:me-4">
+                  <Nav3 />
                 </ul>
               </div>
               <div className="uc-navbar-right">
-                <div className="d-none xl:d-block">
-                  <a
-                    className="text-none fw-medium"
-                    onClick={openContactModal}
-                    data-uc-toggle=""
-                    role="button"
-                  >
-                    <span>Request a demo</span>
-                  </a>
-                </div>
-                <div className="d-none lg:d-block">
-                  <Link className="text-none fw-medium" href={`/sign-in`}>
-                    <span>Log in</span>
-                  </Link>
-                </div>
+                <ul className="uc-navbar-nav gap-3 xl:gap-4 d-none lg:d-flex fw-medium ltr:ms-2 ltr:xl:ms-4 rtl:me-2 rtl:xl:me-4">
+                  <LanguageSelect2 />
+                </ul>
                 <Link
-                  className="btn btn-sm btn-primary text-white text-none d-none lg:d-inline-flex"
-                  href={`/page-pricing`}
+                  className="btn btn-md btn-primary rounded-default lg:px-3 text-none shadow-xs d-none lg:d-inline-flex"
+                  href={`/page-contact`}
                 >
-                  Start free trial
+                  Send inquiry
                 </Link>
-                <LanguageSelect2 />
                 <a
                   className="d-block lg:d-none uc-icon uc-navbar-toggle-icon"
                   onClick={openMobileMenu}
@@ -120,12 +146,8 @@ export default function Header2() {
               </div>
             </div>
           </div>
-        </nav>
-      </header>{" "}
-      {/* <div
-        className="uc-sticky-placeholder"
-        style={{ height: 0, width: "100% !important", margin: 0 }}
-      />{" "} */}
-    </>
+        </div>
+      </nav>
+    </header>
   );
 }

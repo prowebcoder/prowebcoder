@@ -19,12 +19,12 @@ export default function Features() {
                 Features
               </span>
               <h2 className="h3 sm:h2 lg:h1 xl:display-6 m-0">
-                Recognized by the experts
+                What we do
               </h2>
               <p className="fs-7 sm:fs-6 lg:fs-5 xl:fs-4 text-opacity-70">
-                Offers a unified platform that fosters innovation while
-                providing end-to-end data management. See how we help your team
-                solve today’s biggest challenges.
+               Our development services cover a wide array of software needs, spanning Shopify, WordPress, BigCommerce, Mobile app development (including React Native), and both frontend (HTML, CSS, React, Angular) and backend (Node.js) technologies. Additionally, we specialize in Shopify app development using remix and Shopify theme development. With our dedicated team, we ensure scalable solutions tailored to the requirements of early-stage startups and large-scale global enterprises, delivering high-quality outcomes every time.
+
+
               </p>
             </div>
             <div
@@ -51,7 +51,7 @@ export default function Features() {
                     <div className="panel">
                       <div className="vstack gap-1">
                         <h3 className="title h5 xl:h4 m-0">{item.title}</h3>
-                        <p className="desc fs-7 xl:fs-6 text-opacity-70">
+                        <p className="desc fs-7 xl:fs-8 text-opacity-70">
                           {item.description}
                         </p>
                         <Link

@@ -99,14 +99,14 @@ export default function Header4() {
                     <Image
                       className="dark:d-none"
                       alt="Lexend"
-                      src="/assets/images/common/logo-light.svg"
+                      src="/assets/images/common/logo-1.webp"
                       width="117"
                       height="40"
                     />
                     <Image
                       className="d-none dark:d-block"
                       alt="Lexend"
-                      src="/assets/images/common/logo-dark.svg"
+                      src="/assets/images/common/logo-1.webp"
                       width="117"
                       height="40"
                     />
