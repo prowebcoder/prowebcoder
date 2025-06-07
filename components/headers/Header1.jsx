@@ -83,7 +83,7 @@ export default function Header4() {
             </div>
           </div>
         </div>
-        <div style={{ "--uc-nav-height": "80px" }} className="uc-navbar-main">
+        <div style={{ "--uc-nav-height": "112px" }} className="uc-navbar-main">
           <div className="container container-expand max-w-1440px">
             <div
               className="uc-navbar min-h-64px lg:min-h-80px text-gray-900 dark:text-white"
