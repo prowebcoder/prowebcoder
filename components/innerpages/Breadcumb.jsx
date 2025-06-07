@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function Breadcumb() {
   return (
     <div
-      style={{ marginTop: "112px" }}
+      style={{ marginTop: "112px !important" }}
       className="breadcrumbs panel z-1 py-2 bg-secondary dark:bg-gray-100 dark:bg-opacity-5 dark:text-white"
     >
       <div className="container max-w-xl">
