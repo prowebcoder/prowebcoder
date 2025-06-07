@@ -32,12 +32,12 @@ export default function Howworks() {
                         data-anime="onview: -100; targets: >*; translateY: [16, 0]; opacity: [0, 1]; easing: easeOutCubic; duration: 500; delay: anime.stagger(100, {start: 500});"
                       >
                         <h3 className="h3 lg:h2 m-0">
-                          End-to-End Data Shared Management
+                         Shopify Services
                         </h3>
                         <p className="fs-6 lg:fs-5">
-                          Whether you have a team of 2 or 200, our shared team
-                          inboxes keep everyone on the same page and in the
-                          loop.
+                          In the modern era, Shopify stands out as the leading eCommerce platform on the Internet. At gtlofficial,we are committed to assisting you comprehensively. From showcasing your products and services to elevating your brand and delivering a seamless customer experience, our Shopify website development services are designed to help you increase revenue and achieve your organizational goals.
+
+
                         </p>
                         <div className="panel w-100 mt-2 lg:mt-4">
                           <ul
@@ -79,15 +79,110 @@ export default function Howworks() {
                         data-anime="onview: -100; targets: >*; translateY: [16, 0]; opacity: [0, 1]; easing: easeOutCubic; duration: 500; delay: anime.stagger(100, {start: 500});"
                       >
                         <h3 className="h3 lg:h2 m-0">
-                          Unlock your Productivity Potential Now or Never
+                          Our Skills
                         </h3>
                         <p className="fs-6 lg:fs-5">
-                          Unlock your productivity potential with our intuitive
-                          and powerful to-do app. Manage tasks, set priorities,
-                          collaborate with your team, and track progress
-                          effortlessly.
+                         With over 12 years of expertise, our primary focus is Shopify development, complemented by mastery in WordPress, Squarespace, Node.js, Python, React, HTML, and CSS. Our team seamlessly blends creativity with technical prowess to deliver top-notch solutions, be it crafting visually stunning websites or building robust e-commerce platforms. Trust us to elevate your online presence and drive tangible results with our comprehensive suite of development services.
+
+
                         </p>
                         <div className="panel mt-2 lg:mt-4">
+                          <div className="row child-cols-12 lg:child-cols-6 g-4">
+                            <div>
+                              <div className="panel vstack items-start gap-2">
+                                <div className="cstack min-w-48px min-h-48px bg-primary rounded-circle">
+                                  <Image
+                                    className="icon icon-1 text-white image-filter-white"
+                                    alt="feature-icon"
+                                    data-uc-svg=""
+                                    src="/assets/images/common/icons/database.svg"
+                                    width="24"
+                                    height="24"
+                                  />
+                                </div>
+                                <div className="vstack gap-1 lg:gap-2">
+                                  <h5 className="h5 lg:h4 m-0">
+                                    Use Data &amp; AI responsibly
+                                  </h5>
+                                  <p className="fs-6">
+                                    Offers a unified platform that fosters
+                                    innovation.
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div className="panel vstack items-start gap-2">
+                                <div className="cstack min-w-48px min-h-48px bg-primary rounded-circle">
+                                  <Image
+                                    className="icon icon-1 text-white image-filter-white"
+                                    alt="feature-icon"
+                                    data-uc-svg=""
+                                    src="/assets/images/common/icons/line-chart.svg"
+                                    width="24"
+                                    height="24"
+                                  />
+                                </div>
+                                <div className="vstack gap-1 lg:gap-2">
+                                  <h5 className="h5 lg:h4 m-0">
+                                    Track progress effortlessly
+                                  </h5>
+                                  <p className="fs-6">
+                                    Providing end-to-end data management today’s
+                                    challenges.
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="row child-cols-12 lg:child-cols-6 g-4">
+                            <div>
+                              <div className="panel vstack items-start gap-2">
+                                <div className="cstack min-w-48px min-h-48px bg-primary rounded-circle">
+                                  <Image
+                                    className="icon icon-1 text-white image-filter-white"
+                                    alt="feature-icon"
+                                    data-uc-svg=""
+                                    src="/assets/images/common/icons/database.svg"
+                                    width="24"
+                                    height="24"
+                                  />
+                                </div>
+                                <div className="vstack gap-1 lg:gap-2">
+                                  <h5 className="h5 lg:h4 m-0">
+                                    Use Data &amp; AI responsibly
+                                  </h5>
+                                  <p className="fs-6">
+                                    Offers a unified platform that fosters
+                                    innovation.
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div className="panel vstack items-start gap-2">
+                                <div className="cstack min-w-48px min-h-48px bg-primary rounded-circle">
+                                  <Image
+                                    className="icon icon-1 text-white image-filter-white"
+                                    alt="feature-icon"
+                                    data-uc-svg=""
+                                    src="/assets/images/common/icons/line-chart.svg"
+                                    width="24"
+                                    height="24"
+                                  />
+                                </div>
+                                <div className="vstack gap-1 lg:gap-2">
+                                  <h5 className="h5 lg:h4 m-0">
+                                    Track progress effortlessly
+                                  </h5>
+                                  <p className="fs-6">
+                                    Providing end-to-end data management today’s
+                                    challenges.
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                           <div className="row child-cols-12 lg:child-cols-6 g-4">
                             <div>
                               <div className="panel vstack items-start gap-2">

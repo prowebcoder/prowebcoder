@@ -42,15 +42,15 @@ export const accordionItems = [
 export const accordionItems2 = [
   {
     id: 23,
-    title: "Manage tasks",
+    title: "Store Setup",
     icon: "/assets/images/common/icons/zap.svg",
     content:
       "Offers a unified platform that fosters innovation while providing end-to-end data management.",
-    isOpen: false,
+    isOpen: true,
   },
   {
     id: 25,
-    title: "Set priorities",
+    title: "Branding & Design",
     icon: "/assets/images/common/icons/target.svg",
     content:
       "Providing end-to-end data management. See how we help your team solve today’s biggest challenges.",
@@ -58,10 +58,34 @@ export const accordionItems2 = [
   },
   {
     id: 27,
-    title: "Collaborate with your team",
+    title: "Marketing",
     icon: "/assets/images/common/icons/settings.svg",
     content:
       "Our shared team inboxes keep everyone on the same page and in the loop.",
-    isOpen: true,
+    isOpen: false,
+  },
+  {
+    id: 28,
+    title: "Theme development",
+    icon: "/assets/images/common/icons/settings.svg",
+    content:
+      "Our shared team inboxes keep everyone on the same page and in the loop.",
+    isOpen: false,
+  },
+  {
+    id: 29,
+    title: "Theme Customization",
+    icon: "/assets/images/common/icons/settings.svg",
+    content:
+      "Our shared team inboxes keep everyone on the same page and in the loop.",
+    isOpen: false,
+  },
+  {
+    id: 30,
+    title: "App development",
+    icon: "/assets/images/common/icons/settings.svg",
+    content:
+      "Our shared team inboxes keep everyone on the same page and in the loop.",
+    isOpen: false,
   },
 ];
