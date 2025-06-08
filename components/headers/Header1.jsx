@@ -94,21 +94,21 @@ export default function Header4() {
                   <Link
                     className="panel text-none"
                     href={`/`}
-                    style={{ width: 140 }}
+                    style={{ width: 200 }}
                   >
                     <Image
                       className="dark:d-none"
                       alt="Lexend"
                       src="/assets/images/common/logo-1.webp"
-                      width="117"
-                      height="40"
+                      width="200"
+                      height="80"
                     />
                     <Image
                       className="d-none dark:d-block"
                       alt="Lexend"
                       src="/assets/images/common/logo-1.webp"
-                      width="117"
-                      height="40"
+                      width="200"
+                      height="80"
                     />
                   </Link>
                 </div>
