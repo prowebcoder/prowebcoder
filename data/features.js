@@ -240,7 +240,7 @@ export const featureItems2 = [
     alt: "feature-icon",
     title: "Web Development",
     description:
-      "We create personalized, responsive websites tailored to your needs using the latest technologies. Our expert team ensures a seamless user experience through collaboration and a deep understanding of client goals.",
+      "We create personalized, responsive websites tailored to your needs. Our expert team ensures a seamless user experience through collaboration and a deep understanding of client goals.",
   },
   {
     order: "order-0",

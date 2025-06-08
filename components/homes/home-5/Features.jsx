@@ -18,23 +18,23 @@ export default function Features() {
               <span className="fw-bold py-narrow px-2 border rounded-pill text-primary dark:text-secondary">
                 Features
               </span>
-              <h2 className="h3 sm:h2 lg:h1 xl:display-6 m-0">
+              <h2 className="h4 sm:h2 lg:h1 xl:display-6 m-0">
                 What we do
               </h2>
-              <p className="fs-7 sm:fs-6 lg:fs-5 xl:fs-4 text-opacity-70">
+              <p className="fs-8 sm:fs-6 lg:fs-6 xl:fs-4 text-opacity-70">
                Our development services cover a wide array of software needs, spanning Shopify, WordPress, BigCommerce, Mobile app development (including React Native), and both frontend (HTML, CSS, React, Angular) and backend (Node.js) technologies. Additionally, we specialize in Shopify app development using remix and Shopify theme development. With our dedicated team, we ensure scalable solutions tailored to the requirements of early-stage startups and large-scale global enterprises, delivering high-quality outcomes every time.
 
 
               </p>
             </div>
             <div
-              className="features-items row child-cols-12 sm:child-cols-6 lg:child-cols-4 g-0 col-match"
+              className="features-items row child-cols-6 sm:child-cols-6 lg:child-cols-4 g-2 col-match"
               data-anime="onview: -100; targets: >*; translateY: [48, 0]; opacity: [0, 1]; easing: easeOutCubic; duration: 500; delay: anime.stagger(100, {start: 400});"
             >
               {featureItems2.map((item, index) => (
                 <div key={index} className={item.order}>
                   <div
-                    className={`features-item vstack justify-between gap-6 xl:gap-8 p-4 xl:p-6 rounded-1-5 ${
+                    className={`features-item vstack justify-between gap-2 xl:gap-4 lg:p-2 xl:p-6 rounded-1-5 p-1 ${
                       item.bgClass || ""
                     }`}
                   >
@@ -50,8 +50,8 @@ export default function Features() {
                     </div>
                     <div className="panel">
                       <div className="vstack gap-1">
-                        <h3 className="title h5 xl:h4 m-0">{item.title}</h3>
-                        <p className="desc fs-7 xl:fs-8 text-opacity-70">
+                        <h3 className="title h6 xl:h5 m-0">{item.title}</h3>
+                        <p className="desc fs-8 xl:fs-7 text-opacity-70">
                           {item.description}
                         </p>
                         <Link

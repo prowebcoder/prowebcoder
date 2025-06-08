@@ -59,7 +59,7 @@ export const accordionItems2 = [
   {
     id: 27,
     title: "Marketing",
-    icon: "/assets/images/common/icons/settings.svg",
+    icon: "/assets/images/common/icons/line-chart.svg",
     content:
       "Our shared team inboxes keep everyone on the same page and in the loop.",
     isOpen: false,
@@ -67,7 +67,7 @@ export const accordionItems2 = [
   {
     id: 28,
     title: "Theme development",
-    icon: "/assets/images/common/icons/settings.svg",
+    icon: "/assets/images/common/icons/puzzle.svg",
     content:
       "Our shared team inboxes keep everyone on the same page and in the loop.",
     isOpen: false,
@@ -83,7 +83,7 @@ export const accordionItems2 = [
   {
     id: 30,
     title: "App development",
-    icon: "/assets/images/common/icons/settings.svg",
+    icon: "/assets/images/common/icons/database.svg",
     content:
       "Our shared team inboxes keep everyone on the same page and in the loop.",
     isOpen: false,

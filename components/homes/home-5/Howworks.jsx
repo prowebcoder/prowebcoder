@@ -20,7 +20,7 @@ export default function Howworks() {
                         <Image
                           className="media-cover image"
                           alt="image title"
-                          src="/assets/images/template/feature-image-03.jpg"
+                          src="/assets/images/template/a3.jpg"
                           width="1200"
                           height="1200"
                         />
@@ -64,7 +64,7 @@ export default function Howworks() {
                         <Image
                           className="media-cover image"
                           alt="image title"
-                          src="/assets/images/template/feature-image-01.jpg"
+                          src="/assets/images/template/a1.jpg"
                           width="1200"
                           height="1200"
                         />
@@ -87,7 +87,7 @@ export default function Howworks() {
 
                         </p>
                         <div className="panel mt-2 lg:mt-4">
-                          <div className="row child-cols-12 lg:child-cols-6 g-4">
+                          <div className="row child-cols-12 lg:child-cols-6 g-4  mb-4">
                             <div>
                               <div className="panel vstack items-start gap-2">
                                 <div className="cstack min-w-48px min-h-48px bg-primary rounded-circle">
@@ -101,8 +101,8 @@ export default function Howworks() {
                                   />
                                 </div>
                                 <div className="vstack gap-1 lg:gap-2">
-                                  <h5 className="h5 lg:h4 m-0">
-                                    Use Data &amp; AI responsibly
+                                  <h5 className="h6 lg:h5 m-0">
+                                    Shopify Frontend
                                   </h5>
                                   <p className="fs-6">
                                     Offers a unified platform that fosters
@@ -124,8 +124,56 @@ export default function Howworks() {
                                   />
                                 </div>
                                 <div className="vstack gap-1 lg:gap-2">
-                                  <h5 className="h5 lg:h4 m-0">
-                                    Track progress effortlessly
+                                 <h5 className="h6 lg:h5 m-0">
+                                   Shopify App development
+                                  </h5>
+                                  <p className="fs-6">
+                                    Providing end-to-end data management today’s
+                                    challenges.
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="row child-cols-12 lg:child-cols-6 g-4  mb-4">
+                            <div>
+                              <div className="panel vstack items-start gap-2">
+                                <div className="cstack min-w-48px min-h-48px bg-primary rounded-circle">
+                                  <Image
+                                    className="icon icon-1 text-white image-filter-white"
+                                    alt="feature-icon"
+                                    data-uc-svg=""
+                                    src="/assets/images/common/icons/database.svg"
+                                    width="24"
+                                    height="24"
+                                  />
+                                </div>
+                                <div className="vstack gap-1 lg:gap-2">
+                                 <h5 className="h6 lg:h5 m-0">
+                                   Shopify Theme development
+                                  </h5>
+                                  <p className="fs-6">
+                                    Offers a unified platform that fosters
+                                    innovation.
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div className="panel vstack items-start gap-2">
+                                <div className="cstack min-w-48px min-h-48px bg-primary rounded-circle">
+                                  <Image
+                                    className="icon icon-1 text-white image-filter-white"
+                                    alt="feature-icon"
+                                    data-uc-svg=""
+                                    src="/assets/images/common/icons/line-chart.svg"
+                                    width="24"
+                                    height="24"
+                                  />
+                                </div>
+                                <div className="vstack gap-1 lg:gap-2">
+                                 <h5 className="h6 lg:h5 m-0">
+                                  Node JS
                                   </h5>
                                   <p className="fs-6">
                                     Providing end-to-end data management today’s
@@ -149,8 +197,8 @@ export default function Howworks() {
                                   />
                                 </div>
                                 <div className="vstack gap-1 lg:gap-2">
-                                  <h5 className="h5 lg:h4 m-0">
-                                    Use Data &amp; AI responsibly
+                                 <h5 className="h6 lg:h5 m-0">
+                                   React JS
                                   </h5>
                                   <p className="fs-6">
                                     Offers a unified platform that fosters
@@ -172,56 +220,8 @@ export default function Howworks() {
                                   />
                                 </div>
                                 <div className="vstack gap-1 lg:gap-2">
-                                  <h5 className="h5 lg:h4 m-0">
-                                    Track progress effortlessly
-                                  </h5>
-                                  <p className="fs-6">
-                                    Providing end-to-end data management today’s
-                                    challenges.
-                                  </p>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="row child-cols-12 lg:child-cols-6 g-4">
-                            <div>
-                              <div className="panel vstack items-start gap-2">
-                                <div className="cstack min-w-48px min-h-48px bg-primary rounded-circle">
-                                  <Image
-                                    className="icon icon-1 text-white image-filter-white"
-                                    alt="feature-icon"
-                                    data-uc-svg=""
-                                    src="/assets/images/common/icons/database.svg"
-                                    width="24"
-                                    height="24"
-                                  />
-                                </div>
-                                <div className="vstack gap-1 lg:gap-2">
-                                  <h5 className="h5 lg:h4 m-0">
-                                    Use Data &amp; AI responsibly
-                                  </h5>
-                                  <p className="fs-6">
-                                    Offers a unified platform that fosters
-                                    innovation.
-                                  </p>
-                                </div>
-                              </div>
-                            </div>
-                            <div>
-                              <div className="panel vstack items-start gap-2">
-                                <div className="cstack min-w-48px min-h-48px bg-primary rounded-circle">
-                                  <Image
-                                    className="icon icon-1 text-white image-filter-white"
-                                    alt="feature-icon"
-                                    data-uc-svg=""
-                                    src="/assets/images/common/icons/line-chart.svg"
-                                    width="24"
-                                    height="24"
-                                  />
-                                </div>
-                                <div className="vstack gap-1 lg:gap-2">
-                                  <h5 className="h5 lg:h4 m-0">
-                                    Track progress effortlessly
+                                  <h5 className="h6 lg:h5 m-0">
+                                   Wordpress 
                                   </h5>
                                   <p className="fs-6">
                                     Providing end-to-end data management today’s

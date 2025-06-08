@@ -14,9 +14,9 @@ import Testimonials from "@/components/homes/home-5/Testimonials";
 import React from "react";
 export const metadata = {
   title:
-    "Home 5 || Lexend - Full-featured, professional-looking software, saas and startup nextjs template.",
+    "Prowebcoder | Shopify experts, WordPress developers, BigCommerce specialists, and mobile app developers.",
   description:
-    "Lexend - Full-featured, professional-looking software, saas and startup nextjs template.",
+    "Web development services specializing in Shopify, WordPress, BigCommerce, and mobile app development. Our team delivers high-quality solutions for startups and enterprises.",
 };
 export default function HomePage5() {
   return (
@@ -59,7 +59,7 @@ export default function HomePage5() {
           <Faq />
           <Support />
           <Team />
-          <Blog />
+          {/* <Blog /> */}
         </div>
         <Footer4 />
       </div>
