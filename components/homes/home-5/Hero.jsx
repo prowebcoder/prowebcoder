@@ -31,27 +31,9 @@ export default function Hero() {
                     data-anime="translateY: [24, 0]; opacity: [0, 1]; easing: easeOutCubic; duration: 750; delay: 750;"
                     style={{ top: "20%" }}
                   >
-                    {/* <Image
-                      alt="Countries"
-                      data-anime="onscroll: .hero-scroll-scene; onscroll-offset: -200; onscroll-trigger: 0; onscroll-duration: 400%; translateY: [-100, 0];"
-                      src="/assets/images/template/h1.png"
-                      width="710"
-                      height="854"
-                    /> */}
+                  
                   </div>
-                  {/* <div
-                    className="hero-five-account position-absolute sm:w-250px lg:w-200px xl:w-300px d-none sm:d-block"
-                    data-anime="translateY: [24, 0]; opacity: [0, 1]; easing: easeOutCubic; duration: 750; delay: 750;"
-                    style={{ bottom: "30%", left: "20%" }}
-                  >
-                    <Image
-                      alt="Account"
-                      data-anime="onscroll: .hero-scroll-scene; onscroll-offset: -200; onscroll-trigger: 0; onscroll-duration: 400%; translateY: [100, 0];"
-                      src="/assets/images/template/g.webp"
-                      width="605"
-                      height="274"
-                    />
-                  </div> */}
+                 
                 </div>
               </div>
               <div className="sm:col-8 lg:col-5">
@@ -84,7 +66,7 @@ export default function Hero() {
                       </div>
                       <div className="col-12 sm:col-auto">
                         <button className="btn btn-md btn-primary rounded-default h-48px w-100 lg:min-w-150px text-white">
-                          Get a demo
+                          Connect with us
                         </button>
                       </div>
                     </form>
@@ -104,28 +86,28 @@ export default function Hero() {
                       <Image
                         alt="Avatar-image"
                         className="w-40px h-40px rounded-circle border border-1 border-secondary dark:border-gray-900"
-                        src="/assets/images/avatars/02.jpg"
+                        src="/assets/images/avatars/r1.webp"
                         width="96"
                         height="96"
                       />
                       <Image
                         alt="Avatar-image"
                         className="w-40px h-40px rounded-circle border border-1 border-secondary dark:border-gray-900 ms-n2"
-                        src="/assets/images/avatars/05.png"
+                        src="/assets/images/avatars/r2.webp"
                         width="150"
                         height="150"
                       />
                       <Image
                         alt="Avatar-image"
                         className="w-40px h-40px rounded-circle border border-1 border-secondary dark:border-gray-900 ms-n2"
-                        src="/assets/images/avatars/02.png"
+                        src="/assets/images/avatars/r3.webp"
                         width="150"
                         height="150"
                       />
                       <Image
                         alt="Avatar-image"
                         className="w-40px h-40px rounded-circle border border-1 border-secondary dark:border-gray-900 ms-n2"
-                        src="/assets/images/avatars/01.jpg"
+                        src="/assets/images/avatars/r4.webp"
                         width="96"
                         height="96"
                       />

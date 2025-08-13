@@ -1,62 +1,62 @@
 export const brands = [
   {
     id: 1,
-    src: "/assets/images/brands/brand-01.svg",
+    src: "/assets/images/brands/google.svg",
     alt: "Proline",
   },
   {
     id: 2,
-    src: "/assets/images/brands/brand-02.svg",
+    src: "/assets/images/brands/review.svg",
     alt: "Iceberg",
   },
   {
     id: 3,
-    src: "/assets/images/brands/brand-03.svg",
+    src: "/assets/images/brands/shopify.svg",
     alt: "PinPoint",
   },
   {
     id: 4,
-    src: "/assets/images/brands/brand-04.svg",
+    src: "/assets/images/brands/shopify_plus.svg",
     alt: "Clues",
   },
   {
     id: 5,
-    src: "/assets/images/brands/brand-05.svg",
+    src: "/assets/images/brands/trustpilot.svg",
     alt: "Snowflake",
   },
   {
     id: 6,
-    src: "/assets/images/brands/brand-06.svg",
+    src: "/assets/images/brands/wordpress.svg",
     alt: "Proline",
   },
   {
     id: 7,
-    src: "/assets/images/brands/brand-01.svg",
+    src: "/assets/images/brands/squarespace.svg",
     alt: "Proline",
   },
   {
     id: 8,
-    src: "/assets/images/brands/brand-02.svg",
+    src: "/assets/images/brands/bigcommerce.svg",
     alt: "Iceberg",
   },
   {
     id: 9,
-    src: "/assets/images/brands/brand-03.svg",
+    src: "/assets/images/brands/google.svg",
     alt: "PinPoint",
   },
   {
     id: 10,
-    src: "/assets/images/brands/brand-04.svg",
+ src: "/assets/images/brands/shopify.svg",
     alt: "Clues",
   },
   {
     id: 11,
-    src: "/assets/images/brands/brand-05.svg",
+  src: "/assets/images/brands/shopify_plus.svg",
     alt: "Snowflake",
   },
   {
     id: 12,
-    src: "/assets/images/brands/brand-06.svg",
+        src: "/assets/images/brands/trustpilot.svg",
     alt: "Proline",
   },
 ];

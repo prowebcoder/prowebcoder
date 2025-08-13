@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "animejs": "^3.2.2",
-    "next": "14.2.5",
+    "next": "^14.2.31",
     "photoswipe": "^5.4.4",
     "rc-slider": "^11.1.5",
     "react": "^18",

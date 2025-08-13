@@ -82,7 +82,7 @@ export default function Howworks() {
                           Our Skills
                         </h3>
                         <p className="fs-6 lg:fs-5">
-                         With over 12 years of expertise, our primary focus is Shopify development, complemented by mastery in WordPress, Squarespace, Node.js, Python, React, HTML, and CSS. Our team seamlessly blends creativity with technical prowess to deliver top-notch solutions, be it crafting visually stunning websites or building robust e-commerce platforms. Trust us to elevate your online presence and drive tangible results with our comprehensive suite of development services.
+                         With over 15 years of expertise, our primary focus is Shopify development, complemented by mastery in WordPress, Squarespace, Node.js, Python, React, HTML, and CSS. Our team seamlessly blends creativity with technical prowess to deliver top-notch solutions, be it crafting visually stunning websites or building robust e-commerce platforms. Trust us to elevate your online presence and drive tangible results with our comprehensive suite of development services.
 
 
                         </p>

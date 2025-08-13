@@ -27,9 +27,9 @@ export default function Brands() {
           key={index}
         >
           <Image
-            className="brand-item-image h-40px image-filter"
+            className="brand-item-image h-50px image-filter"
             src={brand.src}
-            width={165}
+           width={180}
             height={48}
             alt={brand.alt}
           />
