@@ -140,12 +140,12 @@ export default function Pricing() {
                 </div>
               </div>
             </div>
-            <p
-              className="text-center text-gray-900 dark:text-white text-opacity-70 mt-4 sm:mt-6 xl:mt-8"
+            {/* <p
+              className="text-center text-gray-900 dark:text-white text-opacity-70 mt-4 sm:mt-6 xl:mt-2"
               data-anime="onview: -100; translateY: [48, 0]; opacity: [0, 1]; easing: spring(1, 80, 10, 0); duration: 450; delay: 0;"
             >
               Prices exclude any applicable taxes.
-            </p>
+            </p> */}
           </div>
         </div>
       </div>

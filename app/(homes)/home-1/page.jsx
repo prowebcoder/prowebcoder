@@ -1,6 +1,7 @@
 import Brands from "@/components/common/Brands";
 import Footer4 from "@/components/footers/Footer4";
 import Header4 from "@/components/headers/Header4";
+import Facts from "@/components/homes/home-4/Facts";
 import Blog from "@/components/homes/home-5/Blog";
 import Cta from "@/components/homes/home-5/Cta";
 import Faq from "@/components/homes/home-5/Faq";
@@ -52,10 +53,12 @@ export default function HomePage5() {
           </div>
           <Features />
           <hr className="w-100 m-0 d-block lg:d-none" />
+           <Facts />
           <Cta />
           <Howworks />
+         
           <Pricing />
-          <Testimonials />
+          
           <Faq />
           <Support />
           <Team />

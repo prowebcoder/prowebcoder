@@ -33,19 +33,24 @@ export const facts = [
 export const factItems = [
   {
     id: 1,
-    value: "280+",
-    description: "Track of leads",
+    value: "$880M+",
+    description: "Revenue generated",
   },
   {
     id: 2,
-    value: "90%",
-    description: "Satisfied users",
+    value: "3500+",
+    description: "Satisfied Customers",
   },
   {
     id: 3,
-    value: "10.2k",
-    description: "Team collaborations",
+    value: "2800+",
+    description: "Five Star Reviews",
   },
+  {
+    id: 3,
+    value: "200+",
+    description: "Apps Built",
+  }
 ];
 
 export const panelsData = [
