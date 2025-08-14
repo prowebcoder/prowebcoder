@@ -1,17 +1,15 @@
 import Brands from "@/components/common/Brands";
+import Steps from "@/components/common/Steps";
 import Footer4 from "@/components/footers/Footer4";
 import Header4 from "@/components/headers/Header4";
 import Facts from "@/components/homes/home-4/Facts";
-import Blog from "@/components/homes/home-5/Blog";
 import Cta from "@/components/homes/home-5/Cta";
-import Faq from "@/components/homes/home-5/Faq";
 import Features from "@/components/homes/home-5/Features";
 import Hero from "@/components/homes/home-5/Hero";
 import Howworks from "@/components/homes/home-5/Howworks";
 import Pricing from "@/components/homes/home-5/Pricing";
 import Support from "@/components/homes/home-5/Support";
 import Team from "@/components/homes/home-5/Team";
-import Testimonials from "@/components/homes/home-5/Testimonials";
 import React from "react";
 export const metadata = {
   title:
@@ -53,17 +51,15 @@ export default function HomePage5() {
           </div>
           <Features />
           <hr className="w-100 m-0 d-block lg:d-none" />
-           <Facts />
+          <Facts />
           <Cta />
           <Howworks />
-         
           <Pricing />
-          
-          <Faq />
+          <Steps />
           <Support />
           <Team />
-          {/* <Blog /> */}
-        </div>
+        
+          </div>
         <Footer4 />
       </div>
     </>
