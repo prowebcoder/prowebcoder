@@ -56,9 +56,9 @@ export default function HomePage5() {
           <Howworks />
           <Pricing />
           <Steps />
-          <Support />
+         
           <Team />
-        
+         {/* <Support /> */}
           </div>
         <Footer4 />
       </div>

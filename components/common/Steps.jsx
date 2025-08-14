@@ -30,8 +30,8 @@ export default function Steps() {
     ];
 
     return (
-        <section className="section panel bg-white dark:bg-gray-900">
-            <div className="section-outer panel py-6 sm:py-8 xl:py-10">
+        <section className="section panel bg-white dark:bg-gray-900 xl:pb-10 sm:pb-4">
+            <div className="section-outer panel py-2 sm:py-2 xl:py-2">
                 <div className="container sm:max-w-lg xl:max-w-xl">
                     <div className="text-center vstack gap-2 mb-5">
                         
@@ -42,9 +42,9 @@ export default function Steps() {
                             We make it simple — here’s how we turn your idea into a live website or app.
                         </p>
                     </div>
-                    <div className="hstack justify-between items-start gap-6 sm:gap-8 xl:gap-10 relative">
+                    <div className="row hstack justify-between items-start gap-6 sm:gap-8 xl:gap-10 position-relative">
                         {steps.map((step, index) => (
-                            <div key={step.id} className="vstack items-center text-center flex-1">
+                            <div key={step.id} className="vstack items-center text-center flex-1  steps-items position-relative p-2 md:p-4 lg:p-2 rounded-1-5 lg:rounded-2 bg-secondary dark:bg-white dark:bg-opacity-5 dark:text-white">
                                 <div className="cstack w-48px h-48px bg-primary rounded-circle mb-4">
                                     <Image
                                                       className="icon icon-1 text-white image-filter-white"
@@ -57,7 +57,7 @@ export default function Steps() {
                                 </div>
                                 {index < steps.length - 1 && (
                                     <div
-                                        className={`hidden md:block absolute top-6 w-[calc(25%-3rem)] h-[1px] bg-gray-300`}
+                                        className={`hidden md:block position-absolute top-6 w-[calc(25%-3rem)] h-[1px] bg-gray-300`}
                                         style={{
                                             left: `calc((100% / ${steps.length}) * ${index} + 3rem)`
                                         }}

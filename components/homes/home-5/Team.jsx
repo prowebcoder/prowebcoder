@@ -35,10 +35,11 @@ export default function Team() {
                     <div key={index}>
                       <div className="panel vstack gap-2 xl:gap-3">
                         <Image
-                          className="w-100 rounded-1 sm:rounded-1-5"
+                          className="w-100 rounded-1 sm:rounded-1-5 grayscale-100 dark:grayscale-0"
                           src={member.imgSrc}
                           width={560}
                           height={592}
+                          style={{ filter: "grayscale(1)" }}
                           alt={member.alt}
                         />
                         <div className="panel vstack items-start gap-narrow">

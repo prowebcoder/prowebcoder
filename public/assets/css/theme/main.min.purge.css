@@ -7234,3 +7234,28 @@ textarea.form-control-lg {
 :where(.uc-dark) .dark\:to-gray-900 {
   --uc-gradient-to: #0e0e0f;
 }
+.steps-items:after {
+    content: "";
+    border: 2px dashed #c2c2c2;
+    width: 64px;
+    position: absolute;
+    top: 50%;
+    right: -64px;
+}
+.steps-items:last-child:after {
+    display: none;
+}
+@media screen and (max-width: 768px) {
+.steps-items:after {
+    content: "";
+    border: 2px dashed #c2c2c2;
+    position: absolute;
+    width:2px;
+    height: 64px;
+    top:auto;
+    left:50%;
+    bottom:-64px;
+   
+    
+}
+}
