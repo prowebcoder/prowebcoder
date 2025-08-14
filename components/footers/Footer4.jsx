@@ -55,9 +55,9 @@ export default function Footer4() {
                           <Image
                             className="text-primary"
                             alt="Lexend"
-                            src="/assets/images/common/logo-dark.svg"
-                            width="117"
-                            height="40"
+                            src="/assets/images/common/logo-1.webp"
+                            width="250"
+                            height="80"
                           />
                         </Link>
                         <p className="mt-2">

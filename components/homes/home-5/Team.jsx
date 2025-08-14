@@ -39,7 +39,7 @@ export default function Team() {
                           src={member.imgSrc}
                           width={560}
                           height={592}
-                          style={{ filter: "grayscale(1)" }}
+                          style={{ filter: "grayscale(.8)" }}
                           alt={member.alt}
                         />
                         <div className="panel vstack items-start gap-narrow">
