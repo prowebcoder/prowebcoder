@@ -1,21 +1,23 @@
 "use client";
-
 import { useEffect, useState } from "react";
+import Nav3 from "./component/Nav3";
 import Link from "next/link";
 import Image from "next/image";
 import { openMobileMenu } from "@/utlis/toggleMobileMenu";
-import { navItems } from "@/data/menu";
-import addScrollspy from "@/utlis/addScrollSpy";
+import LanguageSelect2 from "../common/LanguageSelect2";
 
-export default function Header5() {
-  const [scrolledPast, setScrolledPast] = useState(false);
+export default function Header4() {
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const [scrollingUp, setScrollingUp] = useState(false);
 
   useEffect(() => {
+    setPrevScrollPos(window.pageYOffset);
     const handleScroll = () => {
       const currentScrollPos = window.pageYOffset;
-      const isScrolledPast = currentScrollPos >= 500;
+      const isScrollingUp = currentScrollPos < prevScrollPos;
 
-      setScrolledPast(isScrolledPast);
+      setScrollingUp(currentScrollPos <= 80 ? false : isScrollingUp);
+      setPrevScrollPos(currentScrollPos);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -23,81 +25,122 @@ export default function Header5() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
-
-  useEffect(() => {
-    window.addEventListener("scroll", addScrollspy);
-
-    return () => {
-      window.removeEventListener("scroll", addScrollspy);
-    };
-  }, []);
+  }, [prevScrollPos]);
   return (
     <header
-      className={`uc-header header-six uc-navbar-sticky-wrap z-999 uc-sticky ${
-        scrolledPast ? " uc-sticky-below uc-sticky-fixed headerFixed" : ""
+      className={`uc-header header-default uc-navbar-sticky-wrap z-999 uc-sticky ${
+        scrollingUp ? " uc-sticky-below uc-sticky-fixed headerFixed" : ""
       }`}
-      data-uc-sticky="start: 1200px; animation: uc-animation-slide-top; sel-target: .uc-navbar-container; cls-active: uc-navbar-sticky; cls-inactive: uc-navbar-transparent; end: !*;"
+      data-uc-sticky="start: 100vh; show-on-up: true; animation: uc-animation-slide-top; sel-target: .uc-navbar-container; cls-active: uc-navbar-sticky; cls-inactive: uc-navbar-transparent; end: !*;"
     >
       <nav
-        className={`uc-navbar-container lg:mt-3 rounded-0 lg:rounded-pill uc-navbar-float ft-tertiary z-1 ${
-          scrolledPast ? "uc-navbar-sticky" : "uc-navbar-transparent"
+        className={`uc-navbar-container uc-navbar-float ft-tertiary z-1 ${
+          scrollingUp ? "uc-navbar-sticky" : "uc-navbar-transparent"
         } `}
         data-anime="translateY: [-40, 0]; opacity: [0, 1]; easing: easeOutExpo; duration: 750; delay: 0;"
       >
-        <div className="uc-navbar-main" style={{ "--uc-nav-height": "80px" }}>
-          <div className="container max-w-lg lg:max-w-950px xl:max-w-xl">
+        <div
+          style={{ "--uc-nav-height": "32px" }}
+          className="uc-navbar-top bg-primary-700 text-white uc-dark d-none lg:d-block"
+        >
+          <div className="hide-on-sticky">
+            <div className="container container-expand max-w-1440px">
+              <div className="uc-navbar min-h-32px fs-8">
+                <div className="uc-navbar-left">
+                  <ul className="uc-navbar-nav gap-2 fw-medium">
+                    <li>
+                      <a href="https://apps.shopify.com/partners/galactic-technologies" target="_blank" rel="noopener noreferrer">Our Apps in Shopify
+                        <i className="fs-8 unicon-arrow-up-right fw-bold ms-narrow rtl:-rotate-90" />
+                      </a>
+                    </li>
+                    
+                    <li>
+                      <Link href={`https://www.shopify.com/partners/directory/partner/galactic-technologies`} target="_blank" rel="noopener noreferrer">
+                        <span>Contact Us On Shopify</span>
+                        <i className="fs-8 unicon-arrow-up-right fw-bold ms-narrow rtl:-rotate-90" />
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+                <div className="uc-navbar-right">
+                  <div className="uc-navbar-item">
+                    <a
+                      className="btn btn-xs p-0 fs-8 text-white"
+                      href="mailto:rahul@prowebcoder.com"
+                    >
+                      <i className="icon-narrow unicon-email" />
+                      <span>Email Us : rahul@prowebcoder.com</span>
+                    </a>
+                  </div>
+                  <div className="uc-navbar-item">
+                    <a className="btn btn-xs p-0 fs-8 text-white" href="#chat">
+                      <i className="icon-narrow unicon-chat-bot" />
+                      <span>Live Chat</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style={{ "--uc-nav-height": "80px" }} className="uc-navbar-main">
+          <div className="container container-expand max-w-1440px">
             <div
-              className="uc-navbar min-h-64px lg:min-h-80px px-2 lg:px-0 text-gray-900 dark:text-white"
-              data-uc-navbar="mode: click; animation: uc-animation-slide-top-small; duration: 150;"
+              className="uc-navbar min-h-64px lg:min-h-80px text-gray-900 dark:text-white"
+              style={{ position: "static" }}
             >
               <div className="uc-navbar-left">
-                <div className="uc-logo">
-                  <Link className="panel text-none" href={`/`}>
+                <div className="uc-logo text-dark dark:text-white">
+                  <Link
+                    className="panel text-none"
+                    href={`/`}
+                    style={{ width: 250 }}
+                  >
                     <Image
+                      className="dark:d-none"
                       alt="Lexend"
-                      src="/assets/images/common/logo-icon.svg"
-                      width="40"
-                      height="40"
+                      src="/assets/images/common/logo-1.webp"
+                      width="220"
+                      height="80"
+                    />
+                    <Image
+                      className="d-none dark:d-block"
+                      alt="Lexend"
+                      src="/assets/images/common/logo-1.webp"
+                      width="220"
+                      height="80"
                     />
                   </Link>
                 </div>
-              </div>
-              <div className="uc-navbar-center">
-                <ul className="uc-navbar-nav gap-3 xl:gap-5 d-none lg:d-flex fs-5 fw-medium scrollSpyLinks">
-                  {navItems.map((item, index) => (
-                    <li key={index}>
-                      <a
-                        className={item.active ? "uc-active" : ""}
-                        href={item.href}
-                      >
-                        {item.label}
-                      </a>
-                    </li>
-                  ))}
+                <ul className="uc-navbar-nav gap-3 xl:gap-4 d-none lg:d-flex fw-medium ltr:ms-2 ltr:xl:ms-4 rtl:me-2 rtl:xl:me-4">
+                  <Nav3 />
                 </ul>
               </div>
               <div className="uc-navbar-right">
+                {/* <ul className="uc-navbar-nav gap-3 xl:gap-4 d-none lg:d-flex fw-medium ltr:ms-2 ltr:xl:ms-4 rtl:me-2 rtl:xl:me-4">
+                  <LanguageSelect2 />
+                </ul> */}
                 <Link
-                  href={`/page-pricing`}
-                  className="btn btn-sm btn-primary px-3 d-none lg:d-inline-flex"
+                  className="btn btn-md btn-primary rounded-default lg:px-3 text-none shadow-xs d-none lg:d-inline-flex"
+                  href={`/page-contact`}
                 >
-                  <span>See pricing</span>
+                  Send inquiry
                 </Link>
                 <a
                   className="d-block lg:d-none uc-icon uc-navbar-toggle-icon"
                   onClick={openMobileMenu}
                 >
-                  <svg width="20" height="20" viewBox="0 0 20 20">
-                    <rect className="line-1" y="3" width="20" height="2"></rect>
-                    <rect className="line-2" y="9" width="20" height="2"></rect>
-                    <rect className="line-3" y="9" width="20" height="2"></rect>
-                    <rect
-                      className="line-4"
-                      y="15"
-                      width="20"
-                      height="2"
-                    ></rect>
+                  <svg width={20} height={20} viewBox="0 0 20 20">
+                    <style
+                      dangerouslySetInnerHTML={{
+                        __html:
+                          '.uc-navbar-toggle-icon svg>[class*="line-"]{transition:0.2s ease-in-out;transition-property:transform, opacity;transform-origin:center;opacity:1}.uc-navbar-toggle-icon svg>.line-3{opacity:0}.uc-navbar-toggle-animate[aria-expanded="true"] svg>.line-3{opacity:1}.uc-navbar-toggle-animate[aria-expanded="true"] svg>.line-2{transform:rotate(45deg)}.uc-navbar-toggle-animate[aria-expanded="true"] svg>.line-3{transform:rotate(-45deg)}.uc-navbar-toggle-animate[aria-expanded="true"] svg>.line-1,.uc-navbar-toggle-animate[aria-expanded="true"] svg>.line-4{opacity:0}.uc-navbar-toggle-animate[aria-expanded="true"] svg>.line-1{transform:translateY(6px) scaleX(0)}.uc-navbar-toggle-animate[aria-expanded="true"] svg>.line-4{transform:translateY(-6px) scaleX(0)}',
+                      }}
+                    />
+                    <rect className="line-1" y={3} width={20} height={2} />
+                    <rect className="line-2" y={9} width={20} height={2} />
+                    <rect className="line-3" y={9} width={20} height={2} />
+                    <rect className="line-4" y={15} width={20} height={2} />
                   </svg>
                 </a>
               </div>

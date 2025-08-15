@@ -1,11 +1,12 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import Nav3 from "./component/Nav3";
 import Link from "next/link";
-import Nav2 from "./component/Nav2";
 import Image from "next/image";
 import { openMobileMenu } from "@/utlis/toggleMobileMenu";
+import LanguageSelect2 from "../common/LanguageSelect2";
 
-export default function Header3() {
+export default function Header4() {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [scrollingUp, setScrollingUp] = useState(false);
 
@@ -25,30 +26,8 @@ export default function Header3() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [prevScrollPos]);
-
-  const elementRef = useRef(null);
-  const [isDDOpen, setIsDDOpen] = useState(false);
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (
-        elementRef.current && // Check if click is outside .gt-menu-area
-        !elementRef.current.contains(event.target)
-      ) {
-        setIsDDOpen(false);
-        // Add your custom logic here
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
-
   return (
     <header
-      style={{ "--uc-nav-height": "80px !important" }}
       className={`uc-header header-default uc-navbar-sticky-wrap z-999 uc-sticky ${
         scrollingUp ? " uc-sticky-below uc-sticky-fixed headerFixed" : ""
       }`}
@@ -60,137 +39,111 @@ export default function Header3() {
         } `}
         data-anime="translateY: [-40, 0]; opacity: [0, 1]; easing: easeOutExpo; duration: 750; delay: 0;"
       >
-        <div className="container max-w-xl">
-          <div className="uc-navbar min-h-64px lg:min-h-80px text-gray-900 dark:text-white">
-            <div className="uc-navbar-left">
-              <div className="uc-logo text-dark dark:text-white">
-                <Link
-                  className="panel text-none"
-                  href={`/`}
-                  style={{ width: 140 }}
-                >
-                  <Image
-                    className="dark:d-none"
-                    alt="Lexend"
-                    src="/assets/images/common/logo-light.svg"
-                    width="117"
-                    height="40"
-                  />
-                  <Image
-                    className="d-none dark:d-block"
-                    alt="Lexend"
-                    src="/assets/images/common/logo-dark.svg"
-                    width="117"
-                    height="40"
-                  />
-                </Link>
-              </div>
-              <ul className="uc-navbar-nav gap-3 xl:gap-4 d-none lg:d-flex fw-medium ltr:ms-2 ltr:xl:ms-4 rtl:me-2 rtl:xl:me-4">
-                <Nav2 />
-              </ul>
-            </div>
-            <div className="uc-navbar-right">
-              <ul className="uc-navbar-nav gap-3 xl:gap-4 d-none lg:d-flex fw-medium ltr:ms-2 ltr:xl:ms-4 rtl:me-2 rtl:xl:me-4">
-                <li ref={elementRef}>
-                  <a
-                    onClick={() => setIsDDOpen((pre) => !pre)}
-                    role="button"
-                    aria-haspopup="true"
-                  >
-                    Request a demo
-                  </a>
-                  <div
-                    className={`uc-navbar-dropdown p-3 w-300px ft-primary text-unset fs-6 fw-normal p-0 hide-scrollbar rounded-2 overflow-hidden uc-drop ${
-                      isDDOpen ? "uc-open" : ""
-                    } `}
-                    data-uc-drop="mode: click; offset: 0; boundary: !.uc-navbar; animation: uc-animation-slide-top-small; duration: 150;"
-                  >
-                    <p className="fs-7">
-                      Lexend offers a comprehensive suite of tools that cover
-                      all aspects of your business.
-                    </p>
-                    <form
-                      onSubmit={(e) => e.preventDefault()}
-                      className="vstack gap-1 my-2"
-                    >
-                      <input
-                        className="form-control form-control-sm rounded-default fs-7 w-full bg-gray-25 dark:bg-opacity-0 dark:text-white dark:border-gray-300 dark:border-opacity-30"
-                        type="text"
-                        placeholder="Full name"
-                        required
-                      />
-                      <input
-                        className="form-control form-control-sm rounded-default fs-7 w-full bg-gray-25 dark:bg-opacity-0 dark:text-white dark:border-gray-300 dark:border-opacity-30"
-                        type="email"
-                        placeholder="Your email"
-                        required
-                      />
-                      <div className="hstack items-center justify-between mt-1">
-                        <div className="form-check m-0">
-                          <input
-                            id="header_request_demo_application"
-                            className="form-check-input rounded bg-white dark:bg-opacity-0 dark:text-white dark:border-gray-300 dark:border-opacity-30"
-                            type="checkbox"
-                            required
-                          />
-                          <label
-                            htmlFor="header_request_demo_application"
-                            className="hstack justify-between form-check-label fw-medium fs-7"
-                          >
-                            I read and agree to{" "}
-                            <Link
-                              href={`/page-terms`}
-                              className="uc-link text-underline ltr:ms-narrow rtl:me-narrow dark:text-secondary"
-                            >
-                              terms
-                            </Link>
-                            .
-                          </label>
-                        </div>
-                      </div>
-                      <button
-                        className="btn btn-primary btn-sm rounded-default text-white mt-1"
-                        type="submit"
-                      >
-                        Request a demo
-                      </button>
-                    </form>
-                    <p className="fs-7">
-                      We care about your data in our{" "}
-                      <Link
-                        href={`/page-privacy`}
-                        className="uc-link text-underline dark:text-secondary"
-                      >
-                        privacy policy
+        <div
+          style={{ "--uc-nav-height": "32px" }}
+          className="uc-navbar-top bg-primary-700 text-white uc-dark d-none lg:d-block"
+        >
+          <div className="hide-on-sticky">
+            <div className="container container-expand max-w-1440px">
+              <div className="uc-navbar min-h-32px fs-8">
+                <div className="uc-navbar-left">
+                  <ul className="uc-navbar-nav gap-2 fw-medium">
+                    <li>
+                      <a href="https://apps.shopify.com/partners/galactic-technologies" target="_blank" rel="noopener noreferrer">Our Apps in Shopify
+                        <i className="fs-8 unicon-arrow-up-right fw-bold ms-narrow rtl:-rotate-90" />
+                      </a>
+                    </li>
+                    
+                    <li>
+                      <Link href={`https://www.shopify.com/partners/directory/partner/galactic-technologies`} target="_blank" rel="noopener noreferrer">
+                        <span>Contact Us On Shopify</span>
+                        <i className="fs-8 unicon-arrow-up-right fw-bold ms-narrow rtl:-rotate-90" />
                       </Link>
-                      .
-                    </p>
+                    </li>
+                  </ul>
+                </div>
+                <div className="uc-navbar-right">
+                  <div className="uc-navbar-item">
+                    <a
+                      className="btn btn-xs p-0 fs-8 text-white"
+                      href="mailto:rahul@prowebcoder.com"
+                    >
+                      <i className="icon-narrow unicon-email" />
+                      <span>Email Us : rahul@prowebcoder.com</span>
+                    </a>
                   </div>
-                </li>
-              </ul>
-              <Link
-                className="btn btn-sm btn-primary rounded-default text-white text-none d-none lg:d-inline-flex"
-                href={`/page-pricing`}
-              >
-                Start free trial
-              </Link>
-              <a
-                className="d-block lg:d-none uc-icon uc-navbar-toggle-icon"
-                onClick={openMobileMenu}
-              >
-                <svg width={20} height={20} viewBox="0 0 20 20">
-                  <style
-                    dangerouslySetInnerHTML={{
-                      __html:
-                        '.uc-navbar-toggle-icon svg>[class*="line-"]{transition:0.2s ease-in-out;transition-property:transform, opacity;transform-origin:center;opacity:1}.uc-navbar-toggle-icon svg>.line-3{opacity:0}.uc-navbar-toggle-animate[aria-expanded="true"] svg>.line-3{opacity:1}.uc-navbar-toggle-animate[aria-expanded="true"] svg>.line-2{transform:rotate(45deg)}.uc-navbar-toggle-animate[aria-expanded="true"] svg>.line-3{transform:rotate(-45deg)}.uc-navbar-toggle-animate[aria-expanded="true"] svg>.line-1,.uc-navbar-toggle-animate[aria-expanded="true"] svg>.line-4{opacity:0}.uc-navbar-toggle-animate[aria-expanded="true"] svg>.line-1{transform:translateY(6px) scaleX(0)}.uc-navbar-toggle-animate[aria-expanded="true"] svg>.line-4{transform:translateY(-6px) scaleX(0)}',
-                    }}
-                  />
-                  <rect className="line-1" y={3} width={20} height={2} />
-                  <rect className="line-2" y={9} width={20} height={2} />
-                  <rect className="line-3" y={9} width={20} height={2} />
-                  <rect className="line-4" y={15} width={20} height={2} />
-                </svg>
-              </a>
+                  <div className="uc-navbar-item">
+                    <a className="btn btn-xs p-0 fs-8 text-white" href="#chat">
+                      <i className="icon-narrow unicon-chat-bot" />
+                      <span>Live Chat</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style={{ "--uc-nav-height": "80px" }} className="uc-navbar-main">
+          <div className="container container-expand max-w-1440px">
+            <div
+              className="uc-navbar min-h-64px lg:min-h-80px text-gray-900 dark:text-white"
+              style={{ position: "static" }}
+            >
+              <div className="uc-navbar-left">
+                <div className="uc-logo text-dark dark:text-white">
+                  <Link
+                    className="panel text-none"
+                    href={`/`}
+                    style={{ width: 250 }}
+                  >
+                    <Image
+                      className="dark:d-none"
+                      alt="Lexend"
+                      src="/assets/images/common/logo-1.webp"
+                      width="220"
+                      height="80"
+                    />
+                    <Image
+                      className="d-none dark:d-block"
+                      alt="Lexend"
+                      src="/assets/images/common/logo-1.webp"
+                      width="220"
+                      height="80"
+                    />
+                  </Link>
+                </div>
+                <ul className="uc-navbar-nav gap-3 xl:gap-4 d-none lg:d-flex fw-medium ltr:ms-2 ltr:xl:ms-4 rtl:me-2 rtl:xl:me-4">
+                  <Nav3 />
+                </ul>
+              </div>
+              <div className="uc-navbar-right">
+                {/* <ul className="uc-navbar-nav gap-3 xl:gap-4 d-none lg:d-flex fw-medium ltr:ms-2 ltr:xl:ms-4 rtl:me-2 rtl:xl:me-4">
+                  <LanguageSelect2 />
+                </ul> */}
+                <Link
+                  className="btn btn-md btn-primary rounded-default lg:px-3 text-none shadow-xs d-none lg:d-inline-flex"
+                  href={`/page-contact`}
+                >
+                  Send inquiry
+                </Link>
+                <a
+                  className="d-block lg:d-none uc-icon uc-navbar-toggle-icon"
+                  onClick={openMobileMenu}
+                >
+                  <svg width={20} height={20} viewBox="0 0 20 20">
+                    <style
+                      dangerouslySetInnerHTML={{
+                        __html:
+                          '.uc-navbar-toggle-icon svg>[class*="line-"]{transition:0.2s ease-in-out;transition-property:transform, opacity;transform-origin:center;opacity:1}.uc-navbar-toggle-icon svg>.line-3{opacity:0}.uc-navbar-toggle-animate[aria-expanded="true"] svg>.line-3{opacity:1}.uc-navbar-toggle-animate[aria-expanded="true"] svg>.line-2{transform:rotate(45deg)}.uc-navbar-toggle-animate[aria-expanded="true"] svg>.line-3{transform:rotate(-45deg)}.uc-navbar-toggle-animate[aria-expanded="true"] svg>.line-1,.uc-navbar-toggle-animate[aria-expanded="true"] svg>.line-4{opacity:0}.uc-navbar-toggle-animate[aria-expanded="true"] svg>.line-1{transform:translateY(6px) scaleX(0)}.uc-navbar-toggle-animate[aria-expanded="true"] svg>.line-4{transform:translateY(-6px) scaleX(0)}',
+                      }}
+                    />
+                    <rect className="line-1" y={3} width={20} height={2} />
+                    <rect className="line-2" y={9} width={20} height={2} />
+                    <rect className="line-3" y={9} width={20} height={2} />
+                    <rect className="line-4" y={15} width={20} height={2} />
+                  </svg>
+                </a>
+              </div>
             </div>
           </div>
         </div>

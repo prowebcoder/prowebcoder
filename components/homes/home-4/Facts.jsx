@@ -22,7 +22,7 @@ export default function Facts() {
               </p>
             </div>
             <div
-              className="panel pt-8 pb-8 rounded-1-5 lg:rounded-2 bg-secondarys dark:bg-gray-800"
+              className="panel pt-8 pb-8 rounded-1-5 lg:rounded-2 bg-secondarys "
               data-anime="onview: -200; translateY: [48, 0]; opacity: [0, 1]; easing: easeOutCubic; duration: 500; delay: 350;"
             >
               <div
@@ -30,7 +30,7 @@ export default function Facts() {
                 data-anime="onview: -200; targets: >*; translateY: [48, 0]; opacity: [0, 1]; easing: easeOutCubic; duration: 500; delay: anime.stagger(100, {start: 500});"
               >
                 {factItems.map((fact, index) => (
-                  <div key={index} className="mt-0 bg-secondary p-4 rounded-2">
+                  <div key={index} className="mt-0 bg-secondary p-4 rounded-2 dark:bg-white dark:bg-opacity-5 dark:text-white">
                     <div className="fact-item panel vstack gap-1">
                       <h5 className="h3 md:h2 lg:h2 xl:display-10 m-0 text-primary dark:text-secondary">
                         {fact.value}

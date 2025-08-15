@@ -65,7 +65,7 @@ export default function Footer4() {
                           happy in the world.
                         </p>
                       </div>
-                      <LanguageSelect />
+                      {/* <LanguageSelect /> */}
                     </div>
                   </div>
                   {footerLinks3.map((section, index) => (
@@ -74,14 +74,14 @@ export default function Footer4() {
                         {section.links.map((link, idx) => (
                           <li key={idx}>
                             {idx === 0 ? (
-                              <span className="fs-5 dark:text-gray-300">
+                              <span className="fs-5 text-white dark:text-white">
                                {section.title}
                               </span>
                             ) :     <Link
                               href={link.href}
                               className={
                                 idx === 0
-                                  ? "fs-5 dark:text-gray-300"
+                                  ? "fs-5 dark:text-white"
                                   : "fs-8"
                               }
                             >
@@ -96,8 +96,8 @@ export default function Footer4() {
                 </div>
               </div>
               <div className="uc-footer-bottom panel vstack lg:hstack gap-2 justify-between text-center pt-2 lg:pt-2 border-top dark:text-white">
-                <p className="opacity-60">
-                  Lexend © 2024, All rights reserved.
+                <p className="opacity-60 fs-8">
+                  Prowebcoder © 2025, All rights reserved.
                 </p>
                 <ul className="nav-x justify-center gap-2 text-gray-300">
                   {socialLinks.map((link, index) => (

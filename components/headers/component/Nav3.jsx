@@ -9,7 +9,7 @@ export default function Nav3() {
     <>
       <li className="has-dd-menu ">
         <a href="#" role="button" aria-haspopup="true">
-          Products{" "}
+          Services{" "}
           <span
             data-uc-navbar-parent-icon=""
             className="uc-icon uc-navbar-parent-icon"
@@ -148,7 +148,7 @@ export default function Nav3() {
       </li>
       <li className="has-dd-menu" style={{ position: "relative" }}>
         <a href="#" role="button" aria-haspopup="true">
-          Resources{" "}
+          Our Products{" "}
           <span
             data-uc-navbar-parent-icon=""
             className="uc-icon uc-navbar-parent-icon"
@@ -236,7 +236,7 @@ export default function Nav3() {
       </li>
       <li className="has-dd-menu" style={{ position: "relative" }}>
         <a href="#" role="button" aria-haspopup="true">
-          Learn{" "}
+          Shopify Plus{" "}
           <span
             data-uc-navbar-parent-icon=""
             className="uc-icon uc-navbar-parent-icon"
@@ -340,6 +340,9 @@ export default function Nav3() {
             </div>
           </div>
         </div>
+      </li>
+      <li>
+        <Link href={`/page-pricing`}>Quote Calculator</Link>
       </li>
       <li>
         <Link href={`/page-pricing`}>Pricing</Link>

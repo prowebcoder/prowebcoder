@@ -108,11 +108,11 @@ export const footerLinks3 = [
     title: "MIGRATE TO SHOPIFY",
     links: [
       { href: "/page-about", label: "Migrate from Magento" },
-      { href: "/page-pricing", label: "Migrate from BigCommerce" },
-      { href: "/page-features", label: "Migrate from Squarespace" },
-      { href: "/page-integrations", label: "Migrate from WooCommerce" },
-      { href: "/page-career", label: "Migrate from Prestashop" },
-       { href: "/page-about", label: "Migrate from Magento" },
+      { href: "/bigcommerce-migration", label: "Migrate from BigCommerce" },
+      { href: "/squarespace-migration", label: "Migrate from Squarespace" },
+      { href: "/wordpress-migration", label: "Migrate from WooCommerce" },
+      { href: "/prestashop-migration", label: "Migrate from Prestashop" },
+       { href: "/magento-migration", label: "Migrate from Magento" },
      
     ],
   },
@@ -120,10 +120,10 @@ export const footerLinks3 = [
     title: "GET STARTED",
     links: [
       { href: "/shop", label: "Website Management" },
-      { href: "/shop", label: "Marketing Services" },
-      { href: "/shop-product-detail/2", label: "Convert from Figma" },
-      { href: "/shop-product-detail-2/2", label: "Get a Free Website Audit" },
-       { href: "/shop", label: "Website Management" },
+      { href: "/marketing-services", label: "Marketing Services" },
+      { href: "/convert-from-figma", label: "Convert from Figma" },
+      { href: "/free-audit", label: "Get a Free Website Audit" },
+       { href: "/website-management", label: "Website Management" },
      
     
     ],

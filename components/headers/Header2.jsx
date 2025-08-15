@@ -49,14 +49,14 @@ export default function Header4() {
                 <div className="uc-navbar-left">
                   <ul className="uc-navbar-nav gap-2 fw-medium">
                     <li>
-                      <a href="#">Customer stories</a>
+                      <a href="https://apps.shopify.com/partners/galactic-technologies" target="_blank" rel="noopener noreferrer">Our Apps in Shopify
+                        <i className="fs-8 unicon-arrow-up-right fw-bold ms-narrow rtl:-rotate-90" />
+                      </a>
                     </li>
+                    
                     <li>
-                      <Link href={`/page-terms`}>Terms and conditions</Link>
-                    </li>
-                    <li>
-                      <Link href={`/page-contact`}>
-                        <span>Hire an Expert</span>
+                      <Link href={`https://www.shopify.com/partners/directory/partner/galactic-technologies`} target="_blank" rel="noopener noreferrer">
+                        <span>Contact Us On Shopify</span>
                         <i className="fs-8 unicon-arrow-up-right fw-bold ms-narrow rtl:-rotate-90" />
                       </Link>
                     </li>
@@ -66,10 +66,10 @@ export default function Header4() {
                   <div className="uc-navbar-item">
                     <a
                       className="btn btn-xs p-0 fs-8 text-white"
-                      href="tel:01032701349"
+                      href="mailto:rahul@prowebcoder.com"
                     >
-                      <i className="icon-narrow unicon-phone" />
-                      <span>Tel: +1 327 1349</span>
+                      <i className="icon-narrow unicon-email" />
+                      <span>Email Us : rahul@prowebcoder.com</span>
                     </a>
                   </div>
                   <div className="uc-navbar-item">
@@ -94,21 +94,21 @@ export default function Header4() {
                   <Link
                     className="panel text-none"
                     href={`/`}
-                    style={{ width: 140 }}
+                    style={{ width: 250 }}
                   >
                     <Image
                       className="dark:d-none"
                       alt="Lexend"
                       src="/assets/images/common/logo-1.webp"
-                      width="117"
-                      height="40"
+                      width="220"
+                      height="80"
                     />
                     <Image
                       className="d-none dark:d-block"
                       alt="Lexend"
                       src="/assets/images/common/logo-1.webp"
-                      width="117"
-                      height="40"
+                      width="220"
+                      height="80"
                     />
                   </Link>
                 </div>
@@ -117,12 +117,12 @@ export default function Header4() {
                 </ul>
               </div>
               <div className="uc-navbar-right">
-                <ul className="uc-navbar-nav gap-3 xl:gap-4 d-none lg:d-flex fw-medium ltr:ms-2 ltr:xl:ms-4 rtl:me-2 rtl:xl:me-4">
+                {/* <ul className="uc-navbar-nav gap-3 xl:gap-4 d-none lg:d-flex fw-medium ltr:ms-2 ltr:xl:ms-4 rtl:me-2 rtl:xl:me-4">
                   <LanguageSelect2 />
-                </ul>
+                </ul> */}
                 <Link
                   className="btn btn-md btn-primary rounded-default lg:px-3 text-none shadow-xs d-none lg:d-inline-flex"
-                  href={`/page-contact`}
+                  href={`/contact-us`}
                 >
                   Send inquiry
                 </Link>
