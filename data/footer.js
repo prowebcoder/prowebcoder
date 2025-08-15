@@ -105,55 +105,55 @@ export const footerLinks2 = [
 
 export const footerLinks3 = [
   {
-    title: "Product",
+    title: "MIGRATE TO SHOPIFY",
     links: [
-      { href: "/page-about", label: "Product" },
-      { href: "/page-pricing", label: "Overview" },
-      { href: "/page-features", label: "Features" },
-      { href: "/page-integrations", label: "Solutions" },
-      { href: "/page-career", label: "Tutorials" },
-      { href: "/page-contact", label: "Pricing" },
-      { href: "/page-contact-2", label: "Releases" },
+      { href: "/page-about", label: "Migrate from Magento" },
+      { href: "/page-pricing", label: "Migrate from BigCommerce" },
+      { href: "/page-features", label: "Migrate from Squarespace" },
+      { href: "/page-integrations", label: "Migrate from WooCommerce" },
+      { href: "/page-career", label: "Migrate from Prestashop" },
+       { href: "/page-about", label: "Migrate from Magento" },
+     
     ],
   },
   {
-    title: "Company",
+    title: "GET STARTED",
     links: [
-      { href: "/shop", label: "Company" },
-      { href: "/shop", label: "About us" },
-      { href: "/shop-product-detail/2", label: "Careers" },
-      { href: "/shop-product-detail-2/2", label: "Press" },
-      { href: "/shop-cart", label: "News" },
-      { href: "/shop-checkout", label: "Media kit" },
-      { href: "/shop-order", label: "Contact" },
+      { href: "/shop", label: "Website Management" },
+      { href: "/shop", label: "Marketing Services" },
+      { href: "/shop-product-detail/2", label: "Convert from Figma" },
+      { href: "/shop-product-detail-2/2", label: "Get a Free Website Audit" },
+       { href: "/shop", label: "Website Management" },
+     
+    
     ],
   },
   {
-    title: "Resources",
+    title: "QUICK LINKS",
     links: [
-      { href: "/sign-in", label: "Resources" },
-      { href: "/sign-in", label: "Blog" },
-      { href: "/sign-in-2", label: "Newsletter" },
-      { href: "/sign-up", label: "Events" },
+      { href: "/sign-in", label: "Build a New Website" },
+      { href: "/sign-in", label: "Customize your store" },
+      { href: "/sign-in-2", label: "Get a Free Website Audit" },
+      { href: "/sign-in", label: "Build a New Website" },
+       { href: "/sign-up", label: "Contact Us" },
       { href: "/sign-up-2", label: "Help center" },
-      { href: "/reset-password", label: "Tutorials" },
       { href: "/reset-password-2", label: "Support" },
     ],
   },
+  // {
+  //   title: "Social",
+  //   links: [
+  //     { href: "/blog", label: "Social" },
+  //     { href: "/blog-details/1", label: "Twitter" },
+  //     { href: "/page-terms", label: "LinkedIn" },
+  //     { href: "/page-not-found", label: "Facebook" },
+  //     { href: "/coming-soon", label: "GitHub" },
+  //     { href: "/page-terms", label: "AngelList" },
+  //     { href: "/page-privacy", label: "Dribbble" },
+  //   ],
+  // },
   {
-    title: "Social",
-    links: [
-      { href: "/blog", label: "Social" },
-      { href: "/blog-details/1", label: "Twitter" },
-      { href: "/page-terms", label: "LinkedIn" },
-      { href: "/page-not-found", label: "Facebook" },
-      { href: "/coming-soon", label: "GitHub" },
-      { href: "/page-terms", label: "AngelList" },
-      { href: "/page-privacy", label: "Dribbble" },
-    ],
-  },
-  {
-    title: "Legal",
+    title: "LEGAL",
     links: [
       { href: "/blog", label: "Legal" },
       { href: "/blog-details/1", label: "Terms" },

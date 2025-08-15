@@ -344,14 +344,7 @@ export default function Nav3() {
       <li>
         <Link href={`/page-pricing`}>Pricing</Link>
       </li>
-      <li>
-        <a
-          href="https://themeforest.net/user/ib-themes/portfolio"
-          target="_blank"
-        >
-          Buy now
-        </a>
-      </li>
+   
     </>
   );
 }

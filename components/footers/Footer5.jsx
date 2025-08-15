@@ -35,8 +35,8 @@ export default function Footer5() {
                   </div>
                   {footerLinks4.map((section, index) => (
                     <div key={index} className={section.extraClass || ""}>
-                      <ul className="nav-y gap-2 fw-medium">
-                        <li className="fs-7 text-uppercase dark:text-gray-300">
+                      <ul className="nav-y gap-1 fw-medium">
+                        <li className="fs-8 text-uppercase dark:text-gray-300">
                           {section.title}
                         </li>
                         {section.links.map((link, linkIndex) => (

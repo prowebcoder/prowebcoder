@@ -70,14 +70,14 @@ export default function Footer4() {
                   </div>
                   {footerLinks3.map((section, index) => (
                     <div key={index} className={section.extraClass || ""}>
-                      <ul className="nav-y gap-2 fw-medium">
+                      <ul className="nav-y gap-1 fw-medium">
                         {section.links.map((link, idx) => (
                           <li key={idx}>
                             <Link
                               href={link.href}
                               className={
                                 idx === 0
-                                  ? "fs-7 dark:text-gray-300"
+                                  ? "fs-8 dark:text-gray-300"
                                   : undefined
                               }
                             >
