@@ -33,10 +33,10 @@ export default function Nav3() {
                     <div className="panel vstack gap-4">
                       <div className="hstack gap-4 justify-between">
                         <h5 className="h5 fw-medium m-0">
-                          Discover our Products &amp; Solutions
+                          Discover our Services
                         </h5>
                         <Link
-                          href={`/page-features`}
+                          href={`#`}
                           className="btn btn-sm dark:text-white"
                         >
                           <span>See what's new</span>
@@ -70,7 +70,7 @@ export default function Nav3() {
                         ))}
                       </div>
                     </div>
-                    <div className="panel vstack gap-2">
+                    {/* <div className="panel vstack gap-2">
                       <div className="hstack gap-4 justify-between">
                         <h6 className="h6 m-0 fs-8 text-uppercase">
                           Templates and integrations
@@ -106,7 +106,7 @@ export default function Nav3() {
                           </div>
                         ))}
                       </div>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
                 <div className="col-4">

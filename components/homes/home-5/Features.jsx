@@ -16,7 +16,7 @@ export default function Features() {
               data-anime="onview: -200; targets: >*; translateY: [48, 0]; opacity: [0, 1]; easing: easeOutCubic; duration: 500; delay: anime.stagger(100, {start: 200});"
             >
               <span className="fw-bold py-narrow px-2 border rounded-pill text-primary dark:text-secondary">
-                Features
+                Services
               </span>
               <h2 className="h4 sm:h2 lg:h1 xl:display-6 m-0">
                 What we do
