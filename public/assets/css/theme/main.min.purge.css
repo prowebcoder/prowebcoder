@@ -7258,4 +7258,9 @@ textarea.form-control-lg {
    
     
 }
+.steps-mobile{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 }

@@ -42,9 +42,9 @@ export default function Steps() {
                             We make it simple — here’s how we turn your idea into a live website or app.
                         </p>
                     </div>
-                    <div className="row hstack justify-between items-start gap-6 sm:gap-8 xl:gap-10 position-relative">
+                    <div className="row hstack justify-between items-start gap-6 sm:gap-8 xl:gap-10 position-relative steps-mobile">
                         {steps.map((step, index) => (
-                            <div key={step.id} className="vstack items-center text-center flex-1  steps-items position-relative p-2 md:p-4 lg:p-2 rounded-1-5 lg:rounded-2 bg-secondary dark:bg-white dark:bg-opacity-5 dark:text-white">
+                            <div key={step.id} className="vstack items-center text-center  flex-1 xl:flex-1 sm:flex-0  steps-items position-relative p-2 md:p-4 lg:p-2 rounded-1-5 lg:rounded-2 bg-secondary dark:bg-white dark:bg-opacity-5 dark:text-white">
                                 <div className="cstack w-48px h-48px bg-primary rounded-circle mb-4">
                                     <Image
                                                       className="icon icon-1 text-white image-filter-white"

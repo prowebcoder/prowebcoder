@@ -9,27 +9,27 @@ export const services = [
 
 export const featuresMenu = [
   {
-    href: "/page-features",
-    iconClass: "unicon-checkmark",
-    title: "To-Do List",
-    description: "Managing multiple software and tools for different tasks.",
+    href: "https://apps.shopify.com/pwc-customer-pages-wishlist",
+    iconClass: "unicon-user",
+    title: "Customer Accounts App",
+    description: "Shopify app for a better Customer Accounts & Wishlist Experience.",
   },
   {
-    href: "/page-features",
-    iconClass: "unicon-chart-pie",
-    title: "Reports",
-    description: "The latest industry reports, updates and info.",
+    href: "https://apps.shopify.com/pwc-sections-landing",
+    iconClass: "unicon-sub-volume",
+    title: "Section & Landing Page App",
+    description: "Shopify app for Installing Premade Sections and Landing pages.",
   },
   {
-    href: "/page-features",
-    iconClass: "unicon-increase-level",
-    title: "Spreadsheets",
-    description: "Suite of tools that cover all aspects of your business.",
+    href: "https://apps.shopify.com/pwc-fav-tab-upsell",
+    iconClass: "unicon-touch-interaction",
+    title: "Favicon Tab Animation App",
+    description: "Shopify app for Favicon Tab Animation and Upsell.",
   },
   {
-    href: "/page-features",
+    href: "https://apps.shopify.com/partners/galactic-technologies",
     iconClass: "unicon-chart-venn-diagram",
-    title: "Collaboration",
-    description: "Assign tasks, share files, and communicate with your team.",
+    title: "All Apps in Shopify",
+    description: "We are building apps for Shopify to enhance your store's functionality.",
   },
 ];

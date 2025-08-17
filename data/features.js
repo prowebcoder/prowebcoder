@@ -239,6 +239,7 @@ export const featureItems2 = [
     iconSrc: "/assets/images/common/icons/zap.svg",
     alt: "feature-icon",
     title: "Web Development",
+        href: "#web-development",
     description:
       "We create personalized, responsive websites tailored to your needs. Our expert team ensures a seamless user experience through collaboration and a deep understanding of client goals.",
   },
@@ -247,6 +248,7 @@ export const featureItems2 = [
     iconSrc: "/assets/images/common/icons/database.svg",
     alt: "feature-icon",
     title: "E-commerce Solutions",
+     href: "#ecommerce-solutions",
     description:
       "Our E-commerce Solutions transform Shopify stores into powerful sales engines. We offer expert setup, custom app development, theme customization, optimization for performance, and ongoing support.",
     bgClass:
@@ -257,6 +259,7 @@ export const featureItems2 = [
     iconSrc: "/assets/images/common/icons/puzzle.svg",
     alt: "feature-icon",
     title: "Shopify Theme Development",
+     href: "#shopify-theme-development",
     description:
       "Our Shopify Theme Development service specializes in crafting unique and captivating themes for Shopify stores, ensuring a distinctive online presence that stands out from the competition.",
   },
@@ -265,6 +268,7 @@ export const featureItems2 = [
     iconSrc: "/assets/images/common/icons/target.svg",
     alt: "feature-icon",
     title: "Shopify App Development",
+      href: "#shopify-app-development",
     description:
       "Our Shopify App Development service focuses on crafting customized solutions to elevate functionality and cater to specific business needs within the Shopify ecosystem.",
     bgClass:
@@ -275,6 +279,7 @@ export const featureItems2 = [
     iconSrc: "/assets/images/common/icons/line-chart.svg",
     alt: "feature-icon",
     title: "Full Stack Development",
+       href: "#full-stack-development",
     description:
       "We deliver end-to-end development, building seamless mobile apps, intuitive frontend interfaces, and high-performance backend systems — ensuring great user experiences.",
   },
@@ -283,6 +288,7 @@ export const featureItems2 = [
     iconSrc: "/assets/images/common/icons/settings.svg",
     alt: "feature-icon",
     title: "Consultation and Support",
+     href: "#consultation-and-support",
     description:
       "Our Consultation and Support service provides expert advice, maintenance, and ongoing support to guarantee optimal performance and sustained success.",
     bgClass:

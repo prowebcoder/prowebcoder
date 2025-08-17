@@ -49,7 +49,7 @@ export default function Nav3() {
                         {features.map((feature, index) => (
                           <div key={index}>
                             <Link
-                              href={`/page-features`}
+                              href={`/services${feature.href}`}
                               className="hstack items-start gap-2 p-2 text-none rounded-1-5 hover:bg-gray-600 hover:bg-opacity-5 dark:hover:bg-white duration-150"
                             >
                               <span className="icon">
@@ -171,7 +171,7 @@ export default function Nav3() {
                   <li key={index}>
                     <Link
                       className="hstack items-start gap-2 p-2 hover:bg-gray-600 hover:bg-opacity-5 dark:hover:bg-white duration-150 rounded-1-5"
-                      href={feature.href}
+                      href={feature.href} target="_blank" rel="noopener noreferrer"
                     >
                       <i
                         className={`icon-1 ${feature.iconClass} fw-bold text-primary dark:text-secondary`}
@@ -215,18 +215,17 @@ export default function Nav3() {
                 <div className="vstack justify-between gap-2">
                   <div className="vstack gap-1">
                     <h5 className="h6 m-0">
-                      Everything you need is right at your fingertips
+                      Need a Custom App ?
                     </h5>
                     <p className="fs-7 opacity-70">
-                      Say goodbye to the hassle of managing multiple software
-                      and tools for different tasks.
+                      We build custom apps for Shopify, WordPress, BigCommerce, and more. Our team specializes in creating tailored solutions to meet your unique business needs.
                     </p>
                   </div>
                   <Link
-                    href={`/page-pricing`}
+                    href={`/app-development`}
                     className="btn btn-sm btn-primary"
                   >
-                    Start free trial
+                   Share your requirements
                   </Link>
                 </div>
               </div>
@@ -291,7 +290,7 @@ export default function Nav3() {
                 <li>
                   <Link
                     className="hstack items-start gap-2 p-2 hover:bg-gray-600 hover:bg-opacity-5 dark:hover:bg-white duration-150 rounded-1-5"
-                    href={`/page-features`}
+                    href={`/services`}
                   >
                     <i className="icon-1 unicon-play fw-bold text-primary dark:text-secondary" />
                     <span className="vstack gap-narrow mt-nnarrow">
@@ -325,7 +324,7 @@ export default function Nav3() {
                 <li>
                   <Link
                     className="hstack items-start gap-2 p-2 hover:bg-gray-600 hover:bg-opacity-5 dark:hover:bg-white duration-150 rounded-1-5"
-                    href={`/page-contact`}
+                    href={`/contact-us`}
                   >
                     <i className="icon-1 unicon-headset fw-bold text-primary dark:text-secondary" />
                     <span className="vstack gap-narrow mt-nnarrow">
@@ -342,10 +341,10 @@ export default function Nav3() {
         </div>
       </li>
       <li>
-        <Link href={`/page-pricing`}>Quote Calculator</Link>
+        <Link href={`/quote-calculator`}>Quote Calculator</Link>
       </li>
       <li>
-        <Link href={`/page-pricing`}>Pricing</Link>
+        <Link href={`/pricing`}>Pricing</Link>
       </li>
    
     </>
