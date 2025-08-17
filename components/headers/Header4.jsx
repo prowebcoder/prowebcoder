@@ -106,7 +106,7 @@ export default function Header4() {
                     <Image
                       className="d-none dark:d-block"
                       alt="Lexend"
-                      src="/assets/images/common/logo-pwc.webp"
+                      src="/assets/images/common/white1.webp"
                       width="250"
                       height="100"
                     />

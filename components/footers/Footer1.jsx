@@ -55,7 +55,7 @@ export default function Footer4() {
                           <Image
                             className="text-primary"
                             alt="Lexend"
-                            src="/assets/images/common/logo-1.webp"
+                            src="/assets/images/common/white1.webp"
                             width="250"
                             height="80"
                           />
@@ -74,14 +74,14 @@ export default function Footer4() {
                         {section.links.map((link, idx) => (
                           <li key={idx}>
                             {idx === 0 ? (
-                              <span className="fs-5 dark:text-gray-300">
+                              <span className="fs-5 text-white dark:text-white">
                                {section.title}
                               </span>
                             ) :     <Link
                               href={link.href}
                               className={
                                 idx === 0
-                                  ? "fs-5 dark:text-gray-300"
+                                  ? "fs-5 dark:text-white"
                                   : "fs-8"
                               }
                             >

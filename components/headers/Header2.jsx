@@ -99,16 +99,16 @@ export default function Header4() {
                     <Image
                       className="dark:d-none"
                       alt="Lexend"
-                      src="/assets/images/common/logo-1.webp"
-                      width="220"
-                      height="80"
+                      src="/assets/images/common/logo-pwc.webp"
+                      width="250"
+                      height="100"
                     />
                     <Image
                       className="d-none dark:d-block"
                       alt="Lexend"
-                      src="/assets/images/common/logo-1.webp"
-                      width="220"
-                      height="80"
+                      src="/assets/images/common/white1.webp"
+                      width="250"
+                      height="100"
                     />
                   </Link>
                 </div>

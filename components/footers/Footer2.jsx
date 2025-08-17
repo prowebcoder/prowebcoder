@@ -55,7 +55,7 @@ export default function Footer4() {
                           <Image
                             className="text-primary"
                             alt="Lexend"
-                            src="/assets/images/common/logo-1.webp"
+                            src="/assets/images/common/white1.webp"
                             width="250"
                             height="80"
                           />
