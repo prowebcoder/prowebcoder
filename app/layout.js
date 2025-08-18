@@ -6,6 +6,7 @@ import "react-modal-video/scss/modal-video.scss";
 import "photoswipe/dist/photoswipe.css";
 import "rc-slider/assets/index.css";
 import Cart from "@/components/common/Cart";
+import Script from "next/script";
 import { useEffect } from "react";
 import anime from "animejs";
 import { usePathname } from "next/navigation";
@@ -15,7 +16,7 @@ import { ParallaxProvider } from "react-scroll-parallax";
 import ContactModal from "@/components/modals/ContactModal";
 import NewsletterModal from "@/components/modals/NewsletterModal";
 import SearchModal from "@/components/modals/SearchModal";
-
+import { Toaster } from "react-hot-toast"; // ✅ Toast added
 export default function RootLayout({ children }) {
   const pathname = usePathname();
   useEffect(() => {
