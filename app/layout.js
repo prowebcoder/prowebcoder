@@ -102,7 +102,14 @@ export default function RootLayout({ children }) {
     <html lang="en" dir="ltr">
       <body>
         {" "}
+        <Script
+        src="https://www.google.com/recaptcha/api.js?render=explicit"
+        strategy="beforeInteractive"        
+        async        
+        defer
+        />
         <Context>
+
           <ParallaxProvider>{children}</ParallaxProvider>
           <MobileMenu />
           <ContactModal />
@@ -111,6 +118,26 @@ export default function RootLayout({ children }) {
           <Cart />
           <BacktoTop />
         </Context>
+        <Toaster
+        toastOptions={{
+          duration: 3000,
+          style: {
+            background: "rgba(0, 0, 0, 0.85)",
+            color: "#fff",
+            fontSize: "16px",
+            padding: "16px 20px",
+            borderRadius: "12px",
+            maxWidth: "100%",
+          },
+        }}
+        containerStyle={{
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          position: "fixed",
+          zIndex: 9999,
+        }}
+      />
       </body>
     </html>
   );
