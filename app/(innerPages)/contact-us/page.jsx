@@ -22,7 +22,7 @@ export default function ContactPage() {
           <Contact1 />
 
           <ContactLinks />
-          <Faq />
+        
           <div
             id="clients_brands"
             className="clients-brands section panel overflow-hidden"
@@ -44,7 +44,7 @@ export default function ContactPage() {
               </div>
             </div>
           </div>
-          <Blogs />
+         
         </div>
         <Footer2 />
       </div>

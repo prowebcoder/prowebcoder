@@ -99,7 +99,7 @@ export default function Footer4() {
                 <p className="opacity-60 fs-8">
                   Prowebcoder © 2025, All rights reserved.
                 </p>
-                <ul className="nav-x justify-center gap-2 text-gray-300">
+                {/* <ul className="nav-x justify-center gap-2 text-gray-300">
                   {socialLinks.map((link, index) => (
                     <li key={index}>
                       <a href={link.href}>
@@ -107,7 +107,7 @@ export default function Footer4() {
                       </a>
                     </li>
                   ))}
-                </ul>
+                </ul> */}
               </div>
             </div>
           </div>

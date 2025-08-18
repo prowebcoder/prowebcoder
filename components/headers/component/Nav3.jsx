@@ -306,6 +306,20 @@ export default function Nav3() {
                 <li>
                   <Link
                     className="hstack items-start gap-2 p-2 hover:bg-gray-600 hover:bg-opacity-5 dark:hover:bg-white duration-150 rounded-1-5"
+                   href={`/shopify-plus#custom-app-development`}
+                  >
+                    <i className="icon-1 unicon-star fw-bold text-primary dark:text-secondary" />
+                    <span className="vstack gap-narrow mt-nnarrow">
+                      <b className="fw-bold dark:text-white">Custom App Development</b>
+                      <span className="fw-normal">
+                        We develop private and public apps that integrate seamlessly with your Shopify Plus store
+                      </span>
+                    </span>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className="hstack items-start gap-2 p-2 hover:bg-gray-600 hover:bg-opacity-5 dark:hover:bg-white duration-150 rounded-1-5"
                    href={`/shopify-plus#mobile-app-development`}
                   >
                     <i className="icon-1 unicon-star fw-bold text-primary dark:text-secondary" />
@@ -326,7 +340,7 @@ export default function Nav3() {
                     <span className="vstack gap-narrow mt-nnarrow">
                       <b className="fw-bold dark:text-white">Customer Support Services</b>
                       <span className="fw-normal">
-                       We provide dedicated customer support services to ensure your Shopify Plus store runs smoothly and your customers are satisfied.
+                       We provide dedicated customer support services .
                       </span>
                     </span>
                   </Link>

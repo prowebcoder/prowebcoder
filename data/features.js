@@ -396,4 +396,65 @@ export const features6 = [
     link: null,
   },
 ];
-
+export const features7 = [
+  {
+    id: 1,
+    imgSrc: "/assets/images/template/wd.jpg",
+    imgAlt: "Shopify Plus Store Development",
+    featureID: "build",
+    title: "Build on Shopify Plus",
+    description:
+      "We design and develop high-performing Shopify Plus stores that are fast, scalable, and conversion-focused. From custom themes to advanced integrations, we help enterprise brands build experiences that drive growth.",
+    link: null,
+  },
+  {
+    id: 2,
+    imgSrc: "/assets/images/template/spm.webp",
+    imgAlt: "Shopify Plus Store Management",
+    featureID: "manage",
+    title: "Manage & Scale with Shopify Plus",
+    description:
+      "Streamline operations and scale with ease using Shopify Plus. Our solutions include inventory management, multi-store setups, automation with Shopify Flow, and secure integrations to simplify your business processes.",
+    link: { text: "See Shopify Plus Solutions", href: "#" },
+  },
+  {
+    id: 3,
+    imgSrc: "/assets/images/template/speed.webp",
+    imgAlt: "Shopify Plus Speed Optimization",
+    featureID: "speed-optimization",
+    title: "Shopify Plus Speed Optimization",
+    description:
+      "Boost performance with our Shopify Plus speed optimization services. We optimize liquid code, apps, and hosting setups to improve Core Web Vitals, reduce load times, and deliver seamless shopping experiences.",
+    link: null,
+  },
+  {
+    id: 4,
+    imgSrc: "/assets/images/template/apps.webp",
+    imgAlt: "Custom Shopify Plus App Development",
+    featureID: "custom-app-development",
+    title: "Custom App Development for Shopify Plus",
+    description:
+      "Extend your Shopify Plus store with custom apps built for scale. We develop private and public apps that integrate seamlessly, automate workflows, and unlock enterprise-grade functionality.",
+    link: null,
+  },
+  {
+    id: 5,
+    imgSrc: "/assets/images/template/mad.webp",
+    imgAlt: "Shopify Plus Mobile App Development",
+    featureID: "mobile-app-development",
+    title: "Mobile Commerce on Shopify Plus",
+    description:
+      "Deliver enterprise-level mobile shopping experiences with Shopify Plus. We build custom mobile apps and headless commerce solutions that integrate with your Shopify Plus store for seamless omnichannel performance.",
+    link: null,
+  },
+  {
+    id: 6,
+    imgSrc: "/assets/images/template/cs.webp",
+    imgAlt: "Shopify Plus Consultation & Support",
+    featureID: "customer-support-services",
+    title: "Consultation & Ongoing Support",
+    description:
+      "Our Shopify Plus experts provide end-to-end consultation and dedicated support. From migration and replatforming to post-launch maintenance, we ensure your Shopify Plus store stays optimized and future-ready.",
+    link: null,
+  },
+];

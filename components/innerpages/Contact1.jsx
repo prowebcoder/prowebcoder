@@ -143,7 +143,7 @@ export default function Contact1() {
                       <Image
                         className="media-cover image"
                         alt="Hero image"
-                        src="/assets/images/template/hero-contact.jpg"
+                        src="/assets/images/common/login.webp"
                         width={1500}
                         height={1000}
                       />
@@ -153,10 +153,10 @@ export default function Contact1() {
                       <div className="panel z-1">
                         <div className="vstack gap-3">
                           <p className="fs-7 xl:fs-6 fw-medium">
-                            “GTL Web Solutions delivered a seamless eCommerce development experience. Their team helped us build a fast, scalable online store that’s easy to manage and optimized for conversions.”
+                            “Prowebcoder delivered a seamless eCommerce development experience. Their team helped us build a fast, scalable online store that’s easy to manage and optimized for conversions.”
                           </p>
                           <div className="vstack gap-0">
-                            <p className="fs-6 lg:fs-5 fw-medium">David Larry</p>
+                            <p className="fs-6 lg:fs-5 fw-medium">Rahul Dhiman</p>
                             <span className="fs-7 opacity-80">Founder &amp; CEO</span>
                           </div>
                         </div>
