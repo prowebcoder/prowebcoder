@@ -79,7 +79,7 @@ export default function Contact1() {
         toast.success(
           <div className="text-center">
             <img
-              src="/assets/images/common/logo-dark.svg"
+              src="/assets/images/common/logo-pwc.webp"
               alt="Logo"
               style={{ width: "100px", margin: "0 auto" }}
             />

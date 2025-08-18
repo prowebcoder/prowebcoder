@@ -72,7 +72,7 @@ export async function POST(req) {
         </p>
         <p style="color: #888; font-size: 12px;">
           Prowebcoder<br />
-          info@gtlofficial.com | <a href="https://prowebcoder.com" style="color: #888;">https://prowebcoder.com</a>
+          rahul@prowebcoder.com | <a href="https://prowebcoder.com" style="color: #888;">https://prowebcoder.com</a>
         </p>
       </div>
     `;
