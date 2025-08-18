@@ -264,7 +264,7 @@ export default function QuoteCalculator() {
           <option>AUD</option>
           <option>CAD</option>
         </select>
-        <div className="absolute  h-24px w-24px right-3 top-1/2 -translate-y-1/2 pointer-events-none" style={{ position: 'absolute', right: '6px',top:"14px",zIndex: 1 }}>
+        <div className="absolute  h-20px w-20px right-3 top-1/2 -translate-y-1/2 pointer-events-none" style={{ position: 'absolute', right: '6px',top:"14px",zIndex: 1 }}>
             <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
             </svg></div>
@@ -300,7 +300,7 @@ export default function QuoteCalculator() {
                   <option value="redesign">Redesign</option>
                   <option value="migration">Migration</option>
                 </select>
- <div className="absolute  h-24px w-24px right-3 top-1/2 -translate-y-1/2 pointer-events-none" style={{ position: 'absolute', right: '6px',top:"14px",zIndex: 1 }}>
+ <div className="absolute  h-20px w-20px right-3 top-1/2 -translate-y-1/2 pointer-events-none" style={{ position: 'absolute', right: '6px',top:"20px",zIndex: 1 }}>
             <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
             </svg></div>
@@ -315,7 +315,7 @@ export default function QuoteCalculator() {
                   <option value="advanced">Advanced</option>
                   <option value="plus">Shopify Plus</option>
                 </select>
-               <div className="absolute  h-24px w-24px right-3 top-1/2 -translate-y-1/2 pointer-events-none" style={{ position: 'absolute', right: '6px',top:"14px",zIndex: 1 }}>
+               <div className="absolute  h-20px w-20px right-3 top-1/2 -translate-y-1/2 pointer-events-none" style={{ position: 'absolute', right: '6px',top:"20px",zIndex: 1 }}>
             <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
             </svg></div>
@@ -330,7 +330,7 @@ export default function QuoteCalculator() {
                   <option>Advanced</option>
                   <option>Plus</option>
                 </select>
-              <div className="absolute  h-24px w-24px right-3 top-1/2 -translate-y-1/2 pointer-events-none" style={{ position: 'absolute', right: '6px',top:"14px",zIndex: 1 }}>
+              <div className="absolute  h-20px w-20px right-3 top-1/2 -translate-y-1/2 pointer-events-none" style={{ position: 'absolute', right: '6px',top:"20px",zIndex: 1 }}>
             <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
             </svg></div>
@@ -352,7 +352,7 @@ export default function QuoteCalculator() {
         {step === 1 && (
           <section>
             <h2 className="h3 sm:h2 mb-4">Design</h2>
-            <div className="row child-cols-12 md:child-cols-6 g-4">
+            <div className=" child-cols-12 md:child-cols-6 g-4">
               <div>
                 <label className="block fs-7 font-medium mb-1">Theme Approach</label>
                  <div className="relative" style={{ position: 'relative' }}>
@@ -361,15 +361,17 @@ export default function QuoteCalculator() {
                   <option value="customized-theme">Customize Premium Theme</option>
                   <option value="bespoke">Bespoke Design & Build</option>
                 </select>
-                <div className="absolute  h-24px w-24px right-3 top-1/2 -translate-y-1/2 pointer-events-none" style={{ position: 'absolute', right: '6px',top:"14px",zIndex: 1 }}>
+                <div className="absolute  h-20px w-20px right-3 top-1/2 -translate-y-1/2 pointer-events-none" style={{ position: 'absolute', right: '6px',top:"20px",zIndex: 1 }}>
             <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
             </svg></div>
             </div>
               </div>
-              <div className="hstack items-center gap-3 mt-6 md:mt-0">
+              <div className="row col-span-12 md:col-span-6">
+              <div className="hstack items-center gap-1 mt-6 md:mt-0">
                 <input id="brandingReady" type="checkbox" checked={form.brandingReady} onChange={(e) => set('brandingReady', e.target.checked)} />
                 <label htmlFor="brandingReady" className="fs-7 font-medium">Brand assets are ready (logo, palette, type)</label>
+              </div>
               </div>
             </div>
           </section>
@@ -379,7 +381,7 @@ export default function QuoteCalculator() {
         {step === 2 && (
           <section>
             <h2 className="h3 sm:h2 mb-4">Features</h2>
-            <div className="row child-cols-12 md:child-cols-6 g-4">
+            <div className="container  row child-cols-12 md:child-cols-6 g-4">
               {Object.entries(form.features).map(([key, val]) => (
                 key !== 'speed' ? (
                   <label key={key} className="hstack items-center gap-3 p-3 rounded-xl border bg-gray-50">
@@ -392,20 +394,21 @@ export default function QuoteCalculator() {
                 ) : null
               ))}
 
-              <div className="col-span-12 md:col-span-6">
+       
+            </div>
+                   <div className="col-span-12 md:col-span-6 mt-6">
                 <label className="block fs-7 font-medium mb-1">Performance Target</label>
                   <div className="relative" style={{ position: 'relative' }}>
                 <select className="form-control w-full p-3 rounded-lg border bg-gray-50" value={form.features.speed} onChange={(e) => set('features.speed', e.target.value)}>
                   <option value="standard">Standard (best practice)</option>
                   <option value="aggressive">Aggressive (extra tuning)</option>
                 </select>
-                <div className="absolute  h-24px w-24px right-3 top-1/2 -translate-y-1/2 pointer-events-none" style={{ position: 'absolute', right: '6px',top:"14px",zIndex: 1 }}>
+                <div className="absolute  h-20px w-20px right-3 top-1/2 -translate-y-1/2 pointer-events-none" style={{ position: 'absolute', right: '6px',top:"20px",zIndex: 1 }}>
             <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
             </svg></div>
             </div>
               </div>
-            </div>
           </section>
         )}
 
@@ -430,7 +433,7 @@ export default function QuoteCalculator() {
           <section>
             <h2 className="h3 sm:h2 mb-4">Data & Markets</h2>
             <div className="vstack gap-4">
-              <div className="hstack items-center gap-3 mb-2">
+              <div className="hstack items-center gap-1 mb-2">
                 <input id="migrate" type="checkbox" checked={form.migration.migrate} onChange={(e) => set('migration.migrate', e.target.checked)} />
                 <label htmlFor="migrate" className="fs-7 font-medium">I need data migration</label>
               </div>
@@ -464,7 +467,7 @@ export default function QuoteCalculator() {
         {step === 5 && (
           <section>
             <h2 className="h3 sm:h2 mb-4">Compliance & Performance</h2>
-            <div className="row child-cols-12 md:child-cols-6 g-4">
+            <div className="container row child-cols-12 md:child-cols-6 g-4">
               <label className="hstack items-center gap-3 p-3 rounded-xl border bg-gray-50">
                 <input type="checkbox" checked={form.compliance.accessibility} onChange={(e) => set('compliance.accessibility', e.target.checked)} />
                 <span className="fs-7 font-medium">Accessibility (WCAG target)</span>
@@ -495,7 +498,7 @@ export default function QuoteCalculator() {
                   <option value="pro">Pro — {currencyFmt(PRICING.supportMonthly.pro)}/mo</option>
                   <option value="elite">Elite — {currencyFmt(PRICING.supportMonthly.elite)}/mo</option>
                 </select>
-                <div className="absolute  h-24px w-24px right-3 top-1/2 -translate-y-1/2 pointer-events-none" style={{ position: 'absolute', right: '6px',top:"14px",zIndex: 1 }}>
+                <div className="absolute  h-20px w-20px right-3 top-1/2 -translate-y-1/2 pointer-events-none" style={{ position: 'absolute', right: '6px',top:"20px",zIndex: 1 }}>
             <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
             </svg></div>
@@ -559,13 +562,13 @@ export default function QuoteCalculator() {
 
       {/* Footer nav */}
       <div className="hstack items-center justify-between mt-8">
-        <button className="btn btn-ghost rounded-xl px-4 py-2" onClick={back} disabled={step === 0}>Back</button>
+        <button className="btn btn-ghost border rounded-xl" onClick={back} disabled={step === 0}>Back</button>
         <div className="hstack gap-2">
           {step < steps.length - 1 && (
-            <button className="btn btn-primary rounded-xl px-5 py-2" onClick={next}>Next</button>
+            <button className="btn btn-primary rounded-xl " onClick={next}>Next</button>
           )}
           {step === steps.length - 1 && (
-            <button className="btn btn-primary rounded-xl px-5 py-2" onClick={() => alert('Thanks! Summary copied to clipboard.')}>
+            <button className="btn btn-primary rounded-xl " onClick={() => alert('Thanks! Summary copied to clipboard.')}>
               Accept Estimate
             </button>
           )}
