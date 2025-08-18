@@ -22,7 +22,7 @@ export default function Contact1() {
     const interval = setInterval(() => {
       if (window.grecaptcha && recaptchaRef.current && !recaptchaId.current) {
         recaptchaId.current = window.grecaptcha.render(recaptchaRef.current, {
-          sitekey: process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY,
+          sitekey: process.env.RECAPTCHA_SITE_KEY,
         });
         clearInterval(interval);
       }
