@@ -242,7 +242,7 @@ export default function QuoteCalculator() {
   // UI
   // --------------------------
     return (
-    <div className="container panel rounded-3 overflow-hidden bg-white border mt-6 max-w-4xl mx-auto my-6 p-6 md:p-10">
+    <div className="container panel rounded-3 overflow-hidden bg-white border mt-6 max-w-4xl mx-auto my-6 p-6 md:p-10" id="quote_calculator">
       {/* Header */}
       <div className="hstack items-center justify-between mb-6">
         <div>
