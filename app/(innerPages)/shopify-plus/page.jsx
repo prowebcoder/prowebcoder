@@ -2,7 +2,6 @@ import Header2 from "@/components/headers/Header2";
 
 import Footer2 from "@/components/footers/Footer2";
 import Hero from "@/components/innerpages/features/Hero";
-import Hero2 from "@/components/innerpages/features/Hero2";
 import KeyFeatures from "@/components/innerpages/features/KeyFeatures";
 import Faq from "@/components/homes/home-2/Faq";
 import Testimonials from "@/components/homes/home-3/Testimonials";
@@ -21,13 +20,11 @@ export default function FeaturesPage() {
       <div className="page-wrapper uni-body panel bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-200 overflow-x-hidden bp-xs bp-sm bp-md bp-lg bp-xl bp-xxl dom-ready">
         <Header2 />
         <div id="wrapper" className="wrap">
-           <Hero2/>
           <Hero />
-         
-          {/* <KeyFeatures />
+          <KeyFeatures />
           <div className="pt-6 xl:pt-9"></div>
           <Faq />
-          <Testimonials /> */}
+          <Testimonials />
           <div
             id="clients_brands"
             className="clients-brands section panel overflow-hidden"

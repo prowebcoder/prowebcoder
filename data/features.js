@@ -337,38 +337,63 @@ export const features5 = [
 export const features6 = [
   {
     id: 1,
-    imgSrc: "/assets/images/template/feature-01.svg",
-    imgAlt: "Share tools quickly and confidently in minutes",
-    title: "Share tools quickly and confidently in minutes",
+    imgSrc: "/assets/images/template/wd.jpg",
+    imgAlt: "Professional Web Development Services",
+    featureID: "web-development",
+    title: "Custom Web Development Services",
     description:
-      "This powerful tool eliminates the need to leave Salesforce to get things done as I can create a custom proposal with dynamic pricing tables. You can also customize your own dynamic versions.",
+      "Build fast, secure, and scalable websites with modern frameworks like React, Next.js, and WordPress. Our web development solutions are tailored to deliver performance, SEO optimization, and seamless user experience.",
     link: null,
   },
   {
     id: 2,
-    imgSrc: "/assets/images/template/feature-02.svg",
-    imgAlt: "Connect every part of your entire business",
-    title: "Connect every part of your entire business",
+    imgSrc: "/assets/images/template/ed.webp",
+    imgAlt: "Ecommerce Development Solutions",
+    featureID: "ecommerce-solutions",
+    title: "Ecommerce Development & Solutions",
     description:
-      "Keep data consistent, with native CRM integrations that streamline your entire Tool workflow.",
-    link: { text: "See all integrations", href: "#" },
+      "We create powerful ecommerce stores using Shopify, Magento, BigCommerce, WooCommerce, and more. From custom themes to secure payment integrations, we deliver solutions that scale with your business.",
+    link: { text: "", href: "#" },
   },
   {
     id: 3,
-    imgSrc: "/assets/images/template/feature-03.svg",
-    imgAlt: "Maintain compliance and control your apps",
-    title: "Maintain compliance and control your apps",
+    imgSrc: "/assets/images/template/shopify.webp",
+    imgAlt: "Shopify Theme Development",
+    featureID: "shopify-theme-development",
+    title: "Custom Shopify Theme Development",
     description:
-      "Improve security and trust with built-in legally binding e-Signatures. Create pre-approved templates, content blocks, and lock all legal information to prevent costly mistakes.",
+      "Enhance your Shopify store with a fully customized theme. We design and develop themes that improve conversions, deliver a great shopping experience, and reflect your brand identity.",
     link: null,
   },
   {
     id: 4,
-    imgSrc: "/assets/images/template/feature-04.svg",
-    imgAlt: "Review quickly and confidently",
-    title: "Review quickly and confidently",
+    imgSrc: "/assets/images/template/apps.webp",
+    imgAlt: "Shopify App Development",
+    featureID: "shopify-app-development",
+    title: "Shopify App Development",
     description:
-      "Get real-time access to approvals, comments, and version tracking. Smart features like variables and conditional logic help you eliminate Tool errors.",
+      "Extend your Shopify store’s functionality with custom apps. We build scalable Shopify apps that integrate seamlessly with your store and enhance sales, automation, and customer engagement.",
+    link: null,
+  },
+  {
+    id: 5,
+    imgSrc: "/assets/images/template/fs.webp",
+    imgAlt: "Full-Stack Development Services",
+    featureID: "full-stack-development",
+    title: "Full-Stack Web & App Development",
+    description:
+      "From front-end to back-end, our full-stack development team builds robust digital products using React, Next.js, Node.js, and more. We deliver end-to-end solutions that power your business growth.",
+    link: null,
+  },
+  {
+    id: 6,
+    imgSrc: "/assets/images/template/cs.webp",
+    imgAlt: "IT Consultation and Support",
+    featureID: "consultation-and-support",
+    title: "Consultation & Ongoing Support",
+    description:
+      "Get expert consultation and technical support for your digital projects. From choosing the right tech stack to maintaining your apps and websites, we provide continuous guidance and assistance.",
     link: null,
   },
 ];
+

@@ -113,12 +113,12 @@ export default function Nav3() {
                   <div className="panel vstack gap-4 p-5 bg-gray-25 dark:bg-gray-800">
                     <div className="panel category-section">
                       <h6 className="h6 fs-8 text-uppercase">
-                        Professional solutions
+                       Shopify Services Plus
                       </h6>
                       <ul className="uc-nav uc-navbar-dropdown-nav fs-7 fw-normal row child-cols-12">
                         {services.map((service, index) => (
                           <li key={index}>
-                            <a href="#">{service}</a>
+                            <a href="/service-form">{service}</a>
                           </li>
                         ))}
                       </ul>
@@ -260,14 +260,13 @@ export default function Nav3() {
                 <li>
                   <Link
                     className="hstack items-start gap-2 p-2 hover:bg-gray-600 hover:bg-opacity-5 dark:hover:bg-white duration-150 rounded-1-5"
-                    href={`/blog`}
+                    href={`/shopify-plus#build`}
                   >
-                    <i className="icon-1 unicon-course fw-bold text-primary dark:text-secondary" />
+                    <i className="icon-1 unicon-task-approved fw-bold text-primary dark:text-secondary" />
                     <span className="vstack gap-narrow mt-nnarrow">
-                      <b className="fw-bold dark:text-white">Blog</b>
+                      <b className="fw-bold dark:text-white">Build</b>
                       <span className="fw-normal">
-                        Managing multiple software and tools for different
-                        tasks.
+                        We help you build a new Shopify Plus store from scratch, tailored to your business needs.
                       </span>
                     </span>
                   </Link>
@@ -275,14 +274,13 @@ export default function Nav3() {
                 <li>
                   <a
                     className="hstack items-start gap-2 p-2 hover:bg-gray-600 hover:bg-opacity-5 dark:hover:bg-white duration-150 rounded-1-5"
-                    onClick={openNewsletterModal}
-                    role="button"
+                   href={`/shopify-plus#manage`}
                   >
-                    <i className="icon-1 unicon-email fw-bold text-primary dark:text-secondary" />
+                    <i className="icon-1 unicon-model fw-bold text-primary dark:text-secondary" />
                     <span className="vstack gap-narrow mt-nnarrow">
-                      <b className="fw-bold dark:text-white">Newsletter</b>
+                      <b className="fw-bold dark:text-white">Manage</b>
                       <span className="fw-normal">
-                        The latest industry reports, updates and info.
+                        We manage your Shopify Plus store, ensuring it runs smoothly and efficiently.
                       </span>
                     </span>
                   </a>
@@ -290,14 +288,13 @@ export default function Nav3() {
                 <li>
                   <Link
                     className="hstack items-start gap-2 p-2 hover:bg-gray-600 hover:bg-opacity-5 dark:hover:bg-white duration-150 rounded-1-5"
-                    href={`/services`}
+                   href={`/shopify-plus#speed-optimization`}
                   >
-                    <i className="icon-1 unicon-play fw-bold text-primary dark:text-secondary" />
+                    <i className="icon-1 unicon-increase-level fw-bold text-primary dark:text-secondary" />
                     <span className="vstack gap-narrow mt-nnarrow">
-                      <b className="fw-bold dark:text-white">Video Tutorials</b>
+                      <b className="fw-bold dark:text-white">Speed Optimization</b>
                       <span className="fw-normal">
-                        Assign tasks, share files, and communicate with your
-                        team.
+                       Otimization of your Shopify Plus store for better performance and faster loading times.
                       </span>
                     </span>
                   </Link>
@@ -309,14 +306,13 @@ export default function Nav3() {
                 <li>
                   <Link
                     className="hstack items-start gap-2 p-2 hover:bg-gray-600 hover:bg-opacity-5 dark:hover:bg-white duration-150 rounded-1-5"
-                    href={`/page-career`}
+                   href={`/shopify-plus#mobile-app-development`}
                   >
                     <i className="icon-1 unicon-star fw-bold text-primary dark:text-secondary" />
                     <span className="vstack gap-narrow mt-nnarrow">
-                      <b className="fw-bold dark:text-white">We're hiring</b>
+                      <b className="fw-bold dark:text-white">Mobile App development</b>
                       <span className="fw-normal">
-                        Managing multiple software and tools for different
-                        tasks.
+                        Need a mobile app? We develop custom mobile applications that integrate seamlessly with your Shopify Plus store.
                       </span>
                     </span>
                   </Link>
@@ -324,17 +320,19 @@ export default function Nav3() {
                 <li>
                   <Link
                     className="hstack items-start gap-2 p-2 hover:bg-gray-600 hover:bg-opacity-5 dark:hover:bg-white duration-150 rounded-1-5"
-                    href={`/contact-us`}
+                   href={`/shopify-plus#customer-support-services`}
                   >
                     <i className="icon-1 unicon-headset fw-bold text-primary dark:text-secondary" />
                     <span className="vstack gap-narrow mt-nnarrow">
-                      <b className="fw-bold dark:text-white">Help Center</b>
+                      <b className="fw-bold dark:text-white">Customer Support Services</b>
                       <span className="fw-normal">
-                        The latest industry reports, updates and info.
+                       We provide dedicated customer support services to ensure your Shopify Plus store runs smoothly and your customers are satisfied.
                       </span>
                     </span>
                   </Link>
                 </li>
+            <div class="vstack justify-between gap-2 pt-8"><a class="btn btn-sm btn-primary"   onClick={openNewsletterModal}>Share your requirements</a></div>
+                
               </ul>
             </div>
           </div>

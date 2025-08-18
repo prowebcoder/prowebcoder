@@ -1,10 +1,10 @@
 export const services = [
-  "Service-based Business",
-  "Marketing Automation",
-  "Project Management Software",
-  "Cloud-Based Solutions",
-  "Start-ups",
-  "Developers",
+  "Build a new Shopify Store",
+  "Customize Shopify Theme",
+  "Figma to Shopify Conversion",
+  "Liquid to Hydrogen Conversion",
+  "Speed Optimization",
+  "Mobile App Development",
 ];
 
 export const featuresMenu = [
