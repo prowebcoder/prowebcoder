@@ -55,7 +55,7 @@ export async function POST(req) {
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; border: 1px solid #eee; padding: 20px;">
         <div style="text-align: center; margin-bottom: 20px;">
         <a href="https://prowebcoder.com" target="_blank" style="display: inline-block;">
-          <img src="https://prowebcoder.com/assets/images/common/logo-pwc.webp" alt="PWC Logo" width="250" />
+          <img src="https://prowebcoder.com/assets/images/common/pwc.png" alt="PWC Logo" width="250" />
           </a>
         </div>
         <h2 style="color: #333;"><span" style="color: #fe8f00;">Hi</span> ${name},</h2>
