@@ -49,10 +49,10 @@ const [email, setEmail] = useState("");
               </div>
               <div className="panel w-100 sm:w-350px xl:w-450px">
         <form onSubmit={handleSubmit} className="row child-cols g-1">
-        <div>
+        <div className="hstack  gap-1">
           <input
             type="text"
-            className="form-control rounded-default h-48px w-full text-black bg-white mb-2"
+            className="form-control rounded-default h-48px w-full text-black bg-white"
             placeholder="Your name.."
             value={name}
             onChange={(e) => setName(e.target.value)}
