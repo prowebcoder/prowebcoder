@@ -72,6 +72,7 @@ const [email, setEmail] = useState("");
           </button>
         </div>
       </form>
+       {message && <p className="text-sm mt-2">{message}</p>}
               </div>
             </div>
           </div>
