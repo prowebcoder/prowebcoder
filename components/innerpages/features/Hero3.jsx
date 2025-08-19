@@ -58,7 +58,7 @@ export default function Hero3() {
              
                   <div className="vstack md:hstack justify-center lg:justify-start gap-2 mt-2 xl:mt-2">
 
-                 <a class="btn btn-md lg:btn-lg btn-primary text-white min-w-150px sm:mt-1 lg:mt-2" href="/page-pricing" >Get a Free Quote</a>
+                 <a class="btn btn-md lg:btn-lg btn-primary text-white min-w-150px sm:mt-1 lg:mt-2" href="/quote-calculator" >Get a Free Quote</a>
                     
                  
                   </div>

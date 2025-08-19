@@ -7264,3 +7264,7 @@ textarea.form-control-lg {
     align-items: center;
 }
 }
+
+.h-60px{
+  height: 60px !important;
+}

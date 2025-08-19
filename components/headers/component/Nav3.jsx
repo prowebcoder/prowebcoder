@@ -222,7 +222,7 @@ export default function Nav3() {
                     </p>
                   </div>
                   <Link
-                    href={`/app-development`}
+                    href={`/contact-us`}
                     className="btn btn-sm btn-primary"
                   >
                    Share your requirements
@@ -345,8 +345,12 @@ export default function Nav3() {
                     </span>
                   </Link>
                 </li>
-            <div class="vstack justify-between gap-2 pt-8"><a class="btn btn-sm btn-primary"   onClick={openNewsletterModal}>Share your requirements</a></div>
-                
+            {/* <div class="vstack justify-between gap-2 pt-8"><a class="btn btn-sm btn-primary"  </ul> onClick={openNewsletterModal}>Share your requirements</a></div> */}
+                  <div class="vstack justify-between gap-2 pt-8"><a class="btn btn-sm btn-primary"
+             href={`/contact-us`}>
+              Share your requirements</a>
+              
+              </div> 
               </ul>
             </div>
           </div>

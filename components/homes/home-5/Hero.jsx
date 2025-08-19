@@ -49,8 +49,8 @@ export default function Hero() {
                     <br className="d-none lg:d-block" />
                     
                   </p>
-                  <div className="vstack gap-1 mt-2 xl:mt-4">
-                    <form
+                  <div className="vstack gap-1 ">
+                    {/* <form
                       onSubmit={(e) => e.preventDefault()}
                       className="row child-cols g-1"
                     >
@@ -69,8 +69,14 @@ export default function Hero() {
                           Connect with us
                         </button>
                       </div>
-                    </form>
-                    <p className="fs-7 text-dark dark:text-white text-opacity-70">
+                    </form> */}
+                    <div className="vstack md:hstack justify-center lg:justify-start gap-2">
+
+                 <a class="btn btn-md lg:btn-lg btn-primary text-white min-w-150px sm:mt-1" href="/quote-calculator" >Get a Free Quote</a>
+                    
+                 
+                  </div>
+                    {/* <p className="fs-7 text-dark dark:text-white text-opacity-70">
                       We care about your data in our {''}
                       <Link
                         href={`/privacy-policy`}
@@ -79,7 +85,7 @@ export default function Hero() {
                          privacy policy
                       </Link>
                       .
-                    </p>
+                    </p> */}
                   </div>
                   <div className="vstack md:hstack justify-center lg:justify-start gap-2 mt-2 xl:mt-4">
                     <div className="hstack justify-center gap-0">

@@ -14,6 +14,7 @@ import MobileMenu from "@/components/headers/component/MobileMenu";
 import BacktoTop from "@/components/common/BacktoTop";
 import { ParallaxProvider } from "react-scroll-parallax";
 import ContactModal from "@/components/modals/ContactModal";
+import BookModal from "@/components/modals/BookModal";
 import NewsletterModal from "@/components/modals/NewsletterModal";
 import SearchModal from "@/components/modals/SearchModal";
 import { Toaster } from "react-hot-toast"; // ✅ Toast added
@@ -109,11 +110,16 @@ export default function RootLayout({ children }) {
         async        
         defer
         />
+         <Script
+          src="https://assets.calendly.com/assets/external/widget.js"
+          strategy="lazyOnload"
+        />
         <Context>
 
           <ParallaxProvider>{children}</ParallaxProvider>
           <MobileMenu />
           <ContactModal />
+          <BookModal />
           <NewsletterModal />
           <SearchModal />
           <Cart />

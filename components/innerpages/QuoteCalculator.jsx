@@ -34,6 +34,7 @@ export default function QuoteCalculator() {
       multiCurrency: true,
       multilingual: false,
       customCheckout: false,
+      customCart: false,
       wishlist: true,
       reviews: true,
       loyalty: false,
@@ -81,20 +82,21 @@ export default function QuoteCalculator() {
   // PRICING ENGINE
   // --------------------------
   const PRICING = {
-    base: { new: 900, redesign: 1200, migration: 1500 },
+    base: { new: 500, redesign: 800, migration: 1500 },
     storeTypeMultiplier: { basic: 1, standard: 1.35, advanced: 1.9, plus: 3.2 },
-    theme: { 'prebuilt': 0, 'customized-theme': 1800, 'bespoke': 4500 },
-    brandingNotReady: 600,
-    per50Products: 220,
+    theme: { 'prebuilt': 0, 'customized-theme': 1200, 'bespoke': 2500 },
+    brandingNotReady: 200,
+    per50Products: 120,
     variantComplexityMultiplier(v) { return Math.max(0.8, 1 + (v - 3) * 0.05); },
     features: {
       subscriptions: 1100,
       b2b: 1600,
-      multiCurrency: 650,
-      multilingual: 950,
+      multiCurrency: 100,
+      multilingual: 100,
       customCheckout: 1400,
+      customCart: 500,
       wishlist: 320,
-      reviews: 260,
+      reviews: 150,
       loyalty: 850,
       bundles: 650,
       advancedSearch: 550,
@@ -102,16 +104,16 @@ export default function QuoteCalculator() {
     },
     integrationsPerConnector: 520,
     migration: {
-      base: 650,
-      per100Products: 130,
-      per1000Customers: 110,
-      per1000Orders: 160,
+      base: 450,
+      per100Products: 50,
+      per1000Customers: 50,
+      per1000Orders: 150,
     },
     markets: { base: 320, perMarket: 160 },
-    compliance: { accessibility: 980, gdpr: 340 },
+    compliance: { accessibility: 500, gdpr: 150 },
     performance: { standard: 0, aggressive: 820 },
     rushSurcharge(weeks) { return weeks < 6 ? (6 - weeks) * 0.1 : 0; }, // 10% per week under 6
-    supportMonthly: { basic: 110, pro: 420, elite: 1250 },
+    supportMonthly: { none: 0,basic: 110, pro: 320, elite: 850 },
   };
 
   const currencyFmt = (n) => new Intl.NumberFormat(undefined, { style: 'currency', currency: form.currency || 'USD' }).format(n);
@@ -242,7 +244,8 @@ export default function QuoteCalculator() {
   // UI
   // --------------------------
     return (
-    <div className="container panel rounded-3 overflow-hidden bg-white border mt-6 max-w-4xl mx-auto my-6 p-6 md:p-10" id="quote_calculator">
+      <div className="section-outer panel py-4 xl:py-9">
+    <div className="container panel rounded-3 overflow-hidden bg-white border mt-6 max-w-4xl mx-auto my-6 p-6 md:p-10 max-w-xl" id="quote_calculator">
       {/* Header */}
       <div className="hstack items-center justify-between mb-6">
         <div>
@@ -251,7 +254,7 @@ export default function QuoteCalculator() {
             Answer a few questions to get an instant estimate.
           </p>
         </div>
-         <div className="relative" style={{ position: 'relative' }}>
+         <div className="relative" style={{ position: 'relative',display:'none' }}>
         <select
           className="form-control bg-gray-50 rounded-lg px-3 py-2"
           value={form.currency}
@@ -272,10 +275,10 @@ export default function QuoteCalculator() {
       </div>
 
       {/* Progress */}
-      <div className="mb-8">
-        <div className="hstack justify-between mb-2">
-          <span className="fs-7 font-semibold text-gray-700">Step {step + 1} of {steps.length}</span>
-          <span className="fs-7 text-gray-500">{steps[step].title}</span>
+      <div className="mb-8 ">
+        <div className="hstack justify-between mb-2 opacity-50 border-dashed border-gray-300 p-2 rounded-lg">
+          <span className="fs-5 font-semibold text-gray-700">Step {step + 1} of {steps.length}</span>
+          <span className="fs-5 text-gray-500">{steps[step].title}</span>
         </div>
         <div className="h-2 bg-gray-200 rounded-full">
           <div
@@ -340,10 +343,7 @@ export default function QuoteCalculator() {
                 <label className="block fs-7 font-medium mb-1">Approx. Products</label>
                 <input type="number" min={0} className="form-control w-full p-3 rounded-lg border bg-gray-50" value={form.products} onChange={(e) => set('products', Number(e.target.value))} />
               </div>
-              <div>
-                <label className="block fs-7 font-medium mb-1">Avg. Variants per Product</label>
-                <input type="number" min={0} className="form-control w-full p-3 rounded-lg border bg-gray-50" value={form.variantsPerProduct} onChange={(e) => set('variantsPerProduct', Number(e.target.value))} />
-              </div>
+             
             </div>
           </section>
         )}
@@ -352,7 +352,7 @@ export default function QuoteCalculator() {
         {step === 1 && (
           <section>
             <h2 className="h3 sm:h2 mb-4">Design</h2>
-            <div className=" child-cols-12 md:child-cols-6 g-4">
+            <div className=" child-cols-12 md:child-cols-12 g-4">
               <div>
                 <label className="block fs-7 font-medium mb-1">Theme Approach</label>
                  <div className="relative" style={{ position: 'relative' }}>
@@ -494,6 +494,7 @@ export default function QuoteCalculator() {
                 <label className="block fs-7 font-medium mb-1">Support Plan (monthly)</label>
                   <div className="relative" style={{ position: 'relative' }}>
                 <select className="form-control w-full p-3 rounded-lg border bg-gray-50" value={form.supportSLA} onChange={(e) => set('supportSLA', e.target.value)}>
+                  <option value="none">No Support</option>
                   <option value="basic">Basic — {currencyFmt(PRICING.supportMonthly.basic)}/mo</option>
                   <option value="pro">Pro — {currencyFmt(PRICING.supportMonthly.pro)}/mo</option>
                   <option value="elite">Elite — {currencyFmt(PRICING.supportMonthly.elite)}/mo</option>
@@ -544,9 +545,9 @@ export default function QuoteCalculator() {
             </div>
 
             <div className="hstack flex-wrap gap-3 mt-4">
-              <button className="btn btn-primary rounded-xl px-4 py-2" onClick={copySummary}>Copy Shareable Summary</button>
+              <button className="btn btn-primary rounded-xl" onClick={copySummary}>Copy Shareable Summary</button>
               <a
-                className="btn btn-ghost rounded-xl px-4 py-2"
+                className="btn btn-primary rounded-xl"
                 href={`mailto:?subject=Shopify%20Quote%20Estimate&body=${encodeURIComponent(renderEmailBody(form, quote, currencyFmt))}`}
               >
                 Email This Quote
@@ -574,6 +575,7 @@ export default function QuoteCalculator() {
           )}
         </div>
       </div>
+    </div>
     </div>
   );
 }

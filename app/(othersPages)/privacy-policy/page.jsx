@@ -4,10 +4,10 @@ import Footer2 from "@/components/footers/Footer2";
 import Breadcumb from "@/components/otherPages/Breadcumb";
 import Privacy from "@/components/otherPages/Privacy";
 export const metadata = {
-  title:
-    "Privacy || Lexend - Full-featured, professional-looking software, saas and startup nextjs template.",
+   title:
+    "Privacy Policy | Prowebcoder | Shopify experts, WordPress developers, BigCommerce specialists, and mobile app developers.",
   description:
-    "Lexend - Full-featured, professional-looking software, saas and startup nextjs template.",
+    "Web development services specializing in Shopify, WordPress, BigCommerce, and mobile app development. Our team delivers high-quality solutions for startups and enterprises.",
 };
 export default function PrivacyPage() {
   return (

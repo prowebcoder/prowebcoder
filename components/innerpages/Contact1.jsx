@@ -66,13 +66,14 @@ export default function Contact1() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: `${firstName} ${lastName}`,
-          email,
-          subject: `Request from ${firstName}`,
-          message: `Phone: ${phone || "N/A"}\nCompany: ${company || "N/A"}\n\n${message}`,
-          recaptchaToken,
-        }),
+  body: JSON.stringify({
+  name: `${firstName} ${lastName}`,
+  email,
+  subject: `Request from ${firstName}`,
+  message: `Phone: ${phone || "N/A"}\nCompany: ${company || "N/A"}\nService: ${formData.service || "N/A"}\n\n${message}`,
+  recaptchaToken,
+}),
+
       });
 
       if (res.ok) {
@@ -92,6 +93,7 @@ export default function Contact1() {
           email: "",
           phone: "",
           company: "",
+           service: "",
           message: "",
         });
         grecaptcha.reset(recaptchaId.current);
@@ -175,7 +177,7 @@ export default function Contact1() {
                     <div className="row child-cols-12 sm:child-cols-6 g-2">
                       <div>
                         <input
-                          className="form-control h-40px w-full bg-white dark:border-white dark:bg-opacity-10 dark:border-opacity-0 dark:text-white"
+                          className="form-control h-60px w-full bg-white dark:border-white dark:bg-opacity-10 dark:border-opacity-0 dark:text-white"
                           type="text"
                           name="firstName"
                           value={formData.firstName}
@@ -186,7 +188,7 @@ export default function Contact1() {
                       </div>
                       <div>
                         <input
-                          className="form-control h-40px w-full bg-white dark:border-white dark:bg-opacity-10 dark:border-opacity-0 dark:text-white"
+                          className="form-control h-60px w-full bg-white dark:border-white dark:bg-opacity-10 dark:border-opacity-0 dark:text-white"
                           type="text"
                           name="lastName"
                           value={formData.lastName}
@@ -201,7 +203,7 @@ export default function Contact1() {
                     <div className="row child-cols-12 sm:child-cols-6 g-2">
                       <div>
                         <input
-                          className="form-control h-40px w-full bg-white dark:border-white dark:bg-opacity-10 dark:border-opacity-0 dark:text-white"
+                          className="form-control h-60px w-full bg-white dark:border-white dark:bg-opacity-10 dark:border-opacity-0 dark:text-white"
                           type="email"
                           name="email"
                           value={formData.email}
@@ -212,7 +214,7 @@ export default function Contact1() {
                       </div>
                       <div>
                         <input
-                          className="form-control h-40px w-full bg-white dark:border-white dark:bg-opacity-10 dark:border-opacity-0 dark:text-white"
+                          className="form-control h-60px w-full bg-white dark:border-white dark:bg-opacity-10 dark:border-opacity-0 dark:text-white"
                           type="tel"
                           name="phone"
                           value={formData.phone}
@@ -224,13 +226,66 @@ export default function Contact1() {
 
                     {/* Company */}
                     <input
-                      className="form-control h-40px w-full bg-white dark:border-white dark:bg-opacity-10 dark:border-opacity-0 dark:text-white"
+                      className="form-control h-60px w-full bg-white dark:border-white dark:bg-opacity-10 dark:border-opacity-0 dark:text-white"
                       type="text"
                       name="company"
                       value={formData.company}
                       onChange={handleChange}
                       placeholder="Company name"
                     />
+
+{/* Services Dropdown */}
+  <div className="relative" style={{ position: 'relative' }}>
+<select
+  className="form-control h-60px w-full bg-white dark:border-white dark:bg-opacity-10 dark:border-opacity-0 dark:text-white"
+  name="service"
+  value={formData.service || ""}
+  onChange={handleChange}
+  required
+>
+  <option value="">Select the service you’re interested in</option>
+
+  <optgroup label="Shopify">
+    <option value="Shopify Plus">Shopify Plus</option>
+    <option value="Shopify Development">Shopify Development</option>
+    <option value="Shopify App Development">Shopify App Development</option>
+    <option value="Custom Storefront">Custom Storefront</option>
+  </optgroup>
+
+  <optgroup label="E-Commerce Platforms">
+    <option value="WooCommerce">WooCommerce</option>
+    <option value="Squarespace">Squarespace</option>
+    <option value="Webflow">Webflow</option>
+    <option value="BigCommerce">BigCommerce</option>
+    <option value="Magento">Magento</option>
+  </optgroup>
+
+  <optgroup label="Web Development">
+    <option value="WordPress">WordPress</option>
+    <option value="Next.js">Next.js</option>
+    <option value="React">React</option>
+    <option value="Custom Applications">Custom Applications</option>
+  </optgroup>
+
+  <optgroup label="Mobile & Apps">
+    <option value="Mobile App Development">Mobile App Development</option>
+    <option value="PWA Development">Progressive Web Apps (PWA)</option>
+    <option value="Headless Commerce">Headless Commerce</option>
+  </optgroup>
+
+  <optgroup label="Consulting & Support">
+    <option value="Consultation">Consultation</option>
+    <option value="Support & Maintenance">Support & Maintenance</option>
+    <option value="Migration">Platform Migration</option>
+    <option value="Performance Optimization">Performance Optimization</option>
+    <option value="SEO & Marketing">SEO & Marketing</option>
+  </optgroup>
+</select>
+    <div className="absolute  h-20px w-20px right-3 top-1/2 -translate-y-1/2 pointer-events-none" style={{ position: 'absolute', right: '6px',top:"20px",zIndex: 1 }}>
+            <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+            </svg></div>
+            </div>
 
                     {/* Message */}
                     <textarea
@@ -243,7 +298,7 @@ export default function Contact1() {
                     />
 
                     {/* reCAPTCHA */}
-                    <div className="mb-2 h-40px">
+                    <div className="mb-2 h-60px">
                       <div ref={recaptchaRef} />
                     </div>
 

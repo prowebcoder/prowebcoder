@@ -5,9 +5,10 @@ import QuoteCalculator from "@/components/innerpages/QuoteCalculator";
 import Hero4 from "@/components/innerpages/features/Hero4";
 export const metadata = {
   title:
-    "Integrations || Lexend - Full-featured, professional-looking software, saas and startup nextjs template.",
+    "Quote Calculator | Prowebcoder | Shopify experts, WordPress developers, BigCommerce specialists, and mobile app developers.",
   description:
-    "Lexend - Full-featured, professional-looking software, saas and startup nextjs template.",
+    "Web development services specializing in Shopify, WordPress, BigCommerce, and mobile app development. Our team delivers high-quality solutions for startups and enterprises.",
+
 };
 export default function IntegrationPage() {
   return (

@@ -132,12 +132,11 @@ export const footerLinks3 = [
     title: "QUICK LINKS",
     links: [
       { href: "/sign-in", label: "Build a New Website" },
-      { href: "/sign-in", label: "Customize your store" },
-      { href: "/sign-in-2", label: "Get a Free Website Audit" },
-      { href: "/sign-in", label: "Build a New Website" },
-       { href: "/sign-up", label: "Contact Us" },
-      { href: "/sign-up-2", label: "Help center" },
-      { href: "/reset-password-2", label: "Support" },
+      { href: "/free-audit", label: "Get a Free Website Audit" },
+      { href: "/services", label: "Build a New Website" },
+       { href: "/contact-us", label: "Contact Us" },
+      { href: "/contact-us", label: "Help center" },
+      { href: "/contact-us", label: "Support" },
     ],
   },
   // {
@@ -156,12 +155,9 @@ export const footerLinks3 = [
     title: "LEGAL",
     links: [
       { href: "/blog", label: "Legal" },
-      { href: "/blog-details/1", label: "Terms" },
-      { href: "/page-terms", label: "Privacy" },
-      { href: "/page-not-found", label: "Cookies" },
-      { href: "/coming-soon", label: "Licenses" },
-      { href: "/page-terms", label: "Settings" },
-      { href: "/page-privacy", label: "Contact" },
+      { href: "/page-terms", label: "Terms" },
+      { href: "/privacy-policy", label: "Privacy" },
+  
     ],
     extraClass: "d-none lg:d-block",
   },

@@ -21,10 +21,10 @@ export default function PricingPage() {
           
           <Pricing />
           {/* <div className="pt-6 xl:pt-9"></div> */}
-          <Faq />
+          {/* <Faq />
 
           
-          <Testimonials />
+          <Testimonials /> */}
           <div
             id="clients_brands"
             className="clients-brands section panel overflow-hidden"

@@ -196,8 +196,8 @@ export const tiers3 = [
     price: "$199/month",
     yearlyPrice: "$1999/year",
     priceDetails: "We manage your store for you",
-    linkText: "Start a free trial",
-    linkSubtext: "No credit card required",
+    linkText: "Get a Quote",
+     linkSubtext: "Response Time - 24 hrs max",
     features: [
        "Product Management",
       "Inventory Management",
@@ -217,8 +217,8 @@ export const tiers3 = [
     price: "$2500 USD",
     yearlyPrice: "$2500 USD",
     priceDetails: "One Time Cost",
-    linkText: "Start a free trial",
-    linkSubtext: "No credit card required",
+    linkText: "Get a Quote",
+    linkSubtext: "Response Time - 24 hrs max",
     features: [
       "Consultation",
       "Platform Selection",
@@ -241,7 +241,7 @@ export const tiers3 = [
     yearlyPrice: "Let’s talk",
     priceDetails: "Best for Complex Workflows",
     linkText: "Contact Us",
-    linkSubtext: "Respond within 24 hrs max",
+    linkSubtext: "Response Time - 24 hrs max",
     features: [
       "Advanced API Integrations (ERP, CRM, third-party tools)",
       "Multi-language & Multi-currency Support",

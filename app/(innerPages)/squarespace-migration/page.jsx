@@ -8,9 +8,10 @@ import Brands from "@/components/common/Brands2";
 import Blogs from "@/components/homes/home-2/Blogs";
 export const metadata = {
   title:
-    "Contact 1 || Lexend - Full-featured, professional-looking software, saas and startup nextjs template.",
+    "Contact Us | Prowebcoder | Shopify experts, WordPress developers, BigCommerce specialists, and mobile app developers.",
   description:
-    "Lexend - Full-featured, professional-looking software, saas and startup nextjs template.",
+    "Web development services specializing in Shopify, WordPress, BigCommerce, and mobile app development. Our team delivers high-quality solutions for startups and enterprises.",
+
 };
 export default function ContactPage() {
   return (
@@ -20,8 +21,8 @@ export default function ContactPage() {
         <div id="wrapper" className="wrap">
           <Contact1 />
 
-          <ContactLinks />
-          <Faq />
+          {/* <ContactLinks /> */}
+        
           <div
             id="clients_brands"
             className="clients-brands section panel overflow-hidden"
@@ -43,7 +44,7 @@ export default function ContactPage() {
               </div>
             </div>
           </div>
-          <Blogs />
+         
         </div>
         <Footer2 />
       </div>

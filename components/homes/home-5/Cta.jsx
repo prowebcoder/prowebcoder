@@ -1,5 +1,6 @@
 "use client";
-import { openContactModal } from "@/utlis/toggleContactModal";
+import { openBoo } from "@/utlis/toggleContactModal";
+import { openBookModal } from "@/utlis/toggleBookModal";
 import Link from "next/link";
 
 export default function Cta() {
@@ -19,7 +20,7 @@ export default function Cta() {
 
               </p>
               <div className="hstack justify-center gap-1 lg:gap-2 mt-1">
-                <a
+                {/* <a
                   onClick={openContactModal}
                   className="btn btn-md rounded-default bg-white dark:bg-gray-700 dark:text-white border-gray-900 dark:border-white border-opacity-20 hover:border-opacity-40 shadow-xs"
                   data-uc-toggle=""
@@ -27,12 +28,21 @@ export default function Cta() {
                 >
                   <i className="icon-narrow unicon-event-schedule fw-bold"></i>
                   <span>Get a demo</span>
+                </a> */}
+                <a
+                  onClick={openBookModal}
+                  className="btn btn-md rounded-default bg-white dark:bg-gray-700 dark:text-white border-gray-900 dark:border-white border-opacity-20 hover:border-opacity-40 shadow-xs"
+                  data-uc-toggle=""
+                  role="button"
+                >
+                  <i className="icon-narrow unicon-event-schedule fw-bold"></i>
+                  <span>Book a Call</span>
                 </a>
                 <Link
-                  href={`/page-pricing`}
+                  href={`/quote-calculator`}
                   className="btn btn-md btn-primary rounded-default text-white shadow-xs"
                 >
-                  Start a free trial
+                 Get a Quote
                 </Link>
               </div>
             </div>

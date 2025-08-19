@@ -21,7 +21,7 @@ export default function ContactPage() {
         <div id="wrapper" className="wrap">
           <Contact1 />
 
-          <ContactLinks />
+          {/* <ContactLinks /> */}
         
           <div
             id="clients_brands"
