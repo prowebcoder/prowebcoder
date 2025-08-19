@@ -155,8 +155,8 @@ export const footerLinks3 = [
     title: "LEGAL",
     links: [
       { href: "/blog", label: "Legal" },
-      { href: "/page-terms", label: "Terms" },
-      { href: "/privacy-policy", label: "Privacy" },
+      { href: "/page-terms", label: "Terms of Service" },
+      { href: "/privacy-policy", label: "Privacy Policy" },
   
     ],
     extraClass: "d-none lg:d-block",
