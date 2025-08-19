@@ -3,8 +3,37 @@ import Link from "next/link";
 import Image from "next/image";
 import LanguageSelect from "../common/LanguageSelect";
 import { footerLinks3, socialLinks } from "@/data/footer";
-
+import { useState } from "react";
 export default function Footer4() {
+const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setMessage("Subscribing...");
+
+    try {
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, firstName: name }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        setMessage("✅ Subscribed successfully!");
+        setEmail("");
+        setName("");
+      } else {
+        setMessage("❌ " + data.error);
+      }
+    } catch (err) {
+      setMessage("❌ Something went wrong");
+    }
+  };
+
   return (
     <footer id="uc-footer" className="uc-footer panel overflow-hidden uc-dark">
       <div className="footer-outer pb-4 lg:pb-2 dark:bg-gray-900 dark:text-white">
@@ -19,26 +48,30 @@ export default function Footer4() {
                 </p>
               </div>
               <div className="panel w-100 sm:w-350px xl:w-450px">
-                <form
-                  onSubmit={(e) => e.preventDefault()}
-                  className="row child-cols g-1"
-                >
-                  <div>
-                    <div className="form-group inline-block">
-                      <input
-                        type="email"
-                        className="form-control rounded-default h-48px w-full text-black bg-white"
-                        placeholder="Your email.."
-                        required
-                      />
-                    </div>
-                  </div>
-                  <div className="col-12 sm:col-auto">
-                    <button className="btn btn-md btn-primary rounded-default w-full h-48px text-white">
-                      Subscribe
-                    </button>
-                  </div>
-                </form>
+        <form onSubmit={handleSubmit} className="row child-cols g-1">
+        <div>
+          <input
+            type="text"
+            className="form-control rounded-default h-48px w-full text-black bg-white mb-2"
+            placeholder="Your name.."
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <input
+            type="email"
+            className="form-control rounded-default h-48px w-full text-black bg-white"
+            placeholder="Your email.."
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+        <div className="col-12 sm:col-auto">
+          <button className="btn btn-md btn-primary rounded-default w-full h-48px text-white">
+            Subscribe
+          </button>
+        </div>
+      </form>
               </div>
             </div>
           </div>
