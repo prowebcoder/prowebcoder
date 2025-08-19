@@ -88,7 +88,7 @@ export default function Howworks() {
 
                         </p>
                         <div className="panel mt-2 lg:mt-4">
-                          <div className="row child-cols-12 lg:child-cols-6 g-4  mb-4">
+                          <div className="row child-cols-6 lg:child-cols-6 g-4  mb-4">
                             <div>
                               <div className="panel vstack items-start gap-2">
                                 <div className="cstack min-w-48px min-h-48px bg-primary rounded-circle">
@@ -136,7 +136,7 @@ export default function Howworks() {
                               </div>
                             </div>
                           </div>
-                          <div className="row child-cols-12 lg:child-cols-6 g-4  mb-4">
+                          <div className="row child-cols-6 lg:child-cols-6 g-4  mb-4">
                             <div>
                               <div className="panel vstack items-start gap-2">
                                 <div className="cstack min-w-48px min-h-48px bg-primary rounded-circle">
@@ -184,7 +184,7 @@ export default function Howworks() {
                               </div>
                             </div>
                           </div>
-                          <div className="row child-cols-12 lg:child-cols-6 g-4">
+                          <div className="row child-cols-6 lg:child-cols-6 g-4">
                             <div>
                               <div className="panel vstack items-start gap-2">
                                 <div className="cstack min-w-48px min-h-48px bg-primary rounded-circle">

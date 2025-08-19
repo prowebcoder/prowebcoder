@@ -1,4 +1,4 @@
-// app/api/subscribe/route.js
+// app/api/subscribe/route.js  (App Router)
 import { NextResponse } from "next/server";
 import Brevo from "@getbrevo/brevo";
 
@@ -10,30 +10,28 @@ export async function POST(req) {
       return NextResponse.json({ error: "Email is required" }, { status: 400 });
     }
 
-    // Configure Brevo client
     const client = new Brevo.ContactsApi();
     client.setApiKey(
       Brevo.ContactsApiApiKeys.apiKey,
-      process.env.BREVO_API_KEY // <-- set this in your .env.local
+      process.env.BREVO_API_KEY
     );
 
-    // Add contact
     const contact = {
       email,
       attributes: {
-        FIRSTNAME: firstName || "", // Brevo attribute name
+        FIRSTNAME: firstName || "",
       },
-      updateEnabled: true, // update if exists
-      listIds: [12], // replace with your Brevo List ID
+      updateEnabled: true,
+      listIds: [12], // change to your Brevo list ID
     };
 
-    await client.createContact(contact);
+    const response = await client.createContact(contact);
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ success: true, response });
   } catch (error) {
-    console.error("Brevo Error:", error.response?.body || error.message);
+    console.error("Brevo API Error:", error?.response?.body || error.message);
     return NextResponse.json(
-      { error: "Failed to subscribe" },
+      { error: error?.response?.body || error.message },
       { status: 500 }
     );
   }

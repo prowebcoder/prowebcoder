@@ -105,7 +105,7 @@ export default function MobileMenu() {
           </button>
         </header>
         <div className="panel">
-          <form
+          {/* <form
             onSubmit={(e) => e.preventDefault()}
             id="search-panel"
             className="form-icon-group vstack gap-1 mb-2 uc-sticky"
@@ -119,7 +119,7 @@ export default function MobileMenu() {
             <span className="form-icon text-gray">
               <i className="unicon-search icon-1" />
             </span>
-          </form>
+          </form> */}
           <div
             className="uc-sticky-placeholder"
             style={{ height: 40, width: 290, margin: "0px 0px 16px" }}
@@ -232,7 +232,7 @@ export default function MobileMenu() {
             <li className="hr opacity-10 my-1" />
            
           </ul>
-          <ul className="social-icons nav-x mt-4">
+          {/* <ul className="social-icons nav-x mt-4">
             <li>
               {icons.map((icon, index) => (
                 <a key={index} href={icon.href}>
@@ -240,7 +240,7 @@ export default function MobileMenu() {
                 </a>
               ))}
             </li>
-          </ul>
+          </ul> */}
           <div
             className="py-2 hstack gap-2 mt-4 bg-white dark:bg-gray-900 uc-sticky uc-active uc-sticky-fixed"
             data-uc-sticky="position: bottom"
