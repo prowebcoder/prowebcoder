@@ -24,7 +24,7 @@ export async function POST(req) {
         FIRSTNAME: firstName || "", // Brevo attribute name
       },
       updateEnabled: true, // update if exists
-      listIds: [2], // replace with your Brevo List ID
+      listIds: [12], // replace with your Brevo List ID
     };
 
     await client.createContact(contact);
