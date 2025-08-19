@@ -9,30 +9,31 @@ const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setMessage("Subscribing...");
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setMessage("Subscribing...");
 
-    try {
-      const res = await fetch("/api/subscribe", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, firstName: name }),
-      });
+  try {
+    const res = await fetch("/api/subscribe", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, firstName: name }),
+    });
 
-      const data = await res.json();
+    const data = await res.json();
 
-      if (res.ok) {
-        setMessage("✅ Subscribed successfully!");
-        setEmail("");
-        setName("");
-      } else {
-        setMessage("❌ " + data.error);
-      }
-    } catch (err) {
-      setMessage("❌ Something went wrong");
+    if (res.ok) {
+      setMessage("✅ Subscribed successfully!");
+      setEmail("");
+      setName("");
+    } else {
+      setMessage("❌ " + data.error);
     }
-  };
+  } catch (err) {
+    setMessage("❌ Something went wrong");
+  }
+};
+
 
   return (
     <footer id="uc-footer" className="uc-footer panel overflow-hidden uc-dark">
