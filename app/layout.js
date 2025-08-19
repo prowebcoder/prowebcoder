@@ -15,6 +15,7 @@ import BacktoTop from "@/components/common/BacktoTop";
 import { ParallaxProvider } from "react-scroll-parallax";
 import ContactModal from "@/components/modals/ContactModal";
 import BookModal from "@/components/modals/BookModal";
+import TawkChat from "@/components/TawkChat";
 import NewsletterModal from "@/components/modals/NewsletterModal";
 import SearchModal from "@/components/modals/SearchModal";
 import { Toaster } from "react-hot-toast"; // ✅ Toast added
@@ -120,11 +121,14 @@ export default function RootLayout({ children }) {
           <MobileMenu />
           <ContactModal />
           <BookModal />
+          
           <NewsletterModal />
           <SearchModal />
           <Cart />
           <BacktoTop />
+            <TawkChat />
         </Context>
+
         <Toaster
         toastOptions={{
           duration: 3000,
