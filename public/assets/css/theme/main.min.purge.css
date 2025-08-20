@@ -7266,6 +7266,15 @@ textarea.form-control-lg {
 .sm\:.row{
   flex-direction: column !important;
 }
+.smvstack{
+  
+  flex-direction: column !important;
+  flex-direction: column !important;
+        display: flex
+;
+        align-items: stretch;
+
+}
 .vstack {
   display: flex;
   flex: 1 1 auto;

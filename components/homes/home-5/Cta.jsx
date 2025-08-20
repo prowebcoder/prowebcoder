@@ -2,6 +2,7 @@
 import { openBoo } from "@/utlis/toggleContactModal";
 import { openBookModal } from "@/utlis/toggleBookModal";
 import Link from "next/link";
+import { PopupButton } from "react-calendly";
 
 export default function Cta() {
   return (
@@ -19,7 +20,7 @@ export default function Cta() {
 
 
               </p>
-              <div className="hstack justify-center gap-1 lg:gap-2 mt-1">
+              <div className="hstack smvstack justify-center gap-1 lg:gap-2 mt-1">
                 {/* <a
                   onClick={openContactModal}
                   className="btn btn-md rounded-default bg-white dark:bg-gray-700 dark:text-white border-gray-900 dark:border-white border-opacity-20 hover:border-opacity-40 shadow-xs"
@@ -36,7 +37,7 @@ export default function Cta() {
                   role="button"
                 >
                   <i className="icon-narrow unicon-event-schedule fw-bold"></i>
-                  <span>Book a Call</span>
+                  <span>Book an appointment</span>
                 </a>
                 <Link
                   href={`/quote-calculator`}

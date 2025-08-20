@@ -1,15 +1,24 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import { closeBookModal } from "@/utlis/toggleBookModal";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef } from "react";
-import { InlineWidget } from "react-calendly";
 
 export default function BookModal() {
   const pathname = usePathname();
-  const elementRef = useRef(null);
   const containerRef = useRef(null);
+  const elementRef = useRef(null);
 
+  const [embedDomain, setEmbedDomain] = useState("localhost");
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setEmbedDomain(window.location.hostname || "localhost");
+    }
+  }, []);
+
+  // Close on outside click of the inner dialog
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
@@ -21,16 +30,20 @@ export default function BookModal() {
         closeBookModal();
       }
     };
-
     document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  // Close on route change
   useEffect(() => {
     closeBookModal();
   }, [pathname]);
+
+  const baseUrl = "https://calendly.com/pro-webcoder/30min";
+  // You can tweak colors or hide bits via query params below
+  const calendlyUrl = `${baseUrl}?embed_domain=${encodeURIComponent(
+    embedDomain
+  )}&embed_type=Inline&hide_gdpr_banner=1`;
 
   return (
     <div
@@ -43,7 +56,7 @@ export default function BookModal() {
     >
       <div
         ref={elementRef}
-        className="uc-modal-dialog  bg-secondary text-dark dark:bg-gray-800 dark:text-white rounded-1-5"
+        className="uc-modal-dialog lg:max-w-750px bg-secondary text-dark dark:bg-gray-800 dark:text-white rounded-1-5"
         role="dialog"
         aria-modal="true"
       >
@@ -55,27 +68,46 @@ export default function BookModal() {
           <i className="unicon-close" />
         </button>
 
-        <div className="panel vstack gap-2 md:gap-4 text-center">
-          <div className="panel vstack px-3 md:px-4 py-4 md:py-8 m-0 lg:mx-auto">
-            <h4 className="h5 lg:h4 m-0 mb-4">Schedule your 30-minute call now</h4>
+        <div className="panel vstack gap-2 md:gap-4 p-3 md:p-5">
+          <h4 className="h5 lg:h4 m-0 text-center">Schedule your 30-minute call</h4>
 
-            {/* ✅ Calendly Inline Widget */}
-            <InlineWidget
-              url="https://calendly.com/pro-webcoder/30min"
-              styles={{ height: "650px", width: "700px" }}
-              pageSettings={{
-                backgroundColor: "ffffff",
-                hideEventTypeDetails: false,
-                hideLandingPageDetails: false,
-                primaryColor: "00a2ff",
-                textColor: "000000",
+          {/* Loader while the Calendly iframe initializes */}
+          {!loaded && (
+            <div className="vstack items-center justify-center py-6">
+              <div className="spinner-border animate-spin h-6 w-6 rounded-full border-2 border-current border-r-transparent" />
+              <p className="fs-7 opacity-70 mt-2">Loading scheduler…</p>
+            </div>
+          )}
+
+          {/* Calendly Inline (iframe) */}
+          <div className="w-full">
+            <iframe
+              title="Calendly Scheduler"
+              src={calendlyUrl}
+              onLoad={() => setLoaded(true)}
+              style={{
+                width: "100%",
+                height: "720px", // adjust as needed
+                border: "0",
+                display: "block",
               }}
+              allow="transparency"
             />
-
-            <p className="fs-7 opacity-70 mt-2 text-center">
-              Pick a time that works best for you, and we’ll take care of the rest 🚀
-            </p>
           </div>
+
+          {/* Fallback link if iframe is blocked for any reason */}
+          <p className="fs-7 opacity-70 text-center mt-2">
+            If the scheduler doesn’t load,{" "}
+            <a
+              className="uc-link underline"
+              href={baseUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              open Calendly in a new tab
+            </a>
+            .
+          </p>
         </div>
       </div>
     </div>
