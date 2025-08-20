@@ -125,8 +125,6 @@ export default function Header4() {
                 {/* <ul className="uc-navbar-nav gap-3 xl:gap-4 d-none lg:d-flex fw-medium ltr:ms-2 ltr:xl:ms-4 rtl:me-2 rtl:xl:me-4">
                   <LanguageSelect2 />
                 </ul> */}
-                <div className="uc-navbar-item">
-                 Toggle Mode
                                      <div
         className="darkmode-trigger cstack w-48px h-48px rounded text-black dark:bg-gray-700 dark:text-white"
         data-darkmode-toggle=""
@@ -136,7 +134,6 @@ export default function Header4() {
           <input onChange={handleToggle} type="checkbox" checked={isChecked} />
           <span className="slider fs-5"></span>
         </label>
-      </div>
       </div>
                 <Link
                   className="btn btn-md btn-primary rounded-default lg:px-3 text-none shadow-xs d-none lg:d-inline-flex"
