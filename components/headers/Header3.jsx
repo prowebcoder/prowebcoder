@@ -4,10 +4,12 @@ import Nav3 from "./component/Nav3";
 import Link from "next/link";
 import Image from "next/image";
 import { openMobileMenu } from "@/utlis/toggleMobileMenu";
+import { useContextElement } from "@/context/Context";
 import LanguageSelect2 from "../common/LanguageSelect2";
 
 export default function Header4() {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
+   const { isChecked, handleToggle } = useContextElement();
   const [scrollingUp, setScrollingUp] = useState(false);
 
   useEffect(() => {
@@ -63,6 +65,14 @@ export default function Header4() {
                   </ul>
                 </div>
                 <div className="uc-navbar-right">
+                   <div className="uc-navbar-item">
+                    {/* <a className="btn btn-xs p-0 fs-8 text-white" href="#chat">
+                      <i className="icon-narrow unicon-chat-bot" />
+                      <span>Live Chat</span>
+                    </a> */}
+                   
+   
+                  </div>
                   <div className="uc-navbar-item">
                     <a
                       className="btn btn-xs p-0 fs-8 text-white"
@@ -72,12 +82,7 @@ export default function Header4() {
                       <span>Email Us : rahul@prowebcoder.com</span>
                     </a>
                   </div>
-                  <div className="uc-navbar-item">
-                    <a className="btn btn-xs p-0 fs-8 text-white" href="#chat">
-                      <i className="icon-narrow unicon-chat-bot" />
-                      <span>Live Chat</span>
-                    </a>
-                  </div>
+                 
                 </div>
               </div>
             </div>
@@ -120,6 +125,16 @@ export default function Header4() {
                 {/* <ul className="uc-navbar-nav gap-3 xl:gap-4 d-none lg:d-flex fw-medium ltr:ms-2 ltr:xl:ms-4 rtl:me-2 rtl:xl:me-4">
                   <LanguageSelect2 />
                 </ul> */}
+                                     <div
+        className="darkmode-trigger cstack w-48px h-48px rounded text-black dark:bg-gray-700 dark:text-white"
+        data-darkmode-toggle=""
+      >
+        <label className="switch">
+          <span className="sr-only">Dark mode toggle</span>
+          <input onChange={handleToggle} type="checkbox" checked={isChecked} />
+          <span className="slider fs-5"></span>
+        </label>
+      </div>
                 <Link
                   className="btn btn-md btn-primary rounded-default lg:px-3 text-none shadow-xs d-none lg:d-inline-flex"
                   href={`/contact-us`}

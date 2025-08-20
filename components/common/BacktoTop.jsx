@@ -36,11 +36,11 @@ export default function BacktoTop() {
 
   return (
     <div
-      className={`backtotop-wrap position-fixed bottom-0 end-0 z-99 m-2 vstack  ${
+      className={`backtotop-wrap position-fixed bottom-0  z-99 m-2 vstack  ${
         isVisible ? "uc-active" : ""
       }`}
     >
-      <div
+      {/* <div
         className="darkmode-trigger cstack w-40px h-40px rounded-circle text-none bg-gray-100 dark:bg-gray-700 dark:text-white"
         data-darkmode-toggle=""
       >
@@ -49,7 +49,7 @@ export default function BacktoTop() {
           <input onChange={handleToggle} type="checkbox" checked={isChecked} />
           <span className="slider fs-5"></span>
         </label>
-      </div>
+      </div> */}
       <a
         className="btn btn-sm bg-primary text-white w-40px h-40px rounded-circle"
         onClick={scrollToTop}
