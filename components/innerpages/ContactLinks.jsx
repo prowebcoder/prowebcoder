@@ -16,12 +16,12 @@ export default function ContactLinks() {
                 Other ways to reach us
               </h2>
               <div
-                className="row child-cols-12 sm:child-cols-6 lg:child-cols-3 g-2 xl:g-3 justify-between col-match"
+                className="row child-cols-12 sm:child-cols-6 lg:child-cols-4 g-2 xl:g-3 justify-between col-match"
                 data-anime="onview: -100; targets: >*; translateY: [48, 0]; opacity: [0, 1]; easing: spring(1, 80, 10, 0); duration: 450; delay: anime.stagger(100, {start: 200});"
               >
                 {panels.map((panel) => (
                   <div key={panel.id}>
-                    <div className="panel vstack gap-2 items-center text-center px-3 py-4 lg:py-6 xl:py-8 rounded-2 bg-secondary dark:bg-gray-800 lg:hover:-translate-y-2 duration-150 transition-all">
+                    <div className="panel vstack gap-2 items-center text-center px-4 py-4 lg:py-6 xl:py-8 rounded-2 bg-secondary dark:bg-gray-800 lg:hover:-translate-y-2 duration-150 transition-all">
                       <div className="cstack mb-2">
                         <Image
                           className="w-64px lg:w-80px d-block dark:d-none"

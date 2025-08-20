@@ -5,9 +5,9 @@ export const panels = [
     darkIcon: "/assets/images/template/icon-location-dark.svg",
     altText: "location-icon",
     title: "Visit us",
-    description: "Don Valley, Toronto, CA",
+    description: "Himalayas, India",
     linkText: "View on maps",
-    linkUrl: "#",
+    linkUrl: "https://maps.app.goo.gl/6da7H4KgQpQavVga9 ",
   },
   {
     id: 2,
@@ -16,7 +16,7 @@ export const panels = [
     altText: "chat-icon",
     title: "Via chat",
     description: "Get instant answers.",
-    linkText: "Let's chat",
+    linkText: "Click on The Chat Icon",
     linkUrl: "#",
   },
   {
@@ -26,19 +26,10 @@ export const panels = [
     altText: "internet-icon",
     title: "Report Issue",
     description: "Get priority support.",
-    linkText: "Send report",
-    linkUrl: "#",
+    linkText: "Contact us via email",
+    linkUrl: "mailto:rahul@prowebcoder.com",
   },
-  {
-    id: 4,
-    lightIcon: "/assets/images/template/icon-community.svg",
-    darkIcon: "/assets/images/template/icon-community-dark.svg",
-    altText: "community-icon",
-    title: "Our community",
-    description: "Connect with users.",
-    linkText: "Join us now",
-    linkUrl: "#",
-  },
+ 
 ];
 
 export const horizontalPanels = [

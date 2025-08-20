@@ -5,7 +5,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { openMobileMenu } from "@/utlis/toggleMobileMenu";
 import { useContextElement } from "@/context/Context";
-import LanguageSelect2 from "../common/LanguageSelect2";
+import { openBookModal } from "@/utlis/toggleBookModal";
+
 
 export default function Header4() {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
@@ -66,10 +67,10 @@ export default function Header4() {
                 </div>
                 <div className="uc-navbar-right">
                    <div className="uc-navbar-item">
-                    {/* <a className="btn btn-xs p-0 fs-8 text-white" href="#chat">
-                      <i className="icon-narrow unicon-chat-bot" />
-                      <span>Live Chat</span>
-                    </a> */}
+                    <a className="btn btn-xs p-0 fs-8 text-white"  onClick={openBookModal} role="button">
+                      <i className="icon-narrow unicon-event-schedule" />
+                      <span>Book an appointment</span>
+                    </a>
                    
    
                   </div>

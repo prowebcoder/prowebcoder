@@ -3,9 +3,9 @@ import Header2 from "@/components/headers/Header2";
 import Footer2 from "@/components/footers/Footer2";
 import Contact1 from "@/components/innerpages/Contact1";
 import ContactLinks from "@/components/innerpages/ContactLinks";
-import Faq from "@/components/homes/home-2/Faq";
+
 import Brands from "@/components/common/Brands2";
-import Blogs from "@/components/homes/home-2/Blogs";
+import Book from "@/components/innerpages/Book";
 export const metadata = {
   title:
     "Contact Us | Prowebcoder | Shopify experts, WordPress developers, BigCommerce specialists, and mobile app developers.",
@@ -21,8 +21,8 @@ export default function ContactPage() {
         <div id="wrapper" className="wrap">
           <Contact1 />
 
-          {/* <ContactLinks /> */}
-        
+        <Book />
+          <ContactLinks />
           <div
             id="clients_brands"
             className="clients-brands section panel overflow-hidden"
