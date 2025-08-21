@@ -19,6 +19,7 @@ import TawkChat from "@/components/TawkChat";
 import NewsletterModal from "@/components/modals/NewsletterModal";
 import SearchModal from "@/components/modals/SearchModal";
 import { Toaster } from "react-hot-toast"; // ✅ Toast added
+import { Analytics } from "@vercel/analytics/next"
 export default function RootLayout({ children }) {
   const pathname = usePathname();
   useEffect(() => {
@@ -116,7 +117,7 @@ export default function RootLayout({ children }) {
           strategy="lazyOnload"
         />
         <Context>
-
+<Analytics/>
           <ParallaxProvider>{children}</ParallaxProvider>
           <MobileMenu />
           <ContactModal />
