@@ -56,7 +56,7 @@ export default function BookModal() {
     >
       <div
         ref={elementRef}
-        className="uc-modal-dialog lg:max-w-750px bg-secondary text-dark dark:bg-gray-800 dark:text-white rounded-1-5"
+        className="uc-modal-dialog lg:max-w-750px bg-white text-dark dark:bg-gray-800 dark:text-white rounded-1-5"
         role="dialog"
         aria-modal="true"
       >
