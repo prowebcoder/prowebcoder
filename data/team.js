@@ -169,10 +169,10 @@ export const teamMembers3 = [
   },
   {
     id: 24,
-    name: "Kelly",
-    title: "Customer Success",
-    imgSrc: "/assets/images/team/kelly.webp",
-    alt: "Kelly",
+    name: "Lucky",
+    title: "Lead Graphic Designer",
+    imgSrc: "/assets/images/team/lalit.webp",
+    alt: "Lucky",
   },
 ];
 
