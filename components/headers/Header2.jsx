@@ -118,7 +118,7 @@ export default function Header4() {
                     />
                   </Link>
                 </div>
-                <ul className="uc-navbar-nav gap-3 xl:gap-4 d-none lg:d-flex fw-medium ltr:ms-2 ltr:xl:ms-4 rtl:me-2 rtl:xl:me-4">
+                <ul className="uc-navbar-nav gap-2 xl:gap-3 d-none lg:d-flex fw-medium ltr:ms-2 ltr:xl:ms-4 rtl:me-2 rtl:xl:me-4">
                   <Nav3 />
                 </ul>
               </div>

@@ -24,7 +24,7 @@ export default function Nav3() {
             </svg>
           </span>
         </a>
-        <div className="uc-dropbar uc-full-dd uc-products uc-dropbar-top p-0 ft-primary text-unset fs-6 fw-normal hide-scrollbar border-top border-dark dark:border-white border-opacity-5 rounded-0 overflow-hidden shadow-xl bg-white dark:bg-gray-900 uc-drop w-100 ">
+        <div className="uc-dropbar uc-full-dd uc-products uc-dropbar-top p-0 ft-primary text-unset fs-7 fw-normal hide-scrollbar border-top border-dark dark:border-white border-opacity-5 rounded-0 overflow-hidden shadow-xl bg-white dark:bg-gray-900 uc-drop w-100 ">
           <div className="container max-w-xl">
             <div className="uc-dropbar-inner after-bg">
               <div className="row gx-5 col-match justify-between">
