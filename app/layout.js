@@ -20,6 +20,7 @@ import NewsletterModal from "@/components/modals/NewsletterModal";
 import SearchModal from "@/components/modals/SearchModal";
 import { Toaster } from "react-hot-toast"; // ✅ Toast added
 import { Analytics } from "@vercel/analytics/next"
+import PortfolioModal from "@/components/modals/PortfolioModal";
 export default function RootLayout({ children }) {
   const pathname = usePathname();
   useEffect(() => {
@@ -122,7 +123,7 @@ export default function RootLayout({ children }) {
           <MobileMenu />
           <ContactModal />
           <BookModal />
-          
+          <PortfolioModal />
           <NewsletterModal />
           <SearchModal />
           <Cart />

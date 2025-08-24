@@ -237,7 +237,7 @@ export default function Contact1() {
 {/* Services Dropdown */}
   <div className="relative" style={{ position: 'relative' }}>
 <select
-  className="form-control h-60px w-full bg-white dark:border-white dark:bg-opacity-10 dark:border-opacity-0 dark:text-white"
+  className="form-control h-60px w-full bg-white  dark:bg-gray-800 dark:border-white dark:bg-opacity-10 dark:border-opacity-10 dark:text-white"
   name="service"
   value={formData.service || ""}
   onChange={handleChange}
@@ -245,14 +245,14 @@ export default function Contact1() {
 >
   <option value="">Select the service you’re interested in</option>
 
-  <optgroup label="Shopify">
+  <optgroup label="Shopify" className="bg-white  dark:bg-gray-800">
     <option value="Shopify Plus">Shopify Plus</option>
     <option value="Shopify Development">Shopify Development</option>
     <option value="Shopify App Development">Shopify App Development</option>
     <option value="Custom Storefront">Custom Storefront</option>
   </optgroup>
 
-  <optgroup label="E-Commerce Platforms">
+  <optgroup label="E-Commerce Platforms" className="bg-white  dark:bg-gray-800">
     <option value="WooCommerce">WooCommerce</option>
     <option value="Squarespace">Squarespace</option>
     <option value="Webflow">Webflow</option>
@@ -260,20 +260,20 @@ export default function Contact1() {
     <option value="Magento">Magento</option>
   </optgroup>
 
-  <optgroup label="Web Development">
+  <optgroup label="Web Development" className="bg-white  dark:bg-gray-800">
     <option value="WordPress">WordPress</option>
     <option value="Next.js">Next.js</option>
     <option value="React">React</option>
     <option value="Custom Applications">Custom Applications</option>
   </optgroup>
 
-  <optgroup label="Mobile & Apps">
+  <optgroup label="Mobile & Apps" className="bg-white  dark:bg-gray-800">
     <option value="Mobile App Development">Mobile App Development</option>
     <option value="PWA Development">Progressive Web Apps (PWA)</option>
     <option value="Headless Commerce">Headless Commerce</option>
   </optgroup>
 
-  <optgroup label="Consulting & Support">
+  <optgroup label="Consulting & Support" className="bg-white  dark:bg-gray-800">
     <option value="Consultation">Consultation</option>
     <option value="Support & Maintenance">Support & Maintenance</option>
     <option value="Migration">Platform Migration</option>

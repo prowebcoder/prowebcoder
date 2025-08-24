@@ -7286,3 +7286,9 @@ textarea.form-control-lg {
 .h-60px{
   height: 60px !important;
 }
+.uc-modal-dialog{
+  height: 100%;
+}
+.w-1\/2 {
+  width: 50% !important;
+}

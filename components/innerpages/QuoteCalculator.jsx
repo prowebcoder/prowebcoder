@@ -244,8 +244,8 @@ export default function QuoteCalculator() {
   // UI
   // --------------------------
     return (
-      <div className="section-outer panel py-4 xl:py-9">
-    <div className="container panel rounded-3 overflow-hidden bg-white border mt-6 max-w-4xl mx-auto my-6 p-6 md:p-10 max-w-xl" id="quote_calculator">
+      <div className="section-outer panel py-4 xl:py-9 bg-white dark:bg-gray-800">
+    <div className="container bg-white dark:bg-gray-800 panel rounded-3 overflow-hidden bg-white border mt-6 max-w-4xl mx-auto my-6 p-6 md:p-10 max-w-xl" id="quote_calculator">
       {/* Header */}
       <div className="hstack items-center justify-between mb-6">
         <div>
@@ -256,7 +256,7 @@ export default function QuoteCalculator() {
         </div>
          <div className="relative" style={{ position: 'relative',display:'none' }}>
         <select
-          className="form-control bg-gray-50 rounded-lg px-3 py-2"
+          className="form-control bg-white dark:bg-gray-800 rounded-lg px-3 py-2"
           value={form.currency}
           onChange={(e) => set('currency', e.target.value)}
         >
@@ -298,7 +298,7 @@ export default function QuoteCalculator() {
               <div>
                 <label className="block fs-7 font-medium mb-1">Project Type</label>
                  <div className="relative" style={{ position: 'relative' }}>
-                <select className="form-control w-full p-3 rounded-lg border bg-gray-50" value={form.projectType} onChange={(e) => set('projectType', e.target.value)}>
+                <select className="form-control w-full p-3 rounded-lg border bg-white dark:bg-gray-800" value={form.projectType} onChange={(e) => set('projectType', e.target.value)}>
                   <option value="new">New Build</option>
                   <option value="redesign">Redesign</option>
                   <option value="migration">Migration</option>
@@ -312,7 +312,7 @@ export default function QuoteCalculator() {
               <div>
                 <label className="block fs-7 font-medium mb-1">Store Complexity</label>
                  <div className="relative" style={{ position: 'relative' }}>
-                <select className="form-control w-full p-3 rounded-lg border bg-gray-50" value={form.storeType} onChange={(e) => set('storeType', e.target.value)}>
+                <select className="form-control w-full p-3 rounded-lg border bg-white dark:bg-gray-800" value={form.storeType} onChange={(e) => set('storeType', e.target.value)}>
                   <option value="basic">Basic</option>
                   <option value="standard">Standard</option>
                   <option value="advanced">Advanced</option>
@@ -327,7 +327,7 @@ export default function QuoteCalculator() {
               <div>
                 <label className="block fs-7 font-medium mb-1">Shopify Plan</label>
                  <div className="relative" style={{ position: 'relative' }}>
-                <select className="form-control w-full p-3 rounded-lg border bg-gray-50" value={form.shopifyPlan} onChange={(e) => set('shopifyPlan', e.target.value)}>
+                <select className="form-control w-full p-3 rounded-lg border bg-white dark:bg-gray-800" value={form.shopifyPlan} onChange={(e) => set('shopifyPlan', e.target.value)}>
                   <option>Basic</option>
                   <option>Shopify</option>
                   <option>Advanced</option>
@@ -341,7 +341,7 @@ export default function QuoteCalculator() {
               </div>
               <div>
                 <label className="block fs-7 font-medium mb-1">Approx. Products</label>
-                <input type="number" min={0} className="form-control w-full p-3 rounded-lg border bg-gray-50" value={form.products} onChange={(e) => set('products', Number(e.target.value))} />
+                <input type="number" min={0} className="form-control w-full p-3 rounded-lg border bg-white dark:bg-gray-800" value={form.products} onChange={(e) => set('products', Number(e.target.value))} />
               </div>
              
             </div>
@@ -356,7 +356,7 @@ export default function QuoteCalculator() {
               <div>
                 <label className="block fs-7 font-medium mb-1">Theme Approach</label>
                  <div className="relative" style={{ position: 'relative' }}>
-                <select className="form-control w-full p-3 rounded-lg border bg-gray-50" value={form.themeApproach} onChange={(e) => set('themeApproach', e.target.value)}>
+                <select className="form-control w-full p-3 rounded-lg border bg-white dark:bg-gray-800" value={form.themeApproach} onChange={(e) => set('themeApproach', e.target.value)}>
                   <option value="prebuilt">Prebuilt Theme (minimal setup)</option>
                   <option value="customized-theme">Customize Premium Theme</option>
                   <option value="bespoke">Bespoke Design & Build</option>
@@ -384,7 +384,7 @@ export default function QuoteCalculator() {
             <div className="container  row child-cols-12 md:child-cols-6 g-4">
               {Object.entries(form.features).map(([key, val]) => (
                 key !== 'speed' ? (
-                  <label key={key} className="hstack items-center gap-3 p-3 rounded-xl border bg-gray-50">
+                  <label key={key} className="hstack items-center gap-3 p-3 rounded-xl border bg-white dark:bg-gray-800">
                     <input type="checkbox" checked={!!val} onChange={(e) => set(`features.${key}`, e.target.checked)} />
                     <span className="fs-7 font-medium">{labelize(key)}</span>
                     {val && PRICING.features[key] ? (
@@ -399,7 +399,7 @@ export default function QuoteCalculator() {
                    <div className="col-span-12 md:col-span-6 mt-6">
                 <label className="block fs-7 font-medium mb-1">Performance Target</label>
                   <div className="relative" style={{ position: 'relative' }}>
-                <select className="form-control w-full p-3 rounded-lg border bg-gray-50" value={form.features.speed} onChange={(e) => set('features.speed', e.target.value)}>
+                <select className="form-control w-full p-3 rounded-lg border bg-white dark:bg-gray-800" value={form.features.speed} onChange={(e) => set('features.speed', e.target.value)}>
                   <option value="standard">Standard (best practice)</option>
                   <option value="aggressive">Aggressive (extra tuning)</option>
                 </select>
@@ -420,7 +420,7 @@ export default function QuoteCalculator() {
               {Object.entries(form.integrations).map(([key, count]) => (
                 <div key={key} className="vstack gap-1">
                   <label className="block fs-7 font-medium">{labelize(key)}</label>
-                  <input type="number" min={0} className="form-control w-full p-3 rounded-lg border bg-gray-50" value={count} onChange={(e) => set(`integrations.${key}`, Number(e.target.value))} />
+                  <input type="number" min={0} className="form-control w-full p-3 rounded-lg border bg-white dark:bg-gray-800" value={count} onChange={(e) => set(`integrations.${key}`, Number(e.target.value))} />
                 </div>
               ))}
             </div>
@@ -442,22 +442,22 @@ export default function QuoteCalculator() {
                 <div className="row child-cols-12 md:child-cols-4 g-4">
                   <div>
                     <label className="block fs-7 font-medium mb-1">Products to migrate</label>
-                    <input type="number" min={0} className="form-control w-full p-3 rounded-lg border bg-gray-50" value={form.migration.productsToMigrate} onChange={(e) => set('migration.productsToMigrate', Number(e.target.value))} />
+                    <input type="number" min={0} className="form-control w-full p-3 rounded-lg border bg-white dark:bg-gray-800" value={form.migration.productsToMigrate} onChange={(e) => set('migration.productsToMigrate', Number(e.target.value))} />
                   </div>
                   <div>
                     <label className="block fs-7 font-medium mb-1">Customers to migrate</label>
-                    <input type="number" min={0} className="form-control w-full p-3 rounded-lg border bg-gray-50" value={form.migration.customersToMigrate} onChange={(e) => set('migration.customersToMigrate', Number(e.target.value))} />
+                    <input type="number" min={0} className="form-control w-full p-3 rounded-lg border bg-white dark:bg-gray-800" value={form.migration.customersToMigrate} onChange={(e) => set('migration.customersToMigrate', Number(e.target.value))} />
                   </div>
                   <div>
                     <label className="block fs-7 font-medium mb-1">Orders to migrate</label>
-                    <input type="number" min={0} className="form-control w-full p-3 rounded-lg border bg-gray-50" value={form.migration.ordersToMigrate} onChange={(e) => set('migration.ordersToMigrate', Number(e.target.value))} />
+                    <input type="number" min={0} className="form-control w-full p-3 rounded-lg border bg-white dark:bg-gray-800" value={form.migration.ordersToMigrate} onChange={(e) => set('migration.ordersToMigrate', Number(e.target.value))} />
                   </div>
                 </div>
               )}
 
               <div className="col-span-12">
                 <label className="block fs-7 font-medium mb-1">Number of Shopify Markets</label>
-                <input type="number" min={1} className="form-control w-full p-3 rounded-lg border bg-gray-50" value={form.markets} onChange={(e) => set('markets', Number(e.target.value))} />
+                <input type="number" min={1} className="form-control w-full p-3 rounded-lg border bg-white dark:bg-gray-800" value={form.markets} onChange={(e) => set('markets', Number(e.target.value))} />
               </div>
             </div>
           </section>
@@ -468,11 +468,11 @@ export default function QuoteCalculator() {
           <section>
             <h2 className="h3 sm:h2 mb-4">Compliance & Performance</h2>
             <div className="container row child-cols-12 md:child-cols-6 g-4">
-              <label className="hstack items-center gap-3 p-3 rounded-xl border bg-gray-50">
+              <label className="hstack items-center gap-3 p-3 rounded-xl border bg-white dark:bg-gray-800">
                 <input type="checkbox" checked={form.compliance.accessibility} onChange={(e) => set('compliance.accessibility', e.target.checked)} />
                 <span className="fs-7 font-medium">Accessibility (WCAG target)</span>
               </label>
-              <label className="hstack items-center gap-3 p-3 rounded-xl border bg-gray-50">
+              <label className="hstack items-center gap-3 p-3 rounded-xl border bg-white dark:bg-gray-800">
                 <input type="checkbox" checked={form.compliance.gdpr} onChange={(e) => set('compliance.gdpr', e.target.checked)} />
                 <span className="fs-7 font-medium">GDPR / Privacy Configuration</span>
               </label>
@@ -487,13 +487,13 @@ export default function QuoteCalculator() {
             <div className="row child-cols-12 md:child-cols-9 g-4">
               <div className="col-span-12 md:col-span-6">
                 <label className="block fs-7 font-medium mb-1">Target Timeline (weeks)</label>
-                <input type="number" min={2} className="form-control w-full p-3 rounded-lg border bg-gray-50" value={form.timelineWeeks} onChange={(e) => set('timelineWeeks', Number(e.target.value))} />
+                <input type="number" min={2} className="form-control w-full p-3 rounded-lg border bg-white dark:bg-gray-800" value={form.timelineWeeks} onChange={(e) => set('timelineWeeks', Number(e.target.value))} />
                 <p className="fs-8 text-gray-500 mt-1">Rush surcharge applies if under 6 weeks.</p>
               </div>
               <div className="col-span-12 md:col-span-3">
                 <label className="block fs-7 font-medium mb-1">Support Plan (monthly)</label>
                   <div className="relative" style={{ position: 'relative' }}>
-                <select className="form-control w-full p-3 rounded-lg border bg-gray-50" value={form.supportSLA} onChange={(e) => set('supportSLA', e.target.value)}>
+                <select className="form-control w-full p-3 rounded-lg border bg-white dark:bg-gray-800" value={form.supportSLA} onChange={(e) => set('supportSLA', e.target.value)}>
                   <option value="none">No Support</option>
                   <option value="basic">Basic — {currencyFmt(PRICING.supportMonthly.basic)}/mo</option>
                   <option value="pro">Pro — {currencyFmt(PRICING.supportMonthly.pro)}/mo</option>
@@ -515,9 +515,9 @@ export default function QuoteCalculator() {
             <h2 className="h3 sm:h2 mb-1">Review & Quote</h2>
             <p className="fs-6 text-dark text-opacity-70 mb-4">Here is your estimated breakdown based on the answers.</p>
 
-            <div className="overflow-hidden rounded-xl border bg-gray-50">
+            <div className="overflow-hidden rounded-xl border bg-white dark:bg-gray-800">
               <table className="w-full">
-                <thead className="bg-gray-100">
+                <thead className="text-gray-900 dark:text-gray-100">
                   <tr>
                     <th className="text-left fs-7 font-semibold text-gray-600 px-4 py-3">Item</th>
                     <th className="text-right fs-7 font-semibold text-gray-600 px-4 py-3">Amount</th>
@@ -526,12 +526,12 @@ export default function QuoteCalculator() {
                 <tbody>
                   {quote.breakdown.map((row, idx) => (
                     <tr key={idx} className="hover:bg-white">
-                      <td className="px-4 py-3 fs-7 text-gray-800">{row.label}</td>
-                      <td className="px-4 py-3 fs-7 text-right text-gray-900 font-medium">{currencyFmt(row.amount)}</td>
+                      <td className="px-4 py-3 fs-7 text-gray-900 dark:text-gray-100">{row.label}</td>
+                      <td className="px-4 py-3 fs-7 text-right text-gray-900 dark:text-gray-100 font-medium">{currencyFmt(row.amount)}</td>
                     </tr>
                   ))}
                 </tbody>
-                <tfoot className="bg-white">
+                <tfoot className="text-gray-900 dark:text-gray-100">
                   <tr>
                     <td className="px-4 py-4 fs-6 font-bold">Estimated One‑Time</td>
                     <td className="px-4 py-4 text-right fs-4 font-extrabold">{currencyFmt(quote.oneTime)}</td>

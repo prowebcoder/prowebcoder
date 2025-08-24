@@ -346,7 +346,7 @@ export default function Nav3() {
                   </Link>
                 </li>
             {/* <div class="vstack justify-between gap-2 pt-8"><a class="btn btn-sm btn-primary"  </ul> onClick={openNewsletterModal}>Share your requirements</a></div> */}
-                  <div class="vstack justify-between gap-2 pt-8"><a class="btn btn-sm btn-primary"
+                  <div className="vstack justify-between gap-2 pt-8"><a className="btn btn-sm btn-primary"
              href={`/contact-us`}>
               Share your requirements</a>
               
@@ -358,6 +358,9 @@ export default function Nav3() {
       </li>
       <li>
         <Link href={`/quote-calculator`}>Quote Calculator</Link>
+      </li>
+      <li>
+        <Link href={`/portfolio`}>Works</Link>
       </li>
       <li>
         <Link href={`/pricing`}>Pricing</Link>
