@@ -16,8 +16,8 @@ export const projectsData = [
     projId: "project1",
     link: "https://blacktreelab.co/",
     categories: ["shopify", "ecommerce"],
-    mainImage: "assets/images/portfolio/images/blacktreepng.png",
-    popImage: "assets/images/portfolio/pop/blackmain.png"
+    mainImage: "assets/images/portfolio/images/blacktreepng.webp",
+    popImage: "assets/images/portfolio/pop/blackmain.webp"
   },
   {
     name: "Concept 26",
@@ -35,8 +35,8 @@ export const projectsData = [
     projId: "project56",
     link: "https://www.concept26.co/",
     categories: ["shopify", "ecommerce"],
-    mainImage: "assets/images/portfolio/images/blacktreepng.png",
-    popImage: "assets/images/portfolio/pop/blackmain.png"
+    mainImage: "assets/images/portfolio/images/blacktreepng.webp",
+    popImage: "assets/images/portfolio/pop/blackmain.webp"
   },
   {
     name: "Farm House",
@@ -55,8 +55,8 @@ export const projectsData = [
     projId: "project2",
     link: "https://farmhousefreshgoods.com/",
     categories: ["shopify", "ecommerce"],
-    mainImage: "assets/images/portfolio/images/farmhouse.png",
-    popImage: "assets/images/portfolio/pop/farmhousemain.png"
+    mainImage: "assets/images/portfolio/images/farmhouse.webp",
+    popImage: "assets/images/portfolio/pop/farmhousemain.webp"
   },
   {
     name: "Folk Lore",
@@ -74,8 +74,8 @@ export const projectsData = [
     projId: "project3",
     link: "https://folklorelasninas.com",
     categories: ["shopify", "ecommerce"],
-    mainImage: "assets/images/portfolio/images/folkesb.png",
-    popImage: "assets/images/portfolio/pop/folkmain.png"
+    mainImage: "assets/images/portfolio/images/folkesb.webp",
+    popImage: "assets/images/portfolio/pop/folkmain.webp"
   },
   {
     name: "Gravastar",
@@ -93,8 +93,8 @@ export const projectsData = [
     projId: "project4",
     link: "https://www.gravastar.com/",
     categories: ["shopify", "ecommerce"],
-    mainImage: "assets/images/portfolio/images/gravastar.png",
-    popImage: "assets/images/portfolio/pop/gravastarmain.png"
+    mainImage: "assets/images/portfolio/images/gravastar.webp",
+    popImage: "assets/images/portfolio/pop/gravastarmain.webp"
   },
   {
     name: "MYOB Fashion",
@@ -112,8 +112,8 @@ export const projectsData = [
     projId: "project5",
     link: "https://myobfashion.com/",
     categories: ["shopify", "ecommerce"],
-    mainImage: "assets/images/portfolio/images/myob.png",
-    popImage: "assets/images/portfolio/pop/myobmain.png"
+    mainImage: "assets/images/portfolio/images/myob.webp",
+    popImage: "assets/images/portfolio/pop/myobmain.webp"
   },
   {
     name: "Vision Pets",
@@ -131,8 +131,8 @@ export const projectsData = [
     projId: "project6",
     link: "https://vision-pets.myshopify.com/",
     categories: ["shopify", "ecommerce"],
-    mainImage: "assets/images/portfolio/images/pochy.png",
-    popImage: "assets/images/portfolio/pop/pochymain.png"
+    mainImage: "assets/images/portfolio/images/pochy.webp",
+    popImage: "assets/images/portfolio/pop/pochymain.webp"
   },
   {
     name: "Purifair",
@@ -150,8 +150,8 @@ export const projectsData = [
     projId: "project7",
     link: "https://us.purifair.com/",
     categories: ["shopify", "ecommerce"],
-    mainImage: "assets/images/portfolio/images/purifair.png",
-    popImage: "assets/images/portfolio/pop/purifairmain.png"
+    mainImage: "assets/images/portfolio/images/purifair.webp",
+    popImage: "assets/images/portfolio/pop/purifairmain.webp"
   },
   {
     name: "Strikeman",
@@ -169,8 +169,8 @@ export const projectsData = [
     projId: "project8",
     link: "https://www.strikeman.io/",
     categories: ["shopify", "ecommerce"],
-    mainImage: "assets/images/portfolio/images/strikeman.png",
-    popImage: "assets/images/portfolio/pop/strikemanmain.png"
+    mainImage: "assets/images/portfolio/images/strikeman.webp",
+    popImage: "assets/images/portfolio/pop/strikemanmain.webp"
   },
   {
     name: "Ted Wonti",
@@ -188,8 +188,8 @@ export const projectsData = [
     projId: "project9",
     link: "https://tedwonti.com/",
     categories: ["shopify", "ecommerce"],
-    mainImage: "assets/images/portfolio/images/ted.png",
-    popImage: "assets/images/portfolio/pop/tedmain.png"
+    mainImage: "assets/images/portfolio/images/ted.webp",
+    popImage: "assets/images/portfolio/pop/tedmain.webp"
   },
   {
     name: "Zamst IT",
@@ -214,8 +214,8 @@ export const projectsData = [
     projId: "project10",
     link: "https://zamst.us/",
     categories: ["shopify", "ecommerce"],
-    mainImage: "assets/images/portfolio/images/zamst.png",
-    popImage: "assets/images/portfolio/pop/zamstmain.png"
+    mainImage: "assets/images/portfolio/images/zamst.webp",
+    popImage: "assets/images/portfolio/pop/zamstmain.webp"
   },
   {
     name: "Dear Vinyl",
@@ -239,8 +239,8 @@ export const projectsData = [
     projId: "project11",
     link: "https://www.dearvinyl.com/en",
     categories: ["shopify", "ecommerce"],
-    mainImage: "assets/images/portfolio/images/dear vinyl.png",
-    popImage: "assets/images/portfolio/pop/smart4change.png"
+    mainImage: "assets/images/portfolio/images/dear vinyl.webp",
+    popImage: "assets/images/portfolio/pop/smart4change.webp"
   },
   {
     name: "P3 India",
@@ -264,8 +264,8 @@ export const projectsData = [
     projId: "project12",
     link: "https://p3india.com/",
     categories: ["shopify", "ecommerce"],
-    mainImage: "assets/images/portfolio/images/p3-india.png",
-    popImage: "assets/images/portfolio/pop/smart4change.png"
+    mainImage: "assets/images/portfolio/images/p3-india.webp",
+    popImage: "assets/images/portfolio/pop/smart4change.webp"
   },
   {
     name: "Amantys",
@@ -288,8 +288,8 @@ export const projectsData = [
     projId: "project13",
     link: "https://diamdis.squarespace.com/",
     categories: ["squarespace"],
-    mainImage: "assets/images/portfolio/images/amantys.png",
-    popImage: "assets/images/portfolio/pop/amantysmain.png"
+    mainImage: "assets/images/portfolio/images/amantys.webp",
+    popImage: "assets/images/portfolio/pop/amantysmain.webp"
   },
   {
     name: "karllillrud",
@@ -308,8 +308,8 @@ export const projectsData = [
     projId: "project14",
     link: "https:/www.karllillrud.com/",
     categories: ["squarespace"],
-    mainImage: "assets/images/portfolio/images/karl.png",
-    popImage: "assets/images/portfolio/pop/karlmain.png"
+    mainImage: "assets/images/portfolio/images/karl.webp",
+    popImage: "assets/images/portfolio/pop/karlmain.webp"
   },
   {
     name: "oneauthentic",
@@ -327,8 +327,8 @@ export const projectsData = [
     projId: "project15",
     link: "https://oneauthenticheart.squarespace.com/",
     categories: ["squarespace"],
-    mainImage: "assets/images/portfolio/images/oneauthentic.png",
-    popImage: "assets/images/portfolio/pop/oneauthenticmain.png"
+    mainImage: "assets/images/portfolio/images/oneauthentic.webp",
+    popImage: "assets/images/portfolio/pop/oneauthenticmain.webp"
   },
   {
     name: "amy-ryman",
@@ -346,8 +346,8 @@ export const projectsData = [
     projId: "project16",
     link: "https://amy-ryman.squarespace.com/",
     categories: ["squarespace"],
-    mainImage: "assets/images/portfolio/images/stemgirl.png",
-    popImage: "assets/images/portfolio/pop/stemgirlmain.png"
+    mainImage: "assets/images/portfolio/images/stemgirl.webp",
+    popImage: "assets/images/portfolio/pop/stemgirlmain.webp"
   },
   {
     name: "fieldmain",
@@ -365,8 +365,8 @@ export const projectsData = [
     projId: "project17",
     link: "https://fieldstories.squarespace.com/",
     categories: ["squarespace"],
-    mainImage: "assets/images/portfolio/images/fieldstories.png",
-    popImage: "assets/images/portfolio/pop/fieldmain.png"
+    mainImage: "assets/images/portfolio/images/fieldstories.webp",
+    popImage: "assets/images/portfolio/pop/fieldmain.webp"
   },
   {
     name: "cbullardphotography",
@@ -384,8 +384,8 @@ export const projectsData = [
     projId: "project18",
     link: "https://cbullardphotography.squarespace.com/",
     categories: ["squarespace"],
-    mainImage: "assets/images/portfolio/images/christine.png",
-    popImage: "assets/images/portfolio/pop/christine.main.png"
+    mainImage: "assets/images/portfolio/images/christine.webp",
+    popImage: "assets/images/portfolio/pop/christine.main.webp"
   },
   {
     name: "headlock",
@@ -403,8 +403,8 @@ export const projectsData = [
     projId: "project19",
     link: "https://www.headlock.com/",
     categories: ["squarespace"],
-    mainImage: "assets/images/portfolio/images/headlock.png",
-    popImage: "assets/images/portfolio/pop/headlockmain.png"
+    mainImage: "assets/images/portfolio/images/headlock.webp",
+    popImage: "assets/images/portfolio/pop/headlockmain.webp"
   },
    {
     name: "nortonbasu",
@@ -423,8 +423,8 @@ export const projectsData = [
     projId: "project20",
     link: "https://www.nortonbasu.com/",
     categories: ["squarespace"],
-    mainImage: "assets/images/portfolio/images/nortonbasu.png",
-    popImage: "assets/images/portfolio/pop/nortonbasumain.png"
+    mainImage: "assets/images/portfolio/images/nortonbasu.webp",
+    popImage: "assets/images/portfolio/pop/nortonbasumain.webp"
   },
   {
     name: "william",
@@ -442,8 +442,8 @@ export const projectsData = [
     projId: "project21",
     link: "https://william-malcolm-bqkx.squarespace.com/",
     categories: ["squarespace"],
-    mainImage: "assets/images/portfolio/images/william.png",
-    popImage: "assets/images/portfolio/pop/williammain.png"
+    mainImage: "assets/images/portfolio/images/william.webp",
+    popImage: "assets/images/portfolio/pop/williammain.webp"
   },
   {
     name: "mathis",
@@ -461,8 +461,8 @@ export const projectsData = [
     projId: "project22",
     link: "https://mathis-kennington.squarespace.com/",
     categories: ["squarespace"],
-    mainImage: "assets/images/portfolio/images/mathis.png",
-    popImage: "assets/images/portfolio/pop/mathismain.png"
+    mainImage: "assets/images/portfolio/images/mathis.webp",
+    popImage: "assets/images/portfolio/pop/mathismain.webp"
   },
   {
     name: "george",
@@ -480,8 +480,8 @@ export const projectsData = [
     projId: "project23",
     link: "https://georgebraziller.squarespace.com/",
     categories: ["squarespace"],
-    mainImage: "assets/images/portfolio/images/george.png",
-    popImage: "assets/images/portfolio/pop/georgemain.png"
+    mainImage: "assets/images/portfolio/images/george.webp",
+    popImage: "assets/images/portfolio/pop/georgemain.webp"
   },
   {
     name: "louis",
@@ -499,8 +499,8 @@ export const projectsData = [
     projId: "project24",
     link: "https://louisweinstock.com/",
     categories: ["wordpress"],
-    mainImage: "assets/images/portfolio/images/louis.png",
-    popImage: "assets/images/portfolio/pop/louismain.png"
+    mainImage: "assets/images/portfolio/images/louis.webp",
+    popImage: "assets/images/portfolio/pop/louismain.webp"
   },
   {
     name: "elevate",
@@ -518,8 +518,8 @@ export const projectsData = [
     projId: "project25",
     link: "https://elevatecreativeinc.com/",
     categories: ["wordpress", "ecommerce"],
-    mainImage: "assets/images/portfolio/images/elevate.png",
-    popImage: "assets/images/portfolio/pop/elevatemain.png"
+    mainImage: "assets/images/portfolio/images/elevate.webp",
+    popImage: "assets/images/portfolio/pop/elevatemain.webp"
   },
   {
     name: "wellbeing",
@@ -537,8 +537,8 @@ export const projectsData = [
     projId: "project26",
     link: "https://thewellbeingcollective.com/",
     categories: ["squarespace"],
-    mainImage: "assets/images/portfolio/images/wellbeing.png",
-    popImage: "assets/images/portfolio/pop/wellbeingmain.png"
+    mainImage: "assets/images/portfolio/images/wellbeing.webp",
+    popImage: "assets/images/portfolio/pop/wellbeingmain.webp"
   },
   {
     name: "jonmiller",
@@ -556,8 +556,8 @@ export const projectsData = [
     projId: "project27",
     link: "https://www.jonmiller.com/",
     categories: ["squarespace"],
-    mainImage: "assets/images/portfolio/images/jonmiller.png",
-    popImage: "assets/images/portfolio/pop/jonmillermain.png"
+    mainImage: "assets/images/portfolio/images/jonmiller.webp",
+    popImage: "assets/images/portfolio/pop/jonmillermain.webp"
   },
   {
     name: "bunker",
@@ -575,8 +575,8 @@ export const projectsData = [
     projId: "project28",
     link: "https://www.bunkerwork.com/",
     categories: ["React"],
-    mainImage: "assets/images/portfolio/images/bunker.png",
-    popImage: "assets/images/portfolio/pop/bunkermain.png"
+    mainImage: "assets/images/portfolio/images/bunker.webp",
+    popImage: "assets/images/portfolio/pop/bunkermain.webp"
   },
   {
     name: "instrument",
@@ -594,8 +594,8 @@ export const projectsData = [
     projId: "project29",
     link: "https://www.instrument.com/",
     categories: ["React"],
-    mainImage: "assets/images/portfolio/images/instrument.png",
-    popImage: "assets/images/portfolio/pop/instrumentmain.png"
+    mainImage: "assets/images/portfolio/images/instrument.webp",
+    popImage: "assets/images/portfolio/pop/instrumentmain.webp"
   },
   {
     name: "outside",
@@ -611,8 +611,8 @@ export const projectsData = [
     projId: "project30",
     link: "https://letsmoveschools.org/",
     categories: ["wordpress", "ecommerce"],
-    mainImage: "assets/images/portfolio/images/outside.png",
-    popImage: "assets/images/portfolio/pop/outsidemain.png"
+    mainImage: "assets/images/portfolio/images/outside.webp",
+    popImage: "assets/images/portfolio/pop/outsidemain.webp"
   },
   {
     name: "thecarcrush",
@@ -628,8 +628,8 @@ export const projectsData = [
     projId: "project31",
     link: "http://thecarcrush.com/#",
     categories: ["squarespace"],
-    mainImage: "assets/images/portfolio/images/carcrush.png",
-    popImage: "assets/images/portfolio/pop/carcrushmain.png"
+    mainImage: "assets/images/portfolio/images/carcrush.webp",
+    popImage: "assets/images/portfolio/pop/carcrushmain.webp"
   },
   {
     name: "shindychen",
@@ -645,8 +645,8 @@ export const projectsData = [
     projId: "project32",
     link: "https://www.shindychen.com/",
     categories: ["squarespace"],
-    mainImage: "assets/images/portfolio/images/shindychan.png",
-    popImage: "assets/images/portfolio/pop/shindychanmain.png"
+    mainImage: "assets/images/portfolio/images/shindychan.webp",
+    popImage: "assets/images/portfolio/pop/shindychanmain.webp"
   },
   {
     name: "Rev up",
@@ -662,8 +662,8 @@ export const projectsData = [
     projId: "project33",
     link: "https://john-lehmann-jcut.squarespace.com/",
     categories: ["squarespace"],
-    mainImage: "assets/images/portfolio/images/revup.png",
-    popImage: "assets/images/portfolio/pop/revupmain.png"
+    mainImage: "assets/images/portfolio/images/revup.webp",
+    popImage: "assets/images/portfolio/pop/revupmain.webp"
   },
   {
     name: "dansimon",
@@ -679,8 +679,8 @@ export const projectsData = [
     projId: "project34",
     link: "https://www.dansimon.me/",
     categories: ["squarespace"],
-    mainImage: "assets/images/portfolio/images/dansimon.png",
-    popImage: "assets/images/portfolio/pop/dansimonmain.png"
+    mainImage: "assets/images/portfolio/images/dansimon.webp",
+    popImage: "assets/images/portfolio/pop/dansimonmain.webp"
   },
   {
     name: "redcreative",
@@ -696,8 +696,8 @@ export const projectsData = [
     projId: "project35",
     link: "https://www.redcreative.co.nz/",
     categories: ["squarespace"],
-    mainImage: "assets/images/portfolio/images/redcreative.png",
-    popImage: "assets/images/portfolio/pop/redcreativemain.png"
+    mainImage: "assets/images/portfolio/images/redcreative.webp",
+    popImage: "assets/images/portfolio/pop/redcreativemain.webp"
   },
   {
     name: "Paragon",
@@ -713,8 +713,8 @@ export const projectsData = [
     projId: "project36",
     link: "https://ritesh-dhiman-xk3y.squarespace.com/",
     categories: ["squarespace"],
-    mainImage: "assets/images/portfolio/images/paragon.png",
-    popImage: "assets/images/portfolio/pop/paragonmain.png"
+    mainImage: "assets/images/portfolio/images/paragon.webp",
+    popImage: "assets/images/portfolio/pop/paragonmain.webp"
   },
   {
     name: "terraseed",
@@ -730,8 +730,8 @@ export const projectsData = [
     projId: "project37",
     link: "https://terraseed-v3.myshopify.com/",
     categories: ["shopify"],
-    mainImage: "assets/images/portfolio/images/terraseed.png",
-    popImage: "assets/images/portfolio/pop/terraseedmain.png"
+    mainImage: "assets/images/portfolio/images/terraseed.webp",
+    popImage: "assets/images/portfolio/pop/terraseedmain.webp"
   },
   {
     name: "studiodeve",
@@ -747,8 +747,8 @@ export const projectsData = [
     projId: "project38",
     link: "https://studiodeve.com/",
     categories: ["shopify", "ecommerce"],
-    mainImage: "assets/images/portfolio/images/studiodeve.png",
-    popImage: "assets/images/portfolio/pop/studiodevemain.png"
+    mainImage: "assets/images/portfolio/images/studiodeve.webp",
+    popImage: "assets/images/portfolio/pop/studiodevemain.webp"
   },
   {
     name: "vision-pets",
@@ -764,8 +764,8 @@ export const projectsData = [
     projId: "project39",
     link: "https://vision-pets.myshopify.com/",
     categories: ["shopify", "ecommerce"],
-    mainImage: "assets/images/portfolio/images/vision-pets.png",
-    popImage: "assets/images/portfolio/pop/vision-petsmain.png"
+    mainImage: "assets/images/portfolio/images/vision-pets.webp",
+    popImage: "assets/images/portfolio/pop/vision-petsmain.webp"
   },
   {
     name: "goli",
@@ -781,8 +781,8 @@ export const projectsData = [
     projId: "project41",
     link: "https://goli.com/",
     categories: ["shopify"],
-    mainImage: "assets/images/portfolio/images/goli.png",
-    popImage: "assets/images/portfolio/pop/golimain.png"
+    mainImage: "assets/images/portfolio/images/goli.webp",
+    popImage: "assets/images/portfolio/pop/golimain.webp"
   }
 ,
   {
@@ -804,8 +804,8 @@ export const projectsData = [
   projId: "project42",
   link: "https://tenzotea.co/",
   categories: ["shopify"],
-  mainImage: "assets/images/portfolio/images/tenzo.png",
-  popImage: "assets/images/portfolio/pop/tenzomain.png"
+  mainImage: "assets/images/portfolio/images/tenzo.webp",
+  popImage: "assets/images/portfolio/pop/tenzomain.webp"
 },
 {
   name: "tmplmain",
@@ -826,8 +826,8 @@ export const projectsData = [
   projId: "project43",
   link: "https://www.tmpl.care/",
   categories: ["shopify"],
-  mainImage: "assets/images/portfolio/images/tmpl.png",
-  popImage: "assets/images/portfolio/pop/tmplmain.png"
+  mainImage: "assets/images/portfolio/images/tmpl.webp",
+  popImage: "assets/images/portfolio/pop/tmplmain.webp"
 },
 {
   name: "avecdrinks",
@@ -848,8 +848,8 @@ export const projectsData = [
   projId: "project44",
   link: "https://avecdrinks.com/",
   categories: ["shopify"],
-  mainImage: "assets/images/portfolio/images/avec.png",
-  popImage: "assets/images/portfolio/pop/avecmain.png"
+  mainImage: "assets/images/portfolio/images/avec.webp",
+  popImage: "assets/images/portfolio/pop/avecmain.webp"
 },
 {
   name: "rheal",
@@ -870,8 +870,8 @@ export const projectsData = [
   projId: "project45",
   link: "https://rhealsuperfoods.com/",
   categories: ["shopify"],
-  mainImage: "assets/images/portfolio/images/rheal.png",
-  popImage: "assets/images/portfolio/pop/.rhealmain.png"
+  mainImage: "assets/images/portfolio/images/rheal.webp",
+  popImage: "assets/images/portfolio/pop/.rhealmain.webp"
 },
 {
   name: "notorious",
@@ -892,8 +892,8 @@ export const projectsData = [
   projId: "project46",
   link: "https://notoriousnooch.co/",
   categories: ["shopify"],
-  mainImage: "assets/images/portfolio/images/notorious.png",
-  popImage: "assets/images/portfolio/pop/notoriousmain.png"
+  mainImage: "assets/images/portfolio/images/notorious.webp",
+  popImage: "assets/images/portfolio/pop/notoriousmain.webp"
 },
 {
   name: "frontman",
@@ -914,8 +914,8 @@ export const projectsData = [
   projId: "project47",
   link: "https://befrontman.com/",
   categories: ["squarespace"],
-  mainImage: "assets/images/portfolio/images/frontman.png",
-  popImage: "assets/images/portfolio/pop/frontmanmain.png"
+  mainImage: "assets/images/portfolio/images/frontman.webp",
+  popImage: "assets/images/portfolio/pop/frontmanmain.webp"
 },
 {
   name: "homedough",
@@ -936,8 +936,8 @@ export const projectsData = [
   projId: "project48",
   link: "https://homedough.com/",
   categories: ["shopify"],
-  mainImage: "assets/images/portfolio/images/homedough.png",
-  popImage: "assets/images/portfolio/pop/homedoughmain.png"
+  mainImage: "assets/images/portfolio/images/homedough.webp",
+  popImage: "assets/images/portfolio/pop/homedoughmain.webp"
 },
 {
   name: "Anorak online",
@@ -958,8 +958,8 @@ export const projectsData = [
   projId: "project49",
   link: "https://homedough.com/",
   categories: ["shopify"],
-  mainImage: "assets/images/portfolio/images/anarkonline.png",
-  popImage: "assets/images/portfolio/pop/anorakonlinemain.png"
+  mainImage: "assets/images/portfolio/images/anarkonline.webp",
+  popImage: "assets/images/portfolio/pop/anorakonlinemain.webp"
 },
 {
   name: "AP8",
@@ -980,8 +980,8 @@ export const projectsData = [
   projId: "project50",
   link: "https://homedough.com/",
   categories: ["shopify"],
-  mainImage: "assets/images/portfolio/images/ap8.png",
-  popImage: "assets/images/portfolio/pop/ap8main.png"
+  mainImage: "assets/images/portfolio/images/ap8.webp",
+  popImage: "assets/images/portfolio/pop/ap8main.webp"
 },
 {
   name: "Flameless candles",
@@ -1002,8 +1002,8 @@ export const projectsData = [
   projId: "project51",
   link: "https://homedough.com/",
   categories: ["shopify"],
-  mainImage: "assets/images/portfolio/images/flamelesscandles.png",
-  popImage: "assets/images/portfolio/pop/flamelesscandlesmain.png"
+  mainImage: "assets/images/portfolio/images/flamelesscandles.webp",
+  popImage: "assets/images/portfolio/pop/flamelesscandlesmain.webp"
 },
 {
   name: "Harbour 9",
@@ -1024,8 +1024,8 @@ export const projectsData = [
   projId: "project52",
   link: "https://homedough.com/",
   categories: ["shopify"],
-  mainImage: "assets/images/portfolio/images/harbour9.png",
-  popImage: "assets/images/portfolio/pop/harbour9main.png"
+  mainImage: "assets/images/portfolio/images/harbour9.webp",
+  popImage: "assets/images/portfolio/pop/harbour9main.webp"
 },
 {
   name: "Lavapor Wholesale",
@@ -1046,8 +1046,8 @@ export const projectsData = [
   projId: "project53",
   link: "https://homedough.com/",
   categories: ["shopify"],
-  mainImage: "assets/images/portfolio/images/lavaporwholesale.png",
-  popImage: "assets/images/portfolio/pop/lavaporwholesalemain.png"
+  mainImage: "assets/images/portfolio/images/lavaporwholesale.webp",
+  popImage: "assets/images/portfolio/pop/lavaporwholesalemain.webp"
 },
 {
   name: "Trompe loeil",
@@ -1068,8 +1068,8 @@ export const projectsData = [
   projId: "project55",
   link: "https://homedough.com/",
   categories: ["shopify"],
-  mainImage: "assets/images/portfolio/images/trompeloeil.png",
-  popImage: "assets/images/portfolio/pop/trompeloeilmain.png"
+  mainImage: "assets/images/portfolio/images/trompeloeil.webp",
+  popImage: "assets/images/portfolio/pop/trompeloeilmain.webp"
 }
 
 ];
