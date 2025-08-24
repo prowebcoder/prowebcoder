@@ -7292,3 +7292,11 @@ textarea.form-control-lg {
 .w-1\/2 {
   width: 50% !important;
 }
+.g-2,
+.gy-2 {
+  --bs-gutter-y: .5rem;
+}
+.g-2,
+.gy-2 {
+  --bs-gutter-y: 1rem;
+}

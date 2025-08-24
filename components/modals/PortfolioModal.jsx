@@ -10,10 +10,14 @@ export default function PortfolioModal() {
   const elementRef = useRef(null);
 
   const [project, setProject] = useState(null);
+  const [imgHeight, setImgHeight] = useState(null);
 
   // Receive project payload
   useEffect(() => {
-    const handler = (e) => setProject(e.detail || null);
+    const handler = (e) => {
+      setProject(e.detail || null);
+      setImgHeight(null); // reset when new project opens
+    };
     window.addEventListener("portfolio:open", handler);
     return () => window.removeEventListener("portfolio:open", handler);
   }, []);
@@ -47,11 +51,21 @@ export default function PortfolioModal() {
     return () => document.removeEventListener("keydown", onKey);
   }, []);
 
+  // Load actual image to get height
+  useEffect(() => {
+    if (project?.popImage) {
+      const img = new window.Image();
+      img.src = `/${project.popImage}`;
+      img.onload = () => {
+        setImgHeight(img.height); // store real image height
+      };
+    }
+  }, [project?.popImage]);
+
   return (
     <div
       ref={containerRef}
       id="uc-portfolio-modal"
-      data-uc-modal="overlay: true"
       className="uc-modal"
       style={{ display: "block" }}
       tabIndex={-1}
@@ -76,37 +90,34 @@ export default function PortfolioModal() {
         </button>
 
         {/* Flex container */}
-
         <div className="section-outer panel">
           <div className="container container-full">
             <div className="section-inner panel">
               <div className="row child-cols-12 col-match g-0">
                 <div className="container container-full">
                   <div className="panel">
-                    <div className="row justify-start items-start child-cols-12 lg:child-cols-6 col-match  g-0">
+                    <div className="row justify-start items-start child-cols-12 col-match g-0">
                       {/* Left: Details */}
-                      <div className="p-4 md:p-6  gap-3 lg:child-cols-4 md:gap-4 overflow-y-auto ">
-                        <h3 className="h5 lg:h4 m-0">
-                          {project?.name ?? "Project"}
-                        </h3>
+                      <div className="p-4 md:p-6 gap-2 lg:col-4 md:gap-2 overflow-y-auto ">
+                        <h3 className="h5 lg:h4 m-0">{project?.name ?? "Project"}</h3>
 
-                        {project?.details ? (
-                          <p className="fs-6 text-opacity-70">
-                            {project.details}
-                          </p>
-                        ) : (
-                          <p className="fs-6 text-opacity-50">
-                            No additional details available.
-                          </p>
-                        )}
+               {project?.details ? (
+  <div
+    className="fs-6 text-opacity-70"
+    dangerouslySetInnerHTML={{ __html: project.details }}
+  />
+) : (
+  <p className="fs-6 text-opacity-50">No additional details available.</p>
+)}
+
 
                         {Array.isArray(project?.categories) &&
                           project.categories.length > 0 && (
-                            <div className="flex flex-wrap gap-2">
+                            <div className="hstack flex-wrap gap-2 g-2">
                               {project.categories.map((c, i) => (
                                 <span
                                   key={i}
-                                  className="px-3 py-1 rounded-full bg-gray-100 dark:bg-dark-2 text-sm"
+                                  className="px-3 py-1 rounded-full bg-gray-100  rounded-default dark:bg-dark-2 text-12 fs-8 text-dark dark:text-white text-opacity-70"
                                 >
                                   {c}
                                 </span>
@@ -126,20 +137,21 @@ export default function PortfolioModal() {
                       </div>
 
                       {/* Right: Image */}
-                      {/* Right: Image */}
-                      <div className=" bg-gray-50 dark:bg-dark-2 flex items-center justify-center lg:child-cols-8 h-screen relative">
+                      <div
+                        className="bg-gray-50 dark:bg-dark-2 flex items-center justify-center lg:col-8 relative"
+                        style={{ minHeight: imgHeight ? `${imgHeight}px` : "300px" }}
+                      >
                         {project?.popImage && (
-                          <div className="h-screen" style={{ width: '100%', height: '100%', backgroundImage: `url(/${project.popImage})`, backgroundSize: 'contain', backgroundPosition: 'center' , backgroundRepeat: 'no-repeat' }}>
-                            {/* <Image
-                              src={`/${project.popImage}`}
-                              alt={project?.name || "Project image"}
-                              width={800}
-                              height={100}
-                              className="object-contain"
-                              sizes="(max-width: 1024px) 100vw, 50vw"
-                              priority
-                            /> */}
-                          </div>
+                          <div
+                            className="w-full"
+                            style={{
+                              height: imgHeight ? `${imgHeight}px` : "100%",
+                              backgroundImage: `url(/${project.popImage})`,
+                              backgroundSize: "contain",
+                              backgroundPosition: "top",
+                              backgroundRepeat: "no-repeat",
+                            }}
+                          />
                         )}
                       </div>
                     </div>
