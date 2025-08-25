@@ -35,8 +35,8 @@ export const projectsData = [
     projId: "project56",
     link: "https://www.concept26.co/",
     categories: ["shopify", "ecommerce"],
-    mainImage: "assets/images/portfolio/images/blacktreepng.webp",
-    popImage: "assets/images/portfolio/pop/blackmain.webp"
+    mainImage: "assets/images/portfolio/images/concept.webp",
+    popImage: "assets/images/portfolio/pop/concept26.webp"
   },
   {
     name: "Farm House",
@@ -240,7 +240,7 @@ export const projectsData = [
     link: "https://www.dearvinyl.com/en",
     categories: ["shopify", "ecommerce"],
     mainImage: "assets/images/portfolio/images/dear vinyl.webp",
-    popImage: "assets/images/portfolio/pop/smart4change.webp"
+    popImage: "assets/images/portfolio/pop/vinyl.webp"
   },
   {
     name: "P3 India",
@@ -265,33 +265,9 @@ export const projectsData = [
     link: "https://p3india.com/",
     categories: ["shopify", "ecommerce"],
     mainImage: "assets/images/portfolio/images/p3-india.webp",
-    popImage: "assets/images/portfolio/pop/smart4change.webp"
+    popImage: "assets/images/portfolio/pop/p3.webp"
   },
-  {
-    name: "Amantys",
-    details: `
-      <h3>Project Overview</h3>
-      <p>Amantys (Squarespace) is a small brand requiring a clean, image-forward site. We focused on simplicity, strong imagery and an editorial layout.</p>
-      <h4>What We Did</h4>
-      <ul>
-        <li>Custom Squarespace template styling to match brand identity and photography.</li>
-        <li>Structured content sections so editors can add case studies and galleries easily.</li>
-        <li>Added contact and booking CTA modules to increase inquiries.</li>
-        <li>Ensured responsive design and fast image loading for large galleries.</li>
-      </ul>
-      <h4>Tech & Deliverables</h4>
-      <ul>
-        <li>Squarespace customization (no-code friendly blocks) and CMS training for the client.</li>
-      </ul>
-      <p><strong>Timeline:</strong> 2–3 weeks. <strong>Outcome:</strong> polished portfolio site that showcases photography and makes updates simple.</p>
-    `,
-    projId: "project13",
-    link: "https://diamdis.squarespace.com/",
-    categories: ["squarespace"],
-    mainImage: "assets/images/portfolio/images/amantys.webp",
-    popImage: "assets/images/portfolio/pop/amantysmain.webp"
-  },
-  {
+    {
     name: "karllillrud",
     details: `
       <h3>Project Overview</h3>
@@ -557,7 +533,7 @@ export const projectsData = [
     link: "https://www.jonmiller.com/",
     categories: ["squarespace"],
     mainImage: "assets/images/portfolio/images/jonmiller.webp",
-    popImage: "assets/images/portfolio/pop/jonmillermain.webp"
+    popImage: "assets/images/portfolio/pop/jonmiller.webp"
   },
   {
     name: "bunker",
@@ -871,7 +847,7 @@ export const projectsData = [
   link: "https://rhealsuperfoods.com/",
   categories: ["shopify"],
   mainImage: "assets/images/portfolio/images/rheal.webp",
-  popImage: "assets/images/portfolio/pop/.rhealmain.webp"
+  popImage: "assets/images/portfolio/pop/.rheal.webp"
 },
 {
   name: "notorious",

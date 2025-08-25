@@ -2,6 +2,7 @@ import Brands from "@/components/common/Brands";
 import Steps from "@/components/common/Steps";
 import Footer4 from "@/components/footers/Footer4";
 import Header4 from "@/components/headers/Header4";
+import Reviews from "@/components/homes/home-1/Reviews";
 import Facts from "@/components/homes/home-4/Facts";
 import Cta from "@/components/homes/home-5/Cta";
 import Features from "@/components/homes/home-5/Features";
@@ -56,7 +57,7 @@ export default function HomePage5() {
           <Howworks />
           <Pricing />
           <Steps />
-         
+         <Reviews />
           <Team />
          {/* <Support /> */}
           </div>

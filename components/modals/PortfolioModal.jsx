@@ -98,17 +98,38 @@ export default function PortfolioModal() {
                   <div className="panel">
                     <div className="row justify-start items-start child-cols-12 col-match g-0">
                       {/* Left: Details */}
+                      
+
+                      {/* Right: Image */}
+                      <div
+                        className="bg-gray-50 dark:bg-dark-2 flex items-center justify-center lg:col-8 relative"
+                        style={{ minHeight: imgHeight ? `${imgHeight}px` : "300px" }}
+                      >
+                        {project?.popImage && (
+                          <div
+                            className="w-full"
+                            style={{
+                              height: imgHeight ? `${imgHeight}px` : "100%",
+                              backgroundImage: `url(/${project.popImage})`,
+                              backgroundSize: "contain",
+                              backgroundPosition: "top",
+                              backgroundRepeat: "no-repeat",
+                            }}
+                          />
+                        )}
+                      </div>
+
                       <div className="p-4 md:p-6 gap-2 lg:col-4 md:gap-2 overflow-y-auto ">
                         <h3 className="h5 lg:h4 m-0">{project?.name ?? "Project"}</h3>
 
-               {project?.details ? (
-  <div
-    className="fs-6 text-opacity-70"
-    dangerouslySetInnerHTML={{ __html: project.details }}
-  />
-) : (
-  <p className="fs-6 text-opacity-50">No additional details available.</p>
-)}
+                        {project?.details ? (
+                          <div
+                            className="fs-6 text-opacity-70"
+                            dangerouslySetInnerHTML={{ __html: project.details }}
+                          />
+                        ) : (
+                          <p className="fs-6 text-opacity-50">No additional details available.</p>
+                        )}
 
 
                         {Array.isArray(project?.categories) &&
@@ -133,25 +154,6 @@ export default function PortfolioModal() {
                           >
                             Visit Website
                           </Link>
-                        )}
-                      </div>
-
-                      {/* Right: Image */}
-                      <div
-                        className="bg-gray-50 dark:bg-dark-2 flex items-center justify-center lg:col-8 relative"
-                        style={{ minHeight: imgHeight ? `${imgHeight}px` : "300px" }}
-                      >
-                        {project?.popImage && (
-                          <div
-                            className="w-full"
-                            style={{
-                              height: imgHeight ? `${imgHeight}px` : "100%",
-                              backgroundImage: `url(/${project.popImage})`,
-                              backgroundSize: "contain",
-                              backgroundPosition: "top",
-                              backgroundRepeat: "no-repeat",
-                            }}
-                          />
                         )}
                       </div>
                     </div>
