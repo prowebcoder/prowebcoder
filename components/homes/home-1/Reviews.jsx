@@ -301,7 +301,7 @@ export default function Reviews() {
                           </p>
 
                           {/* Company */}
-                          <div className="vstack mt-8">
+                          <div className="vstack mt-12">
                             <span className="fw-bold text-sm">{r.name}</span>
                             <span className="fs-7 text-gray-500">{r.role}</span>
                             <span className="fs-8 text-gray-400 mt-0">

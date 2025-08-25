@@ -7300,3 +7300,7 @@ textarea.form-control-lg {
 .gy-2 {
   --bs-gutter-y: 1rem;
 }
+
+.mt-12{
+  margin-top: 8rem !important;
+}
