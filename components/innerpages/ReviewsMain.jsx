@@ -1,10 +1,7 @@
 "use client";
-import React, { useRef, useEffect } from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination } from "swiper/modules"; // 👈 add this
-import "swiper/css"; // ← IMPORTANT
 
 const reviews = [
   {
@@ -209,12 +206,9 @@ const reviews = [
   },
 ];
 
-
 export default function Reviews() {
-  const swiperRef = useRef(null);
-
   return (
-    <div id="reviews" className="reviews section panel overflow-hidden">
+    <div id="reviews" className="reviews section panel overflow-hidden pt-6">
       <div className="section-outer panel xl:pb-5 pb-6">
         <div className="container xl:max-w-7xl">
           <div className="section-inner panel">
@@ -229,115 +223,55 @@ export default function Reviews() {
                 </h2>
               </div>
 
-              {/* Slider */}
-              <div className="row child-cols  items-center justify-center lg:gy-8 gap-2 lg:gap-2 mt-1">
-                <div className="panel swiper-parent w-full max-w-7xl">
-                  <Swiper
-                    className="review-swiper "
-                     modules={[Autoplay, Pagination]} // 👈 important
-                    slidesPerView={3}
-                    spaceBetween={24}
-                    centeredSlides={false}
-                    loop={true}
-                    autoplay={{
-                      delay: 2500,
-                      disableOnInteraction: false,
-                    }}
-                  
-                    breakpoints={{
-                      320: { slidesPerView: 1, spaceBetween: 16 },
-                      768: { slidesPerView: 2, spaceBetween: 20 },
-                      1024: { slidesPerView: 3, spaceBetween: 24 },
-                    }}
-                    onSwiper={(swiper) => {
-                      swiper.update(); // force recalculation of widths after mount
-                    }}
-                  >
-                    {reviews.map((r) => (
-                      <SwiperSlide key={r.id}>
-                        <div className="bg-secondary dark:bg-dark-2 rounded-3 b border h-500px p-2 flex flex-col h-full">
-                          {/* Top row: avatar + logo */}
-                          <div className="hstack flex items-start justify-between mb-6">
-                            <div className="flex items-center gap-3">
-                              <Image
-                                src={r.image}
-                                alt={r.name}
-                                width={44}
-                                height={44}
-                                className="rounded-circle"
-                              />
-                            </div>
-                            {r.logo && (
-                              <div className="flex items-center gap-3 border p-2 rounded-3">
-                                <Image
-                                  src={r.logo}
-                                  alt={r.role}
-                                  width={80}
-                                  height={20}
-                                  className="object-contain"
-                                />
-                              </div>
-                            )}
-                          </div>
-
-                          {/* Quote */}
-
-                          <svg
-                            width="101"
-                            height="101"
-                            viewBox="0 0 101 101"
-                            fill="none"
-                            className="w-32px h-32px mb-2"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M42.9074 82.14H15.2017V47.7851C15.2017 38.5498 17.0488 31.5311 20.7428 26.7288C24.8063 21.7417 31.6404 18.8788 41.245 18.14V34.4863C37.9203 34.4863 35.1498 35.8716 32.9333 38.6422C31.8251 40.1198 31.271 42.9827 31.271 47.2309V52.495H42.9074V82.14ZM86.1281 82.14H58.4225V47.7851C58.4225 38.5498 60.0848 31.8081 63.4095 27.5599C67.8424 22.0188 74.8612 18.8788 84.4658 18.14V34.4863C78.74 34.4863 75.5076 37.3493 74.7688 43.0751C74.5841 43.8139 74.4918 45.1992 74.4918 47.2309V52.495H86.1281V82.14Z"
-                              fill="black"
+              {/* Reviews Grid */}
+              <div className="row col-match child-cols-12 sm:child-cols-6 lg:child-cols-3 col-match gx-2 gy-2 xl:gx-2 xl:gy-2 mt-4">
+                {reviews.map((r) => (
+                  <div key={r.id}>
+                    <div className="panel vstack gap-4 p-2 md:p-3 rounded-1-5 bg-secondary  dark:bg-dark-2 shadow-sm h-100">
+                      {/* Reviewer Top Row */}
+                      <div className="hstack flex items-start justify-between">
+                        <Image
+                          src={r.image}
+                          alt={r.name}
+                          width={44}
+                          height={44}
+                          className="rounded-circle"
+                        />
+                        {r.logo && (
+                          <div className="flex items-center gap-3 border p-2 rounded-3">
+                            <Image
+                              src={r.logo}
+                              alt={r.role}
+                              width={80}
+                              height={20}
+                              className="object-contain"
                             />
-                          </svg>
-
-                          <p className="h4 fw-light h-100px text-dark dark:text-white text-opacity-80 italic leading-relaxed flex-1 mt-0 ">
-                            {r.review}
-                          </p>
-
-                          {/* Company */}
-                          <div className="vstack mt-8">
-                            <span className="fw-bold text-sm">{r.name}</span>
-                            <span className="fs-7 text-gray-500">{r.role}</span>
-                            <span className="fs-8 text-gray-400 mt-0">
-                              {r.company}
-                            </span>
                           </div>
-                        </div>
-                      </SwiperSlide>
-                    ))}
-                  </Swiper>
-                </div>
+                        )}
+                      </div>
+
+                      {/* Quote */}
+                      <p className="fs-7 xl:fs-5 text-dark dark:text-white text-opacity-80 italic leading-relaxed">
+                        “{r.review}”
+                      </p>
+
+                      {/* Reviewer Info */}
+                      <div className="vstack mt-auto">
+                        <span className="fw-bold text-sm">{r.name}</span>
+                        <span className="fs-7 text-gray-500">{r.role}</span>
+                        <span className="fs-8 text-gray-400">{r.company}</span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
 
               {/* CTA */}
-              <div className="vstack items-center mt-6">
-                <Link
-                  href="/reviews"
-                  className="btn btn-md btn-primary rounded-default"
-                >
-                  View All Reviews
-                </Link>
-              </div>
+          
             </div>
           </div>
         </div>
       </div>
-
-      {/* small global tweaks so slides don't stretch vertically */}
-      <style jsx global>{`
-        .review-swiper .swiper-wrapper {
-          align-items: stretch;
-        }
-        .review-swiper .swiper-slide {
-          height: auto;
-        }
-      `}</style>
     </div>
   );
 }
