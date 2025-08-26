@@ -100,21 +100,21 @@ export default function Header4() {
                   <Link
                     className="panel text-none"
                     href={`/`}
-                    style={{ width: 250 }}
+                    style={{ width: 200 }}
                   >
                     <Image
                       className="dark:d-none"
-                      alt="Lexend"
+                      alt="Prowebcoder"
                       src="/assets/images/common/logo-pwc.webp"
-                      width="250"
-                      height="100"
+                      width="200"
+                      height="80"
                     />
                     <Image
                       className="d-none dark:d-block"
-                      alt="Lexend"
+                      alt="Prowebcoder"
                       src="/assets/images/common/white1.webp"
-                      width="250"
-                      height="100"
+                      width="200"
+                      height="80"
                     />
                   </Link>
                 </div>
@@ -127,7 +127,7 @@ export default function Header4() {
                   <LanguageSelect2 />
                 </ul> */}
                                      <div
-        className="darkmode-trigger cstack w-48px h-48px rounded text-black dark:bg-gray-700 dark:text-white"
+        className="darkmode-trigger cstack w-48px d-none lg:d-inline-flex h-48px rounded text-black dark:bg-gray-700 dark:text-white"
         data-darkmode-toggle=""
       >
         <label className="switch">
