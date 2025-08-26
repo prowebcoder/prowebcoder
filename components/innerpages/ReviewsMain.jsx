@@ -238,7 +238,7 @@ export default function Reviews() {
                           className="rounded-circle"
                         />
                         {r.logo && (
-                          <div className="flex items-center gap-3 border p-2 rounded-3">
+                          <div className="flex items-center gap-3 border p-1 rounded-3">
                             <Image
                               src={r.logo}
                               alt={r.role}
