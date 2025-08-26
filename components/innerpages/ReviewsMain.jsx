@@ -227,7 +227,7 @@ export default function Reviews() {
               <div className="row col-match child-cols-12 sm:child-cols-6 lg:child-cols-3 col-match gx-2 gy-2 xl:gx-2 xl:gy-2 mt-4">
                 {reviews.map((r) => (
                   <div key={r.id}>
-                    <div className="panel vstack gap-4 p-2 md:p-3 rounded-1-5 bg-secondary  dark:bg-dark-2 shadow-sm h-100">
+                    <div className="panel vstack gap-4 p-2 md:p-3 rounded-1-5 bg-secondary border  dark:bg-dark-2 shadow-sm h-100">
                       {/* Reviewer Top Row */}
                       <div className="hstack flex items-start justify-between">
                         <Image
