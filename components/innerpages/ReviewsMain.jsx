@@ -50,7 +50,7 @@ const reviews = [
     role: "Co-founder, Soleplus",
     company: "Stockholm, Sweden",
     logo: "/assets/images/brands/shopify_main.svg",
-    image: "/assets/images/avatars/r2.webp",
+    image: "/assets/images/avatars/r5.webp",
     review:
       "Rahul migrated our store to Shopify and customized it for international sales. His attention to responsive design and speed optimization was excellent.",
   },
@@ -60,7 +60,7 @@ const reviews = [
     role: "Manager, Farmhouse Fresh",
     company: "Texas, USA",
     logo: "/assets/images/brands/sp.svg",
-    image: "/assets/images/avatars/r3.webp",
+    image: "/assets/images/avatars/r6.webp",
     review:
       "Our Shopify Plus build was handled seamlessly. Rahul added custom landing pages using his Sections & Landing Pages app — it saved us thousands in design costs.",
   },
@@ -70,7 +70,7 @@ const reviews = [
     role: "Blogger, Healthy Vices",
     company: "New York, USA",
     logo: "/assets/images/brands/wordpress.svg",
-    image: "/assets/images/avatars/r1.webp",
+    image: "/assets/images/avatars/r7.webp",
     review:
       "Rahul transformed my WordPress blog with a modern design and faster load speed. He also helped me integrate e-commerce features without slowing the site.",
   },
@@ -80,7 +80,7 @@ const reviews = [
     role: "CEO, Texture Agency",
     company: "San Francisco, USA",
     logo: "/assets/images/brands/wordpress.svg",
-    image: "/assets/images/avatars/r2.webp",
+    image: "/assets/images/avatars/r8.webp",
     review:
       "Our WordPress agency site was fully rebuilt by Rahul. The result was a sleek, high-performing site that boosted our credibility and SEO rankings.",
   },
@@ -90,7 +90,7 @@ const reviews = [
     role: "Artist, LisaSasevich.com",
     company: "Los Angeles, USA",
     logo: "/assets/images/brands/wordpress.svg",
-    image: "/assets/images/avatars/r3.webp",
+    image: "/assets/images/avatars/r9.webp",
     review:
       "Working with Rahul on my WordPress membership site was fantastic. He handled integrations, payment flows, and made the whole platform reliable.",
   },
@@ -100,7 +100,7 @@ const reviews = [
     role: "Owner, Pulse SS",
     company: "Berlin, Germany",
     logo: "/assets/images/brands/squarespace.svg",
-    image: "/assets/images/avatars/r4.webp",
+    image: "/assets/images/avatars/r10.webp",
     review:
       "Rahul revamped our Squarespace portfolio, making it visually stunning and fully mobile-optimized. His eye for design really shines on this platform.",
   },
@@ -110,7 +110,7 @@ const reviews = [
     role: "Founder, Diamdis",
     company: "Athens, Greece",
     logo: "/assets/images/brands/squarespace.svg",
-    image: "/assets/images/avatars/r1.webp",
+    image: "/assets/images/avatars/r11.webp",
     review:
       "Our Squarespace store redesign was handled quickly and with style. Rahul’s balance of functionality and aesthetics was perfect.",
   },
@@ -120,7 +120,7 @@ const reviews = [
     role: "Lawyer, NortonBasu.com",
     company: "San Jose, USA",
     logo: "/assets/images/brands/squarespace.svg",
-    image: "/assets/images/avatars/r2.webp",
+    image: "/assets/images/avatars/r12.webp",
     review:
       "Rahul built us a professional Squarespace site for our law practice. Clients frequently compliment us on how clear and modern it looks.",
   },
@@ -130,7 +130,7 @@ const reviews = [
     role: "Marketing Head, Griot’s Garage",
     company: "Seattle, USA",
     logo: "/assets/images/brands/bigcommerce.svg",
-    image: "/assets/images/avatars/r3.webp",
+    image: "/assets/images/avatars/r13.webp",
     review:
       "Our BigCommerce store needed advanced customization, and Rahul delivered. The site now runs smoother, loads faster, and handles thousands of SKUs effortlessly.",
   },
@@ -140,7 +140,7 @@ const reviews = [
     role: "Director, Garrett Popcorn",
     company: "Chicago, USA",
     logo: "/assets/images/brands/bigcommerce.svg",
-    image: "/assets/images/avatars/r4.webp",
+    image: "/assets/images/avatars/r14.webp",
     review:
       "Rahul optimized our BigCommerce store checkout flow and integrated third-party APIs. The improvements boosted our conversions immediately.",
   },
@@ -150,7 +150,7 @@ const reviews = [
     role: "Manager, Wing Tactical",
     company: "Los Angeles, USA",
     logo: "/assets/images/brands/bigcommerce.svg",
-    image: "/assets/images/avatars/r1.webp",
+    image: "/assets/images/avatars/r15.webp",
     review:
       "Custom development on our BigCommerce site was flawless. Rahul added advanced filtering and product personalization features we’d struggled with before.",
   },
@@ -160,7 +160,7 @@ const reviews = [
     role: "Founder, Freedom Venture",
     company: "Miami, USA",
     logo: "/assets/images/brands/webflow.svg",
-    image: "/assets/images/avatars/r2.webp",
+    image: "/assets/images/avatars/r16.webp",
     review:
       "Rahul built our Webflow site with precision. The animations, responsive layouts, and CMS integrations all exceeded expectations.",
   },
@@ -170,7 +170,7 @@ const reviews = [
     role: "CEO, Temperstack",
     company: "Austin, USA",
     logo: "/assets/images/brands/webflow.svg",
-    image: "/assets/images/avatars/r3.webp",
+    image: "/assets/images/avatars/r17.webp",
     review:
       "Our SaaS site was migrated to Webflow by Rahul. He made it blazing fast, with dynamic CMS collections for blog and product pages.",
   },
@@ -180,7 +180,7 @@ const reviews = [
     role: "Owner, Proxiware",
     company: "Rome, Italy",
     logo: "/assets/images/brands/webflow.svg",
-    image: "/assets/images/avatars/r4.webp",
+    image: "/assets/images/avatars/r18.webp",
     review:
       "Rahul helped me design my Webflow portfolio. His clean layouts and subtle animations made it stand out from competitors.",
   },
@@ -190,7 +190,7 @@ const reviews = [
     role: "COO, RedHorse Contractors",
     company: "Texas, USA",
     logo: "/assets/images/brands/webflow.svg",
-    image: "/assets/images/avatars/r1.webp",
+    image: "/assets/images/avatars/r19.webp",
     review:
       "We needed a corporate Webflow site that felt professional and scalable. Rahul nailed it — it’s now the centerpiece of our online presence.",
   },
@@ -200,7 +200,7 @@ const reviews = [
     role: "Marketing Lead, Digital Trend Media",
     company: "Berlin, Germany",
     logo: "/assets/images/brands/webflow.svg",
-    image: "/assets/images/avatars/r2.webp",
+    image: "/assets/images/avatars/r20.webp",
     review:
       "From concept to delivery, Rahul handled our Webflow build seamlessly. The site is fast, SEO-friendly, and beautifully designed.",
   },
