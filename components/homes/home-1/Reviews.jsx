@@ -258,14 +258,10 @@ export default function Reviews() {
                         <div className="bg-secondary dark:bg-dark-2 rounded-3 b border h-500px p-2 flex flex-col h-full">
                           {/* Top row: avatar + logo */}
                           <div className="hstack flex items-start justify-between mb-6">
-                            <div className="flex items-center gap-3">
-                              <Image
-                                src={r.image}
-                                alt={r.name}
-                                width={44}
-                                height={44}
-                                className="rounded-circle"
-                              />
+                            <div className="flex items-center gap-3 w-44 h-44 border  p-narrow rounded-circle">
+                                <div className="flex items-center gap-3 w-44 h-44 border  p-3 rounded-circle" style={{ backgroundImage: `url(${r.image})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+                          
+                              </div>
                             </div>
                             {r.logo && (
                               <div className="flex items-center gap-3 border p-1 rounded-3">
