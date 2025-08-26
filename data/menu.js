@@ -641,14 +641,14 @@ export const homeLinks = [
 export const links = [
   {
     id: 1,
-    href: "/page-career",
+    href: "/contact-us",
     label: "Hire an Expert",
     isInternal: true,
   },
   {
     id: 2,
-    href: "#",
-    label: "Customer stories",
+    href: "/reviews",
+    label: "Reviews",
     isInternal: false,
   },
   // {
