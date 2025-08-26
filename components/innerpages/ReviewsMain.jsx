@@ -9,7 +9,7 @@ const reviews = [
     name: "Emily Carter",
     role: "Founder, Elvardi",
     company: "London, UK",
-    logo: "/assets/images/brands/shopify.svg",
+    logo: "/assets/images/brands/shopify_main.svg",
     image: "/assets/images/avatars/r1.webp",
     review:
       "Rahul built our Shopify store Elvardi from scratch, customizing the theme beautifully and integrating upsell features using his PWC: Fav Tab & Upsell app. Our conversions increased within weeks.",
@@ -19,7 +19,7 @@ const reviews = [
     name: "James Miller",
     role: "CEO, PetPurifair",
     company: "Toronto, Canada",
-    logo: "/assets/images/brands/shopify.svg",
+    logo: "/assets/images/brands/shopify_main.svg",
     image: "/assets/images/avatars/r2.webp",
     review:
       "The Shopify app Rahul created for our business was game-changing. He tailored it to our exact needs, and the ongoing support has been fantastic.",
@@ -29,7 +29,7 @@ const reviews = [
     name: "Sophie Laurent",
     role: "Marketing Manager, Dermaspa",
     company: "Manchester, UK",
-    logo: "/assets/images/brands/shopify.svg",
+    logo: "/assets/images/brands/shopify_main.svg",
     image: "/assets/images/avatars/r3.webp",
     review:
       "Our Shopify theme redesign was smooth and professional. Rahul optimized speed, improved UX, and integrated custom sections that fit perfectly with our branding.",
@@ -39,7 +39,7 @@ const reviews = [
     name: "Michael Johnson",
     role: "CTO, Studio Deve",
     company: "Paris, France",
-    logo: "/assets/images/brands/shopify.svg",
+    logo: "/assets/images/brands/sp.svg",
     image: "/assets/images/avatars/r1.webp",
     review:
       "We needed a custom Shopify app for customer wishlists, and Rahul delivered exactly what we envisioned. The PWC: Customer Pages & Wishlist app saved us months of development.",
@@ -49,7 +49,7 @@ const reviews = [
     name: "Hannah Smith",
     role: "Co-founder, Soleplus",
     company: "Stockholm, Sweden",
-    logo: "/assets/images/brands/shopify.svg",
+    logo: "/assets/images/brands/shopify_main.svg",
     image: "/assets/images/avatars/r2.webp",
     review:
       "Rahul migrated our store to Shopify and customized it for international sales. His attention to responsive design and speed optimization was excellent.",
@@ -59,7 +59,7 @@ const reviews = [
     name: "Chris Brown",
     role: "Manager, Farmhouse Fresh",
     company: "Texas, USA",
-    logo: "/assets/images/brands/shopify.svg",
+    logo: "/assets/images/brands/sp.svg",
     image: "/assets/images/avatars/r3.webp",
     review:
       "Our Shopify Plus build was handled seamlessly. Rahul added custom landing pages using his Sections & Landing Pages app — it saved us thousands in design costs.",
