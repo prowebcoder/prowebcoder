@@ -1,5 +1,5 @@
 import RtlConverter from "@/components/common/RtlConverter";
-import Footer3 from "@/components/footers/Footer3";
+import Footer2 from "@/components/footers/Footer2";
 import Header1 from "@/components/headers/Header1";
 import Blogs from "@/components/homes/home-4/Blogs";
 import Brands from "@/components/homes/home-4/Brands";
@@ -39,7 +39,7 @@ export default function HomePageRtl() {
             <Blogs />
             <Cta2 />
           </div>
-          <Footer3 />
+          <Footer2 />
         </div>{" "}
       </div>
     </>
