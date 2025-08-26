@@ -91,8 +91,8 @@ export default function MobileMenu() {
                
                 alt="Prowebcoder"
                 src="/assets/images/common/pwc.png"
-                width="200"
-                height="80"
+                width="150"
+                height="60"
               />
             </Link>
           </div>

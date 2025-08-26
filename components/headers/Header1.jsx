@@ -127,7 +127,7 @@ export default function Header4() {
                   <LanguageSelect2 />
                 </ul> */}
                                      <div
-        className="darkmode-trigger cstack w-48px h-48px rounded text-black dark:bg-gray-700 dark:text-white"
+        className="darkmode-trigger cstack w-48px d-none lg:d-inline-flex h-48px rounded text-black dark:bg-gray-700 dark:text-white"
         data-darkmode-toggle=""
       >
         <label className="switch">
