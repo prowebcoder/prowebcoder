@@ -19,8 +19,8 @@ export default function Brands2() {
       },
       // data-uc-swiper-m
       1024: {
-        slidesPerView: 5, // items: 5
-        spaceBetween: 80, // gap: 80
+        slidesPerView: 6, // items: 5
+        spaceBetween: 40, // gap: 80
       },
     },
   };
