@@ -2,11 +2,13 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { brands } from "@/data/brands";
 import Image from "next/image";
-
+import { Autoplay, Pagination } from "swiper/modules"; // 👈 add this
 export default function Brands2() {
   const swiperOptions = {
     slidesPerView: 2, // items: 2
     centeredSlides: true, // center: true
+    
+     
     centeredSlidesBounds: true, // center-bounds: true
     breakpoints: {
       // data-uc-swiper-s
@@ -18,12 +20,17 @@ export default function Brands2() {
       // data-uc-swiper-m
       1024: {
         slidesPerView: 5, // items: 5
-        spaceBetween: 80, // gap: 80
+        spaceBetween: 40, // gap: 80
       },
     },
   };
   return (
-    <Swiper {...swiperOptions}>
+    <Swiper  modules={[Autoplay, Pagination]} // 👈 important
+                        
+                        autoplay={{
+                          delay: 3500,
+                          disableOnInteraction: false,
+                        }}  {...swiperOptions}>
       {brands.map((brand, index) => (
         <SwiperSlide
           className="brand-item swiper-slide text-center"
