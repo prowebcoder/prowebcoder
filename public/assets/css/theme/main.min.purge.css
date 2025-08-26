@@ -1400,7 +1400,7 @@ p.text-muted:where(.uc-dark) {
 .uc-navbar .uc-navbar-left,
 .uc-navbar .uc-navbar-right,
 .uc-navbar [class*="uc-navbar-center"] {
-  gap: 1.5rem;
+  gap: .5rem;
 }
 .uc-navbar-nav > li > a {
   position: relative;

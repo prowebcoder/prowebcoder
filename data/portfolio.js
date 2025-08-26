@@ -847,7 +847,7 @@ export const projectsData = [
   link: "https://rhealsuperfoods.com/",
   categories: ["shopify"],
   mainImage: "assets/images/portfolio/images/rheal.webp",
-  popImage: "assets/images/portfolio/pop/.rheal.webp"
+  popImage: "assets/images/portfolio/pop/rheal.webp"
 },
 {
   name: "notorious",

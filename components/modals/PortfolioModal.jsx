@@ -124,7 +124,7 @@ export default function PortfolioModal() {
 
                         {project?.details ? (
                           <div
-                            className="fs-6 text-opacity-70"
+                            className="fs-8 text-opacity-70"
                             dangerouslySetInnerHTML={{ __html: project.details }}
                           />
                         ) : (

@@ -1,7 +1,7 @@
 import Brands from "@/components/common/Brands";
 import Steps from "@/components/common/Steps";
-import Footer4 from "@/components/footers/Footer4";
-import Header4 from "@/components/headers/Header4";
+import Footer2 from "@/components/footers/Footer2";
+import Header1 from "@/components/headers/Header1";
 import Reviews from "@/components/homes/home-1/Reviews";
 import Facts from "@/components/homes/home-4/Facts";
 import Cta from "@/components/homes/home-5/Cta";
@@ -22,7 +22,7 @@ export default function HomePage5() {
   return (
     <>
       <div className=" page-wrapper uni-body panel bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-200 overflow-x-hidden bp-xs bp-sm bp-md bp-lg dom-ready bp-xl bp-xxl">
-        <Header4 />
+        <Header1 />
         <div id="wrapper" className="wrap">
           <Hero />
           <div
@@ -61,7 +61,7 @@ export default function HomePage5() {
           <Team />
          {/* <Support /> */}
           </div>
-        <Footer4 />
+        <Footer2 />
       </div>
     </>
   );
