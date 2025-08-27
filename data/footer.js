@@ -124,21 +124,36 @@ export const footerLinks3 = [
       { href: "/convert-from-figma", label: "Convert from Figma" },
       { href: "/free-audit", label: "Get a Free Website Audit" },
        { href: "/website-management", label: "Website Management" },
+         { href: "/services", label: "Build a New Website" },
      
     
     ],
   },
-  {
+    {
     title: "QUICK LINKS",
     links: [
       { href: "/sign-in", label: "Build a New Website" },
-      { href: "/free-audit", label: "Get a Free Website Audit" },
-      { href: "/services", label: "Build a New Website" },
+   
+    
        { href: "/contact-us", label: "Contact Us" },
       { href: "/contact-us", label: "Help center" },
       { href: "/contact-us", label: "Support" },
+      
+      { href: "/page-terms", label: "Terms of Service" },
+      { href: "/privacy-policy", label: "Privacy Policy" },
     ],
   },
+   {
+    title: "AFFILIATE PROGRAMS",
+    links: [
+      { href: "/shop", label: "Website Management" },
+      { href: "https://affiliates.heymantle.com/aff/join/bdad242f-3843-48c9-baea-e2e0d866b48b", label: "PWC: Customer Pages & Wishlist" ,target:"_blank"},
+      { href: "https://affiliates.heymantle.com/aff/join/460c67aa-3e3f-4af3-ae7f-073cd97eed40", label: "PWC : Sections & Landing Pages" ,target:"_blank"},
+    
+    
+    ],
+  },
+
   // {
   //   title: "Social",
   //   links: [
@@ -151,16 +166,7 @@ export const footerLinks3 = [
   //     { href: "/page-privacy", label: "Dribbble" },
   //   ],
   // },
-  {
-    title: "LEGAL",
-    links: [
-      { href: "/blog", label: "Legal" },
-      { href: "/page-terms", label: "Terms of Service" },
-      { href: "/privacy-policy", label: "Privacy Policy" },
-  
-    ],
-    extraClass: "d-none lg:d-block",
-  },
+
 ];
 
 export const footerLinks4 = [

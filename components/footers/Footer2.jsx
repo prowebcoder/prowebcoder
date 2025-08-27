@@ -85,12 +85,12 @@ const [email, setEmail] = useState("");
                   <div className="col-12 lg:col-4">
                     <div className="panel vstack items-start gap-3 xl:gap-4 ltr:md:pe-8 rtl:md:ps-8">
                       <div>
-                        <Link href={`/`} style={{ width: 140 }}>
+                        <Link href={`/`} style={{ width: 100 }}>
                           <Image
                             className="text-primary"
                             alt="Lexend"
                             src="/assets/images/common/white1.webp"
-                            width="250"
+                            width="150"
                             height="80"
                           />
                         </Link>
@@ -113,6 +113,7 @@ const [email, setEmail] = useState("");
                               </span>
                             ) :     <Link
                               href={link.href}
+                              target={link.target || "_self"}
                               className={
                                 idx === 0
                                   ? "fs-5 dark:text-white"
