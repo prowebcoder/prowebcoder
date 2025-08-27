@@ -255,7 +255,7 @@ export default function Reviews() {
                   >
                     {reviews.map((r) => (
                       <SwiperSlide key={r.id}>
-                        <div className="bg-secondary dark:bg-dark-2 rounded-3 b border h-500px p-2 flex flex-col h-full">
+                        <div className=" dark:bg-dark rounded-3 b border h-500px p-2 flex flex-col h-full">
                           {/* Top row: avatar + logo */}
                           <div className="hstack flex items-start justify-between mb-6">
                             <div className="flex items-center gap-3 w-44 h-44 border  p-narrow rounded-circle">
@@ -264,13 +264,13 @@ export default function Reviews() {
                               </div>
                             </div>
                             {r.logo && (
-                              <div className="flex items-center gap-3 border p-1 rounded-3">
+                              <div className="flex items-center gap-3 border p-1 rounded-3 dark:bg-secondary">
                                 <Image
                                   src={r.logo}
                                   alt={r.role}
                                   width={80}
                                   height={20}
-                                  className="object-contain"
+                                  className="object-contain "
                                 />
                               </div>
                             )}
@@ -283,7 +283,7 @@ export default function Reviews() {
                             height="101"
                             viewBox="0 0 101 101"
                             fill="none"
-                            className="w-32px h-32px mb-2"
+                            className="w-32px h-32px mb-2 "
                             xmlns="http://www.w3.org/2000/svg"
                           >
                             <path
