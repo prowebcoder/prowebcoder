@@ -96,25 +96,7 @@ export const projectsData = [
     mainImage: "assets/images/portfolio/images/gravastar.webp",
     popImage: "assets/images/portfolio/pop/gravastarmain.webp"
   },
-  {
-    name: "MYOB Fashion",
-    details: `
-      <h3>Project Overview</h3>
-      <p>MYOB Fashion is a contemporary fashion label. We crafted a <strong>modern Shopify store</strong> to highlight their collections with an editorial-style layout.</p>
-      <h4>What We Did:</h4>
-      <ul>
-        <li>Developed a minimalistic yet bold design layout.</li>
-        <li>Integrated <strong>Shopify POS</strong> for retail + online sync.</li>
-        <li>Created custom size guides and lookbook features.</li>
-        <li>Optimized for mobile-first shopping experience.</li>
-      </ul>
-    `,
-    projId: "project5",
-    link: "https://myobfashion.com/",
-    categories: ["shopify", "ecommerce"],
-    mainImage: "assets/images/portfolio/images/myob.webp",
-    popImage: "assets/images/portfolio/pop/myobmain.webp"
-  },
+
   {
     name: "Vision Pets",
     details: `
@@ -282,7 +264,7 @@ export const projectsData = [
       <p><strong>Timeline:</strong> 2 weeks. <strong>Outcome:</strong> a striking, low-friction portfolio optimized for mobile and desktop viewing.</p>
     `,
     projId: "project14",
-    link: "https:/www.karllillrud.com/",
+    link: "https://www.karllillrud.com/",
     categories: ["squarespace"],
     mainImage: "assets/images/portfolio/images/karl.webp",
     popImage: "assets/images/portfolio/pop/karlmain.webp"
@@ -320,30 +302,12 @@ export const projectsData = [
       <p><strong>Timeline:</strong> 2 weeks. <strong>Outcome:</strong> an elegant personal site that highlights work and expertise.</p>
     `,
     projId: "project16",
-    link: "https://amy-ryman.squarespace.com/",
+    link: "https://www.stemgirlsclub.com/",
     categories: ["squarespace"],
     mainImage: "assets/images/portfolio/images/stemgirl.webp",
     popImage: "assets/images/portfolio/pop/stemgirlmain.webp"
   },
-  {
-    name: "fieldmain",
-    details: `
-      <h3>Project Overview</h3>
-      <p>Field Stories needed a storytelling website to showcase editorial pieces and client stories. We created a clean narrative layout using Squarespace.</p>
-      <h4>What We Did</h4>
-      <ul>
-        <li>Editorial templates for long-form storytelling and case studies.</li>
-        <li>Structured content sections that support photography and text side-by-side.</li>
-        <li>Easy-to-edit CMS blocks and category tagging for archive navigation.</li>
-      </ul>
-      <p><strong>Timeline:</strong> 3 weeks. <strong>Outcome:</strong> a magazine-like experience emphasizing stories and visual content.</p>
-    `,
-    projId: "project17",
-    link: "https://fieldstories.squarespace.com/",
-    categories: ["squarespace"],
-    mainImage: "assets/images/portfolio/images/fieldstories.webp",
-    popImage: "assets/images/portfolio/pop/fieldmain.webp"
-  },
+
   {
     name: "cbullardphotography",
     details: `
@@ -492,7 +456,7 @@ export const projectsData = [
       <p><strong>Timeline:</strong> 6 weeks. <strong>Outcome:</strong> A hybrid portfolio and store that supports client acquisition and product sales.</p>
     `,
     projId: "project25",
-    link: "https://elevatecreativeinc.com/",
+    link: "https://www.elevatecreative.io/",
     categories: ["wordpress", "ecommerce"],
     mainImage: "assets/images/portfolio/images/elevate.webp",
     popImage: "assets/images/portfolio/pop/elevatemain.webp"
@@ -573,23 +537,7 @@ export const projectsData = [
     mainImage: "assets/images/portfolio/images/instrument.webp",
     popImage: "assets/images/portfolio/pop/instrumentmain.webp"
   },
-  {
-    name: "outside",
-    details: `<h3>Outside - Let's Move Schools</h3>
-              <h4>Platform:</h4>
-              <ul><li>WordPress</li><li>Ecommerce</li></ul>
-              <h4>Highlights:</h4>
-              <ul>
-                <li>Educational non-profit website.</li>
-                <li>Donation integration and supporter engagement tools.</li>
-                <li>Clean, accessible, and mobile-friendly design.</li>
-              </ul>`,
-    projId: "project30",
-    link: "https://letsmoveschools.org/",
-    categories: ["wordpress", "ecommerce"],
-    mainImage: "assets/images/portfolio/images/outside.webp",
-    popImage: "assets/images/portfolio/pop/outsidemain.webp"
-  },
+
   {
     name: "thecarcrush",
     details: `<h3>The Car Crush</h3>
@@ -704,7 +652,7 @@ export const projectsData = [
                 <li>Bright and minimalistic design approach.</li>
               </ul>`,
     projId: "project37",
-    link: "https://terraseed-v3.myshopify.com/",
+    link: "https://terraseed.com/",
     categories: ["shopify"],
     mainImage: "assets/images/portfolio/images/terraseed.webp",
     popImage: "assets/images/portfolio/pop/terraseedmain.webp"
@@ -805,28 +753,7 @@ export const projectsData = [
   mainImage: "assets/images/portfolio/images/tmpl.webp",
   popImage: "assets/images/portfolio/pop/tmplmain.webp"
 },
-{
-  name: "avecdrinks",
-  details: `
-    <h3>Avec Drinks</h3>
-    <h4>Project Overview</h4>
-    <ul>
-      <li>Shopify store for premium non-alcoholic beverages.</li>
-      <li>Custom branding elements for modern lifestyle appeal.</li>
-    </ul>
-    <h4>Key Features</h4>
-    <ul>
-      <li>Subscription and bulk-buy functionality.</li>
-      <li>Engaging imagery with storytelling content.</li>
-      <li>Optimized for high-performance on mobile.</li>
-    </ul>
-  `,
-  projId: "project44",
-  link: "https://avecdrinks.com/",
-  categories: ["shopify"],
-  mainImage: "assets/images/portfolio/images/avec.webp",
-  popImage: "assets/images/portfolio/pop/avecmain.webp"
-},
+
 {
   name: "rheal",
   details: `
@@ -871,28 +798,7 @@ export const projectsData = [
   mainImage: "assets/images/portfolio/images/notorious.webp",
   popImage: "assets/images/portfolio/pop/notoriousmain.webp"
 },
-{
-  name: "frontman",
-  details: `
-    <h3>Frontman</h3>
-    <h4>Project Overview</h4>
-    <ul>
-      <li>Squarespace website for personal brand and services.</li>
-      <li>Designed to showcase expertise and credibility.</li>
-    </ul>
-    <h4>Key Features</h4>
-    <ul>
-      <li>Professional yet minimal aesthetic.</li>
-      <li>Clean navigation structure.</li>
-      <li>Responsive design for all devices.</li>
-    </ul>
-  `,
-  projId: "project47",
-  link: "https://befrontman.com/",
-  categories: ["squarespace"],
-  mainImage: "assets/images/portfolio/images/frontman.webp",
-  popImage: "assets/images/portfolio/pop/frontmanmain.webp"
-},
+
 {
   name: "homedough",
   details: `
@@ -932,7 +838,7 @@ export const projectsData = [
     </ul>
   `,
   projId: "project49",
-  link: "https://homedough.com/",
+  link: "https://anorakonline.co.uk/",
   categories: ["shopify"],
   mainImage: "assets/images/portfolio/images/anarkonline.webp",
   popImage: "assets/images/portfolio/pop/anorakonlinemain.webp"
@@ -954,7 +860,7 @@ export const projectsData = [
     </ul>
   `,
   projId: "project50",
-  link: "https://homedough.com/",
+  link: "https://ap8.art/",
   categories: ["shopify"],
   mainImage: "assets/images/portfolio/images/ap8.webp",
   popImage: "assets/images/portfolio/pop/ap8main.webp"
@@ -976,33 +882,12 @@ export const projectsData = [
     </ul>
   `,
   projId: "project51",
-  link: "https://homedough.com/",
+  link: "https://www.flamelesscandles.com/",
   categories: ["shopify"],
   mainImage: "assets/images/portfolio/images/flamelesscandles.webp",
   popImage: "assets/images/portfolio/pop/flamelesscandlesmain.webp"
 },
-{
-  name: "Harbour 9",
-  details: `
-    <h3>Harbour 9</h3>
-    <h4>Project Overview</h4>
-    <ul>
-      <li>Shopify clothing and lifestyle brand website.</li>
-      <li>Strong focus on fashion visuals and lifestyle imagery.</li>
-    </ul>
-    <h4>Key Features</h4>
-    <ul>
-      <li>Product collections and categories.</li>
-      <li>Enhanced mobile navigation.</li>
-      <li>Modern, stylish branding elements.</li>
-    </ul>
-  `,
-  projId: "project52",
-  link: "https://homedough.com/",
-  categories: ["shopify"],
-  mainImage: "assets/images/portfolio/images/harbour9.webp",
-  popImage: "assets/images/portfolio/pop/harbour9main.webp"
-},
+
 {
   name: "Lavapor Wholesale",
   details: `
@@ -1020,32 +905,11 @@ export const projectsData = [
     </ul>
   `,
   projId: "project53",
-  link: "https://homedough.com/",
+  link: "https://lavaporwholesale.com/",
   categories: ["shopify"],
   mainImage: "assets/images/portfolio/images/lavaporwholesale.webp",
   popImage: "assets/images/portfolio/pop/lavaporwholesalemain.webp"
 },
-{
-  name: "Trompe loeil",
-  details: `
-    <h3>Trompe L’oeil</h3>
-    <h4>Project Overview</h4>
-    <ul>
-      <li>Shopify-powered creative lifestyle brand site.</li>
-      <li>Artistic visuals with unique brand storytelling.</li>
-    </ul>
-    <h4>Key Features</h4>
-    <ul>
-      <li>High-quality media integration.</li>
-      <li>Clean and simple purchase flow.</li>
-      <li>Mobile-responsive for artistic presentation.</li>
-    </ul>
-  `,
-  projId: "project55",
-  link: "https://homedough.com/",
-  categories: ["shopify"],
-  mainImage: "assets/images/portfolio/images/trompeloeil.webp",
-  popImage: "assets/images/portfolio/pop/trompeloeilmain.webp"
-}
+
 
 ];
