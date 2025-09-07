@@ -48,7 +48,7 @@ export default function About() {
             Get Your Project Quote
             <span className="text-primary"> Instantly</span>
           </h1>
-         <p className="fs-6 md:fs-5 text-dark dark:text-white text-opacity-70 mb-6">
+         <p className="fs-6 md:fs-5 text-dark dark:text-white text-opacity-70 mb-4">
            Professional web development services with transparent pricing. Select your requirements and get an accurate quote in minutes.
               </p>
           <div className="hstack flex flex-wrap justify-center gap-4 text-xs text-muted-foreground py-20">
