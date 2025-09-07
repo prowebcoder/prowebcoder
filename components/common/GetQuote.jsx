@@ -45,7 +45,7 @@ const GetQuoteCalculator = () => {
       id: 'shopify', 
       name: 'Shopify', 
       description: 'E-commerce Platform', 
-      basePrice: 1500, 
+      basePrice: 500, 
      icon: '/assets/images/logos/shopify.svg',
       complexity: { basic: 1, standard: 1.2, premium: 1.6 } 
     },
@@ -53,7 +53,7 @@ const GetQuoteCalculator = () => {
       id: 'nextjs', 
       name: 'Next.js', 
       description: 'React Framework', 
-      basePrice: 1500, 
+      basePrice: 500, 
       icon: '/assets/images/logos/next.svg',
       complexity: { basic: 1, standard: 1.3, premium: 1.8 } 
     },
@@ -61,7 +61,7 @@ const GetQuoteCalculator = () => {
       id: 'react', 
       name: 'React', 
       description: 'SPA Development', 
-      basePrice: 1500, 
+      basePrice: 500, 
      icon: '/assets/images/logos/react.png',
       complexity: { basic: 1, standard: 1.4, premium: 1.9 } 
     },
@@ -69,7 +69,7 @@ const GetQuoteCalculator = () => {
       id: 'webflow', 
       name: 'Webflow', 
       description: 'Visual Development', 
-      basePrice: 1000, 
+      basePrice: 500, 
     icon: '/assets/images/logos/webflow.svg',
       complexity: { basic: 1, standard: 1.3, premium: 1.7 } 
     },
@@ -85,7 +85,7 @@ const GetQuoteCalculator = () => {
       id: 'shopify-app', 
       name: 'Shopify App', 
       description: 'Custom App Development', 
-      basePrice: 1500, 
+      basePrice: 1200, 
      icon: '/assets/images/logos/shopify.svg',
       complexity: { basic: 1, standard: 1.5, premium: 2.2 } 
     },
@@ -93,7 +93,7 @@ const GetQuoteCalculator = () => {
       id: 'bigcommerce', 
       name: 'BigCommerce', 
       description: 'Enterprise E-commerce', 
-      basePrice: 1000, 
+      basePrice: 500, 
       icon: '/assets/images/logos/bigcommerce.svg',
       complexity: { basic: 1, standard: 1.4, premium: 2.0 } 
     }
@@ -102,26 +102,26 @@ const GetQuoteCalculator = () => {
   const getFeaturesByPlatform = (platformId) => {
     const features = {
       wordpress: {
-        'woocommerce': { name: 'WooCommerce Store', price: 800, description: 'E-commerce functionality' },
+        'woocommerce': { name: 'WooCommerce Store', price: 600, description: 'E-commerce functionality' },
         'custom-theme': { name: 'Custom Theme Development', price: 1200, description: 'Unique branded theme' },
-        'membership': { name: 'Membership System', price: 600, description: 'User registration and access control' },
+        'membership': { name: 'Membership System', price: 300, description: 'User registration and access control' },
         'multisite': { name: 'WordPress Multisite', price: 500, description: 'Network of multiple sites' },
         'page-builder': { name: 'Page Builder Setup', price: 300, description: 'Drag & drop page editing' },
-        'blog-advanced': { name: 'Advanced Blog Features', price: 400, description: 'Categories, tags, comments' }
+        'blog-advanced': { name: 'Advanced Blog Features', price: 200, description: 'Categories, tags, comments' }
       },
       shopify: {
-        'custom-theme': { name: 'Custom Shopify Theme', price: 1200, description: 'Liquid template customization' },
+        'custom-theme': { name: 'Custom Shopify Theme', price: 800, description: 'Liquid template customization' },
         'shopify-plus': { name: 'Shopify Plus Setup', price: 1500, description: 'Enterprise features' },
-        'product-variants': { name: 'Complex Product Variants', price: 600, description: 'Size, color, material options' },
-        'subscription': { name: 'Subscription Products', price: 800, description: 'Recurring billing setup' },
-        'multi-currency': { name: 'Multi-Currency Support', price: 400, description: 'International selling' },
-        'inventory-management': { name: 'Inventory Management', price: 600, description: 'Stock tracking system' }
+        'product-variants': { name: 'Complex Product Variants', price: 400, description: 'Size, color, material options' },
+        'subscription': { name: 'Subscription Products', price: 40, description: 'Recurring billing setup' },
+        'multi-currency': { name: 'Multi-Currency Support', price: 200, description: 'International selling' },
+        'inventory-management': { name: 'Inventory Management', price: 200, description: 'Stock tracking system' }
       },
       nextjs: {
         'ssr': { name: 'Server-Side Rendering', price: 600, description: 'SEO-optimized rendering' },
         'authentication': { name: 'User Authentication', price: 800, description: 'Login/signup system' },
         'api-routes': { name: 'Custom API Routes', price: 700, description: 'Backend API development' },
-        'database': { name: 'Database Integration', price: 900, description: 'PostgreSQL/MongoDB setup' },
+        'database': { name: 'Database Integration', price: 300, description: 'PostgreSQL/MongoDB setup' },
         'deployment': { name: 'Production Deployment', price: 400, description: 'Vercel/AWS setup' },
         'pwa': { name: 'Progressive Web App', price: 600, description: 'Mobile app features' }
       },
@@ -138,7 +138,7 @@ const GetQuoteCalculator = () => {
         'interactions': { name: 'Custom Interactions', price: 600, description: 'Advanced animations' },
         'ecommerce': { name: 'Webflow E-commerce', price: 700, description: 'Online store features' },
         'forms': { name: 'Advanced Forms', price: 300, description: 'Custom form styling' },
-        'membership': { name: 'Membership Portal', price: 800, description: 'Gated content access' },
+        'membership': { name: 'Membership Portal', price: 500, description: 'Gated content access' },
         'responsive': { name: 'Advanced Responsive', price: 400, description: 'Mobile-first design' }
       },
       squarespace: {
@@ -158,12 +158,12 @@ const GetQuoteCalculator = () => {
         'reviews': { name: 'Review System', price: 800, description: 'User feedback collection' }
       },
       bigcommerce: {
-        'custom-theme': { name: 'Custom BigCommerce Theme', price: 1200, description: 'Stencil theme development' },
-        'api-integration': { name: 'API Integration', price: 900, description: 'Third-party connections' },
+        'custom-theme': { name: 'Custom BigCommerce Theme', price: 500, description: 'Stencil theme development' },
+        'api-integration': { name: 'API Integration', price: 500, description: 'Third-party connections' },
         'multi-storefront': { name: 'Multi-Storefront', price: 1500, description: 'Multiple brand stores' },
         'b2b-features': { name: 'B2B Features', price: 1200, description: 'Wholesale functionality' },
         'headless': { name: 'Headless Commerce', price: 1800, description: 'API-first approach' },
-        'payment-gateway': { name: 'Custom Payment Gateway', price: 1000, description: 'Payment integration' }
+        'payment-gateway': { name: 'Custom Payment Gateway', price: 500, description: 'Payment integration' }
       }
     };
 
