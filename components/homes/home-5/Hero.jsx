@@ -72,7 +72,7 @@ export default function Hero() {
                     </form> */}
                     <div className="vstack md:hstack justify-center lg:justify-start gap-2">
 
-                 <a className="btn btn-md lg:btn-lg btn-primary text-white min-w-150px sm:mt-1" href="/quote-calculator" >Get a Free Quote</a>
+                 <a className="btn btn-md lg:btn-lg btn-primary text-white min-w-150px sm:mt-1" href="/get-a-quote" >Get a Free Quote</a>
                     
                  
                   </div>
