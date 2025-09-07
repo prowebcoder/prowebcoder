@@ -499,7 +499,7 @@ const generatePDF = async () => {
               <p className="section-description">Choose your platform</p>
             </div>
             
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '15px' }}>
               {platforms.map(platform => (
                 <div key={platform.id}>
                   <div 
@@ -507,7 +507,7 @@ const generatePDF = async () => {
                     onClick={() => updateForm('platform', platform)}
                     data-testid={`platform-${platform.id}`}
                   >
-                    <div className="platform-icon" style={{ height:'80px'}}><img src={platform.icon}  width={150}></img></div>
+                    <div className="platform-icon" style={{ height:'80px'}}><img src={platform.icon}  width={120}></img></div>
                     {/* <h3 className="platform-title">{platform.name}</h3> */}
                     <p className="platform-description">{platform.description}</p>
                     <div className="platform-price">{formatCurrency(platform.basePrice)}</div>
@@ -527,7 +527,7 @@ const generatePDF = async () => {
               <p className="section-description">Project details</p>
             </div>
             
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px', marginBottom: '32px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px', marginBottom: '10px' }}>
               <div>
                 <label className="professional-label">Project Name</label>
                 <input 
@@ -642,7 +642,7 @@ const generatePDF = async () => {
                       <div style={{ flex: 1 }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8px' }}>
                           <h4 style={{ margin: 0, fontWeight: 600, color: '#1f2937' }}>{feature.name}</h4>
-                          <span style={{ color: '#3b82f6', fontWeight: 700, fontSize: '1.1rem' }}>+{formatCurrency(feature.price)}</span>
+                          <span style={{ color: '#0b4437', fontWeight: 700, fontSize: '1.1rem' }}>+{formatCurrency(feature.price)}</span>
                         </div>
                         <p style={{ margin: 0, color: '#6b7280', fontSize: '0.9rem', lineHeight: 1.5 }}>{feature.description}</p>
                       </div>
@@ -678,7 +678,7 @@ const generatePDF = async () => {
                       <div style={{ flex: 1 }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8px' }}>
                           <h4 style={{ margin: 0, fontWeight: 600, color: '#1f2937' }}>{tech.name}</h4>
-                          <span style={{ color: '#3b82f6', fontWeight: 700, fontSize: '1.1rem' }}>+{formatCurrency(tech.price)}</span>
+                          <span style={{ color: '#0b4437', fontWeight: 700, fontSize: '1.1rem' }}>+{formatCurrency(tech.price)}</span>
                         </div>
                         <p style={{ margin: 0, color: '#6b7280', fontSize: '0.9rem', lineHeight: 1.5 }}>{tech.description}</p>
                       </div>
@@ -714,7 +714,7 @@ const generatePDF = async () => {
                       <div style={{ flex: 1 }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8px' }}>
                           <h4 style={{ margin: 0, fontWeight: 600, color: '#1f2937' }}>{integration.name}</h4>
-                          <span style={{ color: '#3b82f6', fontWeight: 700, fontSize: '1.1rem' }}>+{formatCurrency(integration.price)}</span>
+                          <span style={{ color: '#0b4437', fontWeight: 700, fontSize: '1.1rem' }}>+{formatCurrency(integration.price)}</span>
                         </div>
                         <p style={{ margin: 0, color: '#6b7280', fontSize: '0.9rem', lineHeight: 1.5 }}>{integration.description}</p>
                       </div>
@@ -748,7 +748,7 @@ const generatePDF = async () => {
                 />
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '16px' }}>
                   <span style={{ fontSize: '0.9rem', color: '#6b7280' }}>4 weeks (Rush)</span>
-                  <span style={{ fontSize: '2rem', fontWeight: 700, color: '#3b82f6' }}>{form.timeline} weeks</span>
+                  <span style={{ fontSize: '2rem', fontWeight: 700, color: '#0b4437' }}>{form.timeline} weeks</span>
                   <span style={{ fontSize: '0.9rem', color: '#6b7280' }}>24 weeks</span>
                 </div>
                 {form.timeline < 8 && (
@@ -771,7 +771,7 @@ const generatePDF = async () => {
                     >
                       <h4 style={{ fontSize: '1.25rem', fontWeight: 600, marginBottom: '12px', color: '#1f2937' }}>{support.name}</h4>
                       <p style={{ fontSize: '0.9rem', color: '#6b7280', marginBottom: '16px', lineHeight: 1.5 }}>{support.description}</p>
-                      <div style={{ fontSize: '1.75rem', fontWeight: 700, color: '#3b82f6', marginBottom: '4px' }}>{formatCurrency(support.monthlyPrice)}</div>
+                      <div style={{ fontSize: '1.75rem', fontWeight: 700, color: '#0b4437', marginBottom: '4px' }}>{formatCurrency(support.monthlyPrice)}</div>
                       <div style={{ fontSize: '0.875rem', color: '#9ca3af' }}>per month</div>
                     </div>
                   </div>
@@ -793,7 +793,7 @@ const generatePDF = async () => {
               <h3 style={{ fontSize: '1.5rem', fontWeight: 600, textAlign: 'center', marginBottom: '24px', color: '#1f2937' }}>Project Summary</h3>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '32px' }}>
                 <div>
-                  <h4 style={{ fontSize: '1.25rem', fontWeight: 600, color: '#3b82f6', marginBottom: '16px' }}>Project Details</h4>
+                  <h4 style={{ fontSize: '1.25rem', fontWeight: 600, color: '#0b4437', marginBottom: '16px' }}>Project Details</h4>
                   <div style={{ lineHeight: 1.8 }}>
                     <div><strong>Platform:</strong> {form.platform?.name || 'Not selected'}</div>
                     <div><strong>Type:</strong> {form.projectType} {form.migrationSource && `(from ${form.migrationSource})`}</div>
@@ -803,7 +803,7 @@ const generatePDF = async () => {
                   </div>
                 </div>
                 <div>
-                  <h4 style={{ fontSize: '1.25rem', fontWeight: 600, color: '#3b82f6', marginBottom: '16px' }}>Selected Add-ons</h4>
+                  <h4 style={{ fontSize: '1.25rem', fontWeight: 600, color: '#0b4437', marginBottom: '16px' }}>Selected Add-ons</h4>
                   <div style={{ fontSize: '1.1rem', color: '#6b7280', marginBottom: '12px' }}>
                     <strong>{Object.keys(form.features).length + Object.keys(form.technologies).length + Object.keys(form.integrations).length}</strong> additional items selected
                   </div>
@@ -887,15 +887,15 @@ const generatePDF = async () => {
             </div>
             
             {/* Progress Steps */}
-            <div style={{ marginBottom: '32px' }}>
+            <div style={{ marginBottom: '10px' }}>
               {steps.map((step, index) => (
                 <div key={index} className={`progress-step ${index === currentStep ? 'active' : index < currentStep ? 'completed' : 'pending'} slide-in`}>
                   <div className="progress-step-number">
                     {index < currentStep ? '✓' : index + 1}
                   </div>
                   <div>
-                    <div style={{ fontWeight: 600, fontSize: '0.95rem' }}>{step.title}</div>
-                    <div style={{ fontSize: '0.8rem', opacity: 0.8 }}>{step.description}</div>
+                    <div style={{ fontWeight: 600, fontSize: '0.75rem' }}>{step.title}</div>
+                    <div style={{ fontSize: '0.7rem', opacity: 0.8 }}>{step.description}</div>
                   </div>
                 </div>
               ))}
