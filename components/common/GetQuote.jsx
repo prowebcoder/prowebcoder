@@ -335,7 +335,7 @@ const generatePDF = async () => {
   }
 
   // Quotation title
-  doc.setFontSize(24).setTextColor(...primaryColor);
+  doc.setFontSize(24).setTextColor(255,255,255);
   doc.text("QUOTATION", 105, 30, { align: "center" });
   
   // Quote number and date
