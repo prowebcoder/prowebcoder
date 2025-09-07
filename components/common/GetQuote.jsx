@@ -181,23 +181,23 @@ const GetQuoteCalculator = () => {
   };
 
   const technologies = {
-    'php': { name: 'PHP', price: 400, description: 'Server-side scripting' },
+    'php': { name: 'PHP', price: 300, description: 'Server-side scripting' },
     'python': { name: 'Python', price: 600, description: 'Backend development' },
-    'nodejs': { name: 'Node.js', price: 700, description: 'JavaScript runtime' },
+    'nodejs': { name: 'Node.js', price: 600, description: 'JavaScript runtime' },
     'expressjs': { name: 'Express.js', price: 500, description: 'Node.js framework' },
-    'mongodb': { name: 'MongoDB', price: 600, description: 'NoSQL database' },
-    'mysql': { name: 'MySQL', price: 400, description: 'Relational database' },
+    'mongodb': { name: 'MongoDB', price: 300, description: 'NoSQL database' },
+    'mysql': { name: 'MySQL', price: 300, description: 'Relational database' },
     'jquery': { name: 'jQuery', price: 200, description: 'JavaScript library' },
     'ajax': { name: 'AJAX', price: 300, description: 'Asynchronous requests' },
-    'css-advanced': { name: 'Advanced CSS', price: 400, description: 'Complex styling & animations' },
-    'javascript-es6': { name: 'Modern JavaScript', price: 500, description: 'ES6+ features' }
+    'css-advanced': { name: 'Advanced CSS', price: 300, description: 'Complex styling & animations' },
+    'javascript-es6': { name: 'Modern JavaScript', price: 300, description: 'ES6+ features' }
   };
 
   const integrations = {
-    'payment-gateway': { name: 'Payment Gateway', price: 600, description: 'Stripe, PayPal integration' },
+    'payment-gateway': { name: 'Payment Gateway', price: 100, description: 'Stripe, PayPal integration' },
     'email-marketing': { name: 'Email Marketing', price: 400, description: 'Mailchimp, ConvertKit' },
     'crm': { name: 'CRM Integration', price: 800, description: 'Salesforce, HubSpot' },
-    'social-media-api': { name: 'Social Media APIs', price: 300, description: 'Facebook, Instagram APIs' },
+    'social-media-api': { name: 'Social Media APIs', price: 200, description: 'Facebook, Instagram APIs' },
     'shipping': { name: 'Shipping APIs', price: 500, description: 'FedEx, UPS integration' },
     'inventory': { name: 'Inventory Management', price: 900, description: 'Stock management systems' },
     'accounting': { name: 'Accounting Software', price: 700, description: 'QuickBooks, Xero' },
@@ -205,6 +205,7 @@ const GetQuoteCalculator = () => {
   };
 
   const supportLevels = {
+    'none': { name: 'No Support', monthlyPrice: 0, description: 'No Support Required' },
     'basic': { name: 'Basic Support', monthlyPrice: 150, description: 'Email support, monthly updates' },
     'pro': { name: 'Pro Support', monthlyPrice: 300, description: '24/7 support, weekly updates' },
     'enterprise': { name: 'Enterprise Support', monthlyPrice: 600, description: 'Dedicated support, SLA' }
