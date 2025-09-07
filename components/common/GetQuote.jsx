@@ -304,146 +304,270 @@ const GetQuoteCalculator = () => {
   const quote = calculateQuote();
 
 const generatePDF = async () => {
-  // dynamic import to avoid bundler/SSR issues
-  const { jsPDF } = await import('jspdf');                     // named import
-  const autoTableModule = await import('jspdf-autotable');     // plugin import
-
-  // plugin may be default or named; normalize to function
+  const { jsPDF } = await import("jspdf");
+  const autoTableModule = await import("jspdf-autotable");
   const autoTable = autoTableModule?.default || autoTableModule;
 
   const doc = new jsPDF();
-  const currentDate = new Date().toLocaleDateString();
-
-  // Header
-  doc.setFontSize(20);
-  doc.setTextColor(30, 135, 240);
-  doc.text('Web Development Quote', 20, 20);
-
-  doc.setFontSize(12);
-  doc.setTextColor(0, 0, 0);
-  doc.text(`Generated on: ${currentDate}`, 20, 30);
-  doc.text(`Currency: ${currency}`, 120, 30);
-
-  // Project details
-  doc.setFontSize(16);
-  doc.setTextColor(30, 135, 240);
-  doc.text('Project Details', 20, 50);
-
-  doc.setFontSize(11);
-  doc.setTextColor(0, 0, 0);
-  let yPos = 60;
-
-  const projectDetails = [
-    ['Project Name', form.projectName || 'Not specified'],
-    ['Platform', form.platform?.name || 'Not selected'],
-    ['Project Type', form.projectType + (form.migrationSource ? ` (from ${form.migrationSource})` : '')],
-    ['Complexity', form.complexity],
-    ['Number of Pages', String(form.pages)],
-    ['Timeline', `${form.timeline} weeks`],
-    ['Support Level', supportLevels[form.support]?.name || 'Basic']
-  ];
-
-  projectDetails.forEach(([label, value]) => {
-    doc.text(`${label}: ${value}`, 20, yPos);
-    yPos += 8;
+  const currentDate = new Date().toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
   });
+  
+  // Generate a professional quote number
+  const quoteNumber = `PWC-${new Date().getFullYear()}${String(new Date().getMonth() + 1).padStart(2, '0')}-${Math.floor(1000 + Math.random() * 9000)}`;
 
-  // Selected features table
-  yPos += 10;
-  doc.setFontSize(16);
-  doc.setTextColor(30, 135, 240);
-  doc.text('Selected Features & Add-ons', 20, yPos);
-  yPos += 10;
+  // Set brand colors
+  const primaryColor = [30, 64, 124];  // Dark blue
+  const secondaryColor = [70, 130, 180];  // Steel blue
+  const accentColor = [0, 128, 128];  // Teal
+  const lightColor = [245, 245, 245];  // Light gray for backgrounds
 
-  const selectedFeatures = [];
-  const platformFeatures = getFeaturesByPlatform(form.platform?.id);
-
-  Object.keys(form.features).forEach(key => {
-    if (platformFeatures[key]) {
-      selectedFeatures.push([platformFeatures[key].name, formatCurrency(platformFeatures[key].price)]);
-    }
-  });
-
-  Object.keys(form.technologies).forEach(key => {
-    if (technologies[key]) {
-      selectedFeatures.push([technologies[key].name, formatCurrency(technologies[key].price)]);
-    }
-  });
-
-  Object.keys(form.integrations).forEach(key => {
-    if (integrations[key]) {
-      selectedFeatures.push([integrations[key].name, formatCurrency(integrations[key].price)]);
-    }
-  });
-
-  if (selectedFeatures.length > 0) {
-    // use autoTable(doc, {...}) signature
-    autoTable(doc, {
-      startY: yPos,
-      head: [['Feature/Service', 'Price']],
-      body: selectedFeatures,
-      theme: 'grid',
-      headStyles: { fillColor: [30, 135, 240] },
-      styles: { fontSize: 10 }
-    });
-
-    // doc.lastAutoTable is created by the plugin
-    if (doc?.lastAutoTable?.finalY) {
-      yPos = doc.lastAutoTable.finalY + 20;
-    } else {
-      yPos += selectedFeatures.length * 8 + 30;
-    }
-  } else {
-    doc.setFontSize(11);
-    doc.setTextColor(0, 0, 0);
-    doc.text('No additional features selected', 20, yPos);
-    yPos += 20;
+  /** ---------- HEADER SECTION ---------- **/
+  try {
+    // Add logo (adjust path as needed)
+    doc.addImage("/assets/images/common/pwc.png", "PNG", 15, 15, 60, 15);
+  } catch (e) {
+    console.warn("Logo not found, continuing without it");
+    doc.setFontSize(16).setTextColor(...primaryColor);
+    doc.text("PROWEBCODER", 15, 25);
   }
 
-  // Cost breakdown table
-  doc.setFontSize(16);
-  doc.setTextColor(30, 135, 240);
-  doc.text('Investment Breakdown', 20, yPos);
-  yPos += 10;
+  // Quotation title
+  doc.setFontSize(24).setTextColor(...primaryColor);
+  doc.text("QUOTATION", 105, 30, { align: "center" });
+  
+  // Quote number and date
+  doc.setFontSize(10).setTextColor(100, 100, 100);
+  doc.text(`Quote #: ${quoteNumber}`, 160, 20);
+  doc.text(`Date: ${currentDate}`, 160, 25);
+  
+  // Header separator line
+  doc.setDrawColor(200, 200, 200);
+  doc.line(15, 40, 195, 40);
 
-  const costBreakdown = [
-    ['Base Development', formatCurrency(quote.baseCost)],
-    ['Features & Add-ons', formatCurrency(quote.featuresCost)],
-    ['Technologies', formatCurrency(quote.techCost)],
-    ['Integrations', formatCurrency(quote.integrationsCost)]
-  ];
+  /** ---------- COMPANY AND CLIENT DETAILS ---------- **/
+  let yPos = 50;
+  
+  // Company details (Quote From)
+  doc.setFontSize(11).setTextColor(60, 60, 60);
+  doc.setFont(undefined, 'bold');
+  doc.text("QUOTE FROM:", 15, yPos);
+  doc.setFont(undefined, 'normal');
+  doc.text("ProWebCoder", 15, yPos + 5);
+  doc.text("rahul@prowebcoder.com", 15, yPos + 10);
+  doc.text("+916239046167", 15, yPos + 15);
 
-  if (quote.migrationCost > 0) {
-    costBreakdown.push(['Migration Services', formatCurrency(quote.migrationCost)]);
-  }
-  if (quote.rushSurcharge > 0) {
-    costBreakdown.push([`Rush Surcharge (${quote.rushPercent}%)`, formatCurrency(quote.rushSurcharge)]);
-  }
-  costBreakdown.push(['TOTAL PROJECT COST', formatCurrency(quote.total)]);
-  costBreakdown.push(['Monthly Support', formatCurrency(quote.monthlySupport)]);
+  // Client details (Quote To)
+  doc.setFont(undefined, 'bold');
+  doc.text("QUOTE FOR:", 105, yPos);
+  doc.setFont(undefined, 'normal');
+  doc.text(form.projectName || "Project Name", 105, yPos + 5);
+  doc.text(form.platform?.name, 105, yPos + 10);
+  yPos += 25;
 
+  // Project summary
+  doc.setFontSize(12).setTextColor(...primaryColor);
+  doc.setFont(undefined, 'bold');
+  doc.text("PROJECT SUMMARY", 15, yPos);
+  yPos += 7;
+  
   autoTable(doc, {
     startY: yPos,
-    head: [['Item', 'Amount']],
-    body: costBreakdown,
+    head: [['Project Details', 'Specifications']],
+    body: [
+      ['Project Name', form.projectName || 'Not specified'],
+      ['Platform', form.platform?.name || 'Not selected'],
+      ['Project Type', form.projectType.charAt(0).toUpperCase() + form.projectType.slice(1) + 
+        (form.migrationSource ? ` (from ${form.migrationSource})` : '')],
+      ['Complexity', form.complexity.charAt(0).toUpperCase() + form.complexity.slice(1)],
+      ['Number of Pages', String(form.pages)],
+      ['Timeline', `${form.timeline} weeks`],
+      ['Support Level', supportLevels[form.support]?.name || 'Basic']
+    ],
     theme: 'grid',
-    styles: { fontSize: 11 },
-    headStyles: { fillColor: [30, 135, 240] },
+    headStyles: {
+      fillColor: [...primaryColor],
+      textColor: [255, 255, 255],
+      fontStyle: 'bold'
+    },
+    styles: {
+      fontSize: 10,
+      cellPadding: 3,
+      lineColor: [200, 200, 200]
+    },
     columnStyles: {
-      0: { fontStyle: 'bold' },
-      1: { halign: 'right', fontStyle: 'bold' }
+      0: { fontStyle: 'bold', cellWidth: 50 },
+      1: { cellWidth: 'auto' }
     }
   });
 
-  // Footer
-  const pageHeight = doc.internal.pageSize.height || doc.internal.pageSize.getHeight();
-  doc.setFontSize(10);
-  doc.setTextColor(128, 128, 128);
-  doc.text('This quote is valid for 30 days. Terms and conditions apply.', 20, pageHeight - 20);
+  yPos = doc.lastAutoTable.finalY + 15;
 
-  const fileName = `quote-${form.projectName ? form.projectName.replace(/\s+/g, '-').toLowerCase() : 'project'}-${currentDate.replace(/\//g, '-')}.pdf`;
+  /** ---------- ITEMIZED QUOTATION ---------- **/
+  doc.setFontSize(12).setTextColor(...primaryColor);
+  doc.setFont(undefined, 'bold');
+  doc.text("ITEMIZED QUOTATION", 15, yPos);
+  yPos += 7;
+
+  // Prepare items table
+  const items = [];
+  
+  // Base development
+  items.push([
+    'Website Development',
+    formatCurrency(quote.baseCost),
+    '1',
+    formatCurrency(quote.baseCost),
+    `Custom ${form.platform?.name || 'website'} development with ${form.pages} pages`
+  ]);
+
+  // Features
+  const platformFeatures = getFeaturesByPlatform(form.platform?.id);
+  Object.keys(form.features).forEach(key => {
+    if (platformFeatures[key]) {
+      items.push([
+        platformFeatures[key].name,
+        formatCurrency(platformFeatures[key].price),
+        '1',
+        formatCurrency(platformFeatures[key].price),
+        platformFeatures[key].description
+      ]);
+    }
+  });
+
+  // Technologies
+  Object.keys(form.technologies).forEach(key => {
+    if (technologies[key]) {
+      items.push([
+        technologies[key].name,
+        formatCurrency(technologies[key].price),
+        '1',
+        formatCurrency(technologies[key].price),
+        technologies[key].description
+      ]);
+    }
+  });
+
+  // Integrations
+  Object.keys(form.integrations).forEach(key => {
+    if (integrations[key]) {
+      items.push([
+        integrations[key].name,
+        formatCurrency(integrations[key].price),
+        '1',
+        formatCurrency(integrations[key].price),
+        integrations[key].description
+      ]);
+    }
+  });
+
+  // Migration if applicable
+  if (quote.migrationCost > 0) {
+    items.push([
+      'Platform Migration',
+      formatCurrency(quote.migrationCost),
+      '1',
+      formatCurrency(quote.migrationCost),
+      `Migration from ${form.migrationSource} to ${form.platform?.name}`
+    ]);
+  }
+
+  // Rush fee if applicable
+  if (quote.rushSurcharge > 0) {
+    items.push([
+      'Expedited Delivery',
+      formatCurrency(quote.rushSurcharge),
+      '1',
+      formatCurrency(quote.rushSurcharge),
+      `${quote.rushPercent}% surcharge for ${form.timeline}-week delivery`
+    ]);
+  }
+
+  // Create the items table
+  autoTable(doc, {
+    startY: yPos,
+    head: [['Item', 'Rate', 'Qty', 'Amount', 'Description']],
+    body: items,
+    theme: 'grid',
+    headStyles: {
+      fillColor: [...primaryColor],
+      textColor: [255, 255, 255],
+      fontStyle: 'bold',
+      halign: 'center'
+    },
+    bodyStyles: {
+      textColor: [60, 60, 60],
+      fontSize: 9
+    },
+    columnStyles: {
+      0: { cellWidth: 50, fontStyle: 'bold' },
+      1: { halign: 'right', cellWidth: 25 },
+      2: { halign: 'center', cellWidth: 15 },
+      3: { halign: 'right', cellWidth: 30, fontStyle: 'bold' },
+      4: { cellWidth: 65, fontStyle: 'italic' }
+    },
+    styles: {
+      cellPadding: 3,
+      lineColor: [200, 200, 200]
+    }
+  });
+
+  yPos = doc.lastAutoTable.finalY + 10;
+
+  /** ---------- SUMMARY SECTION ---------- **/
+  const summaryY = yPos;
+  
+  // Summary table
+  autoTable(doc, {
+    startY: summaryY,
+    body: [
+      ['Subtotal', formatCurrency(quote.total)],
+      ['Discount', formatCurrency(0)],
+      ['Tax', formatCurrency(0)],
+      [{content: 'TOTAL', styles: {fontStyle: 'bold', fillColor: [...primaryColor], textColor: [255, 255, 255]}}, 
+       {content: formatCurrency(quote.total), styles: {fontStyle: 'bold', fillColor: [...primaryColor], textColor: [255, 255, 255], halign: 'right'}}],
+      ['Monthly Support', formatCurrency(quote.monthlySupport)]
+    ],
+    theme: 'grid',
+    styles: {
+      fontSize: 11,
+      cellPadding: 5
+    },
+    columnStyles: {
+      0: { cellWidth: 120, fontStyle: 'bold' },
+      1: { halign: 'right' }
+    }
+  });
+
+  /** ---------- TERMS AND CONDITIONS ---------- **/
+  const pageHeight = doc.internal.pageSize.height;
+  const termsY = pageHeight - 48;
+  
+  doc.setDrawColor(200, 200, 200);
+  doc.line(15, termsY, 200, termsY);
+  
+  doc.setFontSize(9).setTextColor(100, 100, 100);
+  doc.text("TERMS AND CONDITIONS:", 15, termsY + 5);
+  doc.setFontSize(8);
+  doc.text("• This quotation is valid for 30 days from the date of issue.", 15, termsY + 10);
+  doc.text("• 50% payment is required to commence work with the balance due upon completion.", 15, termsY + 15);
+  doc.text("• All intellectual property rights transfer upon final payment.", 15, termsY + 20);
+  doc.text("• Additional features not included in this quote will be billed at standard rates.", 15, termsY + 25);
+  
+  // Footer with company info
+  doc.setTextColor(...secondaryColor);
+  doc.textWithLink("www.prowebcoder.com | rahul@prowebcoder.com | +916239046167", 
+    105, pageHeight - 10, { align: "center", url: "https://prowebcoder.com" });
+
+   
+
+  /** ---------- SAVE THE DOCUMENT ---------- **/
+  const fileName = `Quotation_${(form.projectName || 'Project').replace(/\s+/g, '_')}_${quoteNumber}.pdf`;
   doc.save(fileName);
 };
+
 
 
   const nextStep = () => {
