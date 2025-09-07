@@ -924,3 +924,89 @@ border-radius: 20px;overflow: hidden;
 
   right:0;
 }
+.professional-data{
+  display: grid;
+    grid-template-columns: 320px 0fr;
+    min-height: 100vh;}
+.professional-app {
+  width: 100%;
+  padding: 1rem;
+
+  .professional-container {
+    display: grid;
+   
+
+    /* Sidebar */
+    .professional-sidebar {
+      background: #f9fafb;
+      padding: 1.5rem;
+      border-right: 1px solid #e5e7eb;
+    }
+
+    /* Main */
+    .professional-main {
+      padding: 1.5rem;
+      background: #ffffff;
+    }
+  }
+}
+/* Large Tablets and below */
+@media (max-width: 1024px) {
+  .professional-app {
+    .professional-container {
+      grid-template-columns: 260px 1fr;
+      gap: 1rem;
+    }
+  }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+  .professional-app {
+    .professional-container {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto;
+    }
+.professional-data {
+    display: grid;
+    grid-template-columns: none;
+    min-height: 100vh;
+}
+    .professional-sidebar {
+      border-right: none;
+      border-bottom: 1px solid #e5e7eb;
+      margin-bottom: 1.5rem;
+    }
+
+    .professional-main {
+      padding: 1rem;
+    }
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .professional-app {
+    padding: 0.5rem;
+
+    .professional-container {
+      gap: 0.5rem;
+    }
+
+    .professional-sidebar {
+      padding: 1rem;
+    }
+
+    .professional-main {
+      padding: 1rem;
+    }
+
+    /* Buttons full width for mobile */
+    .professional-button,
+    .professional-button-secondary {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+  }
+}

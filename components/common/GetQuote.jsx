@@ -1001,7 +1001,7 @@ const generatePDF = async () => {
   return (
     <div className="professional-app container max-w-xl">
       <div className="professional-container">
-        <div style={{ display: 'grid', gridTemplateColumns: '320px 1fr', minHeight: '100vh' }}>
+        <div  className='professional-data'>
           
           {/* Sidebar */}
           <div className="professional-sidebar">
