@@ -59,6 +59,11 @@ export const brands = [
         src: "/assets/images/brands/trustpilot.svg",
     alt: "Proline",
   },
+  {
+    id: 13,
+        src: "/assets/images/brands/shopify_partner.svg",
+    alt: "Proline",
+  },
 ];
 
 export const reviewLogos = [
