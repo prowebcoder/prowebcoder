@@ -357,7 +357,7 @@ export default function Nav3() {
         </div>
       </li>
       <li>
-        <Link href={`/quote-calculator`}>Quote Calculator</Link>
+        <Link href={`/get-a-quote`}>Quote Calculator</Link>
       </li>
       <li>
         <Link href={`/portfolio`}>Works</Link>

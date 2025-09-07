@@ -162,7 +162,7 @@ export const menuItems = [
   // Direct link items
   {
     id: 4,
-    href: "/quote-calculator",
+    href: "/get-a-quote",
     label: "Quote Calculator"
   },
   {

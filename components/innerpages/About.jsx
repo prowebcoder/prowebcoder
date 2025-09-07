@@ -35,84 +35,50 @@ export default function About() {
           />
         </div>
       </div>
-      <div className="section-outer panel pt-9 lg:pt-10 pb-6 sm:pb-8 lg:pb-9">
+      <div className="section-outer panel pt-12 lg:pt-10 pb-1 sm:pb-2 lg:pb-1">
         <div className="container max-w-xl">
           <div
             className="section-inner panel mt-2 sm:mt-4 lg:mt-0"
             data-anime="targets: >*; translateY: [48, 0]; opacity: [0, 1]; easing: spring(1, 80, 10, 0); duration: 450; delay: anime.stagger(100, {start: 200});"
           >
-            <div className="vstack items-center gap-4 mb-4 sm:mb-6 lg:mb-8 max-w-850px mx-auto text-center">
-              <h1 className="h2 sm:h1 lg:display-6 xl:display-5 m-0">
-                About Lexend.
-              </h1>
-              <p className="fs-6 md:fs-5 text-dark dark:text-white text-opacity-70">
-                In 2014, Steven Smith have gotten so much of our time back that
-                we're now able to put towards things that are actually helping
-                our company as opposed to just throwing content out there. and
-                the idea of Lexend was born. Today, Lexend empowers teams to
-                easily communicate with customers through personalized documents
-                that can be created in minutes, build meaningful relationships.
+            <div className="vstack items-center gap-4 mb-0 sm:mb-1 lg:mb-1 max-w-850px mx-auto text-center">
+                    <section className="bg-gradient-to-b from-secondary to-background py-20">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
+            Get Your Project Quote
+            <span className="text-primary"> Instantly</span>
+          </h1>
+         <p className="fs-6 md:fs-5 text-dark dark:text-white text-opacity-70 mb-6">
+           Professional web development services with transparent pricing. Select your requirements and get an accurate quote in minutes.
               </p>
+          <div className="hstack flex flex-wrap justify-center gap-4 text-xs text-muted-foreground py-20">
+            <div className="hstack flex items-center fs-8 gap-1  text-opacity-70 text-dark dark:text-white">
+              <svg className="icon-box w-20px h-20px gap-8 rounded-1-5 cstack  text-accent mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
+              </svg>
+              No Hidden Fees
             </div>
-            <div className="panel row child-cols-12 col-match g-1 sm:g-2">
-              <div className="col-4">
-                <figure className="featured-image m-0 rounded ratio ratio-2x3 sm:rounded-2 uc-transition-toggle overflow-hidden">
-                  <Image
-                    className="media-cover image uc-transition-scale-up uc-transition-opaque"
-                    alt="About image"
-                    src="/assets/images/template/hero-about-01.jpg"
-                    width="1000"
-                    height="1500"
-                  />
-                </figure>
-                <div className="position-absolute top-0 start-0 z-1 ms-n8 mt-n8 d-none lg:d-block">
-                  <Image
-                    className="w-200px xl:w-250px d-block dark:d-none"
-                    alt="hand-pencil"
-                    src="/assets/images/template/hand-pencil.svg"
-                    width="154"
-                    height="309"
-                  />
-                  <Image
-                    className="w-200px xl:w-250px d-none dark:d-block"
-                    alt="hand-pencil-dark"
-                    src="/assets/images/template/hand-pencil-dark.svg"
-                    width="154"
-                    height="309"
-                  />
-                </div>
-              </div>
-              <div className="col-8">
-                <div className="h-100">
-                  <figure className="panel h-100 m-0 rounded sm:rounded-2 overflow-hidden">
-                    <canvas className="h-100 w-100" />
-                    <Image
-                      className="media-cover image"
-                      alt="About image"
-                      src="/assets/images/template/hero-about-02.jpg"
-                      width="1000"
-                      height="667"
-                    />
-                  </figure>
-                </div>
-                <div className="position-absolute bottom-0 end-0 z-1 me-n8 mb-n8 d-none lg:d-block">
-                  <Image
-                    className="w-200px xl:w-250px d-block dark:d-none"
-                    alt="empathing"
-                    src="/assets/images/template/empathing.svg"
-                    width="278"
-                    height="229"
-                  />
-                  <Image
-                    className="w-200px xl:w-250px d-none dark:d-block"
-                    alt="empathing-dark"
-                    src="/assets/images/template/empathing-dark.svg"
-                    width="278"
-                    height="229"
-                  />
-                </div>
-              </div>
+           <div className="hstack flex items-center fs-8 gap-1  text-opacity-70 text-dark dark:text-white">
+              <svg className="icon-box w-20px h-20px gap-8 rounded-1-5 cstack  text-accent mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
+              </svg>
+              Fixed Price Guarantee
             </div>
+           <div className="hstack flex items-center fs-8 gap-1  text-opacity-70 text-dark dark:text-white">
+              <svg className="icon-box w-20px h-20px gap-8 rounded-1-5 cstack text-accent mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
+              </svg>
+              Expert Consultation
+            </div>
+          </div>
+        </div>
+      </section>
+              <h1 className="h3 sm:h1 lg:display-4 xl:display-5 m-0">
+               
+              </h1>
+              
+            </div>
+      
           </div>
         </div>
       </div>
