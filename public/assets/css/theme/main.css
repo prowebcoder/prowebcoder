@@ -1187,6 +1187,7 @@ h6:where(.uc-dark),
 .backtotop-wrap {
   transform: translateY(40px);
   transition: 200ms ease;
+  right:0;
 }
 .backtotop-wrap [data-uc-backtotop] {
   opacity: 0;
