@@ -1195,6 +1195,7 @@ h6:where(.uc-dark),
 .backtotop-wrap.uc-active {
   gap: 0.5rem;
   transform: translateY(0);
+  right:0;
 }
 .backtotop-wrap.uc-active [data-uc-backtotop] {
   opacity: 1;
