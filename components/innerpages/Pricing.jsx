@@ -39,7 +39,7 @@ export default function Pricing() {
           />
         </div>
       </div>
-      <div className="section-outer panel pt-9 lg:pt-10 pb-6 sm:pb-8 lg:pb-9">
+      <div className="section-outer panel pt-1 lg:pt-4 pb-1 sm:pb-1 lg:pb-1">
         <div className="container max-w-xl">
           <div className="section-inner panel mt-2 sm:mt-4 lg:mt-0">
             <div
