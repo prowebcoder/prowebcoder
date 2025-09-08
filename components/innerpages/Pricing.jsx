@@ -41,7 +41,7 @@ export default function Pricing() {
       </div>
       <div className="section-outer panel pt-9 lg:pt-4 pb-1 sm:pb-1 lg:pb-1">
         <div className="container max-w-xl">
-          <div className="section-inner panel mt-2 sm:mt-4 lg:mt-0">
+          <div className="section-inner panel mt-2 sm:mt-4 lg:mt-9">
             <div
               className="vstack items-center gap-3 lg:gap-4 mb-4 sm:mb-6 lg:mb-8 max-w-750px mx-auto text-center"
               data-anime="targets: >*; translateY: [48, 0]; opacity: [0, 1]; easing: spring(1, 80, 10, 0); duration: 450; delay: anime.stagger(100, {start: 200});"
