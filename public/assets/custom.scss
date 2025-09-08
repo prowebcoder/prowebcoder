@@ -238,8 +238,13 @@ html[dir="rtl"] .nav-y .uc-parent::after {
   }
 }
 
+.uc-navbar {
 
-
+    justify-content: space-between;
+}
+.uc-navbar-right {
+    margin-left: 0;
+}
 :root {
   --background: hsl(0 0% 100%);
   --foreground: hsl(222.2 84% 4.9%);
