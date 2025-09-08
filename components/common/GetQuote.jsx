@@ -751,7 +751,7 @@ const generatePDF = async () => {
               <p className="section-description">Select features</p>
             </div>
             
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '20px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))', gap: '20px' }}>
               {Object.entries(platformFeatures).map(([key, feature]) => (
                 <div key={key}>
                   <div className={`feature-card ${form.features[key] ? 'selected' : ''}`}>
@@ -766,7 +766,7 @@ const generatePDF = async () => {
                       />
                       <div style={{ flex: 1 }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8px' }}>
-                          <h4 style={{ margin: 0, fontWeight: 600, color: '#1f2937' }}>{feature.name}</h4>
+                          <h6 style={{ margin: 0, fontWeight: 600, color: '#1f2937' }}>{feature.name}</h6>
                           <span style={{ color: '#0b4437', fontWeight: 700, fontSize: '1.1rem' }}>+{formatCurrency(feature.price)}</span>
                         </div>
                         <p style={{ margin: 0, color: '#6b7280', fontSize: '0.9rem', lineHeight: 1.5 }}>{feature.description}</p>
@@ -787,7 +787,7 @@ const generatePDF = async () => {
               <p className="section-description">Tech stack</p>
             </div>
             
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '20px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))', gap: '20px' }}>
               {Object.entries(technologies).map(([key, tech]) => (
                 <div key={key}>
                   <div className={`feature-card ${form.technologies[key] ? 'selected' : ''}`}>
@@ -802,7 +802,7 @@ const generatePDF = async () => {
                       />
                       <div style={{ flex: 1 }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8px' }}>
-                          <h4 style={{ margin: 0, fontWeight: 600, color: '#1f2937' }}>{tech.name}</h4>
+                          <h6 style={{ margin: 0, fontWeight: 600, color: '#1f2937' }}>{tech.name}</h6>
                           <span style={{ color: '#0b4437', fontWeight: 700, fontSize: '1.1rem' }}>+{formatCurrency(tech.price)}</span>
                         </div>
                         <p style={{ margin: 0, color: '#6b7280', fontSize: '0.9rem', lineHeight: 1.5 }}>{tech.description}</p>
@@ -823,7 +823,7 @@ const generatePDF = async () => {
               <p className="section-description">Third-party services</p>
             </div>
             
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '20px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))', gap: '20px' }}>
               {Object.entries(integrations).map(([key, integration]) => (
                 <div key={key}>
                   <div className={`feature-card ${form.integrations[key] ? 'selected' : ''}`}>
@@ -838,7 +838,7 @@ const generatePDF = async () => {
                       />
                       <div style={{ flex: 1 }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8px' }}>
-                          <h4 style={{ margin: 0, fontWeight: 600, color: '#1f2937' }}>{integration.name}</h4>
+                          <h6 style={{ margin: 0, fontWeight: 600, color: '#1f2937' }}>{integration.name}</h6>
                           <span style={{ color: '#0b4437', fontWeight: 700, fontSize: '1.1rem' }}>+{formatCurrency(integration.price)}</span>
                         </div>
                         <p style={{ margin: 0, color: '#6b7280', fontSize: '0.9rem', lineHeight: 1.5 }}>{integration.description}</p>
@@ -886,7 +886,7 @@ const generatePDF = async () => {
 
             <div>
               <h4 style={{ fontSize: '1.5rem', fontWeight: 600, marginBottom: '24px', color: '#1f2937' }}>Post-Launch Support</h4>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '24px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '24px' }}>
                 {Object.entries(supportLevels).map(([key, support]) => (
                   <div key={key}>
                     <div 
