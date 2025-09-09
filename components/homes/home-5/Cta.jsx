@@ -16,7 +16,7 @@ export default function Cta() {
             >
               <h2 className="h4 xl:h3 m-0">Let’s Create Something Extraordinary</h2>
               <p className="fs-6 sm:fs-4 xl:fs-3 text-dark dark:text-white text-opacity-70">
-                Whether you need a custom <b>Shopify theme</b> or a <b>Brand new store</b>, we’re ready to make it happen.
+                Whether you need a custom <b>Shopify theme</b> or a <b>Brand new store/website</b>, or if its an app you need we’re ready to make it happen.
 
 
               </p>
@@ -40,7 +40,7 @@ export default function Cta() {
                   <span>Book an appointment</span>
                 </a>
                 <Link
-                  href={`/quote-calculator`}
+                  href={`/get-a-quote`}
                   className="btn btn-md btn-primary rounded-default text-white shadow-xs"
                 >
                  Get a Quote
