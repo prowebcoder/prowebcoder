@@ -175,7 +175,7 @@ export default function Hero() {
                         </li>
                       </ul>
                       <span className="fs-7 fw-medium">
-                        Based on 7500+ reviews across all platforms
+                        Based on 2800+ reviews across all platforms
                       </span>
                     </div>
                   </div>
