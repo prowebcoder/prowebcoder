@@ -192,7 +192,28 @@ const GetQuoteCalculator = () => {
     'css-advanced': { name: 'Advanced CSS', price: 300, description: 'Complex styling & animations' },
     'javascript-es6': { name: 'Modern JavaScript', price: 300, description: 'ES6+ features' }
   };
+   const technologyPlatforms = {
+    'php': ['wordpress', 'shopify-app', 'bigcommerce'],
+    'python': ['nextjs', 'react', 'shopify-app', 'bigcommerce'],
+    'nodejs': ['nextjs', 'react', 'shopify-app', 'bigcommerce'],
+    'expressjs': ['nextjs', 'react', 'shopify-app', 'bigcommerce'],
+    'mongodb': ['nextjs', 'react', 'shopify-app', 'bigcommerce'],
+    'mysql': ['wordpress', 'shopify-app', 'bigcommerce'],
+    'jquery': ['wordpress', 'shopify', 'bigcommerce', 'squarespace'],
+    'ajax': ['wordpress', 'shopify', 'nextjs', 'react', 'webflow', 'squarespace', 'shopify-app', 'bigcommerce'],
+    'css-advanced': ['wordpress', 'shopify', 'nextjs', 'react', 'webflow', 'squarespace', 'shopify-app', 'bigcommerce'],
+    'javascript-es6': ['wordpress', 'shopify', 'nextjs', 'react', 'webflow', 'squarespace', 'shopify-app', 'bigcommerce']
+  };
 
+   const getTechnologiesByPlatform = (platformId) => {
+    if (!platformId) return {};
+    
+    return Object.fromEntries(
+      Object.entries(technologies).filter(([key]) => 
+        technologyPlatforms[key]?.includes(platformId)
+      )
+    );
+  };
   const integrations = {
     'payment-gateway': { name: 'Payment Gateway', price: 100, description: 'Stripe, PayPal integration' },
     'email-marketing': { name: 'Email Marketing', price: 400, description: 'Mailchimp, ConvertKit' },
@@ -780,40 +801,47 @@ const generatePDF = async () => {
         );
 
       case 3: // Technologies
+      const availableTechnologies = form.platform ? getTechnologiesByPlatform(form.platform.id) : {}; 
         return (
           <div className="fade-in">
-            <div className="section-header">
-              <h2 className="section-title">Technologies</h2>
-              <p className="section-description">Tech stack</p>
-            </div>
-            
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))', gap: '20px' }}>
-              {Object.entries(technologies).map(([key, tech]) => (
-                <div key={key}>
-                  <div className={`feature-card ${form.technologies[key] ? 'selected' : ''}`}>
-                    <label style={{ display: 'flex', alignItems: 'flex-start', cursor: 'pointer' }}>
-                      <input 
-                        type="checkbox" 
-                        className="feature-checkbox" 
-                        checked={!!form.technologies[key]}
-                        onChange={() => toggleTechnology(key)}
-                        data-testid={`checkbox-tech-${key}`}
-                        style={{ marginTop: '2px' }}
-                      />
-                      <div style={{ flex: 1 }}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8px' }}>
-                          <h6 style={{ margin: 0, fontWeight: 600, color: '#1f2937' }}>{tech.name}</h6>
-                          <span style={{ color: '#0b4437', fontWeight: 700, fontSize: '1.1rem' }}>+{formatCurrency(tech.price)}</span>
-                        </div>
-                        <p style={{ margin: 0, color: '#6b7280', fontSize: '0.9rem', lineHeight: 1.5 }}>{tech.description}</p>
-                      </div>
-                    </label>
-                  </div>
-                </div>
-              ))}
-            </div>
+        <div className="section-header">
+          <h2 className="section-title">Technologies</h2>
+          <p className="section-description">Tech stack</p>
+        </div>
+        
+        {Object.keys(availableTechnologies).length === 0 ? (
+          <div className="alert-info">
+            <p>No specific technologies available for {form.platform?.name}. You can proceed to the next step.</p>
           </div>
-        );
+        ) : (
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))', gap: '20px' }}>
+            {Object.entries(availableTechnologies).map(([key, tech]) => (
+              <div key={key}>
+                <div className={`feature-card ${form.technologies[key] ? 'selected' : ''}`}>
+                  <label style={{ display: 'flex', alignItems: 'flex-start', cursor: 'pointer' }}>
+                    <input 
+                      type="checkbox" 
+                      className="feature-checkbox" 
+                      checked={!!form.technologies[key]}
+                      onChange={() => toggleTechnology(key)}
+                      data-testid={`checkbox-tech-${key}`}
+                      style={{ marginTop: '2px' }}
+                    />
+                    <div style={{ flex: 1 }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8px' }}>
+                        <h6 style={{ margin: 0, fontWeight: 600, color: '#1f2937' }}>{tech.name}</h6>
+                        <span style={{ color: '#0b4437', fontWeight: 700, fontSize: '1.1rem' }}>+{formatCurrency(tech.price)}</span>
+                      </div>
+                      <p style={{ margin: 0, color: '#6b7280', fontSize: '0.9rem', lineHeight: 1.5 }}>{tech.description}</p>
+                    </div>
+                  </label>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    );
 
       case 4: // Integrations
         return (
