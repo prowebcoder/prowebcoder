@@ -30,6 +30,7 @@ export default function Header1() {
     };
   }, [prevScrollPos]);
   return (
+    <>
     <header
       className={`uc-header header-default uc-navbar-sticky-wrap z-999 uc-sticky ${
         scrollingUp ? " uc-sticky-below uc-sticky-fixed headerFixed" : ""
@@ -165,6 +166,24 @@ export default function Header1() {
           </div>
         </div>
       </nav>
+      <div className="announcement-bar">
+  <div className="announcement-track">
+    ⚠️ Important Notice: We do NOT send emails to customers. If you receive any email claiming to be from us, it is spam. Please ignore and do not click any links.
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    ⚠️ Important Notice: We do NOT send emails to customers. If you receive any email claiming to be from us, it is spam. Please ignore and do not click any links.
+     &nbsp;&nbsp;&nbsp;&nbsp;
+    ⚠️ Important Notice: We do NOT send emails to customers. If you receive any email claiming to be from us, it is spam. Please ignore and do not click any links.
+     &nbsp;&nbsp;&nbsp;&nbsp;
+    ⚠️ Important Notice: We do NOT send emails to customers. If you receive any email claiming to be from us, it is spam. Please ignore and do not click any links.
+     &nbsp;&nbsp;&nbsp;&nbsp;
+    ⚠️ Important Notice: We do NOT send emails to customers. If you receive any email claiming to be from us, it is spam. Please ignore and do not click any links.
+     &nbsp;&nbsp;&nbsp;&nbsp;
+    ⚠️ Important Notice: We do NOT send emails to customers. If you receive any email claiming to be from us, it is spam. Please ignore and do not click any links.
+  </div>
+</div>
     </header>
+    {/* Announcement Marquee */}
+
+</>
   );
 }
