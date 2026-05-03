@@ -169,6 +169,9 @@ export const footerLinks3 = [
 
 ];
 
+/** `footerLinks3` columns with these titles are not rendered (data kept for later). Clear to show again. */
+export const FOOTER_LINKS3_HIDDEN_TITLES = new Set(["AFFILIATE PROGRAMS"]);
+
 export const footerLinks4 = [
   {
     title: "Product",

@@ -23,6 +23,7 @@ import { Analytics } from "@vercel/analytics/next"
 import PortfolioModal from "@/components/modals/PortfolioModal";
 export default function RootLayout({ children }) {
   const pathname = usePathname();
+  const isShopifyAppLp = pathname?.startsWith("/shopify-apps") ?? false;
   useEffect(() => {
     const elements = document.querySelectorAll("[data-anime]");
 
@@ -120,15 +121,19 @@ export default function RootLayout({ children }) {
         <Context>
 <Analytics/>
           <ParallaxProvider>{children}</ParallaxProvider>
-          <MobileMenu />
+          {!isShopifyAppLp ? (
+            <>
+              <MobileMenu />
+              <Cart />
+              <BacktoTop />
+              <TawkChat />
+            </>
+          ) : null}
           <ContactModal />
           <BookModal />
           <PortfolioModal />
           <NewsletterModal />
           <SearchModal />
-          <Cart />
-          <BacktoTop />
-            <TawkChat />
         </Context>
 
         <Toaster

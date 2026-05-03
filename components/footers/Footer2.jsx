@@ -2,7 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import LanguageSelect from "../common/LanguageSelect";
-import { footerLinks3, socialLinks } from "@/data/footer";
+import { footerLinks3, FOOTER_LINKS3_HIDDEN_TITLES, socialLinks } from "@/data/footer";
 import { useState } from "react";
 export default function Footer4() {
 const [email, setEmail] = useState("");
@@ -102,8 +102,8 @@ const [email, setEmail] = useState("");
                       {/* <LanguageSelect /> */}
                     </div>
                   </div>
-                  {footerLinks3.map((section, index) => (
-                    <div key={index} className={section.extraClass || ""}>
+                  {footerLinks3.filter((section) => !FOOTER_LINKS3_HIDDEN_TITLES.has(section.title)).map((section, index) => (
+                    <div key={section.title || index} className={section.extraClass || ""}>
                       <ul className="nav-y gap-1 fw-medium">
                         {section.links.map((link, idx) => (
                           <li key={idx}>

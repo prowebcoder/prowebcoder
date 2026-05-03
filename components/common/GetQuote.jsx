@@ -1,7 +1,5 @@
 "use client";
 import { useState, useMemo } from 'react';
-import jsPDF from 'jspdf';
-import 'jspdf-autotable';
 
 const GetQuoteCalculator = () => {
   const [currentStep, setCurrentStep] = useState(0);

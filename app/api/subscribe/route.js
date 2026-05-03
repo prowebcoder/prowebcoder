@@ -1,13 +1,31 @@
 // app/api/subscribe/route.js
 import { NextResponse } from "next/server";
 import { CreateContact, ContactsApi } from "@getbrevo/brevo";
+import { isValidEmail, sanitizeMailHeaderChunk } from "@/lib/emailSafety";
+
+const FIRSTNAME_MAX = 80;
 
 export async function POST(req) {
   try {
-    const { email, firstName } = await req.json();
+    const body = await req.json();
+    const email = typeof body?.email === "string" ? body.email.trim() : "";
+    const rawFirst =
+      typeof body?.firstName === "string"
+        ? body.firstName.replace(/[^\p{L}\p{N}\s'-]/gu, "").trim()
+        : "";
+    const firstName = rawFirst ? sanitizeMailHeaderChunk(rawFirst, FIRSTNAME_MAX) : "";
 
     if (!email) {
       return NextResponse.json({ error: "Email is required" }, { status: 400 });
+    }
+
+    if (!isValidEmail(email)) {
+      return NextResponse.json({ error: "Invalid email address" }, { status: 400 });
+    }
+
+    if (!process.env.BREVO_API_KEY) {
+      console.error("Brevo subscribe: missing BREVO_API_KEY");
+      return NextResponse.json({ error: "Newsletter signup is unavailable." }, { status: 503 });
     }
 
     // Init API client
@@ -19,22 +37,25 @@ export async function POST(req) {
     contact.email = email;
     contact.updateEnabled = true; // update if exists
 
-    // Only add FIRSTNAME if you’ve created it in Brevo dashboard
     contact.attributes = {};
     if (firstName) contact.attributes.FIRSTNAME = firstName;
 
-    // Optional: only include list if you are sure ID is correct
     contact.listIds = [12];
 
-    // Create contact
-    const response = await contactAPI.createContact(contact);
+    await contactAPI.createContact(contact);
 
-    return NextResponse.json({ success: true, response });
+    return NextResponse.json({ success: true });
   } catch (err) {
     console.error("Brevo API Error:", err?.body || err.message);
-    return NextResponse.json(
-      { error: err?.body?.message || err.message },
-      { status: 500 }
-    );
+    const apiStatus = err?.response?.statusCode ?? err?.statusCode;
+    const msg = String(err?.body?.message || err?.message || "");
+
+    if (apiStatus === 409 || /duplicate/i.test(msg)) {
+      return NextResponse.json({ success: true });
+    }
+    if (apiStatus === 400) {
+      return NextResponse.json({ error: "Invalid signup request." }, { status: 400 });
+    }
+    return NextResponse.json({ error: "Unable to subscribe. Please try again later." }, { status: 502 });
   }
 }

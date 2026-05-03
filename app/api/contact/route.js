@@ -1,21 +1,53 @@
 import nodemailer from "nodemailer";
+import { escapeHtml, isValidEmail, sanitizeMailHeaderChunk } from "@/lib/emailSafety";
 
 export const dynamic = "force-dynamic";
+
+const MAX_MESSAGE_LEN = 20000;
 
 export async function POST(req) {
   try {
     const body = await req.json();
     const { name, email, subject, message, recaptchaToken } = body;
 
-    if (!name || !email || !message || !recaptchaToken) {
+    if (typeof name !== "string" || !name.trim()) {
       return new Response(JSON.stringify({ error: "Missing fields" }), { status: 400 });
     }
 
+    if (!email || !recaptchaToken || typeof recaptchaToken !== "string") {
+      return new Response(JSON.stringify({ error: "Missing fields" }), { status: 400 });
+    }
+
+    if (typeof message !== "string" || !message.trim()) {
+      return new Response(JSON.stringify({ error: "Missing fields" }), { status: 400 });
+    }
+
+    const nameSafe = sanitizeMailHeaderChunk(name, 120);
+    if (!nameSafe) {
+      return new Response(JSON.stringify({ error: "Missing fields" }), { status: 400 });
+    }
+    const subjectSafe = sanitizeMailHeaderChunk(subject ?? "", 200);
+    const messageStr = message;
+
+    if (messageStr.length > MAX_MESSAGE_LEN) {
+      return new Response(JSON.stringify({ error: "Message too long" }), { status: 400 });
+    }
+
+    if (!isValidEmail(email)) {
+      return new Response(JSON.stringify({ error: "Invalid email" }), { status: 400 });
+    }
+
+    const emailSafe = email.trim();
+
     // ✅ reCAPTCHA verification
+    const verifyParams = new URLSearchParams({
+      secret: process.env.RECAPTCHA_SECRET_KEY ?? "",
+      response: recaptchaToken,
+    });
     const recaptchaRes = await fetch("https://www.google.com/recaptcha/api/siteverify", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: `secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${recaptchaToken}`,
+      body: verifyParams.toString(),
     });
 
     const recaptchaData = await recaptchaRes.json();
@@ -32,23 +64,33 @@ export async function POST(req) {
       },
     });
 
+    const fromDisplay = sanitizeMailHeaderChunk(nameSafe.replace(/"/g, ""), 100);
+    const mailFrom = `"${fromDisplay} via PWC Contact Form" <${process.env.EMAIL_USER}>`;
+
+    const nameHtml = escapeHtml(nameSafe);
+    const emailHtml = escapeHtml(emailSafe);
+    const subjectHtml = escapeHtml(subjectSafe || "N/A");
+    const messageHtml = escapeHtml(messageStr).replace(/\n/g, "<br/>");
+
     // ✅ Send main email to YOU
     await transporter.sendMail({
-      from: `"${name} via PWC Contact Form" <${process.env.EMAIL_USER}>`,
+      from: mailFrom,
       to: process.env.EMAIL_TO,
-      replyTo: email,
-      subject: subject || "New Request",
+      replyTo: emailSafe,
+      subject: subjectSafe || "New Request",
       html: `
         <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Subject:</strong> ${subject || "N/A"}</p>
-        <p><strong>Message:</strong><br/>${message.replace(/\n/g, "<br/>")}</p>
+        <p><strong>Name:</strong> ${nameHtml}</p>
+        <p><strong>Email:</strong> ${emailHtml}</p>
+        <p><strong>Subject:</strong> ${subjectHtml}</p>
+        <p><strong>Message:</strong><br/>${messageHtml}</p>
       `,
     });
 
     // ✅ Generate random ticket number
     const ticketNumber = Math.floor(100000 + Math.random() * 900000);
+
+    const nameForAuto = escapeHtml(nameSafe);
 
     // ✅ Auto-reply HTML
     const autoReplyHTML = `
@@ -58,7 +100,7 @@ export async function POST(req) {
           <img src="https://prowebcoder.com/assets/images/common/pwc.png" alt="PWC Logo" width="250" />
           </a>
         </div>
-        <h2 style="color: #333;"><span" style="color: #fe8f00;">Hi</span> ${name},</h2>
+        <h2 style="color: #333;"><span style="color: #fe8f00;">Hi</span> ${nameForAuto},</h2>
         <p style="color: #555;">
           Thanks for reaching out to <strong>Prowebcoder</strong>! We've received your message and our team will get back to you within <strong>12 business hours</strong>.
         </p>
@@ -80,7 +122,7 @@ export async function POST(req) {
     // ✅ Send auto-reply to USER
     await transporter.sendMail({
       from: `"Prowebcoder Team" <${process.env.EMAIL_USER}>`,
-      to: email,
+      to: emailSafe,
       subject: `✅ We've received your message – Ticket #${ticketNumber}`,
       html: autoReplyHTML,
     });

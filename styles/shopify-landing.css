@@ -1,0 +1,131 @@
+@tailwind utilities;
+
+/*
+ * Isolate Shopify landing pages from uni-core / theme CSS (heading !important fonts,
+ * global link colours, gray-900 headings, etc.).
+ */
+.shopify-app-landing {
+  --body-font-typeface: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --pwc-landing-ink: #0f172a;
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--pwc-landing-ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  isolation: isolate;
+}
+
+/* Default readable body copy; Tailwind tw-text-* on sections still wins (important). */
+#shopify-app-landing-root {
+  color: var(--pwc-landing-ink);
+}
+
+.shopify-app-landing *,
+.shopify-app-landing *::before,
+.shopify-app-landing *::after {
+  box-sizing: border-box;
+}
+
+/* Beat theme.scss heading font-family !important — match Inter everywhere */
+.shopify-app-landing h1,
+.shopify-app-landing h2,
+.shopify-app-landing h3,
+.shopify-app-landing h4,
+.shopify-app-landing h5,
+.shopify-app-landing h6,
+.shopify-app-landing .h1,
+.shopify-app-landing .h2,
+.shopify-app-landing .h3 {
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif !important;
+  font-style: normal !important;
+  text-transform: none !important;
+  letter-spacing: normal !important;
+}
+
+/* Buttons / pill links should never pick global anchor styling */
+.shopify-app-landing a[class*="tw-"] {
+  text-decoration: none;
+}
+
+.shopify-app-landing summary {
+  list-style: none;
+}
+
+.shopify-app-landing summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Background dots for SaaS landing sections (used by AppVideoSection) */
+.shopify-app-landing .tw-bg-dot-dark {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+.shopify-app-landing .tw-bg-dot-light {
+  background-image: radial-gradient(rgba(15, 23, 42, 0.065) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* Horizontal nav on small screens (Shopify LP headers) */
+.shopify-app-landing .pwc-lp-nav-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.shopify-app-landing .pwc-lp-nav-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/*
+ * Hub (/shopify-apps): uni-core / main.css can force anchor backgrounds or link colours,
+ * which produced all-white “Install” pills with invisible labels. These rules win.
+ */
+.shopify-app-landing a.pwc-hub-install {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  text-decoration: none !important;
+  background-color: #059669 !important;
+  background-image: linear-gradient(90deg, #34d399, #0d9488) !important;
+  border: 0 !important;
+}
+.shopify-app-landing a.pwc-hub-install[data-hub-variant="amber"] {
+  background-color: #d97706 !important;
+  background-image: linear-gradient(90deg, #fbbf24, #ea580c) !important;
+}
+.shopify-app-landing a.pwc-hub-install[data-hub-variant="indigo"] {
+  background-color: #4f46e5 !important;
+  background-image: linear-gradient(90deg, #6366f1, #0ea5e9) !important;
+}
+.shopify-app-landing a.pwc-hub-install:hover {
+  filter: brightness(1.05);
+}
+
+.shopify-app-landing a.pwc-hub-secondary-cta {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  background-color: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
+  text-decoration: none !important;
+}
+.shopify-app-landing a.pwc-hub-secondary-cta:hover {
+  background-color: #f8fafc !important;
+}
+
+.shopify-app-landing a.pwc-hub-yellow-cta {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  background-color: #ffd23f !important;
+  text-decoration: none !important;
+  border: 0 !important;
+}
+.shopify-app-landing a.pwc-hub-yellow-cta:hover {
+  background-color: #f2c73a !important;
+}
+
+.shopify-app-landing a.pwc-hub-ghost-light {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  background-color: transparent !important;
+  text-decoration: none !important;
+}
