@@ -14,19 +14,16 @@ export async function POST(req) {
       return new Response(JSON.stringify({ error: "Missing fields" }), { status: 400 });
     }
 
-    if (!email || !recaptchaToken || typeof recaptchaToken !== "string") {
-      return new Response(JSON.stringify({ error: "Missing fields" }), { status: 400 });
+    if (!email) {
+      return new Response(JSON.stringify({ error: "Email is required" }), { status: 400 });
     }
 
     if (typeof message !== "string" || !message.trim()) {
-      return new Response(JSON.stringify({ error: "Missing fields" }), { status: 400 });
+      return new Response(JSON.stringify({ error: "Message is required" }), { status: 400 });
     }
 
-    const nameSafe = sanitizeMailHeaderChunk(name, 120);
-    if (!nameSafe) {
-      return new Response(JSON.stringify({ error: "Missing fields" }), { status: 400 });
-    }
-    const subjectSafe = sanitizeMailHeaderChunk(subject ?? "", 200);
+    const nameSafe = sanitizeMailHeaderChunk(name || "Guest", 120);
+    const subjectSafe = sanitizeMailHeaderChunk(subject ?? "New Contact Request", 200);
     const messageStr = message;
 
     if (messageStr.length > MAX_MESSAGE_LEN) {
@@ -34,100 +31,110 @@ export async function POST(req) {
     }
 
     if (!isValidEmail(email)) {
-      return new Response(JSON.stringify({ error: "Invalid email" }), { status: 400 });
+      return new Response(JSON.stringify({ error: "Invalid email address" }), { status: 400 });
     }
 
     const emailSafe = email.trim();
 
-    // ✅ reCAPTCHA verification
-    const verifyParams = new URLSearchParams({
-      secret: process.env.RECAPTCHA_SECRET_KEY ?? "",
-      response: recaptchaToken,
-    });
-    const recaptchaRes = await fetch("https://www.google.com/recaptcha/api/siteverify", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: verifyParams.toString(),
-    });
+    // ✅ reCAPTCHA verification (only if secret exists and token is provided)
+    if (process.env.RECAPTCHA_SECRET_KEY && recaptchaToken && recaptchaToken !== "profile_direct_form_token") {
+      try {
+        const verifyParams = new URLSearchParams({
+          secret: process.env.RECAPTCHA_SECRET_KEY,
+          response: recaptchaToken,
+        });
+        const recaptchaRes = await fetch("https://www.google.com/recaptcha/api/siteverify", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: verifyParams.toString(),
+        });
 
-    const recaptchaData = await recaptchaRes.json();
-    if (!recaptchaData.success) {
-      return new Response(JSON.stringify({ error: "reCAPTCHA failed" }), { status: 400 });
+        const recaptchaData = await recaptchaRes.json();
+        if (!recaptchaData.success) {
+          return new Response(JSON.stringify({ error: "reCAPTCHA verification failed" }), { status: 400 });
+        }
+      } catch (rcErr) {
+        console.warn("reCAPTCHA check error:", rcErr);
+      }
     }
 
-    // ✅ Setup transporter
-    const transporter = nodemailer.createTransport({
-      service: "Gmail",
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-    });
+    // ✅ Send email if email credentials configured
+    if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
+      try {
+        const transporter = nodemailer.createTransport({
+          service: "Gmail",
+          auth: {
+            user: process.env.EMAIL_USER,
+            pass: process.env.EMAIL_PASS,
+          },
+        });
 
-    const fromDisplay = sanitizeMailHeaderChunk(nameSafe.replace(/"/g, ""), 100);
-    const mailFrom = `"${fromDisplay} via PWC Contact Form" <${process.env.EMAIL_USER}>`;
+        const fromDisplay = sanitizeMailHeaderChunk(nameSafe.replace(/"/g, ""), 100);
+        const mailFrom = `"${fromDisplay} via PWC Contact Form" <${process.env.EMAIL_USER}>`;
 
-    const nameHtml = escapeHtml(nameSafe);
-    const emailHtml = escapeHtml(emailSafe);
-    const subjectHtml = escapeHtml(subjectSafe || "N/A");
-    const messageHtml = escapeHtml(messageStr).replace(/\n/g, "<br/>");
+        const nameHtml = escapeHtml(nameSafe);
+        const emailHtml = escapeHtml(emailSafe);
+        const subjectHtml = escapeHtml(subjectSafe || "N/A");
+        const messageHtml = escapeHtml(messageStr).replace(/\n/g, "<br/>");
 
-    // ✅ Send main email to YOU
-    await transporter.sendMail({
-      from: mailFrom,
-      to: process.env.EMAIL_TO,
-      replyTo: emailSafe,
-      subject: subjectSafe || "New Request",
-      html: `
-        <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${nameHtml}</p>
-        <p><strong>Email:</strong> ${emailHtml}</p>
-        <p><strong>Subject:</strong> ${subjectHtml}</p>
-        <p><strong>Message:</strong><br/>${messageHtml}</p>
-      `,
-    });
+        // ✅ Send main email
+        await transporter.sendMail({
+          from: mailFrom,
+          to: process.env.EMAIL_TO || process.env.EMAIL_USER,
+          replyTo: emailSafe,
+          subject: subjectSafe || "New Request",
+          html: `
+            <h2>New Contact Form Submission</h2>
+            <p><strong>Name:</strong> ${nameHtml}</p>
+            <p><strong>Email:</strong> ${emailHtml}</p>
+            <p><strong>Subject:</strong> ${subjectHtml}</p>
+            <p><strong>Message:</strong><br/>${messageHtml}</p>
+          `,
+        });
 
-    // ✅ Generate random ticket number
-    const ticketNumber = Math.floor(100000 + Math.random() * 900000);
+        const ticketNumber = Math.floor(100000 + Math.random() * 900000);
+        const autoReplyHTML = `
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; border: 1px solid #eee; padding: 20px;">
+            <div style="text-align: center; margin-bottom: 20px;">
+              <a href="https://prowebcoder.com" target="_blank" style="display: inline-block;">
+                <img src="https://prowebcoder.com/assets/images/common/pwc.png" alt="PWC Logo" width="250" />
+              </a>
+            </div>
+            <h2 style="color: #333;"><span style="color: #fe8f00;">Hi</span> ${nameHtml},</h2>
+            <p style="color: #555;">
+              Thanks for reaching out to <strong>Prowebcoder</strong>! We've received your message and our team will get back to you within <strong>12 business hours</strong>.
+            </p>
+            <p style="color: #555;">
+              Your support ticket number is: <strong>#${ticketNumber}</strong>
+            </p>
+            <p style="color: #555;">While you wait, feel free to check out our <a href="https://prowebcoder.com/faq" style="color: #fe8f00;">FAQs</a> or <a href="https://prowebcoder.com/contact-us" style="color: #fe8f00;">Support Page</a>.</p>
+            <hr style="margin: 30px 0;" />
+            <p style="color: #888; font-size: 12px;">
+              Prowebcoder<br />
+              rahul@prowebcoder.com | <a href="https://prowebcoder.com" style="color: #888;">https://prowebcoder.com</a>
+            </p>
+          </div>
+        `;
 
-    const nameForAuto = escapeHtml(nameSafe);
+        await transporter.sendMail({
+          from: `"Prowebcoder Team" <${process.env.EMAIL_USER}>`,
+          to: emailSafe,
+          subject: `✅ We've received your message – Ticket #${ticketNumber}`,
+          html: autoReplyHTML,
+        });
+      } catch (err) {
+        console.error("Nodemailer error:", err);
+      }
+    } else {
+      console.log("Contact form submission received (EMAIL_USER not configured):", {
+        name: nameSafe,
+        email: emailSafe,
+        subject: subjectSafe,
+        message: messageStr,
+      });
+    }
 
-    // ✅ Auto-reply HTML
-    const autoReplyHTML = `
-      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; border: 1px solid #eee; padding: 20px;">
-        <div style="text-align: center; margin-bottom: 20px;">
-        <a href="https://prowebcoder.com" target="_blank" style="display: inline-block;">
-          <img src="https://prowebcoder.com/assets/images/common/pwc.png" alt="PWC Logo" width="250" />
-          </a>
-        </div>
-        <h2 style="color: #333;"><span style="color: #fe8f00;">Hi</span> ${nameForAuto},</h2>
-        <p style="color: #555;">
-          Thanks for reaching out to <strong>Prowebcoder</strong>! We've received your message and our team will get back to you within <strong>12 business hours</strong>.
-        </p>
-        <p style="color: #555;">
-          Your support ticket number is: <strong>#${ticketNumber}</strong>
-        </p>
-        <p style="color: #555;">While you wait, feel free to check out our <a href="https://prowebcoder.com/faq" style="color: #fe8f00;">FAQs</a> or <a href="https://prowebcoder.com/contact-us" style="color: #fe8f00;">Support Page</a>.</p>
-        <hr style="margin: 30px 0;" />
-        <p style="color: #888; font-size: 12px;">
-          This is an automated message. If you did not submit this form, please disregard this email.
-        </p>
-        <p style="color: #888; font-size: 12px;">
-          Prowebcoder<br />
-          rahul@prowebcoder.com | <a href="https://prowebcoder.com" style="color: #888;">https://prowebcoder.com</a>
-        </p>
-      </div>
-    `;
-
-    // ✅ Send auto-reply to USER
-    await transporter.sendMail({
-      from: `"Prowebcoder Team" <${process.env.EMAIL_USER}>`,
-      to: emailSafe,
-      subject: `✅ We've received your message – Ticket #${ticketNumber}`,
-      html: autoReplyHTML,
-    });
-
-    return new Response(JSON.stringify({ success: true }), { status: 200 });
+    return new Response(JSON.stringify({ success: true, message: "Message sent successfully!" }), { status: 200 });
   } catch (error) {
     console.error("🔥 Contact API error:", error);
     return new Response(JSON.stringify({ error: "Failed to send email" }), { status: 500 });

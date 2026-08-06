@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import toast from "react-hot-toast";
 import {
   FiArrowRight,
@@ -39,6 +39,7 @@ import {
 import { BsShop, BsLightningCharge } from "react-icons/bs";
 import AnimatedCounter from "./AnimatedCounter";
 import SectionHeading from "./SectionHeading";
+import Portfolio from "@/components/common/Portfolio";
 import {
   aboutPoints,
   galacticApps,
@@ -85,13 +86,35 @@ export default function ProfilePage() {
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [skillSearch, setSkillSearch] = useState("");
   const [contactForm, setContactForm] = useState({
-    name: "",
+    firstName: "",
+    lastName: "",
     email: "",
-    projectType: "Shopify Store Build",
+    phone: "",
+    company: "",
+    service: "",
     message: "",
   });
   const [submittingForm, setSubmittingForm] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+
+  const recaptchaRef = useRef(null);
+  const recaptchaId = useRef(null);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (window.grecaptcha && recaptchaRef.current && recaptchaId.current === null) {
+        try {
+          recaptchaId.current = window.grecaptcha.render(recaptchaRef.current, {
+            sitekey: process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY,
+          });
+          clearInterval(interval);
+        } catch (e) {
+          // ignore if already rendered
+        }
+      }
+    }, 300);
+    return () => clearInterval(interval);
+  }, []);
 
   const handleCopyEmail = (email) => {
     if (typeof navigator !== "undefined" && navigator.clipboard) {
@@ -102,23 +125,74 @@ export default function ProfilePage() {
     }
   };
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
-    if (!contactForm.name || !contactForm.email || !contactForm.message) {
+    const { firstName, lastName, email, phone, company, service, message } = contactForm;
+
+    if (!firstName || !lastName || !email || !message) {
       toast.error("Please fill in all required fields.");
       return;
     }
+
+    if (!/\S+@\S+\.\S+/.test(email)) {
+      toast.error("Please enter a valid email address.");
+      return;
+    }
+
+    let recaptchaToken = "";
+    if (typeof window !== "undefined" && window.grecaptcha && recaptchaId.current !== null) {
+      try {
+        recaptchaToken = window.grecaptcha.getResponse(recaptchaId.current);
+      } catch (err) {
+        console.warn("grecaptcha.getResponse error:", err);
+      }
+    }
+
+    if (!recaptchaToken && typeof window !== "undefined" && window.grecaptcha && recaptchaId.current !== null) {
+      toast.error("Please complete the reCAPTCHA.");
+      return;
+    }
+
     setSubmittingForm(true);
-    setTimeout(() => {
-      setSubmittingForm(false);
-      toast.success("Thank you! Your message has been sent to Rahul.");
-      setContactForm({
-        name: "",
-        email: "",
-        projectType: "Shopify Store Build",
-        message: "",
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: `${firstName} ${lastName}`,
+          email,
+          subject: `Request from ${firstName} ${lastName}`,
+          message: `Phone: ${phone || "N/A"}\nCompany: ${company || "N/A"}\nService: ${service || "N/A"}\n\n${message}`,
+          recaptchaToken,
+        }),
       });
-    }, 1000);
+
+      const data = await res.json();
+      if (res.ok) {
+        toast.success("✅ Thank you! Your message has been sent successfully.");
+        setContactForm({
+          firstName: "",
+          lastName: "",
+          email: "",
+          phone: "",
+          company: "",
+          service: "",
+          message: "",
+        });
+        if (typeof window !== "undefined" && window.grecaptcha && recaptchaId.current !== null) {
+          try {
+            window.grecaptcha.reset(recaptchaId.current);
+          } catch (err) {}
+        }
+      } else {
+        toast.error(`❌ ${data.error || "Failed to send message. Please try again."}`);
+      }
+    } catch (err) {
+      console.error("Contact form submit error:", err);
+      toast.error("❌ Failed to send message. Please try again.");
+    } finally {
+      setSubmittingForm(false);
+    }
   };
 
   useEffect(() => {
@@ -627,66 +701,35 @@ export default function ProfilePage() {
                       ))}
                     </div>
 
-                    <a
-                      href={app.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="tw-flex tw-w-full tw-items-center tw-justify-center tw-gap-2 tw-rounded-xl tw-border tw-border-emerald-600 tw-bg-white tw-py-2.5 tw-text-xs tw-font-bold tw-text-emerald-700 hover:tw-bg-emerald-50 tw-transition-colors"
-                    >
-                      View App Details <FiExternalLink />
-                    </a>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Featured Store Builds & Work Portfolio */}
-        <section id="portfolio" className="tw-py-16 sm:tw-py-20 tw-bg-slate-50 tw-border-b tw-border-slate-200">
-          <div className="tw-mx-auto tw-max-w-7xl tw-px-4 sm:tw-px-6 lg:tw-px-8">
-            <SectionHeading
-              eyebrow="Selected Storefronts"
-              title="Featured Shopify Builds & Redesigns"
-              description="Real storefronts built and optimized for global e-commerce merchants."
-            />
-
-            <div className="tw-mt-10 tw-grid tw-grid-cols-1 md:tw-grid-cols-2 lg:tw-grid-cols-3 tw-gap-6">
-              {featuredPortfolios.map((item) => (
-                <div
-                  key={item.id}
-                  className="tw-flex tw-flex-col tw-justify-between tw-rounded-3xl tw-border tw-border-slate-200 tw-bg-white tw-p-6 tw-shadow-sm hover:tw-shadow-md tw-transition-all"
-                >
-                  <div>
-                    <span className="tw-inline-block tw-rounded-full tw-bg-slate-100 tw-px-3 tw-py-1 tw-text-xs tw-font-bold tw-text-slate-700">
-                      {item.category}
-                    </span>
-                    <h3 className="tw-mt-3 tw-text-2xl tw-font-extrabold tw-text-slate-900">{item.title}</h3>
-                    <p className="tw-mt-2 tw-text-sm tw-text-slate-600 tw-leading-relaxed">{item.description}</p>
-                  </div>
-
-                  <div className="tw-mt-6 tw-pt-4 tw-border-t tw-border-slate-100">
-                    <div className="tw-flex tw-flex-wrap tw-gap-1.5 tw-mb-4">
-                      {item.tags.map((tg, i) => (
-                        <span key={i} className="tw-rounded-md tw-bg-slate-100 tw-px-2.5 tw-py-1 tw-text-[11px] tw-font-semibold tw-text-slate-700">
-                          {tg}
-                        </span>
-                      ))}
+                    <div className="tw-grid tw-grid-cols-2 tw-gap-2">
+                      {app.internalLink && (
+                        <Link
+                          href={app.internalLink}
+                          className="tw-flex tw-items-center tw-justify-center tw-gap-1.5 tw-rounded-xl tw-bg-emerald-600 tw-py-2.5 tw-text-xs tw-font-bold tw-text-white hover:tw-bg-emerald-700 tw-transition-colors"
+                        >
+                          View App
+                        </Link>
+                      )}
+                      <a
+                        href={app.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="tw-flex tw-items-center tw-justify-center tw-gap-1.5 tw-rounded-xl tw-border tw-border-slate-300 tw-bg-white tw-py-2.5 tw-text-xs tw-font-bold tw-text-slate-700 hover:tw-bg-slate-50 tw-transition-colors"
+                      >
+                        App Store <FiExternalLink />
+                      </a>
                     </div>
-                    <a
-                      href={item.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="tw-inline-flex tw-items-center tw-gap-2 tw-text-xs tw-font-bold tw-text-emerald-700 hover:tw-underline"
-                    >
-                      View Shopify Featured Work <FiExternalLink />
-                    </a>
                   </div>
                 </div>
               ))}
             </div>
           </div>
         </section>
+
+        {/* Portfolio Section */}
+        <div id="portfolio">
+          <Portfolio />
+        </div>
 
         {/* Services Offered */}
         <section id="services" className="tw-py-16 sm:tw-py-20 tw-bg-white tw-border-b tw-border-slate-200">
@@ -993,48 +1036,125 @@ export default function ProfilePage() {
               <div className="lg:tw-col-span-7">
                 <div className="tw-rounded-3xl tw-border tw-border-slate-200 tw-bg-slate-50/80 tw-p-6 sm:tw-p-8 tw-shadow-sm">
                   <h3 className="tw-text-2xl tw-font-bold tw-text-slate-900">Send Direct Message</h3>
+                  <p className="tw-text-xs tw-text-slate-500 tw-mt-1">
+                    Have a question or requirement? Fill out the form below and we will respond promptly.
+                  </p>
                   <form onSubmit={handleFormSubmit} className="tw-mt-6 tw-space-y-4">
+                    {/* First Name & Last Name */}
+                    <div className="tw-grid tw-grid-cols-1 sm:tw-grid-cols-2 tw-gap-4">
+                      <div>
+                        <label className="tw-block tw-text-xs tw-font-bold tw-text-slate-700 tw-uppercase">First Name *</label>
+                        <input
+                          type="text"
+                          required
+                          value={contactForm.firstName}
+                          onChange={(e) => setContactForm({ ...contactForm, firstName: e.target.value })}
+                          placeholder="e.g., Sarah"
+                          className="tw-mt-1 tw-w-full tw-rounded-xl tw-border tw-border-slate-300 tw-bg-white tw-p-3 tw-text-sm tw-text-slate-900 focus:tw-border-emerald-600 focus:tw-outline-none"
+                        />
+                      </div>
+                      <div>
+                        <label className="tw-block tw-text-xs tw-font-bold tw-text-slate-700 tw-uppercase">Last Name *</label>
+                        <input
+                          type="text"
+                          required
+                          value={contactForm.lastName}
+                          onChange={(e) => setContactForm({ ...contactForm, lastName: e.target.value })}
+                          placeholder="e.g., Smith"
+                          className="tw-mt-1 tw-w-full tw-rounded-xl tw-border tw-border-slate-300 tw-bg-white tw-p-3 tw-text-sm tw-text-slate-900 focus:tw-border-emerald-600 focus:tw-outline-none"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Email & Phone */}
+                    <div className="tw-grid tw-grid-cols-1 sm:tw-grid-cols-2 tw-gap-4">
+                      <div>
+                        <label className="tw-block tw-text-xs tw-font-bold tw-text-slate-700 tw-uppercase">Your Email *</label>
+                        <input
+                          type="email"
+                          required
+                          value={contactForm.email}
+                          onChange={(e) => setContactForm({ ...contactForm, email: e.target.value })}
+                          placeholder="e.g., sarah@brand.com"
+                          className="tw-mt-1 tw-w-full tw-rounded-xl tw-border tw-border-slate-300 tw-bg-white tw-p-3 tw-text-sm tw-text-slate-900 focus:tw-border-emerald-600 focus:tw-outline-none"
+                        />
+                      </div>
+                      <div>
+                        <label className="tw-block tw-text-xs tw-font-bold tw-text-slate-700 tw-uppercase">Phone Number (optional)</label>
+                        <input
+                          type="tel"
+                          value={contactForm.phone}
+                          onChange={(e) => setContactForm({ ...contactForm, phone: e.target.value })}
+                          placeholder="+1 (555) 000-0000"
+                          className="tw-mt-1 tw-w-full tw-rounded-xl tw-border tw-border-slate-300 tw-bg-white tw-p-3 tw-text-sm tw-text-slate-900 focus:tw-border-emerald-600 focus:tw-outline-none"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Company */}
                     <div>
-                      <label className="tw-block tw-text-xs tw-font-bold tw-text-slate-700 tw-uppercase">Your Name</label>
+                      <label className="tw-block tw-text-xs tw-font-bold tw-text-slate-700 tw-uppercase">Company Name (optional)</label>
                       <input
                         type="text"
-                        required
-                        value={contactForm.name}
-                        onChange={(e) => setContactForm({ ...contactForm, name: e.target.value })}
-                        placeholder="e.g., Sarah Smith"
+                        value={contactForm.company}
+                        onChange={(e) => setContactForm({ ...contactForm, company: e.target.value })}
+                        placeholder="e.g., Acme E-Commerce Ltd"
                         className="tw-mt-1 tw-w-full tw-rounded-xl tw-border tw-border-slate-300 tw-bg-white tw-p-3 tw-text-sm tw-text-slate-900 focus:tw-border-emerald-600 focus:tw-outline-none"
                       />
                     </div>
 
+                    {/* Services Dropdown */}
                     <div>
-                      <label className="tw-block tw-text-xs tw-font-bold tw-text-slate-700 tw-uppercase">Your Email</label>
-                      <input
-                        type="email"
-                        required
-                        value={contactForm.email}
-                        onChange={(e) => setContactForm({ ...contactForm, email: e.target.value })}
-                        placeholder="e.g., sarah@brand.com"
-                        className="tw-mt-1 tw-w-full tw-rounded-xl tw-border tw-border-slate-300 tw-bg-white tw-p-3 tw-text-sm tw-text-slate-900 focus:tw-border-emerald-600 focus:tw-outline-none"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="tw-block tw-text-xs tw-font-bold tw-text-slate-700 tw-uppercase">Project Type</label>
+                      <label className="tw-block tw-text-xs tw-font-bold tw-text-slate-700 tw-uppercase">Select Service *</label>
                       <select
-                        value={contactForm.projectType}
-                        onChange={(e) => setContactForm({ ...contactForm, projectType: e.target.value })}
+                        required
+                        value={contactForm.service}
+                        onChange={(e) => setContactForm({ ...contactForm, service: e.target.value })}
                         className="tw-mt-1 tw-w-full tw-rounded-xl tw-border tw-border-slate-300 tw-bg-white tw-p-3 tw-text-sm tw-text-slate-900 focus:tw-border-emerald-600 focus:tw-outline-none"
                       >
-                        <option value="Shopify Store Build">Shopify Store Build / Redesign</option>
-                        <option value="Custom Shopify App">Custom Shopify App Development</option>
-                        <option value="Migration">Store Migration (Magento/Woo/BigCommerce)</option>
-                        <option value="Webflow Custom Site">Webflow / Custom CMS Build</option>
-                        <option value="Hourly Retainer">Hourly Consulting ($25/hr)</option>
+                        <option value="">Select the service you’re interested in</option>
+
+                        <optgroup label="Shopify">
+                          <option value="Shopify Plus">Shopify Plus</option>
+                          <option value="Shopify Development">Shopify Development</option>
+                          <option value="Shopify App Development">Shopify App Development</option>
+                          <option value="Custom Storefront">Custom Storefront</option>
+                        </optgroup>
+
+                        <optgroup label="E-Commerce Platforms">
+                          <option value="WooCommerce">WooCommerce</option>
+                          <option value="Squarespace">Squarespace</option>
+                          <option value="Webflow">Webflow</option>
+                          <option value="BigCommerce">BigCommerce</option>
+                          <option value="Magento">Magento</option>
+                        </optgroup>
+
+                        <optgroup label="Web Development">
+                          <option value="WordPress">WordPress</option>
+                          <option value="Next.js">Next.js</option>
+                          <option value="React">React</option>
+                          <option value="Custom Applications">Custom Applications</option>
+                        </optgroup>
+
+                        <optgroup label="Mobile & Apps">
+                          <option value="Mobile App Development">Mobile App Development</option>
+                          <option value="PWA Development">Progressive Web Apps (PWA)</option>
+                          <option value="Headless Commerce">Headless Commerce</option>
+                        </optgroup>
+
+                        <optgroup label="Consulting & Support">
+                          <option value="Consultation">Consultation</option>
+                          <option value="Support & Maintenance">Support & Maintenance</option>
+                          <option value="Migration">Platform Migration</option>
+                          <option value="Performance Optimization">Performance Optimization</option>
+                          <option value="SEO & Marketing">SEO & Marketing</option>
+                        </optgroup>
                       </select>
                     </div>
 
+                    {/* Message */}
                     <div>
-                      <label className="tw-block tw-text-xs tw-font-bold tw-text-slate-700 tw-uppercase">Project Scope & Details</label>
+                      <label className="tw-block tw-text-xs tw-font-bold tw-text-slate-700 tw-uppercase">Your Message *</label>
                       <textarea
                         required
                         rows={4}
@@ -1045,12 +1165,17 @@ export default function ProfilePage() {
                       />
                     </div>
 
+                    {/* reCAPTCHA Container */}
+                    <div className="tw-my-2 tw-min-h-[78px]">
+                      <div ref={recaptchaRef} />
+                    </div>
+
                     <button
                       type="submit"
                       disabled={submittingForm}
                       className="tw-flex tw-w-full tw-items-center tw-justify-center tw-gap-2 tw-rounded-xl tw-bg-emerald-600 tw-py-3.5 tw-text-sm tw-font-bold tw-text-white hover:tw-bg-emerald-700 disabled:tw-opacity-50 tw-transition-all"
                     >
-                      {submittingForm ? "Sending Message..." : "Send Message to Rahul"}
+                      {submittingForm ? "Sending Message..." : "Send Message"}
                       <FiSend />
                     </button>
                   </form>
