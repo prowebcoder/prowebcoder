@@ -2,77 +2,157 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useMemo } from "react";
+import toast from "react-hot-toast";
 import {
   FiArrowRight,
   FiDownload,
   FiMail,
   FiGithub,
   FiLinkedin,
-  FiTwitter,
   FiCheckCircle,
   FiZap,
   FiLayers,
   FiTrendingUp,
   FiGlobe,
   FiClock,
-  FiPenTool,
-  FiSmartphone,
   FiCode,
   FiDatabase,
   FiBriefcase,
   FiMessageCircle,
-  FiChevronDown,
   FiCopy,
+  FiStar,
+  FiMenu,
+  FiX,
+  FiExternalLink,
+  FiShield,
+  FiAward,
+  FiSearch,
+  FiSend,
+  FiCheck,
+  FiGrid,
+  FiDollarSign,
+  FiCpu,
+  FiSmartphone,
 } from "react-icons/fi";
-import { BsLightningCharge, BsShop } from "react-icons/bs";
+import { BsShop, BsLightningCharge } from "react-icons/bs";
 import AnimatedCounter from "./AnimatedCounter";
 import SectionHeading from "./SectionHeading";
 import {
   aboutPoints,
-  appShowcases,
-  certifications,
+  galacticApps,
   faqItems,
   footerLinks,
-  industries,
   profileOverview,
-  projects,
+  featuredPortfolios,
   services,
   skillGroups,
   stats,
-  techCloud,
   testimonials,
   whyHire,
   workProcess,
 } from "@/data/profile";
 
+
+
+
 const floatingBadges = [
-  { label: "Shopify" },
-  { label: "Next.js" },
-  { label: "React" },
-  { label: "Node.js" },
-  { label: "GraphQL" },
-  { label: "Tailwind" },
-  { label: "Vercel" },
+  { label: "Shopify Plus", icon: <BsShop className="tw-text-emerald-600" /> },
+  { label: "Next.js 15", icon: <FiCode className="tw-text-slate-800" /> },
+  { label: "React.js", icon: <FiCode className="tw-text-sky-600" /> },
+  { label: "Webflow", icon: <FiGlobe className="tw-text-blue-600" /> },
+  { label: "Liquid & Dawn", icon: <BsLightningCharge className="tw-text-emerald-700" /> },
+  { label: "BigCommerce", icon: <FiLayers className="tw-text-indigo-600" /> },
+  { label: "WordPress", icon: <FiGrid className="tw-text-blue-700" /> },
 ];
 
-const socialLinks = [
-  { name: "GitHub", href: profileOverview.github, icon: <FiGithub /> },
-  { name: "LinkedIn", href: profileOverview.linkedin, icon: <FiLinkedin /> },
-  { name: "X", href: profileOverview.x, icon: <FiTwitter /> },
-  { name: "Email", href: `mailto:${profileOverview.email}`, icon: <FiMail /> },
+const navLinks = [
+  { name: "About", href: "#about" },
+  { name: "Shopify Apps", href: "#apps" },
+  { name: "Portfolio", href: "#portfolio" },
+  { name: "Services", href: "#services" },
+  { name: "Skills", href: "#skills" },
+  { name: "Reviews", href: "#reviews" },
+  { name: "Process", href: "#process" },
+  { name: "Contact", href: "#contact" },
 ];
 
-function copyToClipboard(text) {
-  if (typeof navigator !== "undefined") {
-    navigator.clipboard.writeText(text);
-  }
-}
-
-export default function ProfilePage()
-  const [activeTab, setActiveTab] = useState("Upwork");
+export default function ProfilePage() {
+  const [activeTab, setActiveTab] = useState("Shopify");
   const [openFaq, setOpenFaq] = useState(0);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [copiedEmail, setCopiedEmail] = useState(false);
+  const [skillSearch, setSkillSearch] = useState("");
+  const [contactForm, setContactForm] = useState({
+    name: "",
+    email: "",
+    projectType: "Shopify Store Build",
+    message: "",
+  });
+  const [submittingForm, setSubmittingForm] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
+
+  const handleCopyEmail = (email) => {
+    if (typeof navigator !== "undefined" && navigator.clipboard) {
+      navigator.clipboard.writeText(email);
+      setCopiedEmail(true);
+      toast.success("Email address copied to clipboard!");
+      setTimeout(() => setCopiedEmail(false), 2500);
+    }
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    if (!contactForm.name || !contactForm.email || !contactForm.message) {
+      toast.error("Please fill in all required fields.");
+      return;
+    }
+    setSubmittingForm(true);
+    setTimeout(() => {
+      setSubmittingForm(false);
+      toast.success("Thank you! Your message has been sent to Rahul.");
+      setContactForm({
+        name: "",
+        email: "",
+        projectType: "Shopify Store Build",
+        message: "",
+      });
+    }, 1000);
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = navLinks.map((link) => link.href.substring(1));
+      const scrollPosition = window.scrollY + 200;
+
+      for (const sectionId of sections) {
+        const el = document.getElementById(sectionId);
+        if (el) {
+          const top = el.offsetTop;
+          const height = el.offsetHeight;
+          if (scrollPosition >= top && scrollPosition < top + height) {
+            setActiveSection(sectionId);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const filteredSkillGroups = useMemo(() => {
+    if (!skillSearch.trim()) return skillGroups;
+    const term = skillSearch.toLowerCase();
+    return skillGroups
+      .map((group) => ({
+        ...group,
+        skills: group.skills.filter((s) => s.toLowerCase().includes(term)),
+      }))
+      .filter((group) => group.skills.length > 0);
+  }, [skillSearch]);
 
   return (
     <>
@@ -85,531 +165,936 @@ export default function ProfilePage()
             name: profileOverview.name,
             jobTitle: profileOverview.title,
             description: profileOverview.intro,
-            url: profileOverview.website,
-            sameAs: [profileOverview.github, profileOverview.linkedin, profileOverview.x, profileOverview.shopifyPartner],
-            knowsAbout: ["Shopify", "Next.js", "React", "Node.js", "GraphQL", "Liquid", "Tailwind", "MongoDB"],
+            url: profileOverview.portfolio,
+            sameAs: [
+              profileOverview.shopifyPartner,
+              profileOverview.shopifyApps,
+              profileOverview.upwork,
+              profileOverview.fiverr,
+              profileOverview.linkedin,
+            ],
             email: profileOverview.email,
             worksFor: {
               "@type": "Organization",
-              name: "Prowebcoder",
+              name: "Galactic Technologies / ProWebCoder",
+              url: profileOverview.website,
             },
           }),
         }}
       />
-      <main className="tw-min-h-screen tw-bg-[#030712] tw-text-slate-100">
-      <section className="tw-relative tw-overflow-hidden tw-border-b tw-border-white/10 tw-bg-[radial-gradient(circle_at_top_left,_rgba(34,211,238,0.16),transparent_32%),radial-gradient(circle_at_top_right,_rgba(168,85,247,0.16),transparent_26%),linear-gradient(135deg,_#030712_0%,_#050816_45%,_#030712_100%)]">
-        <div className="tw-absolute tw-inset-0 tw-bg-[linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px)] tw-bg-[size:70px_70px]" />
-        <div className="tw-relative tw-mx-auto tw-flex tw-max-w-7xl tw-flex-col tw-gap-8 tw-px-4 tw-py-8 sm:tw-px-6 lg:tw-px-8 lg:tw-py-12">
-          <motion.header
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="tw-flex tw-items-center tw-justify-between tw-rounded-full tw-border tw-border-white/10 tw-bg-white/5 tw-px-4 tw-py-3 tw-backdrop-blur-xl"
-          >
-            <div className="tw-flex tw-items-center tw-gap-3">
-              <div className="tw-flex tw-h-10 tw-w-10 tw-items-center tw-justify-center tw-rounded-full tw-bg-gradient-to-br tw-from-cyan-400 tw-to-violet-500 tw-font-semibold tw-text-slate-950">
-                RD
-              </div>
-              <div>
-                <p className="tw-text-sm tw-font-semibold tw-text-white">Rahul Dhiman</p>
-                <p className="tw-text-xs tw-text-slate-400">Shopify Expert</p>
-              </div>
-            </div>
-            <div className="tw-hidden tw-items-center tw-gap-2 md:tw-flex">
-              <a href="#projects" className="tw-rounded-full tw-px-4 tw-py-2 tw-text-sm tw-text-slate-300 tw-transition hover:tw-bg-white/10 hover:tw-text-white">
-                Portfolio
-              </a>
-              <a href="#services" className="tw-rounded-full tw-px-4 tw-py-2 tw-text-sm tw-text-slate-300 tw-transition hover:tw-bg-white/10 hover:tw-text-white">
-                Services
-              </a>
-              <a href="#faq" className="tw-rounded-full tw-px-4 tw-py-2 tw-text-sm tw-text-slate-300 tw-transition hover:tw-bg-white/10 hover:tw-text-white">
-                FAQ
-              </a>
-            </div>
-          </motion.header>
 
-          <div className="tw-grid tw-items-center tw-gap-10 lg:tw-grid-cols-[1.05fr_0.95fr] lg:tw-gap-14">
-            <motion.div
-              initial={{ opacity: 0, x: -24 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7 }}
-              className="tw-max-w-2xl"
+      <main className="tw-min-h-screen tw-bg-slate-50 tw-text-slate-900 tw-font-sans tw-antialiased selection:tw-bg-emerald-100 selection:tw-text-emerald-900">
+        {/* Sticky Light Mode Header Navigation */}
+        <header className="tw-sticky tw-top-0 tw-z-50 tw-w-full tw-border-b tw-border-slate-200/80 tw-bg-white/90 tw-backdrop-blur-md tw-transition-all tw-shadow-sm">
+          <div className="tw-mx-auto tw-flex tw-max-w-7xl tw-items-center tw-justify-between tw-px-4 tw-py-3 sm:tw-px-6 lg:tw-px-8">
+            <Link
+              href="/profile/rahul"
+              className="tw-group tw-flex tw-items-center tw-gap-3 focus-visible:tw-outline-none"
             >
-              <div className="tw-mb-5 tw-inline-flex tw-items-center tw-gap-2 tw-rounded-full tw-border tw-border-emerald-400/30 tw-bg-emerald-400/10 tw-px-3 tw-py-2 tw-text-sm tw-font-medium tw-text-emerald-300">
-                <span className="tw-h-2 tw-w-2 tw-animate-pulse tw-rounded-full tw-bg-emerald-400" />
-                {profileOverview.availability}
+              <div className="tw-relative tw-h-11 tw-w-11 tw-overflow-hidden tw-rounded-full tw-border-2 tw-border-emerald-600 tw-shadow-sm">
+                <Image
+                  src="/assets/images/team/rahul.webp"
+                  alt="Rahul Dhiman Portrait"
+                  fill
+                  className="tw-object-cover tw-object-top"
+                  priority
+                />
               </div>
-              <p className="tw-mb-4 tw-text-sm tw-font-semibold tw-uppercase tw-tracking-[0.35em] tw-text-cyan-300">Hello, I’m Rahul</p>
-              <h1 className="tw-text-4xl tw-font-semibold tw-leading-[0.95] tw-tracking-tight tw-text-white sm:tw-text-5xl lg:tw-text-7xl">
-                Senior Shopify Expert
-                <span className="tw-block tw-bg-gradient-to-r tw-from-cyan-300 tw-via-sky-400 tw-to-violet-400 tw-bg-clip-text tw-text-transparent">
-                  Full Stack Developer
+              <div className="tw-flex tw-flex-col">
+                <span className="tw-text-base tw-font-bold tw-text-slate-900 group-hover:tw-text-emerald-600 tw-transition-colors">
+                  Rahul Dhiman
                 </span>
-              </h1>
-              <p className="tw-mt-6 tw-max-w-xl tw-text-lg tw-leading-8 tw-text-slate-400 sm:tw-text-xl">
-                {profileOverview.intro}
-              </p>
-              <div className="tw-mt-8 tw-flex tw-flex-wrap tw-gap-3">
-                <a href="#projects" className="tw-inline-flex tw-items-center tw-gap-2 tw-rounded-full tw-bg-white tw-px-5 tw-py-3 tw-text-sm tw-font-semibold tw-text-slate-950 tw-transition hover:tw-scale-[1.02]">
-                  View Portfolio <FiArrowRight />
-                </a>
-                <a href={`mailto:${profileOverview.email}`} className="tw-inline-flex tw-items-center tw-gap-2 tw-rounded-full tw-border tw-border-white/10 tw-bg-white/5 tw-px-5 tw-py-3 tw-text-sm tw-font-semibold tw-text-white tw-transition hover:tw-bg-white/10">
-                  Hire Me <FiBriefcase />
-                </a>
-                <a href="/assets/rahul-resume.txt" className="tw-inline-flex tw-items-center tw-gap-2 tw-rounded-full tw-border tw-border-cyan-400/20 tw-bg-cyan-400/10 tw-px-5 tw-py-3 tw-text-sm tw-font-semibold tw-text-cyan-200 tw-transition hover:tw-bg-cyan-400/20">
-                  Download Resume <FiDownload />
-                </a>
+                <span className="tw-text-xs tw-font-medium tw-text-slate-500">
+                  Senior Shopify & Webflow Expert
+                </span>
               </div>
-              <div className="tw-mt-8 tw-flex tw-flex-wrap tw-items-center tw-gap-4">
-                <div className="tw-inline-flex tw-items-center tw-gap-2 tw-rounded-full tw-border tw-border-white/10 tw-bg-white/5 tw-px-4 tw-py-2 tw-text-sm tw-text-slate-300">
-                  <FiClock /> 12+ years experience
-                </div>
-                <div className="tw-inline-flex tw-items-center tw-gap-2 tw-rounded-full tw-border tw-border-white/10 tw-bg-white/5 tw-px-4 tw-py-2 tw-text-sm tw-text-slate-300">
-                  <FiGlobe /> Worldwide delivery
-                </div>
-              </div>
-            </motion.div>
+            </Link>
 
-            <motion.div
-              initial={{ opacity: 0, x: 24 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-              className="tw-relative tw-mx-auto tw-w-full tw-max-w-[520px]"
-            >
-              <div className="tw-absolute tw-inset-0 tw-rounded-[2rem] tw-bg-gradient-to-br tw-from-cyan-400/20 tw-to-violet-500/20 tw-blur-3xl" />
-              <div className="tw-relative tw-overflow-hidden tw-rounded-[2rem] tw-border tw-border-white/10 tw-bg-slate-950/60 tw-p-6 tw-shadow-[0_30px_120px_rgba(0,0,0,0.45)] tw-backdrop-blur-xl">
-                <div className="tw-absolute tw-left-8 tw-top-8 tw-h-28 tw-w-28 tw-rounded-full tw-border tw-border-cyan-400/20" />
-                <div className="tw-absolute tw-bottom-6 tw-right-6 tw-h-24 tw-w-24 tw-rounded-full tw-border tw-border-violet-400/20" />
-                <div className="tw-relative tw-flex tw-flex-col tw-items-center tw-gap-6 tw-py-6 sm:tw-py-8">
-                  <div className="tw-relative tw-h-56 tw-w-56 sm:tw-h-72 sm:tw-w-72">
-                    <div className="tw-absolute tw-inset-0 tw-rounded-full tw-bg-gradient-to-br tw-from-cyan-400/40 tw-via-slate-700 tw-to-violet-500/40 tw-blur-2xl" />
-                    <div className="tw-relative tw-overflow-hidden tw-rounded-full tw-border tw-border-white/10 tw-bg-slate-900 tw-p-2">
-                      <Image src="/assets/rahul-avatar.svg" alt="Rahul Dhiman portrait" width={500} height={500} className="tw-h-full tw-w-full tw-rounded-full tw-object-cover" priority />
+            {/* Desktop Navigation Links */}
+            <nav className="tw-hidden tw-items-center tw-gap-1 lg:tw-flex">
+              {navLinks.map((link) => {
+                const sectionId = link.href.substring(1);
+                const isActive = activeSection === sectionId;
+                return (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    className={`tw-rounded-full tw-px-3.5 tw-py-1.5 tw-text-xs tw-font-bold tw-transition-all ${
+                      isActive
+                        ? "tw-bg-emerald-50 tw-text-emerald-700 tw-border tw-border-emerald-200"
+                        : "tw-text-slate-600 hover:tw-bg-slate-100 hover:tw-text-slate-900"
+                    }`}
+                  >
+                    {link.name}
+                  </a>
+                );
+              })}
+            </nav>
+
+            {/* Header Direct Hire Action */}
+            <div className="tw-flex tw-items-center tw-gap-3">
+              <a
+                href={profileOverview.upwork}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="tw-hidden sm:tw-inline-flex tw-items-center tw-gap-2 tw-rounded-full tw-bg-emerald-600 tw-px-4 tw-py-2 tw-text-xs tw-font-bold tw-text-white tw-shadow-sm hover:tw-bg-emerald-700 active:tw-scale-[0.98] tw-transition-all"
+              >
+                <FiBriefcase className="tw-text-sm" />
+                Hire on Upwork
+              </a>
+
+              <button
+                type="button"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="tw-inline-flex tw-items-center tw-justify-center tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-p-2.5 tw-text-slate-700 hover:tw-bg-slate-100 lg:tw-hidden"
+                aria-label="Toggle navigation menu"
+              >
+                {mobileMenuOpen ? <FiX size={20} /> : <FiMenu size={20} />}
+              </button>
+            </div>
+          </div>
+
+          {/* Mobile Drawer Menu */}
+          <AnimatePresence>
+            {mobileMenuOpen && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.2 }}
+                className="tw-border-b tw-border-slate-200 tw-bg-white tw-px-4 tw-py-4 lg:tw-hidden"
+              >
+                <nav className="tw-flex tw-flex-col tw-gap-2">
+                  {navLinks.map((link) => (
+                    <a
+                      key={link.name}
+                      href={link.href}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="tw-flex tw-items-center tw-justify-between tw-rounded-xl tw-px-4 tw-py-2.5 tw-text-sm tw-font-semibold tw-text-slate-700 hover:tw-bg-emerald-50 hover:tw-text-emerald-700"
+                    >
+                      {link.name}
+                      <FiArrowRight className="tw-text-slate-400" />
+                    </a>
+                  ))}
+                  <div className="tw-mt-3 tw-pt-3 tw-border-t tw-border-slate-200 tw-flex tw-flex-col tw-gap-2">
+                    <a
+                      href={profileOverview.upwork}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="tw-flex tw-w-full tw-items-center tw-justify-center tw-gap-2 tw-rounded-xl tw-bg-emerald-600 tw-py-3 tw-text-sm tw-font-bold tw-text-white"
+                    >
+                      <FiBriefcase /> Hire on Upwork ($25/hr)
+                    </a>
+                  </div>
+                </nav>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </header>
+
+        {/* Light Mode Hero Section */}
+        <section
+          id="hero"
+          className="tw-relative tw-overflow-hidden tw-border-b tw-border-slate-200/80 tw-bg-gradient-to-b tw-from-slate-100 tw-via-emerald-50/20 tw-to-slate-50 tw-pt-10 tw-pb-16 sm:tw-pt-14 sm:tw-pb-20 lg:tw-pt-20 lg:tw-pb-24"
+        >
+          <div className="tw-mx-auto tw-max-w-7xl tw-px-4 sm:tw-px-6 lg:tw-px-8">
+            <div className="tw-grid tw-grid-cols-1 tw-items-center tw-gap-12 lg:tw-grid-cols-12">
+              
+              {/* Hero Profile Photo & Visual Badges */}
+              <div className="lg:tw-col-span-5 tw-flex tw-justify-center lg:tw-justify-start">
+                <div className="tw-relative tw-w-full tw-max-w-md">
+                  {/* Subtle Background Glow Accent */}
+                  <div className="tw-absolute -tw-inset-2 tw-rounded-3xl tw-bg-gradient-to-tr tw-from-emerald-400/20 tw-to-cyan-400/20 tw-blur-xl" />
+                  
+                  <div className="tw-relative tw-overflow-hidden tw-rounded-3xl tw-border-4 tw-border-white tw-bg-white tw-shadow-xl">
+                    <div className="tw-relative tw-aspect-[3/4] tw-w-full">
+                      <Image
+                        src="/assets/images/team/rvd.jpg"
+                        alt="Rahul Dhiman - Senior Shopify & Webflow Expert"
+                        fill
+                        className="tw-object-cover tw-object-top"
+                        priority
+                      />
+                    </div>
+
+                    {/* Official Badge Overlay */}
+                    <div className="tw-absolute tw-bottom-0 tw-inset-x-0 tw-bg-gradient-to-t tw-from-slate-900/90 tw-via-slate-900/50 tw-to-transparent tw-p-5 tw-text-white">
+                      <div className="tw-flex tw-items-center tw-gap-2">
+                        <span className="tw-flex tw-h-3 tw-w-3 tw-relative">
+                          <span className="tw-animate-ping tw-absolute tw-inline-flex tw-h-full tw-w-full tw-rounded-full tw-bg-emerald-400 tw-opacity-75"></span>
+                          <span className="tw-relative tw-inline-flex tw-rounded-full tw-h-3 tw-w-3 tw-bg-emerald-500"></span>
+                        </span>
+                        <span className="tw-text-xs tw-font-bold tw-uppercase tw-tracking-wider tw-text-emerald-300">
+                          Official Shopify Service Partner
+                        </span>
+                      </div>
+                      <p className="tw-mt-1 tw-text-sm tw-font-bold tw-text-white">
+                        4.9 ★ Rating (146 Merchant Reviews)
+                      </p>
                     </div>
                   </div>
-                  <div className="tw-grid tw-grid-cols-2 tw-gap-3 sm:tw-grid-cols-3">
-                    {floatingBadges.map((badge, index) => (
-                      <motion.div
-                        key={badge.label}
-                        initial={{ opacity: 0, y: 8 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.4, delay: 0.1 + index * 0.06 }}
-                        className="tw-inline-flex tw-items-center tw-gap-2 tw-rounded-full tw-border tw-border-white/10 tw-bg-white/5 tw-px-3 tw-py-2 tw-text-sm tw-font-medium tw-text-slate-200"
+
+                  {/* Floating Skill Badges */}
+                  <div className="tw-mt-4 tw-flex tw-flex-wrap tw-gap-2 tw-justify-center">
+                    {floatingBadges.map((badge, idx) => (
+                      <span
+                        key={idx}
+                        className="tw-inline-flex tw-items-center tw-gap-1.5 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-px-3 tw-py-1 tw-text-xs tw-font-bold tw-text-slate-700 tw-shadow-sm"
                       >
-                        <span className="tw-text-cyan-300">{badge.icon}</span>
+                        {badge.icon}
                         {badge.label}
-                      </motion.div>
+                      </span>
                     ))}
                   </div>
                 </div>
               </div>
-            </motion.div>
+
+              {/* Hero Content Column */}
+              <div className="lg:tw-col-span-7">
+                {/* Status Pill */}
+                <div className="tw-inline-flex tw-items-center tw-gap-2 tw-rounded-full tw-border tw-border-emerald-200 tw-bg-emerald-50 tw-px-4 tw-py-1.5 tw-text-xs tw-font-bold tw-text-emerald-800 tw-shadow-sm">
+                  <FiCheckCircle className="tw-text-emerald-600" />
+                  100% Upwork Success Rate • $20K+ Earnings • 150 Jobs
+                </div>
+
+                <h1 className="tw-mt-4 tw-text-4xl tw-font-extrabold tw-tracking-tight tw-text-slate-900 sm:tw-text-5xl lg:tw-text-6xl tw-leading-tight">
+                  Rahul Dhiman
+                </h1>
+
+                <p className="tw-mt-2 tw-text-lg sm:tw-text-xl tw-font-bold tw-text-emerald-700">
+                  {profileOverview.headline}
+                </p>
+
+                <p className="tw-mt-4 tw-text-base sm:tw-text-lg tw-leading-relaxed tw-text-slate-600">
+                  {profileOverview.intro}
+                </p>
+
+                {/* Key Upwork & Shopify Metrics Banner */}
+                <div className="tw-mt-6 tw-grid tw-grid-cols-2 sm:tw-grid-cols-4 tw-gap-3 tw-rounded-2xl tw-border tw-border-slate-200 tw-bg-white tw-p-4 tw-shadow-sm">
+                  <div>
+                    <span className="tw-text-xs tw-font-bold tw-text-slate-500 tw-uppercase">Upwork Success</span>
+                    <p className="tw-text-xl tw-font-black tw-text-emerald-600">100%</p>
+                  </div>
+                  <div>
+                    <span className="tw-text-xs tw-font-bold tw-text-slate-500 tw-uppercase">Total Earnings</span>
+                    <p className="tw-text-xl tw-font-black tw-text-slate-900">$20K+</p>
+                  </div>
+                  <div>
+                    <span className="tw-text-xs tw-font-bold tw-text-slate-500 tw-uppercase">Jobs & Hours</span>
+                    <p className="tw-text-xl tw-font-black tw-text-slate-900">150 / 940h</p>
+                  </div>
+                  <div>
+                    <span className="tw-text-xs tw-font-bold tw-text-slate-500 tw-uppercase">Shopify Apps</span>
+                    <p className="tw-text-xl tw-font-black tw-text-emerald-600">7 Created</p>
+                  </div>
+                </div>
+
+                {/* Direct Action Buttons & Profile Links */}
+                <div className="tw-mt-8 tw-flex tw-flex-wrap tw-items-center tw-gap-3">
+                  <a
+                    href={profileOverview.upwork}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="tw-inline-flex tw-items-center tw-gap-2.5 tw-rounded-xl tw-bg-emerald-600 tw-px-6 tw-py-3.5 tw-text-sm tw-font-bold tw-text-white tw-shadow-md hover:tw-bg-emerald-700 active:tw-scale-95 tw-transition-all"
+                  >
+                    <FiBriefcase className="tw-text-lg" />
+                    Hire on Upwork
+                  </a>
+
+                  <a
+                    href={profileOverview.shopifyPartner}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="tw-inline-flex tw-items-center tw-gap-2.5 tw-rounded-xl tw-bg-slate-900 tw-px-6 tw-py-3.5 tw-text-sm tw-font-bold tw-text-white tw-shadow-md hover:tw-bg-slate-800 active:tw-scale-95 tw-transition-all"
+                  >
+                    <BsShop className="tw-text-lg tw-text-emerald-400" />
+                    Shopify Partner Profile
+                  </a>
+
+                  <a
+                    href={profileOverview.shopifyApps}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="tw-inline-flex tw-items-center tw-gap-2.5 tw-rounded-xl tw-border tw-border-slate-300 tw-bg-white tw-px-5 tw-py-3.5 tw-text-sm tw-font-bold tw-text-slate-800 hover:tw-bg-slate-100 tw-shadow-sm active:tw-scale-95 tw-transition-all"
+                  >
+                    <FiGrid className="tw-text-lg tw-text-emerald-600" />
+                    Galactic Shopify Apps (7)
+                  </a>
+                </div>
+
+                {/* Additional Platform Badges & Links */}
+                <div className="tw-mt-6 tw-flex tw-flex-wrap tw-items-center tw-gap-4 tw-pt-4 tw-border-t tw-border-slate-200">
+                  <span className="tw-text-xs tw-font-bold tw-text-slate-500 tw-uppercase">Verified Profiles:</span>
+                  <a
+                    href={profileOverview.upwork}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="tw-text-xs tw-font-bold tw-text-emerald-700 hover:tw-underline tw-inline-flex tw-items-center tw-gap-1"
+                  >
+                    Upwork Profile <FiExternalLink />
+                  </a>
+                  <a
+                    href={profileOverview.shopifyPartner}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="tw-text-xs tw-font-bold tw-text-emerald-700 hover:tw-underline tw-inline-flex tw-items-center tw-gap-1"
+                  >
+                    Shopify Partner <FiExternalLink />
+                  </a>
+                  <a
+                    href={profileOverview.fiverr}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="tw-text-xs tw-font-bold tw-text-emerald-700 hover:tw-underline tw-inline-flex tw-items-center tw-gap-1"
+                  >
+                    Fiverr Profile <FiExternalLink />
+                  </a>
+                  <a
+                    href={profileOverview.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="tw-text-xs tw-font-bold tw-text-slate-800 hover:tw-underline tw-inline-flex tw-items-center tw-gap-1"
+                  >
+                    LinkedIn <FiExternalLink />
+                  </a>
+                </div>
+
+              </div>
+
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="tw-mx-auto tw-max-w-7xl tw-px-4 tw-py-16 sm:tw-px-6 lg:tw-px-8 lg:tw-py-24">
-        <div className="tw-grid tw-gap-4 md:tw-grid-cols-2 xl:tw-grid-cols-5">
-          {stats.map((item, index) => (
-            <motion.div
-              key={item.label}
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.45, delay: index * 0.06 }}
-              className="tw-rounded-2xl tw-border tw-border-white/10 tw-bg-white/5 tw-p-6 tw-backdrop-blur-xl"
-            >
-              <p className="tw-text-4xl tw-font-semibold tw-tracking-tight tw-text-white sm:tw-text-5xl">
-                <AnimatedCounter value={item.value} suffix={item.suffix} prefix={item.prefix || ""} />
-              </p>
-              <p className="tw-mt-3 tw-text-sm tw-uppercase tw-tracking-[0.22em] tw-text-slate-400">{item.label}</p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      <section id="about" className="tw-mx-auto tw-max-w-7xl tw-px-4 tw-py-8 sm:tw-px-6 lg:tw-px-8 lg:tw-py-16">
-        <div className="tw-grid tw-gap-10 lg:tw-grid-cols-[0.95fr_1.05fr] lg:tw-items-start">
-          <div className="tw-rounded-[2rem] tw-border tw-border-white/10 tw-bg-gradient-to-br tw-from-white/10 tw-to-white/5 tw-p-8 tw-shadow-[0_20px_80px_rgba(2,6,23,0.35)] tw-backdrop-blur-xl">
-            <SectionHeading eyebrow="About Rahul" title="Designing commerce experiences that feel premium, fast, and scalable." description="The work blends storytelling, strategy, and engineering into experiences that not only impress but convert." />
-            <div className="tw-mt-8 tw-space-y-4">
-              {aboutPoints.map((point, index) => (
-                <motion.div
-                  key={point}
-                  initial={{ opacity: 0, x: -18 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.45, delay: index * 0.05 }}
-                  className="tw-flex tw-items-start tw-gap-3 tw-rounded-2xl tw-border tw-border-white/10 tw-bg-slate-950/40 tw-p-4"
+        {/* Stats Grid Bar */}
+        <section className="tw-py-12 tw-bg-white tw-border-b tw-border-slate-200">
+          <div className="tw-mx-auto tw-max-w-7xl tw-px-4 sm:tw-px-6 lg:tw-px-8">
+            <div className="tw-grid tw-grid-cols-2 sm:tw-grid-cols-3 lg:tw-grid-cols-5 tw-gap-6">
+              {stats.map((st, i) => (
+                <div
+                  key={i}
+                  className="tw-rounded-2xl tw-border tw-border-slate-200 tw-bg-slate-50/70 tw-p-5 tw-text-center tw-shadow-sm hover:tw-border-emerald-300 tw-transition-all"
                 >
-                  <FiCheckCircle className="tw-mt-1 tw-text-cyan-300" size={18} />
-                  <p className="tw-text-sm tw-leading-7 tw-text-slate-300">{point}</p>
-                </motion.div>
+                  <p className="tw-text-3xl sm:tw-text-4xl tw-font-black tw-text-slate-900">
+                    <AnimatedCounter value={st.value} suffix={st.suffix} />
+                  </p>
+                  <p className="tw-mt-1 tw-text-sm tw-font-bold tw-text-emerald-700">{st.label}</p>
+                  <p className="tw-mt-1 tw-text-xs tw-text-slate-500">{st.description}</p>
+                </div>
               ))}
             </div>
           </div>
+        </section>
 
-          <div className="tw-grid tw-gap-4 sm:tw-grid-cols-2">
-            {[
-              { title: "Frontend", description: "Crafting responsive UX with polished interactions and conversion-first interfaces.", icon: <FiPenTool /> },
-              { title: "Backend", description: "Building reliable systems, custom logic, and APIs that support growth.", icon: <FiDatabase /> },
-              { title: "UI/UX", description: "Combining storytelling, clarity, and premium motion for memorable brands.", icon: <FiSmartphone /> },
-              { title: "API Integrations", description: "Connecting Shopify, payments, inventory, CRMs, and fulfillment platforms smoothly.", icon: <FiCode /> },
-              { title: "Performance Optimization", description: "Improving load, SEO, Core Web Vitals, and user experience at every step.", icon: <FiZap /> },
-              { title: "Store Migrations", description: "Milestone-based migrations with minimal risk and a clear rollout strategy.", icon: <FiLayers /> },
-            ].map((item, index) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.25 }}
-                transition={{ duration: 0.4, delay: index * 0.04 }}
-                className="tw-rounded-[1.5rem] tw-border tw-border-white/10 tw-bg-white/5 tw-p-6 tw-backdrop-blur-xl"
-              >
-                <div className="tw-mb-4 tw-inline-flex tw-h-12 tw-w-12 tw-items-center tw-justify-center tw-rounded-2xl tw-bg-gradient-to-br tw-from-cyan-400/20 tw-to-violet-500/20 tw-text-cyan-300">
-                  {item.icon}
-                </div>
-                <h3 className="tw-text-xl tw-font-semibold tw-text-white">{item.title}</h3>
-                <p className="tw-mt-3 tw-text-sm tw-leading-7 tw-text-slate-400">{item.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+        {/* About & Core Experience */}
+        <section id="about" className="tw-py-16 sm:tw-py-20 tw-bg-slate-50 tw-border-b tw-border-slate-200">
+          <div className="tw-mx-auto tw-max-w-7xl tw-px-4 sm:tw-px-6 lg:tw-px-8">
+            <SectionHeading
+              eyebrow="Proven Commerce Expertise"
+              title="12+ Years Building Scalable E-Commerce Solutions"
+              description="Full stack engineer specializing in Shopify Plus, Webflow, BigCommerce, Squarespace, and custom app architectures."
+            />
 
-      <section className="tw-mx-auto tw-max-w-7xl tw-px-4 tw-py-8 sm:tw-px-6 lg:tw-px-8 lg:tw-py-16">
-        <SectionHeading eyebrow="Technical Skills" title="A modern stack for modern commerce" description="The engineering approach is pragmatic, polished, and built for speed and resilience." align="center" />
-        <div className="tw-mt-10 tw-grid tw-gap-6 lg:tw-grid-cols-2">
-          {skillGroups.map((group, index) => (
-            <motion.div
-              key={group.title}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.45, delay: index * 0.05 }}
-              className="tw-rounded-[1.75rem] tw-border tw-border-white/10 tw-bg-white/5 tw-p-6 tw-backdrop-blur-xl"
-            >
-              <div className={`tw-mb-6 tw-h-1 tw-w-full tw-rounded-full tw-bg-gradient-to-r ${group.accent}`} />
-              <h3 className="tw-text-2xl tw-font-semibold tw-text-white">{group.title}</h3>
-              <div className="tw-mt-6 tw-flex tw-flex-wrap tw-gap-3">
-                {group.skills.map((skill) => (
-                  <span key={skill} className="tw-rounded-full tw-border tw-border-white/10 tw-bg-slate-950/60 tw-px-3 tw-py-2 tw-text-sm tw-text-slate-300">
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      <section id="services" className="tw-mx-auto tw-max-w-7xl tw-px-4 tw-py-8 sm:tw-px-6 lg:tw-px-8 lg:tw-py-16">
-        <SectionHeading eyebrow="Services" title="Execution that feels like growth, not just delivery" description="Each engagement is designed to increase confidence, revenue, and operational clarity." />
-        <div className="tw-mt-10 tw-grid tw-gap-6 md:tw-grid-cols-2 xl:tw-grid-cols-4">
-          {services.map((service, index) => (
-            <motion.article
-              key={service.title}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.4, delay: index * 0.04 }}
-              whileHover={{ y: -6, scale: 1.01 }}
-              className="tw-rounded-[1.75rem] tw-border tw-border-white/10 tw-bg-white/5 tw-p-6 tw-backdrop-blur-xl"
-            >
-              <div className="tw-mb-4 tw-inline-flex tw-h-12 tw-w-12 tw-items-center tw-justify-center tw-rounded-2xl tw-bg-gradient-to-br tw-from-cyan-400/20 tw-to-violet-500/20 tw-text-cyan-300">
-                <FiZap size={20} />
-              </div>
-              <h3 className="tw-text-xl tw-font-semibold tw-text-white">{service.title}</h3>
-              <p className="tw-mt-3 tw-text-sm tw-leading-7 tw-text-slate-400">{service.description}</p>
-            </motion.article>
-          ))}
-        </div>
-      </section>
-
-      <section id="projects" className="tw-mx-auto tw-max-w-7xl tw-px-4 tw-py-8 sm:tw-px-6 lg:tw-px-8 lg:tw-py-16">
-        <SectionHeading eyebrow="Featured Projects" title="Recent work that blends strategy and engineering" description="Selected projects reflect a balance of visual polish, technical clarity, and business impact." />
-        <div className="tw-mt-10 tw-grid tw-gap-6 lg:tw-grid-cols-2">
-          {projects.map((project, index) => (
-            <motion.article
-              key={project.title}
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.18 }}
-              transition={{ duration: 0.45, delay: index * 0.06 }}
-              whileHover={{ y: -8, scale: 1.01 }}
-              className="tw-overflow-hidden tw-rounded-[2rem] tw-border tw-border-white/10 tw-bg-gradient-to-br tw-from-white/10 tw-to-white/5 tw-shadow-[0_20px_90px_rgba(2,6,23,0.3)]"
-            >
-              <div className="tw-h-48 tw-bg-[linear-gradient(135deg,_rgba(34,211,238,0.16),_rgba(167,139,250,0.18))] tw-p-8">
-                <div className="tw-flex tw-h-full tw-items-end tw-justify-between tw-rounded-[1.5rem] tw-border tw-border-white/10 tw-bg-slate-950/60 tw-p-6">
-                  <div>
-                    <p className="tw-text-xs tw-uppercase tw-tracking-[0.3em] tw-text-slate-400">Case Study</p>
-                    <h3 className="tw-mt-2 tw-text-2xl tw-font-semibold tw-text-white">{project.title}</h3>
+            <div className="tw-mt-10 tw-grid tw-grid-cols-1 lg:tw-grid-cols-12 tw-gap-8">
+              <div className="lg:tw-col-span-7 tw-space-y-4">
+                {aboutPoints.map((pt, idx) => (
+                  <div
+                    key={idx}
+                    className="tw-flex tw-items-start tw-gap-4 tw-rounded-2xl tw-border tw-border-slate-200 tw-bg-white tw-p-5 tw-shadow-sm"
+                  >
+                    <div className="tw-flex tw-h-9 tw-w-9 tw-shrink-0 tw-items-center tw-justify-center tw-rounded-xl tw-bg-emerald-100 tw-text-emerald-700 tw-font-bold">
+                      0{idx + 1}
+                    </div>
+                    <div>
+                      <p className="tw-text-base tw-font-medium tw-text-slate-800 tw-leading-relaxed">{pt}</p>
+                    </div>
                   </div>
-                  <div className="tw-rounded-full tw-border tw-border-cyan-400/20 tw-bg-cyan-400/10 tw-px-3 tw-py-2 tw-text-sm tw-text-cyan-300">Live</div>
-                </div>
+                ))}
               </div>
-              <div className="tw-p-8">
-                <p className="tw-text-sm tw-leading-8 tw-text-slate-400">{project.description}</p>
-                <div className="tw-mt-5 tw-flex tw-flex-wrap tw-gap-2">
-                  {project.tags.map((tag) => (
-                    <span key={tag} className="tw-rounded-full tw-border tw-border-white/10 tw-bg-slate-950/60 tw-px-3 tw-py-1.5 tw-text-xs tw-font-medium tw-text-slate-300">
-                      {tag}
+
+              {/* Upwork Profile Snapshot Card */}
+              <div className="lg:tw-col-span-5">
+                <div className="tw-rounded-3xl tw-border-2 tw-border-emerald-200 tw-bg-white tw-p-6 tw-shadow-md">
+                  <div className="tw-flex tw-items-center tw-justify-between tw-pb-4 tw-border-b tw-border-slate-100">
+                    <div className="tw-flex tw-items-center tw-gap-3">
+                      <div className="tw-flex tw-h-12 tw-w-12 tw-items-center tw-justify-center tw-rounded-2xl tw-bg-emerald-600 tw-text-white tw-font-black">
+                        Up
+                      </div>
+                      <div>
+                        <h3 className="tw-text-lg tw-font-bold tw-text-slate-900">Upwork Verified Profile</h3>
+                        <p className="tw-text-xs tw-text-slate-500">Hourly Rate: $25.00/hr</p>
+                      </div>
+                    </div>
+                    <span className="tw-rounded-full tw-bg-emerald-100 tw-px-3 tw-py-1 tw-text-xs tw-font-bold tw-text-emerald-800">
+                      Top Rated
                     </span>
-                  ))}
-                </div>
-                <div className="tw-mt-6 tw-rounded-2xl tw-border tw-border-emerald-400/20 tw-bg-emerald-400/10 tw-p-4">
-                  <p className="tw-text-xs tw-uppercase tw-tracking-[0.3em] tw-text-emerald-200">Outcome</p>
-                  <p className="tw-mt-2 tw-text-sm tw-leading-7 tw-text-slate-200">{project.outcome}</p>
-                </div>
-                <a href="#contact" className="tw-mt-6 tw-inline-flex tw-items-center tw-gap-2 tw-text-sm tw-font-semibold tw-text-cyan-300">
-                  View Project <FiArrowRight />
-                </a>
-              </div>
-            </motion.article>
-          ))}
-        </div>
-      </section>
+                  </div>
 
-      <section className="tw-mx-auto tw-max-w-7xl tw-px-4 tw-py-8 sm:tw-px-6 lg:tw-px-8 lg:tw-py-16">
-        <SectionHeading eyebrow="Shopify Apps" title="Tools built to support growth and operations" description="From private integration tooling to commerce-specific utilities, the focus stays practical and scalable." />
-        <div className="tw-mt-10 tw-grid tw-gap-6 lg:tw-grid-cols-3">
-          {appShowcases.map((app, index) => (
-            <motion.article
-              key={app.title}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.4, delay: index * 0.05 }}
-              className="tw-rounded-[1.75rem] tw-border tw-border-white/10 tw-bg-white/5 tw-p-6 tw-backdrop-blur-xl"
-            >
-              <div className="tw-mb-5 tw-flex tw-h-12 tw-w-12 tw-items-center tw-justify-center tw-rounded-2xl tw-bg-gradient-to-br tw-from-violet-500/20 tw-to-fuchsia-500/20 tw-text-violet-200">
-                <BsLightningCharge size={20} />
-              </div>
-              <h3 className="tw-text-xl tw-font-semibold tw-text-white">{app.title}</h3>
-              <p className="tw-mt-3 tw-text-sm tw-leading-7 tw-text-slate-400">{app.description}</p>
-              <ul className="tw-mt-5 tw-space-y-2">
-                {app.features.map((feature) => (
-                  <li key={feature} className="tw-flex tw-items-center tw-gap-2 tw-text-sm tw-text-slate-300">
-                    <FiCheckCircle className="tw-text-cyan-300" /> {feature}
-                  </li>
-                ))}
-              </ul>
-              <div className="tw-mt-6 tw-flex tw-flex-wrap tw-gap-3">
-                <a href="#contact" className="tw-rounded-full tw-border tw-border-white/10 tw-bg-slate-950/50 tw-px-4 tw-py-2 tw-text-sm tw-font-semibold tw-text-white">View App</a>
-                <a href="#contact" className="tw-rounded-full tw-border tw-border-cyan-400/20 tw-bg-cyan-400/10 tw-px-4 tw-py-2 tw-text-sm tw-font-semibold tw-text-cyan-200">App Store</a>
-              </div>
-            </motion.article>
-          ))}
-        </div>
-      </section>
+                  <div className="tw-mt-6 tw-space-y-4">
+                    <div className="tw-flex tw-justify-between tw-items-center tw-text-sm">
+                      <span className="tw-text-slate-600">Job Success Rate</span>
+                      <span className="tw-font-bold tw-text-emerald-600">100%</span>
+                    </div>
+                    <div className="tw-flex tw-justify-between tw-items-center tw-text-sm">
+                      <span className="tw-text-slate-600">Total Earnings</span>
+                      <span className="tw-font-bold tw-text-slate-900">$20,000+</span>
+                    </div>
+                    <div className="tw-flex tw-justify-between tw-items-center tw-text-sm">
+                      <span className="tw-text-slate-600">Total Jobs Completed</span>
+                      <span className="tw-font-bold tw-text-slate-900">150 Jobs</span>
+                    </div>
+                    <div className="tw-flex tw-justify-between tw-items-center tw-text-sm">
+                      <span className="tw-text-slate-600">Total Hours Logged</span>
+                      <span className="tw-font-bold tw-text-slate-900">940 Hours</span>
+                    </div>
+                    <div className="tw-flex tw-justify-between tw-items-center tw-text-sm">
+                      <span className="tw-text-slate-600">Primary Location</span>
+                      <span className="tw-font-bold tw-text-slate-900">Kangra, India</span>
+                    </div>
+                  </div>
 
-      <section className="tw-mx-auto tw-max-w-7xl tw-px-4 tw-py-8 sm:tw-px-6 lg:tw-px-8 lg:tw-py-16">
-        <SectionHeading eyebrow="Testimonials" title="Trusted by founders, operators, and growing teams" description="Reviews reflect the mix of communication, craft, and strategic thinking that clients value most." align="center" />
-        <div className="tw-mt-8 tw-flex tw-flex-wrap tw-justify-center tw-gap-3">
-          {Object.keys(testimonials).map((tab) => (
-            <button
-              key={tab}
-              type="button"
-              onClick={() => setActiveTab(tab)}
-              className={`tw-rounded-full tw-border tw-px-4 tw-py-2 tw-text-sm tw-font-semibold tw-transition ${activeTab === tab ? "tw-border-cyan-400/30 tw-bg-cyan-400/10 tw-text-cyan-200" : "tw-border-white/10 tw-bg-white/5 tw-text-slate-300"}`}
-            >
-              {tab}
-            </button>
-          ))}
-        </div>
-        <div className="tw-mt-10 tw-grid tw-gap-6 lg:tw-grid-cols-2">
-          {testimonials[activeTab].map((item, index) => (
-            <motion.article
-              key={`${activeTab}-${item.name}`}
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.4, delay: index * 0.06 }}
-              className="tw-rounded-[1.75rem] tw-border tw-border-white/10 tw-bg-white/5 tw-p-6 tw-backdrop-blur-xl"
-            >
-              <div className="tw-mb-4 tw-flex tw-items-center tw-gap-1 tw-text-amber-300">
-                {Array.from({ length: item.rating }).map((_, ratingIndex) => (
-                  <span key={ratingIndex}>★</span>
-                ))}
-              </div>
-              <p className="tw-text-base tw-leading-8 tw-text-slate-300">“{item.feedback}”</p>
-              <div className="tw-mt-6 tw-flex tw-items-center tw-justify-between">
-                <div>
-                  <p className="tw-font-semibold tw-text-white">{item.name}</p>
-                  <p className="tw-text-sm tw-text-slate-400">{item.country}</p>
-                </div>
-                <div className="tw-rounded-full tw-border tw-border-white/10 tw-bg-slate-950/60 tw-px-3 tw-py-2 tw-text-xs tw-uppercase tw-tracking-[0.22em] tw-text-slate-300">
-                  {item.project}
+                  <div className="tw-mt-6 tw-pt-4 tw-border-t tw-border-slate-100">
+                    <a
+                      href={profileOverview.upwork}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="tw-flex tw-w-full tw-items-center tw-justify-center tw-gap-2 tw-rounded-xl tw-bg-emerald-600 tw-py-3 tw-text-sm tw-font-bold tw-text-white hover:tw-bg-emerald-700 tw-transition-colors"
+                    >
+                      <FiExternalLink /> View Upwork Profile
+                    </a>
+                  </div>
                 </div>
               </div>
-            </motion.article>
-          ))}
-        </div>
-      </section>
-
-      <section className="tw-mx-auto tw-max-w-7xl tw-px-4 tw-py-8 sm:tw-px-6 lg:tw-px-8 lg:tw-py-16">
-        <SectionHeading eyebrow="Work Process" title="A clear path from idea to launch" description="The process is intentionally transparent so clients stay confident at every step." />
-        <div className="tw-mt-10 tw-grid tw-gap-4 lg:tw-grid-cols-3">
-          {workProcess.map((step, index) => (
-            <motion.div
-              key={step.title}
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.35, delay: index * 0.04 }}
-              className="tw-rounded-[1.5rem] tw-border tw-border-white/10 tw-bg-white/5 tw-p-6 tw-backdrop-blur-xl"
-            >
-              <div className="tw-mb-4 tw-flex tw-items-center tw-gap-3">
-                <div className="tw-flex tw-h-9 tw-w-9 tw-items-center tw-justify-center tw-rounded-full tw-bg-cyan-400/15 tw-font-semibold tw-text-cyan-300">0{index + 1}</div>
-                <h3 className="tw-text-xl tw-font-semibold tw-text-white">{step.title}</h3>
-              </div>
-              <p className="tw-text-sm tw-leading-7 tw-text-slate-400">{step.description}</p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      <section className="tw-mx-auto tw-max-w-7xl tw-px-4 tw-py-8 sm:tw-px-6 lg:tw-px-8 lg:tw-py-16">
-        <SectionHeading eyebrow="Industries Served" title="Versatile enough for fashion, B2B, beauty, and beyond" description="The work scales across product types, business models, and customer expectations." align="center" />
-        <div className="tw-mt-10 tw-grid tw-gap-4 sm:tw-grid-cols-2 lg:tw-grid-cols-4">
-          {industries.map((industry, index) => (
-            <motion.div
-              key={industry}
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.35, delay: index * 0.03 }}
-              className="tw-rounded-[1.5rem] tw-border tw-border-white/10 tw-bg-white/5 tw-p-6 tw-text-center tw-text-slate-300"
-            >
-              <div className="tw-mb-4 tw-flex tw-justify-center">
-                <FiTrendingUp className="tw-text-cyan-300" size={20} />
-              </div>
-              <p className="tw-font-semibold tw-text-white">{industry}</p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      <section className="tw-mx-auto tw-max-w-7xl tw-px-4 tw-py-8 sm:tw-px-6 lg:tw-px-8 lg:tw-py-16">
-        <SectionHeading eyebrow="Why Clients Hire Me" title="A premium experience built around trust and execution" description="Clients return because the work is strategic, calm, and relentlessly high quality." />
-        <div className="tw-mt-10 tw-grid tw-gap-6 md:tw-grid-cols-2 xl:tw-grid-cols-4">
-          {whyHire.map((item, index) => (
-            <motion.div
-              key={item.title}
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.35, delay: index * 0.04 }}
-              className="tw-rounded-[1.5rem] tw-border tw-border-white/10 tw-bg-white/5 tw-p-6"
-            >
-              <div className="tw-mb-4 tw-inline-flex tw-h-11 tw-w-11 tw-items-center tw-justify-center tw-rounded-2xl tw-bg-gradient-to-br tw-from-cyan-400/15 tw-to-violet-500/15 tw-text-cyan-300">
-                <FiCheckCircle size={18} />
-              </div>
-              <h3 className="tw-text-xl tw-font-semibold tw-text-white">{item.title}</h3>
-              <p className="tw-mt-3 tw-text-sm tw-leading-7 tw-text-slate-400">{item.description}</p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      <section className="tw-mx-auto tw-max-w-7xl tw-px-4 tw-py-8 sm:tw-px-6 lg:tw-px-8 lg:tw-py-16">
-        <SectionHeading eyebrow="Certifications" title="Recognized capabilities across the modern commerce stack" description="A practical mix of platform knowledge, modern frameworks, and trusted delivery practices." align="center" />
-        <div className="tw-mt-10 tw-flex tw-flex-wrap tw-justify-center tw-gap-4">
-          {certifications.map((cert) => (
-            <div key={cert} className="tw-rounded-full tw-border tw-border-white/10 tw-bg-white/5 tw-px-5 tw-py-3 tw-text-sm tw-font-semibold tw-text-slate-200">
-              {cert}
             </div>
-          ))}
-        </div>
-      </section>
+          </div>
+        </section>
 
-      <section className="tw-mx-auto tw-max-w-7xl tw-px-4 tw-py-8 sm:tw-px-6 lg:tw-px-8 lg:tw-py-16">
-        <div className="tw-relative tw-overflow-hidden tw-rounded-[2.25rem] tw-border tw-border-white/10 tw-bg-[radial-gradient(circle_at_top_left,_rgba(34,211,238,0.18),transparent_30%),radial-gradient(circle_at_bottom_right,_rgba(167,139,250,0.2),transparent_28%),rgba(3,7,18,0.95)] tw-p-8 tw-shadow-[0_30px_100px_rgba(2,6,23,0.4)] sm:tw-p-10 lg:tw-p-14">
-          <div className="tw-mb-10 tw-flex tw-flex-wrap tw-gap-3">
-            {techCloud.map((tech, index) => (
-              <motion.span
-                key={tech}
-                initial={{ opacity: 0, y: 8 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.35, delay: index * 0.03 }}
-                className="tw-rounded-full tw-border tw-border-white/10 tw-bg-white/10 tw-px-4 tw-py-2 tw-text-sm tw-font-medium tw-text-slate-200"
+        {/* Galactic Technologies Shopify Apps Section (All 7 Apps) */}
+        <section id="apps" className="tw-py-16 sm:tw-py-20 tw-bg-white tw-border-b tw-border-slate-200">
+          <div className="tw-mx-auto tw-max-w-7xl tw-px-4 sm:tw-px-6 lg:tw-px-8">
+            <div className="tw-flex tw-flex-col md:tw-flex-row md:tw-items-end tw-justify-between tw-mb-10">
+              <SectionHeading
+                eyebrow="Shopify Partner App Developer"
+                title="Apps Created by Galactic Technologies"
+                description="Explore all 7 public and custom Shopify applications developed for high-growth e-commerce merchants."
+              />
+              <a
+                href={profileOverview.shopifyApps}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="tw-mt-4 md:tw-mt-0 tw-inline-flex tw-items-center tw-gap-2 tw-rounded-xl tw-bg-slate-900 tw-px-5 tw-py-3 tw-text-sm tw-font-bold tw-text-white hover:tw-bg-slate-800 tw-transition-all"
               >
-                {tech}
-              </motion.span>
-            ))}
-          </div>
-          <SectionHeading eyebrow="FAQ" title="Questions clients ask before they hire" description="The goal is simple: remove friction, build trust, and make the next step feel obvious." />
-          <div id="faq" className="tw-mt-8 tw-space-y-4">
-            {faqItems.map((item, index) => (
-              <div key={item.question} className="tw-overflow-hidden tw-rounded-[1.25rem] tw-border tw-border-white/10 tw-bg-slate-950/50">
-                <button type="button" onClick={() => setOpenFaq(openFaq === index ? -1 : index)} className="tw-flex tw-w-full tw-items-center tw-justify-between tw-px-5 tw-py-5 tw-text-left">
-                  <span className="tw-text-base tw-font-semibold tw-text-white">{item.question}</span>
-                  <FiChevronDown className={`tw-transition ${openFaq === index ? "tw-rotate-180" : ""}`} />
-                </button>
-                {openFaq === index ? <p className="tw-px-5 tw-pb-5 tw-text-sm tw-leading-7 tw-text-slate-400">{item.answer}</p> : null}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="contact" className="tw-mx-auto tw-max-w-7xl tw-px-4 tw-py-8 sm:tw-px-6 lg:tw-px-8 lg:tw-py-16">
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          className="tw-overflow-hidden tw-rounded-[2.25rem] tw-border tw-border-cyan-400/20 tw-bg-gradient-to-br tw-from-cyan-500/10 tw-via-slate-950 tw-to-violet-500/10 tw-p-8 tw-shadow-[0_30px_100px_rgba(34,211,238,0.15)] sm:tw-p-10 lg:tw-p-14"
-        >
-          <div className="tw-grid tw-gap-8 lg:tw-grid-cols-[1.05fr_0.95fr]">
-            <div>
-              <p className="tw-mb-3 tw-inline-flex tw-items-center tw-gap-2 tw-rounded-full tw-border tw-border-cyan-400/20 tw-bg-cyan-400/10 tw-px-3 tw-py-2 tw-text-sm tw-font-semibold tw-text-cyan-200">Ready to build something remarkable?</p>
-              <h2 className="tw-text-3xl tw-font-semibold tw-tracking-tight tw-text-white sm:tw-text-4xl">Let’s create your next Shopify experience together.</h2>
-              <p className="tw-mt-4 tw-max-w-2xl tw-text-lg tw-leading-8 tw-text-slate-300">Whether you’re launching a new store, upgrading an old one, or building an app that changes how your team works, the door is open.</p>
-              <div className="tw-mt-8 tw-flex tw-flex-wrap tw-gap-3">
-                <a href={`mailto:${profileOverview.email}`} className="tw-inline-flex tw-items-center tw-gap-2 tw-rounded-full tw-bg-white tw-px-5 tw-py-3 tw-text-sm tw-font-semibold tw-text-slate-950">Hire Rahul <FiArrowRight /></a>
-                <a href="#" className="tw-inline-flex tw-items-center tw-gap-2 tw-rounded-full tw-border tw-border-white/10 tw-bg-slate-950/50 tw-px-5 tw-py-3 tw-text-sm tw-font-semibold tw-text-white">Schedule a Call</a>
-              </div>
-            </div>
-            <div className="tw-rounded-[1.75rem] tw-border tw-border-white/10 tw-bg-slate-950/60 tw-p-6">
-              <div className="tw-flex tw-items-center tw-justify-between tw-gap-4">
-                <div>
-                  <p className="tw-text-sm tw-font-semibold tw-text-slate-300">Direct contact</p>
-                  <p className="tw-mt-1 tw-text-xl tw-font-semibold tw-text-white">{profileOverview.email}</p>
-                </div>
-                <button type="button" onClick={() => copyToClipboard(profileOverview.email)} className="tw-rounded-full tw-border tw-border-white/10 tw-bg-white/5 tw-p-3 tw-text-slate-200">
-                  <FiCopy size={16} />
-                </button>
-              </div>
-              <div className="tw-mt-6 tw-space-y-3">
-                {socialLinks.map((link) => (
-                  <a key={link.name} href={link.href} className="tw-flex tw-items-center tw-justify-between tw-rounded-2xl tw-border tw-border-white/10 tw-bg-white/5 tw-px-4 tw-py-3 tw-text-sm tw-font-medium tw-text-slate-300">
-                    <span className="tw-flex tw-items-center tw-gap-3">{link.icon} {link.name}</span>
-                    <FiArrowRight />
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
-        </motion.div>
-      </section>
-
-      <footer className="tw-border-t tw-border-white/10 tw-bg-slate-950/80">
-        <div className="tw-mx-auto tw-flex tw-max-w-7xl tw-flex-col tw-gap-5 tw-px-4 tw-py-8 sm:tw-px-6 lg:tw-flex-row lg:tw-items-center lg:tw-justify-between lg:tw-px-8">
-          <div>
-            <p className="tw-text-lg tw-font-semibold tw-text-white">Rahul Dhiman</p>
-            <p className="tw-mt-1 tw-text-sm tw-text-slate-400">Senior Shopify Expert • Full Stack Developer • Ecommerce Consultant</p>
-          </div>
-          <div className="tw-flex tw-flex-wrap tw-gap-3">
-            {footerLinks.map((link) => (
-              <a key={link.label} href={link.href} className="tw-rounded-full tw-border tw-border-white/10 tw-bg-white/5 tw-px-3 tw-py-2 tw-text-sm tw-text-slate-300">
-                {link.label}
+                <FiGrid className="tw-text-emerald-400" />
+                View All Apps on Shopify (7)
               </a>
-            ))}
+            </div>
+
+            <div className="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 lg:tw-grid-cols-3 tw-gap-6">
+              {galacticApps.map((app, idx) => (
+                <div
+                  key={app.id}
+                  className="tw-flex tw-flex-col tw-justify-between tw-rounded-3xl tw-border tw-border-slate-200 tw-bg-slate-50/70 tw-p-6 tw-shadow-sm hover:tw-shadow-md hover:tw-border-emerald-300 tw-transition-all"
+                >
+                  <div>
+                    <div className="tw-flex tw-items-center tw-justify-between">
+                      <span className="tw-inline-flex tw-items-center tw-gap-1.5 tw-rounded-full tw-bg-emerald-100 tw-px-3 tw-py-1 tw-text-xs tw-font-bold tw-text-emerald-800">
+                        App #{idx + 1}
+                      </span>
+                      <span className="tw-text-xs tw-font-bold tw-text-slate-500">{app.type}</span>
+                    </div>
+
+                    <h3 className="tw-mt-4 tw-text-xl tw-font-bold tw-text-slate-900">{app.title}</h3>
+                    <p className="tw-mt-2 tw-text-sm tw-text-slate-600 tw-leading-relaxed">{app.description}</p>
+
+                    <div className="tw-mt-4 tw-space-y-2">
+                      <span className="tw-text-xs tw-font-bold tw-text-slate-500 tw-uppercase">Key Features:</span>
+                      <ul className="tw-space-y-1">
+                        {app.features.map((ft, i) => (
+                          <li key={i} className="tw-flex tw-items-center tw-gap-2 tw-text-xs tw-text-slate-700">
+                            <FiCheck className="tw-text-emerald-600 tw-shrink-0" />
+                            {ft}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div className="tw-mt-6 tw-pt-4 tw-border-t tw-border-slate-200">
+                    <div className="tw-flex tw-flex-wrap tw-gap-1.5 tw-mb-4">
+                      {app.tech.map((t, i) => (
+                        <span key={i} className="tw-rounded-md tw-bg-white tw-border tw-border-slate-200 tw-px-2.5 tw-py-1 tw-text-[11px] tw-font-semibold tw-text-slate-700">
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+
+                    <a
+                      href={app.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="tw-flex tw-w-full tw-items-center tw-justify-center tw-gap-2 tw-rounded-xl tw-border tw-border-emerald-600 tw-bg-white tw-py-2.5 tw-text-xs tw-font-bold tw-text-emerald-700 hover:tw-bg-emerald-50 tw-transition-colors"
+                    >
+                      View App Details <FiExternalLink />
+                    </a>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </footer>
-    </main>
+        </section>
+
+        {/* Featured Store Builds & Work Portfolio */}
+        <section id="portfolio" className="tw-py-16 sm:tw-py-20 tw-bg-slate-50 tw-border-b tw-border-slate-200">
+          <div className="tw-mx-auto tw-max-w-7xl tw-px-4 sm:tw-px-6 lg:tw-px-8">
+            <SectionHeading
+              eyebrow="Selected Storefronts"
+              title="Featured Shopify Builds & Redesigns"
+              description="Real storefronts built and optimized for global e-commerce merchants."
+            />
+
+            <div className="tw-mt-10 tw-grid tw-grid-cols-1 md:tw-grid-cols-2 lg:tw-grid-cols-3 tw-gap-6">
+              {featuredPortfolios.map((item) => (
+                <div
+                  key={item.id}
+                  className="tw-flex tw-flex-col tw-justify-between tw-rounded-3xl tw-border tw-border-slate-200 tw-bg-white tw-p-6 tw-shadow-sm hover:tw-shadow-md tw-transition-all"
+                >
+                  <div>
+                    <span className="tw-inline-block tw-rounded-full tw-bg-slate-100 tw-px-3 tw-py-1 tw-text-xs tw-font-bold tw-text-slate-700">
+                      {item.category}
+                    </span>
+                    <h3 className="tw-mt-3 tw-text-2xl tw-font-extrabold tw-text-slate-900">{item.title}</h3>
+                    <p className="tw-mt-2 tw-text-sm tw-text-slate-600 tw-leading-relaxed">{item.description}</p>
+                  </div>
+
+                  <div className="tw-mt-6 tw-pt-4 tw-border-t tw-border-slate-100">
+                    <div className="tw-flex tw-flex-wrap tw-gap-1.5 tw-mb-4">
+                      {item.tags.map((tg, i) => (
+                        <span key={i} className="tw-rounded-md tw-bg-slate-100 tw-px-2.5 tw-py-1 tw-text-[11px] tw-font-semibold tw-text-slate-700">
+                          {tg}
+                        </span>
+                      ))}
+                    </div>
+                    <a
+                      href={item.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="tw-inline-flex tw-items-center tw-gap-2 tw-text-xs tw-font-bold tw-text-emerald-700 hover:tw-underline"
+                    >
+                      View Shopify Featured Work <FiExternalLink />
+                    </a>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Services Offered */}
+        <section id="services" className="tw-py-16 sm:tw-py-20 tw-bg-white tw-border-b tw-border-slate-200">
+          <div className="tw-mx-auto tw-max-w-7xl tw-px-4 sm:tw-px-6 lg:tw-px-8">
+            <SectionHeading
+              eyebrow="Services Offered"
+              title="Full Stack E-Commerce & App Engineering"
+              description="From single-product custom tweaks to enterprise Shopify Plus & Webflow store builds."
+            />
+
+            <div className="tw-mt-10 tw-grid tw-grid-cols-1 md:tw-grid-cols-2 lg:tw-grid-cols-3 tw-gap-6">
+              {services.map((srv, idx) => (
+                <div
+                  key={idx}
+                  className="tw-rounded-3xl tw-border tw-border-slate-200 tw-bg-slate-50/70 tw-p-6 tw-shadow-sm hover:tw-bg-white hover:tw-shadow-md tw-transition-all"
+                >
+                  <div className="tw-flex tw-h-12 tw-w-12 tw-items-center tw-justify-center tw-rounded-2xl tw-bg-emerald-600 tw-text-white tw-text-xl tw-font-bold">
+                    <FiCheckCircle />
+                  </div>
+                  <h3 className="tw-mt-4 tw-text-xl tw-font-bold tw-text-slate-900">{srv.title}</h3>
+                  <p className="tw-mt-2 tw-text-sm tw-text-slate-600 tw-leading-relaxed">{srv.description}</p>
+
+                  <div className="tw-mt-4 tw-space-y-1.5">
+                    {srv.deliverables.map((dl, i) => (
+                      <div key={i} className="tw-flex tw-items-center tw-gap-2 tw-text-xs tw-text-slate-700">
+                        <FiCheck className="tw-text-emerald-600" />
+                        {dl}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Skills Breakdown */}
+        <section id="skills" className="tw-py-16 sm:tw-py-20 tw-bg-slate-50 tw-border-b tw-border-slate-200">
+          <div className="tw-mx-auto tw-max-w-7xl tw-px-4 sm:tw-px-6 lg:tw-px-8">
+            <SectionHeading
+              eyebrow="Technical Stack"
+              title="Skills & Platform Expertise"
+              description="Comprehensive mastery across Shopify, Liquid, Webflow, React, Node.js, and multi-CMS platforms."
+            />
+
+            {/* Skill Search Input */}
+            <div className="tw-mt-8 tw-max-w-md">
+              <div className="tw-relative">
+                <FiSearch className="tw-absolute tw-left-4 tw-top-1/2 -tw-translate-y-1/2 tw-text-slate-400" />
+                <input
+                  type="text"
+                  placeholder="Search skills (e.g., Liquid, Webflow, React, Migration)..."
+                  value={skillSearch}
+                  onChange={(e) => setSkillSearch(e.target.value)}
+                  className="tw-w-full tw-rounded-full tw-border tw-border-slate-300 tw-bg-white tw-py-3 tw-pl-11 tw-pr-4 tw-text-sm tw-text-slate-900 focus:tw-border-emerald-600 focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-emerald-200"
+                />
+              </div>
+            </div>
+
+            <div className="tw-mt-8 tw-grid tw-grid-cols-1 md:tw-grid-cols-2 lg:tw-grid-cols-4 tw-gap-6">
+              {filteredSkillGroups.map((group, idx) => (
+                <div
+                  key={idx}
+                  className="tw-rounded-3xl tw-border tw-border-slate-200 tw-bg-white tw-p-6 tw-shadow-sm"
+                >
+                  <h3 className="tw-text-lg tw-font-bold tw-text-slate-900 tw-pb-3 tw-border-b tw-border-slate-100">
+                    {group.title}
+                  </h3>
+                  <div className="tw-mt-4 tw-flex tw-flex-wrap tw-gap-2">
+                    {group.skills.map((sk, i) => (
+                      <span
+                        key={i}
+                        className="tw-rounded-xl tw-bg-slate-100 tw-border tw-border-slate-200 tw-px-3 tw-py-1.5 tw-text-xs tw-font-semibold tw-text-slate-800"
+                      >
+                        {sk}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Verified Reviews Section (Only Good 5-Star Reviews from Shopify & Upwork) */}
+        <section id="reviews" className="tw-py-16 sm:tw-py-20 tw-bg-white tw-border-b tw-border-slate-200">
+          <div className="tw-mx-auto tw-max-w-7xl tw-px-4 sm:tw-px-6 lg:tw-px-8">
+            <SectionHeading
+              eyebrow="Verified Merchant Reviews"
+              title="Client Testimonials & Ratings"
+              description="Verified 5-star feedback from the official Shopify Partner Directory and Upwork completed jobs."
+            />
+
+            {/* Tab Selection */}
+            <div className="tw-mt-8 tw-flex tw-flex-wrap tw-gap-3">
+              {["Shopify", "Upwork"].map((tab) => (
+                <button
+                  key={tab}
+                  type="button"
+                  onClick={() => setActiveTab(tab)}
+                  className={`tw-rounded-full tw-px-5 tw-py-2.5 tw-text-xs tw-font-bold tw-transition-all ${
+                    activeTab === tab
+                      ? "tw-bg-emerald-600 tw-text-white tw-shadow-sm"
+                      : "tw-bg-slate-100 tw-text-slate-700 hover:tw-bg-slate-200"
+                  }`}
+                >
+                  {tab === "Shopify" ? "Shopify Partner Directory (4.9 ★ - 146 Reviews)" : "Upwork Client Feedback (100% Success)"}
+                </button>
+              ))}
+            </div>
+
+            {/* Reviews Cards Grid */}
+            <div className="tw-mt-8 tw-grid tw-grid-cols-1 md:tw-grid-cols-2 tw-gap-6">
+              {testimonials[activeTab]?.map((rev, idx) => (
+                <div
+                  key={idx}
+                  className="tw-flex tw-flex-col tw-justify-between tw-rounded-3xl tw-border tw-border-slate-200 tw-bg-slate-50/70 tw-p-6 tw-shadow-sm"
+                >
+                  <div>
+                    <div className="tw-flex tw-items-center tw-justify-between">
+                      <div className="tw-flex tw-items-center tw-gap-1 tw-text-amber-500">
+                        {[...Array(rev.rating)].map((_, i) => (
+                          <FiStar key={i} className="tw-fill-amber-400" />
+                        ))}
+                      </div>
+                      <span className="tw-rounded-full tw-bg-emerald-100 tw-px-3 tw-py-1 tw-text-[11px] tw-font-bold tw-text-emerald-800">
+                        Verified 5.0 Star
+                      </span>
+                    </div>
+
+                    <p className="tw-mt-4 tw-text-sm tw-text-slate-700 tw-leading-relaxed tw-italic">
+                      "{rev.feedback}"
+                    </p>
+                  </div>
+
+                  <div className="tw-mt-6 tw-pt-4 tw-border-t tw-border-slate-200 tw-flex tw-items-center tw-justify-between">
+                    <div>
+                      <h4 className="tw-text-base tw-font-bold tw-text-slate-900">{rev.name}</h4>
+                      <p className="tw-text-xs tw-text-slate-500">{rev.service} • {rev.date}</p>
+                    </div>
+                    {rev.qualityScore && (
+                      <span className="tw-text-xs tw-font-bold tw-text-emerald-700">
+                        Quality: {rev.qualityScore}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Work Process */}
+        <section id="process" className="tw-py-16 sm:tw-py-20 tw-bg-slate-50 tw-border-b tw-border-slate-200">
+          <div className="tw-mx-auto tw-max-w-7xl tw-px-4 sm:tw-px-6 lg:tw-px-8">
+            <SectionHeading
+              eyebrow="Methodology"
+              title="How I Work With Clients"
+              description="Transparent, milestone-driven execution ensuring fast turnaround and zero downtime."
+            />
+
+            <div className="tw-mt-10 tw-grid tw-grid-cols-1 md:tw-grid-cols-3 lg:tw-grid-cols-5 tw-gap-4">
+              {workProcess.map((proc, idx) => (
+                <div
+                  key={idx}
+                  className="tw-rounded-2xl tw-border tw-border-slate-200 tw-bg-white tw-p-5 tw-shadow-sm"
+                >
+                  <span className="tw-text-3xl tw-font-black tw-text-emerald-600">{proc.step}</span>
+                  <h3 className="tw-mt-2 tw-text-base tw-font-bold tw-text-slate-900">{proc.title}</h3>
+                  <p className="tw-mt-1 tw-text-xs tw-text-slate-600 tw-leading-relaxed">{proc.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Why Hire Rahul */}
+        <section className="tw-py-16 sm:tw-py-20 tw-bg-white tw-border-b tw-border-slate-200">
+          <div className="tw-mx-auto tw-max-w-7xl tw-px-4 sm:tw-px-6 lg:tw-px-8">
+            <SectionHeading
+              eyebrow="Why Work With Rahul?"
+              title="Proven Value for E-Commerce Merchants"
+              description="Clear advantages of partnering directly with a senior full-stack architect."
+            />
+
+            <div className="tw-mt-10 tw-grid tw-grid-cols-1 md:tw-grid-cols-2 lg:tw-grid-cols-3 tw-gap-6">
+              {whyHire.map((item, idx) => (
+                <div
+                  key={idx}
+                  className="tw-rounded-3xl tw-border tw-border-slate-200 tw-bg-slate-50/70 tw-p-6 tw-shadow-sm"
+                >
+                  <div className="tw-flex tw-h-10 tw-w-10 tw-items-center tw-justify-center tw-rounded-xl tw-bg-emerald-600 tw-text-white tw-font-bold">
+                    <FiShield />
+                  </div>
+                  <h3 className="tw-mt-4 tw-text-lg tw-font-bold tw-text-slate-900">{item.title}</h3>
+                  <p className="tw-mt-2 tw-text-sm tw-text-slate-600 tw-leading-relaxed">{item.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section id="faq" className="tw-py-16 sm:tw-py-20 tw-bg-slate-50 tw-border-b tw-border-slate-200">
+          <div className="tw-mx-auto tw-max-w-4xl tw-px-4 sm:tw-px-6 lg:tw-px-8">
+            <SectionHeading
+              eyebrow="Frequently Asked Questions"
+              title="Common Client Questions"
+              description="Everything you need to know about starting a project with Rahul Dhiman."
+              align="center"
+            />
+
+            <div className="tw-mt-10 tw-space-y-4">
+              {faqItems.map((faq, idx) => (
+                <div
+                  key={idx}
+                  className="tw-overflow-hidden tw-rounded-2xl tw-border tw-border-slate-200 tw-bg-white tw-shadow-sm"
+                >
+                  <button
+                    type="button"
+                    onClick={() => setOpenFaq(openFaq === idx ? -1 : idx)}
+                    className="tw-flex tw-w-full tw-items-center tw-justify-between tw-p-5 tw-text-left tw-font-bold tw-text-slate-900 focus:tw-outline-none"
+                  >
+                    <span>{faq.question}</span>
+                    <span className="tw-text-emerald-600 tw-font-bold">{openFaq === idx ? "−" : "+"}</span>
+                  </button>
+
+                  {openFaq === idx && (
+                    <div className="tw-px-5 tw-pb-5 tw-text-sm tw-text-slate-600 tw-leading-relaxed tw-border-t tw-border-slate-100 tw-pt-3">
+                      {faq.answer}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Contact & Hire Section */}
+        <section id="contact" className="tw-py-16 sm:tw-py-24 tw-bg-white">
+          <div className="tw-mx-auto tw-max-w-7xl tw-px-4 sm:tw-px-6 lg:tw-px-8">
+            <div className="tw-grid tw-grid-cols-1 lg:tw-grid-cols-12 tw-gap-12">
+              
+              <div className="lg:tw-col-span-5">
+                <SectionHeading
+                  eyebrow="Get In Touch"
+                  title="Let's Build Your Store or Shopify App"
+                  description="Ready to elevate your Shopify, Webflow, or multi-CMS store? Contact me directly or hire me on Upwork."
+                />
+
+                <div className="tw-mt-8 tw-space-y-4">
+                  <div className="tw-flex tw-items-center tw-gap-4 tw-rounded-2xl tw-border tw-border-slate-200 tw-bg-slate-50 tw-p-4">
+                    <div className="tw-flex tw-h-10 tw-w-10 tw-items-center tw-justify-center tw-rounded-xl tw-bg-emerald-600 tw-text-white">
+                      <FiMail />
+                    </div>
+                    <div>
+                      <p className="tw-text-xs tw-font-bold tw-text-slate-500 tw-uppercase">Email Rahul</p>
+                      <button
+                        onClick={() => handleCopyEmail(profileOverview.secondaryEmail)}
+                        className="tw-text-sm tw-font-bold tw-text-slate-900 hover:tw-text-emerald-600 tw-inline-flex tw-items-center tw-gap-2"
+                      >
+                        {profileOverview.secondaryEmail} <FiCopy />
+                      </button>
+                    </div>
+                  </div>
+
+                  <div className="tw-flex tw-items-center tw-gap-4 tw-rounded-2xl tw-border tw-border-slate-200 tw-bg-slate-50 tw-p-4">
+                    <div className="tw-flex tw-h-10 tw-w-10 tw-items-center tw-justify-center tw-rounded-xl tw-bg-emerald-600 tw-text-white">
+                      <FiBriefcase />
+                    </div>
+                    <div>
+                      <p className="tw-text-xs tw-font-bold tw-text-slate-500 tw-uppercase">Upwork Profile</p>
+                      <a
+                        href={profileOverview.upwork}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="tw-text-sm tw-font-bold tw-text-emerald-700 hover:tw-underline tw-inline-flex tw-items-center tw-gap-1"
+                      >
+                        Rahul Dhiman on Upwork <FiExternalLink />
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="tw-flex tw-items-center tw-gap-4 tw-rounded-2xl tw-border tw-border-slate-200 tw-bg-slate-50 tw-p-4">
+                    <div className="tw-flex tw-h-10 tw-w-10 tw-items-center tw-justify-center tw-rounded-xl tw-bg-slate-900 tw-text-white">
+                      <BsShop />
+                    </div>
+                    <div>
+                      <p className="tw-text-xs tw-font-bold tw-text-slate-500 tw-uppercase">Shopify Partner Directory</p>
+                      <a
+                        href={profileOverview.shopifyPartner}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="tw-text-sm tw-font-bold tw-text-emerald-700 hover:tw-underline tw-inline-flex tw-items-center tw-gap-1"
+                      >
+                        Galactic Technologies <FiExternalLink />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Message Contact Form */}
+              <div className="lg:tw-col-span-7">
+                <div className="tw-rounded-3xl tw-border tw-border-slate-200 tw-bg-slate-50/80 tw-p-6 sm:tw-p-8 tw-shadow-sm">
+                  <h3 className="tw-text-2xl tw-font-bold tw-text-slate-900">Send Direct Message</h3>
+                  <form onSubmit={handleFormSubmit} className="tw-mt-6 tw-space-y-4">
+                    <div>
+                      <label className="tw-block tw-text-xs tw-font-bold tw-text-slate-700 tw-uppercase">Your Name</label>
+                      <input
+                        type="text"
+                        required
+                        value={contactForm.name}
+                        onChange={(e) => setContactForm({ ...contactForm, name: e.target.value })}
+                        placeholder="e.g., Sarah Smith"
+                        className="tw-mt-1 tw-w-full tw-rounded-xl tw-border tw-border-slate-300 tw-bg-white tw-p-3 tw-text-sm tw-text-slate-900 focus:tw-border-emerald-600 focus:tw-outline-none"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="tw-block tw-text-xs tw-font-bold tw-text-slate-700 tw-uppercase">Your Email</label>
+                      <input
+                        type="email"
+                        required
+                        value={contactForm.email}
+                        onChange={(e) => setContactForm({ ...contactForm, email: e.target.value })}
+                        placeholder="e.g., sarah@brand.com"
+                        className="tw-mt-1 tw-w-full tw-rounded-xl tw-border tw-border-slate-300 tw-bg-white tw-p-3 tw-text-sm tw-text-slate-900 focus:tw-border-emerald-600 focus:tw-outline-none"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="tw-block tw-text-xs tw-font-bold tw-text-slate-700 tw-uppercase">Project Type</label>
+                      <select
+                        value={contactForm.projectType}
+                        onChange={(e) => setContactForm({ ...contactForm, projectType: e.target.value })}
+                        className="tw-mt-1 tw-w-full tw-rounded-xl tw-border tw-border-slate-300 tw-bg-white tw-p-3 tw-text-sm tw-text-slate-900 focus:tw-border-emerald-600 focus:tw-outline-none"
+                      >
+                        <option value="Shopify Store Build">Shopify Store Build / Redesign</option>
+                        <option value="Custom Shopify App">Custom Shopify App Development</option>
+                        <option value="Migration">Store Migration (Magento/Woo/BigCommerce)</option>
+                        <option value="Webflow Custom Site">Webflow / Custom CMS Build</option>
+                        <option value="Hourly Retainer">Hourly Consulting ($25/hr)</option>
+                      </select>
+                    </div>
+
+                    <div>
+                      <label className="tw-block tw-text-xs tw-font-bold tw-text-slate-700 tw-uppercase">Project Scope & Details</label>
+                      <textarea
+                        required
+                        rows={4}
+                        value={contactForm.message}
+                        onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}
+                        placeholder="Briefly describe your project goals, timelines, or questions..."
+                        className="tw-mt-1 tw-w-full tw-rounded-xl tw-border tw-border-slate-300 tw-bg-white tw-p-3 tw-text-sm tw-text-slate-900 focus:tw-border-emerald-600 focus:tw-outline-none"
+                      />
+                    </div>
+
+                    <button
+                      type="submit"
+                      disabled={submittingForm}
+                      className="tw-flex tw-w-full tw-items-center tw-justify-center tw-gap-2 tw-rounded-xl tw-bg-emerald-600 tw-py-3.5 tw-text-sm tw-font-bold tw-text-white hover:tw-bg-emerald-700 disabled:tw-opacity-50 tw-transition-all"
+                    >
+                      {submittingForm ? "Sending Message..." : "Send Message to Rahul"}
+                      <FiSend />
+                    </button>
+                  </form>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* Light Footer */}
+        <footer className="tw-border-t tw-border-slate-200 tw-bg-slate-100 tw-py-12">
+          <div className="tw-mx-auto tw-max-w-7xl tw-px-4 sm:tw-px-6 lg:tw-px-8">
+            <div className="tw-flex tw-flex-col sm:tw-flex-row tw-items-center tw-justify-between tw-gap-6">
+              <div className="tw-flex tw-items-center tw-gap-3">
+                <div className="tw-relative tw-h-9 tw-w-9 tw-overflow-hidden tw-rounded-full tw-border tw-border-emerald-600">
+                  <Image
+                    src="/assets/images/team/rahul.webp"
+                    alt="Rahul Dhiman"
+                    fill
+                    className="tw-object-cover tw-object-top"
+                  />
+                </div>
+                <div>
+                  <p className="tw-text-sm tw-font-bold tw-text-slate-900">Rahul Dhiman</p>
+                  <p className="tw-text-xs tw-text-slate-500">Galactic Technologies • ProWebCoder</p>
+                </div>
+              </div>
+
+              <div className="tw-flex tw-flex-wrap tw-items-center tw-gap-4 tw-text-xs tw-font-bold tw-text-slate-600">
+                <a href={profileOverview.upwork} target="_blank" rel="noopener noreferrer" className="hover:tw-text-emerald-600">Upwork</a>
+                <a href={profileOverview.shopifyPartner} target="_blank" rel="noopener noreferrer" className="hover:tw-text-emerald-600">Shopify Partner</a>
+                <a href={profileOverview.shopifyApps} target="_blank" rel="noopener noreferrer" className="hover:tw-text-emerald-600">Galactic Apps</a>
+                <a href={profileOverview.fiverr} target="_blank" rel="noopener noreferrer" className="hover:tw-text-emerald-600">Fiverr</a>
+                <a href={profileOverview.linkedin} target="_blank" rel="noopener noreferrer" className="hover:tw-text-emerald-600">LinkedIn</a>
+              </div>
+            </div>
+
+            <div className="tw-mt-8 tw-pt-6 tw-border-t tw-border-slate-200 tw-text-center tw-text-xs tw-text-slate-500">
+              © {new Date().getFullYear()} Rahul Dhiman. All rights reserved. Senior Shopify & Full Stack E-Commerce Architect.
+            </div>
+          </div>
+        </footer>
+      </main>
     </>
   );
 }

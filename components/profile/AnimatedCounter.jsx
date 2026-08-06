@@ -1,35 +1,56 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function AnimatedCounter({ value, suffix = "", prefix = "" }) {
   const [displayValue, setDisplayValue] = useState(0);
+  const elementRef = useRef(null);
+  const hasAnimatedRef = useRef(false);
 
   useEffect(() => {
-    let frameId;
-    const endValue = Number(value);
-    const duration = 1400;
-    const startTime = performance.now();
+    const el = elementRef.current;
+    if (!el) return;
 
-    const step = (currentTime) => {
-      const progress = Math.min((currentTime - startTime) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setDisplayValue(Math.round(endValue * eased));
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasAnimatedRef.current) {
+            hasAnimatedRef.current = true;
+            let frameId;
+            const endValue = Number(value) || 0;
+            const duration = 1600;
+            const startTime = performance.now();
 
-      if (progress < 1) {
-        frameId = window.requestAnimationFrame(step);
-      }
+            const step = (currentTime) => {
+              const progress = Math.min((currentTime - startTime) / duration, 1);
+              const eased = 1 - Math.pow(1 - progress, 3);
+              setDisplayValue(Math.round(endValue * eased));
+
+              if (progress < 1) {
+                frameId = window.requestAnimationFrame(step);
+              }
+            };
+
+            frameId = window.requestAnimationFrame(step);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    observer.observe(el);
+
+    return () => {
+      observer.disconnect();
     };
-
-    frameId = window.requestAnimationFrame(step);
-    return () => window.cancelAnimationFrame(frameId);
   }, [value]);
 
   return (
-    <span>
+    <span ref={elementRef} className="tw-tabular-nums">
       {prefix}
       {displayValue}
       {suffix}
     </span>
   );
 }
+
