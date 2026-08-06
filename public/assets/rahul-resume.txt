@@ -1,0 +1,14 @@
+Rahul Dhiman
+Senior Shopify Expert & Full Stack Developer
+
+Experience
+- 12+ years building premium ecommerce experiences for global brands.
+- Specializes in Shopify, custom apps, headless storefronts, migrations, and performance optimization.
+
+Skills
+- Shopify, Liquid, Polaris, Theme Development, Checkout Customization
+- React, Next.js, Remix, Node.js, TypeScript, GraphQL, MongoDB
+
+Contact
+- Email: rahul@prowebcoder.com
+- Website: https://www.prowebcoder.com

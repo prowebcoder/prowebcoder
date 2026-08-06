@@ -4,7 +4,9 @@ module.exports = {
   prefix: "tw-",
   content: [
     "./app/(shopify-landing)/**/*.{js,jsx}",
+    "./app/profile/**/*.{js,jsx}",
     "./components/shopify-landing/**/*.{js,jsx}",
+    "./components/profile/**/*.{js,jsx}",
   ],
   theme: {
     extend: {
