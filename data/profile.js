@@ -30,7 +30,7 @@ export const profileOverview = {
 
 export const stats = [
   { value: 12, suffix: "+", label: "Years Experience", description: "In CMS & full-stack commerce architecture" },
-  { value: 900, suffix: "+", label: "Completed Upwork Jobs", description: "100% Job Success Rate & $200K+ earned" },
+  { value: 900, suffix: "+", label: "Completed Jobs", description: "100% Job Success Rate & $200K+ earned" },
   { value: 12000, suffix: "+", label: "Billed Hours", description: "Across global clients in US, UK, AU, CA" },
   { value: 4.9, suffix: " ★", label: "Shopify Partner Rating", description: "146 verified merchant reviews" },
   { value: 7, suffix: "", label: "Featured Shopify Apps", description: "Official apps on Shopify App Store" },
