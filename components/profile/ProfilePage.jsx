@@ -459,10 +459,7 @@ export default function ProfilePage() {
                     <span className="tw-text-xs tw-font-bold tw-text-slate-500 tw-uppercase">Upwork Success</span>
                     <p className="tw-text-xl tw-font-black tw-text-emerald-600">100%</p>
                   </div>
-                  <div>
-                    <span className="tw-text-xs tw-font-bold tw-text-slate-500 tw-uppercase">Total Earnings</span>
-                    <p className="tw-text-xl tw-font-black tw-text-slate-900">$20K+</p>
-                  </div>
+                 
                   <div>
                     <span className="tw-text-xs tw-font-bold tw-text-slate-500 tw-uppercase">Jobs & Hours</span>
                     <p className="tw-text-xl tw-font-black tw-text-slate-900">150 / 940h</p>
