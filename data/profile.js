@@ -5,8 +5,8 @@ export const profileOverview = {
   intro:
     "12+ years experience building Shopify Plus storefronts, Hydrogen headless builds, custom apps, checkout extensions, and high-performance ecommerce solutions.",
   email: "rahul@prowebcoder.com",
-  secondaryEmail: "dhiman.639@gmail.com",
-  phone: "+91 98160 00000",
+  secondaryEmail: "rahul@prowebcoder.com",
+  phone: "+91 6239046167",
   location: "Kangra, India & United Kingdom (Global Client Service)",
   website: "https://www.prowebcoder.com",
   portfolio: "https://www.prowebcoder.com/profile/rahul",
@@ -15,6 +15,7 @@ export const profileOverview = {
   x: "https://x.com",
   shopifyPartner: "https://www.shopify.com/partners/directory/partner/galactic-technologies",
   shopifyApps: "https://apps.shopify.com/partners/galactic-technologies",
+  pph:"http://pph.me/certified-shopify",
   upwork: "https://www.upwork.com/freelancers/~01341720a24ba4e2a8?viewMode=1",
   fiverr: "https://www.fiverr.com/users/dhiman_639",
   calendly: "https://calendly.com",

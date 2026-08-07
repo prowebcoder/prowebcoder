@@ -360,6 +360,16 @@ export default function ProfilePage() {
                       <FiBriefcase /> Hire on Upwork ($25/hr)
                     </a>
                   </div>
+                  <div className="tw-mt-3 tw-pt-3 tw-border-t tw-border-slate-200 tw-flex tw-flex-col tw-gap-2">
+                    <a
+                      href={profileOverview.pph}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="tw-flex tw-w-full tw-items-center tw-justify-center tw-gap-2 tw-rounded-xl tw-bg-emerald-600 tw-py-3 tw-text-sm tw-font-bold tw-text-white"
+                    >
+                      <FiBriefcase /> Hire on PPH
+                    </a>
+                  </div>
                 </nav>
               </motion.div>
             )}
@@ -473,6 +483,15 @@ export default function ProfilePage() {
                   >
                     <FiBriefcase className="tw-text-lg" />
                     Hire on Upwork
+                  </a>
+                  <a
+                    href={profileOverview.pph}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="tw-inline-flex tw-items-center tw-gap-2.5 tw-rounded-xl tw-bg-black-600 tw-px-6 tw-py-3.5 tw-text-sm tw-font-bold tw-text-black tw-shadow-md hover:tw-bg-emerald-700 active:tw-scale-95 tw-transition-all"
+                  >
+                    <FiBriefcase className="tw-text-lg" />
+                    Hire on PPH
                   </a>
 
                   <a
@@ -997,8 +1016,8 @@ export default function ProfilePage() {
                   </div>
 
                   <div className="tw-flex tw-items-center tw-gap-4 tw-rounded-2xl tw-border tw-border-slate-200 tw-bg-slate-50 tw-p-4">
-                    <div className="tw-flex tw-h-10 tw-w-10 tw-items-center tw-justify-center tw-rounded-xl tw-bg-emerald-600 tw-text-white">
-                      <FiBriefcase />
+                    <div className="tw-flex tw-h-10 tw-w-10 tw-items-center tw-justify-center tw-rounded-xl tw-bg-slate-900 tw-text-white">
+                      <BsShop />
                     </div>
                     <div>
                       <p className="tw-text-xs tw-font-bold tw-text-slate-500 tw-uppercase">Upwork Profile</p>
@@ -1009,6 +1028,22 @@ export default function ProfilePage() {
                         className="tw-text-sm tw-font-bold tw-text-emerald-700 hover:tw-underline tw-inline-flex tw-items-center tw-gap-1"
                       >
                         Rahul Dhiman on Upwork <FiExternalLink />
+                      </a>
+                    </div>
+                  </div>
+                  <div className="tw-flex tw-items-center tw-gap-4 tw-rounded-2xl tw-border tw-border-slate-200 tw-bg-slate-50 tw-p-4">
+                    <div className="tw-flex tw-h-10 tw-w-10 tw-items-center tw-justify-center tw-rounded-xl tw-bg-emerald-600 tw-text-white">
+                      <FiBriefcase />
+                    </div>
+                    <div>
+                      <p className="tw-text-xs tw-font-bold tw-text-slate-500 tw-uppercase">PPH Profile</p>
+                      <a
+                        href={profileOverview.pph}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="tw-text-sm tw-font-bold tw-text-emerald-700 hover:tw-underline tw-inline-flex tw-items-center tw-gap-1"
+                      >
+                        Rahul Dhiman on PPH <FiExternalLink />
                       </a>
                     </div>
                   </div>
@@ -1210,6 +1245,7 @@ export default function ProfilePage() {
                 <a href={profileOverview.shopifyPartner} target="_blank" rel="noopener noreferrer" className="hover:tw-text-emerald-600">Shopify Partner</a>
                 <a href={profileOverview.shopifyApps} target="_blank" rel="noopener noreferrer" className="hover:tw-text-emerald-600">Galactic Apps</a>
                 <a href={profileOverview.fiverr} target="_blank" rel="noopener noreferrer" className="hover:tw-text-emerald-600">Fiverr</a>
+                <a href={profileOverview.pph} target="_blank" rel="noopener noreferrer" className="hover:tw-text-emerald-600">PPH</a>
                 <a href={profileOverview.linkedin} target="_blank" rel="noopener noreferrer" className="hover:tw-text-emerald-600">LinkedIn</a>
               </div>
             </div>
