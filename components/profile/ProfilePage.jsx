@@ -413,7 +413,7 @@ export default function ProfilePage() {
                         </span>
                       </div>
                       <p className="tw-mt-1 tw-text-sm tw-font-bold tw-text-white">
-                        4.9 ★ Rating (146 Merchant Reviews)
+                        4.9 ★ Rating (639 Merchant Reviews)
                       </p>
                     </div>
                   </div>
@@ -438,7 +438,7 @@ export default function ProfilePage() {
                 {/* Status Pill */}
                 <div className="tw-inline-flex tw-items-center tw-gap-2 tw-rounded-full tw-border tw-border-emerald-200 tw-bg-emerald-50 tw-px-4 tw-py-1.5 tw-text-xs tw-font-bold tw-text-emerald-800 tw-shadow-sm">
                   <FiCheckCircle className="tw-text-emerald-600" />
-                  100% Upwork Success Rate • $20K+ Earnings • 150 Jobs
+                  100% Upwork Success Rate • $20K+ Earnings • 1369 Jobs
                 </div>
 
                 <h1 className="tw-mt-4 tw-text-4xl tw-font-extrabold tw-tracking-tight tw-text-slate-900 sm:tw-text-5xl lg:tw-text-6xl tw-leading-tight">
@@ -465,7 +465,7 @@ export default function ProfilePage() {
                   </div>
                   <div>
                     <span className="tw-text-xs tw-font-bold tw-text-slate-500 tw-uppercase">Jobs & Hours</span>
-                    <p className="tw-text-xl tw-font-black tw-text-slate-900">150 / 940h</p>
+                    <p className="tw-text-xl tw-font-black tw-text-slate-900">900 / 12000h</p>
                   </div>
                   <div>
                     <span className="tw-text-xs tw-font-bold tw-text-slate-500 tw-uppercase">Shopify Apps</span>
@@ -629,15 +629,15 @@ export default function ProfilePage() {
                     </div>
                     <div className="tw-flex tw-justify-between tw-items-center tw-text-sm">
                       <span className="tw-text-slate-600">Total Earnings</span>
-                      <span className="tw-font-bold tw-text-slate-900">$20,000+</span>
+                      <span className="tw-font-bold tw-text-slate-900">$200,000+</span>
                     </div>
                     <div className="tw-flex tw-justify-between tw-items-center tw-text-sm">
                       <span className="tw-text-slate-600">Total Jobs Completed</span>
-                      <span className="tw-font-bold tw-text-slate-900">150 Jobs</span>
+                      <span className="tw-font-bold tw-text-slate-900">900+ Jobs</span>
                     </div>
                     <div className="tw-flex tw-justify-between tw-items-center tw-text-sm">
                       <span className="tw-text-slate-600">Total Hours Logged</span>
-                      <span className="tw-font-bold tw-text-slate-900">940 Hours</span>
+                      <span className="tw-font-bold tw-text-slate-900">12000 Hours</span>
                     </div>
                     <div className="tw-flex tw-justify-between tw-items-center tw-text-sm">
                       <span className="tw-text-slate-600">Primary Location</span>

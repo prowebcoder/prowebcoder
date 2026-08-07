@@ -20,20 +20,20 @@ export const profileOverview = {
   fiverr: "https://www.fiverr.com/users/dhiman_639",
   calendly: "https://calendly.com",
   hourlyRate: "$25.00/hr",
-  totalEarnings: "$20K+",
-  totalJobs: 150,
-  totalHours: 940,
+  totalEarnings: "$200K+",
+  totalJobs: 900,
+  totalHours: 12000,
   jobSuccessRate: "100%",
-  shopifyRating: "4.9 ★ (146 reviews)",
+  shopifyRating: "4.9 ★ (639 reviews)",
   partnerSince: "April 2015",
 };
 
 export const stats = [
   { value: 12, suffix: "+", label: "Years Experience", description: "In CMS & full-stack commerce architecture" },
-  { value: 150, suffix: "+", label: "Completed Upwork Jobs", description: "100% Job Success Rate & $20K+ earned" },
-  { value: 940, suffix: "+", label: "Billed Hours", description: "Across global clients in US, UK, AU, CA" },
+  { value: 900, suffix: "+", label: "Completed Upwork Jobs", description: "100% Job Success Rate & $200K+ earned" },
+  { value: 12000, suffix: "+", label: "Billed Hours", description: "Across global clients in US, UK, AU, CA" },
   { value: 4.9, suffix: " ★", label: "Shopify Partner Rating", description: "146 verified merchant reviews" },
-  { value: 3, suffix: "", label: "Featured Shopify Apps", description: "Official apps on Shopify App Store" },
+  { value: 7, suffix: "", label: "Featured Shopify Apps", description: "Official apps on Shopify App Store" },
 ];
 
 export const aboutPoints = [
