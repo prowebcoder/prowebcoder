@@ -27,6 +27,27 @@ export const featuresMenu = [
     description: "Shopify app for Favicon Tab Animation and Upsell.",
   },
   {
+    href: "https://apps.shopify.com/pwc-order-editor",
+    iconClass: "unicon-edit",
+    title: "Order & Checkout Editor",
+    description:
+      "Let customers edit orders after checkout and add targeted checkout upsells.",
+  },
+  {
+    href: "https://apps.shopify.com/pwc-badges-timer-icons-2-0",
+    iconClass: "unicon-shield-check",
+    title: "Badges, Timer, Icons",
+    description:
+      "Add trust badges, payment icons, and countdown timers without coding.",
+  },
+  {
+    href: "https://apps.shopify.com/pwc-cartflex",
+    iconClass: "unicon-cart",
+    title: "CartFlex",
+    description:
+      "Create flexible cart add-ons like gift wrap, protection, and custom offers.",
+  },
+  {
     href: "https://apps.shopify.com/partners/galactic-technologies",
     iconClass: "unicon-chart-venn-diagram",
     title: "All Apps in Shopify",
