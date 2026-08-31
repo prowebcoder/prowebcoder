@@ -5,6 +5,24 @@ import Image from "next/image";
 import { Gallery, Item } from "react-photoswipe-gallery";
 
 export default function BlogDetails1({ blogItem }) {
+  if (blogItem.content) {
+    return (
+      <article className="post type-post single-post py-6 lg:py-9" style={{ marginTop: "80px" }}>
+        <div className="container max-w-lg">
+          <header className="vstack gap-2 mb-4 lg:mb-6">
+            <Link className="fs-7 text-primary text-none" href="/blog">Back to insights</Link>
+            <span className="fs-7 fw-bold text-primary">{blogItem.category}</span>
+            <h1 className="h2 lg:h1 m-0">{blogItem.title}</h1>
+            <p className="opacity-70 m-0">By {blogItem.authorName} <span className="mx-1">|</span> {blogItem.date}</p>
+          </header>
+          <figure className="featured-image m-0 mb-4 lg:mb-6 rounded ratio ratio-2x1 overflow-hidden">
+            <Image className="media-cover image" alt={blogItem.imgAlt || blogItem.title} src={blogItem.imgSrc} width="1280" height="853" priority />
+          </figure>
+          <div className="post-content panel fs-6 md:fs-5" dangerouslySetInnerHTML={{ __html: blogItem.content }} />
+        </div>
+      </article>
+    );
+  }
   return (
     <>
       <div
@@ -35,7 +53,7 @@ export default function BlogDetails1({ blogItem }) {
               <i className="unicon-chevron-right fw-medium opacity-50 rtl:rotate-180" />
             </li>
             <li>
-              <Link href={`/blog-category/Strategy`}>Strategy</Link>
+              <Link href={`/blog-category/${blogItem.category}`}>{blogItem.category || "Blog"}</Link>
             </li>
             <li>
               <i className="unicon-chevron-right fw-medium opacity-50 rtl:rotate-180" />
@@ -109,8 +127,8 @@ export default function BlogDetails1({ blogItem }) {
                 <figure className="featured-image m-0 rounded ratio ratio-2x1 rounded uc-transition-toggle overflow-hidden">
                   <Image
                     className="media-cover image uc-transition-scale-up uc-transition-opaque"
-                    alt="Maximizing your reach with marketing strategies"
-                    src="/assets/images/blog/post-full.jpg"
+                    alt={blogItem.imgAlt || blogItem.title}
+                    src={blogItem.imgSrc || blogItem.image || "/assets/images/blog/post-full.jpg"}
                     width="1280"
                     height="853"
                   />
@@ -127,6 +145,9 @@ export default function BlogDetails1({ blogItem }) {
                 data-uc-lightbox="animation: scale"
               >
                 <p>
+                  {blogItem.content || "She started her blog exactly six months before I launched Camels & Chocolate, and she really set the bar high for my own blog birthday."}
+                </p>
+                {!blogItem.content && <p>
                   She started her blog exactly six months before I launched
                   Camels &amp; Chocolate, and she really set the bar high for my
                   own blog birthday, Y’all this summer! I’ve already been
@@ -139,7 +160,7 @@ export default function BlogDetails1({ blogItem }) {
                   things to do in Bellevue. About 40 percent of the city’s
                   population are minorities, which contributes to an overall
                   diverse range of lifestyles and ideas.
-                </p>
+                </p>}
                 <p className="mt-3">
                   I talked to climbers, Olympic mountain bikers, musicians, and
                   award-winning chefs about what exactly makes their hometowns

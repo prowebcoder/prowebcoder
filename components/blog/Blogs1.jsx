@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Pagination from "../common/Pagination";
 
-export default function Blogs1() {
+export default function Blogs1({ blogs = blogsPosts4 }) {
   return (
     <div className="section panel overflow-hidden">
       <div className="section-outer panel py-6 lg:py-9">
@@ -50,7 +50,7 @@ export default function Blogs1() {
               </h1>
             </header>
             <div className="row child-cols-12 sm:child-cols-4 col-match gy-4 sm:gy-6 xl:gy-8 gx-2 xl:gx-4">
-              {blogsPosts4.slice(0, 1).map((elm, i) => (
+              {blogs.slice(0, 1).map((elm, i) => (
                 <div key={i} className="col-12">
                   <article className="post type-post panel rounded-3 p-3 bg-secondary dark:bg-gray-800">
                     <div className="panel row child-cols-12 md:child-cols-6 items-center g-3">
@@ -64,7 +64,7 @@ export default function Blogs1() {
                             alt="Maximizing your reach with marketing strategies"
                           />
                           <Link
-                            href={`/blog-details/${elm.id}`}
+                            href={`/blog-details/${elm.slug || elm.id}`}
                             className="position-cover"
                             data-caption="Maximizing your reach with marketing strategies"
                           ></Link>
@@ -81,7 +81,7 @@ export default function Blogs1() {
                           <h3 className="h4 xl:h2 m-0 text-center m-0 lg:w-500px lg:m-auto">
                             <Link
                               className="text-none"
-                              href={`/blog-details/${elm.id}`}
+                              href={`/blog-details/${elm.slug || elm.id}`}
                             >
                               {elm.title}
                             </Link>
@@ -116,7 +116,7 @@ export default function Blogs1() {
                           </p>
                           <Link
                             className="btn btn-text text-primary border-bottom d-inline-flex fs-7 lg:fs-6 sm:mt-2"
-                            href={`/blog-details/${elm.id}`}
+                            href={`/blog-details/${elm.slug || elm.id}`}
                           >
                             Continue reading
                           </Link>
@@ -126,7 +126,7 @@ export default function Blogs1() {
                   </article>
                 </div>
               ))}
-              {blogsPosts4.slice(1, 7).map((elm, i) => (
+              {blogs.slice(1, 7).map((elm, i) => (
                 <div key={i}>
                   <article className="post type-post panel vstack gap-3 rounded-3 p-2 pb-3 bg-secondary dark:bg-gray-800">
                     <Link
@@ -145,7 +145,7 @@ export default function Blogs1() {
                         alt="Top 5 reasons to invest in marketing"
                       />
                       <Link
-                        href={`/blog-details/${elm.id}`}
+                        href={`/blog-details/${elm.slug || elm.id}`}
                         className="position-cover"
                         data-caption="Top 5 reasons to invest in marketing"
                       ></Link>
@@ -154,7 +154,7 @@ export default function Blogs1() {
                       <h3 className="h5 xl:h4 m-0 text-center m-0">
                         <Link
                           className="text-none"
-                          href={`/blog-details/${elm.id}`}
+                          href={`/blog-details/${elm.slug || elm.id}`}
                         >
                           {elm.title}
                         </Link>
