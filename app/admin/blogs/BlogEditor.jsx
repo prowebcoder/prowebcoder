@@ -20,9 +20,14 @@ export default function BlogEditor() {
 
   useEffect(() => { if (contentRef.current) contentRef.current.innerHTML = blog.content; setHtmlSource(blog.content); }, [editingId]);
   const change = (field, value) => setBlog((current) => ({ ...current, [field]: value }));
+  const readResponse = async (response) => {
+    const text = await response.text();
+    if (!text) return null;
+    try { return JSON.parse(text); } catch { throw new Error("The server returned an invalid response. Please try again."); }
+  };
   const request = async (method, body) => {
     const response = await fetch("/api/blogs", { method, headers: { "Content-Type": "application/json", Authorization: `Bearer ${password}` }, body: body ? JSON.stringify(body) : undefined });
-    const data = response.status === 204 ? null : await response.json();
+    const data = await readResponse(response);
     if (!response.ok) throw new Error(data?.error || "Unable to save the post.");
     return data;
   };
@@ -57,7 +62,7 @@ export default function BlogEditor() {
       const formData = new FormData();
       formData.append("image", file);
       const response = await fetch("/api/blogs/upload", { method: "POST", headers: { Authorization: `Bearer ${password}` }, body: formData });
-      const data = await response.json();
+      const data = await readResponse(response);
       if (!response.ok) throw new Error(data.error || "Image upload failed.");
       if (featured) change("image", data.url);
       else if (sourceMode) setHtmlSource((current) => `${current}\n<p><img src="${data.url}" alt="" /></p>`);
